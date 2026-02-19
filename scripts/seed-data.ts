@@ -9,7 +9,16 @@ dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 const CONNECTION_STRING = process.env.DATABASE_URL || 'postgresql://postgres:postgres@127.0.0.1:54322/postgres';
 const BATCH_SIZE = 100;
 
-// INTERFACES based on JSON structure
+const LOG_FILE = path.join(process.cwd(), 'seed.log');
+function log(msg: string) {
+    console.log(msg);
+    fs.appendFileSync(LOG_FILE, msg + '\n');
+}
+function error(msg: string, err?: any) {
+    console.error(msg, err || '');
+    fs.appendFileSync(LOG_FILE, `ERROR: ${msg} ${err ? JSON.stringify(err) : ''}\n`);
+}
+
 interface CaseData {
     LKK_INFOID: number;
     LKK_FILE_NO: string;
@@ -61,13 +70,13 @@ function parseDate(dateStr: string | null): string | null {
 }
 
 async function processDirectory(pool: Pool, dirName: string, basePath: string) {
-    console.log(`\nProcessing directory: ${dirName}`);
+    log(`\nProcessing directory: ${dirName}`);
     const casesPath = path.join(basePath, dirName, 'clean_info.json');
     const peoplePath = path.join(basePath, dirName, 'clean_people.json');
     const allegationsPath = path.join(basePath, dirName, 'clean_allegation.json');
 
     if (!fs.existsSync(casesPath)) {
-        console.warn(`  Skipping ${dirName}: clean_info.json not found.`);
+        log(`  Skipping ${dirName}: clean_info.json not found.`);
         return;
     }
 
@@ -76,7 +85,7 @@ async function processDirectory(pool: Pool, dirName: string, basePath: string) {
         const peopleData: PersonData[] = fs.existsSync(peoplePath) ? JSON.parse(fs.readFileSync(peoplePath, 'utf8')) : [];
         const allegationsData: AllegationData[] = fs.existsSync(allegationsPath) ? JSON.parse(fs.readFileSync(allegationsPath, 'utf8')) : [];
 
-        console.log(`  Found: ${casesData.length} cases, ${peopleData.length} people, ${allegationsData.length} allegations.`);
+        log(`  Found: ${casesData.length} cases, ${peopleData.length} people, ${allegationsData.length} allegations.`);
 
         // 1. Insert Cases and build a map of LKK_INFOID -> DB_ID
         const caseIdMap = new Map<number, number>(); // LKK_INFOID -> case table ID
@@ -121,8 +130,12 @@ async function processDirectory(pool: Pool, dirName: string, basePath: string) {
             if (res.rows.length > 0) {
                 caseIdMap.set(c.LKK_INFOID, res.rows[0].id);
             }
+            // Log progress
+            if (caseIdMap.size % 10 === 0) {
+                log(`  Processed ${caseIdMap.size} cases...`);
+            }
         }
-        console.log(`  > Inserted cases for ${dirName}`);
+        log(`  > Inserted/Updated cases for ${dirName}`);
 
         // 2. Insert People linked to Case DB ID
         // Note: For simplicity in this script, we aren't using batch inserts for linked data 
@@ -134,24 +147,28 @@ async function processDirectory(pool: Pool, dirName: string, basePath: string) {
 
             const name = p.LTL_DATA?.namaPihak || p.LTL_DATA?.namaPerayuResponden || 'Unknown';
 
-            await pool.query(`
-                INSERT INTO people (
-                    case_id, source_id, role, category, name, id_no, email, phone, address, raw_data
-                ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-            `, [
-                caseDbId,
-                p.LTL_PERSON_ID,
-                p.LTL_DATA?.peranan || null,
-                p.LTL_DATA?.category || null,
-                name,
-                p.LTL_DATA?.noKP || null,
-                p.LTL_DATA?.emailPerayuResponden || null,
-                p.LTL_DATA?.noPhonePerayuResponden || null,
-                p.LTL_DATA?.officeAddressO || null,
-                JSON.stringify(p)
-            ]);
+            try {
+                await pool.query(`
+                    INSERT INTO people (
+                        case_id, source_id, role, category, name, id_no, email, phone, address, raw_data
+                    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+                `, [
+                    caseDbId,
+                    p.LTL_PERSON_ID,
+                    p.LTL_DATA?.peranan || null,
+                    p.LTL_DATA?.category || null,
+                    name,
+                    p.LTL_DATA?.noKP || null,
+                    p.LTL_DATA?.emailPerayuResponden || null,
+                    p.LTL_DATA?.noPhonePerayuResponden || null,
+                    p.LTL_DATA?.officeAddressO || null,
+                    JSON.stringify(p)
+                ]);
+            } catch (err) {
+                error(`  Failed to insert person ${p.LTL_PERSON_ID}:`, err);
+            }
         }
-        console.log(`  > Inserted people for ${dirName}`);
+        log(`  > Inserted people for ${dirName}`);
 
         // 3. Insert Allegations linked to Case DB ID
         for (const a of allegationsData) {
@@ -160,31 +177,35 @@ async function processDirectory(pool: Pool, dirName: string, basePath: string) {
             const caseDbId = caseIdMap.get(lookupId);
             if (!caseDbId) continue;
 
-            await pool.query(`
-                INSERT INTO allegations (
-                    case_id, source_id, type, section, act_desc, charge_notes, okt_name, charge_created_date, raw_data
-                ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-            `, [
-                caseDbId,
-                a.LLA_ALLEGATION_ID,
-                a.LLA_TYPE,
-                a.LLA_SECTION,
-                a.LLA_ACT_DESC,
-                a.LLA_CHARGE_NOTES,
-                a.LLA_OKT_NAME,
-                a.CREATEDDATE ? new Date(a.CREATEDDATE) : null,
-                JSON.stringify(a)
-            ]);
+            try {
+                await pool.query(`
+                    INSERT INTO allegations (
+                        case_id, source_id, type, section, act_desc, charge_notes, okt_name, charge_created_date, raw_data
+                    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                `, [
+                    caseDbId,
+                    a.LLA_ALLEGATION_ID,
+                    a.LLA_TYPE,
+                    a.LLA_SECTION,
+                    a.LLA_ACT_DESC,
+                    a.LLA_CHARGE_NOTES,
+                    a.LLA_OKT_NAME,
+                    a.CREATEDDATE ? new Date(a.CREATEDDATE) : null,
+                    JSON.stringify(a)
+                ]);
+            } catch (err) {
+                error(`  Failed to insert allegation ${a.LLA_ALLEGATION_ID}:`, err);
+            }
         }
-        console.log(`  > Inserted allegations for ${dirName}`);
+        log(`  > Inserted allegations for ${dirName}`);
 
     } catch (err) {
-        console.error(`Error processing directory ${dirName}:`, err);
+        error(`Error processing directory ${dirName}:`, err);
     }
 }
 
 async function main() {
-    console.log('Starting data seed process with NEW SCHEMA...');
+    log('Starting data seed process with NEW SCHEMA...');
     const pool = new Pool({ connectionString: CONNECTION_STRING });
 
     try {
@@ -197,12 +218,12 @@ async function main() {
             await processDirectory(pool, dir, cleanedDataPath);
         }
 
-        console.log('\nAll data processed successfully.');
+        log('\nAll data processed successfully.');
     } catch (err) {
-        console.error('Fatal error:', err);
+        error('Fatal error:', err);
     } finally {
         await pool.end();
     }
 }
 
-main().catch(console.error);
+main().catch(err => error('Unhandled rejection', err));

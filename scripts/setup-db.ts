@@ -15,11 +15,20 @@ async function main() {
         await pool.connect();
 
         // Drop tables in reverse order of dependencies
+        // Drop function with correct signature (or use CASCADE on table drop if it depends on it, but function doesn't depend on table usually)
+        await pool.query(`DROP FUNCTION IF EXISTS match_documents(vector(1536), float, int)`);
+        await pool.query(`DROP FUNCTION IF EXISTS match_documents(text, float, int)`);
+        await pool.query(`DROP FUNCTION IF EXISTS match_documents(text, float, int, jsonb)`);
+        await pool.query(`DROP TABLE IF EXISTS case_embeddings;`);
         await pool.query(`DROP TABLE IF EXISTS allegations;`);
         await pool.query(`DROP TABLE IF EXISTS people;`);
         await pool.query(`DROP TABLE IF EXISTS cases;`);
 
         console.log('Dropped existing tables.');
+
+        // Enable Vector Extension
+        await pool.query('CREATE EXTENSION IF NOT EXISTS vector');
+        console.log('Enabled vector extension');
 
         // Create CASES table
         await pool.query(`
@@ -87,6 +96,55 @@ async function main() {
             );
         `);
         console.log('Created table: allegations');
+
+        // Create EMBEDDINGS table
+        await pool.query(`
+            CREATE TABLE case_embeddings (
+                id SERIAL PRIMARY KEY,
+                case_id INTEGER REFERENCES cases(id) ON DELETE CASCADE,
+                content TEXT, -- Chunk of text from the case
+                metadata JSONB, -- { source, title, etc. }
+                embedding vector(1536), -- OpenAI embedding size
+                created_at TIMESTAMP DEFAULT NOW()
+            );
+        `);
+        console.log('Created table: case_embeddings');
+
+        // Create similarity search function
+        // Note: Using text for query_embedding to be compatible with supabase-js/JSON serialization
+        await pool.query(`
+            CREATE OR REPLACE FUNCTION match_documents (
+                query_embedding text,
+                match_threshold float,
+                match_count int,
+                match_filter jsonb DEFAULT '{}'
+            )
+            RETURNS TABLE (
+                id bigint,
+                content text,
+                metadata jsonb,
+                similarity float
+            )
+            LANGUAGE plpgsql
+            AS $$
+            BEGIN
+                RETURN QUERY
+                SELECT
+                    case_embeddings.id,
+                    case_embeddings.content,
+                    case_embeddings.metadata,
+                    1 - (case_embeddings.embedding <=> query_embedding::vector) AS similarity
+                FROM case_embeddings
+                WHERE 1 - (case_embeddings.embedding <=> query_embedding::vector) > match_threshold
+                AND case_embeddings.metadata @> match_filter
+                ORDER BY case_embeddings.embedding <=> query_embedding::vector
+                LIMIT match_count;
+            END;
+            $$;
+        `);
+        // Grant execute permissions
+        await pool.query(`GRANT EXECUTE ON FUNCTION match_documents TO anon, authenticated, service_role;`);
+        console.log('Created function: match_documents');
 
         console.log('Database schema successfully reset.');
 
