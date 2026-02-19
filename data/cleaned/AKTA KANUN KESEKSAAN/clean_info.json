@@ -1,0 +1,676 @@
+[
+  {
+    "LKK_INFOID": 142,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6116,
+    "LKK_FILE_NO": "TPR SEL 139/18",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "PERBICARAAN KES JENAYAH NO : BA-45B-30-10/2018 - PP v. Suresh",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "KU HAYATI BINTI KU HARON",
+          "CCATStaff": "5952"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "09/11/2022",
+        "catatanTindakanLKK": "Sila kaji dan bincang.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "1",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELANJUTNYA"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "31/10/2018",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "keputusanTutup": "TIDAK RAYU",
+      "firstChargeDate": null,
+      "tarikhTutupFail": "11/11/2022",
+      "catatanTutupFail": "Rayuan lanjut ke Mahkamah Rayuan tidak difailkan. LKK selesai dan ditutup pada 11 November 2022.",
+      "staffIdTutupFail": "4997",
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "staffNameTutupFail": "SYARIDA HANUM BINTI JAMEL",
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "OKT dilepaskan dan dibebaskan di akhir kes pendakwaan",
+    "LKK_RESULT_DATE": "2022-11-04",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-11-18",
+    "LKK_GROUNDS_OF_JUDGEMENT": "Notis alibi dikemukakan oleh OKT yang menyatakan bahawa pada masa kejadian OKT dilihat sedang minum di sebuah gerai bersama kawan-kawannya Terdapat keterangan orang lain yang turut menghuni di dalam rumah tersebut namun tiada siasatan dilakukan oleh Pegawai Penyiasat siapa yang keluar masuk ke dalam rumah tersebut CCTV gagal dikemukakan. CCTV yang dihantar ke forensik untuk dianalisa merupakan satu rakaman menggunakan peranti yang lain ke atas CCTV dan tidak jelas. Malahan pihak forensik telah menolak permohonan PDRM untuk analisa CCTV tersebut atas sebab video adalah tidak jelas dan bukan rakaman asal. Tiada DNA OKT dan tiada capjari OKT di tempat kejadian. Tiada saksi mata atau keterangan yang membuktikan OKT melakukan pembunuhan Saksi penting gagal dikesan. Seksyen 114(g) Akta Keterangan digunapakai. Tiada sebab untuk tidak mempercayai keterangan SP15 dan SP16. Sebahagian daripada keterangan mereka boleh diterima. Usaha untuk mengesan saksi yang gagal dikesan adalah tidak memadai dan tidak memenuhi pra-syarat. Maka rakaman percakapan dikekalkan sebagai ID dan permohonan untuk memasukkan rakaman percakapan tersebut ditolak.",
+    "LKK_CASE_FACT": "SP1 dimaklumkan oleh Ka Si Mah bahawa adiknya Kyar Aye telah mati kerana dipotong (ditetak) di rumahnya yang beralamat di No. B-21-2A, Blok B, Pangsapuri Sri Gotong, Batu Caves. SP1 tiba di tempat kejadian dan nampak si mati. SP1 menelefon rakannya iaitu SP2 dan SP2 meminta bantuan kenalannya iaitu SP3 yang merupakan seorang anggota polis. SP3 telah membuat laporan polis berkenaan kejadian tersebut sebagaimana P7.SP8 telah sahkan pada 25/5/2018, SP8 menjalankan post mortem terhadap mayat yang dicamkan sebagai Kyar Aye, seorang warganegara Myanmar. Pemeriksaan bedah siasat menunjukkan satu luka tetakan yang dalam yang telah menyebabkan kecederaan parah yang terdiri daripada terpotong salur darah utama leher sebelah kiri, saraf utama leher sebelah kiri, pembuluh utama leher sebelah kiri sehingga terpotong sebahagian tulang servikal leher. Punca kematian adalah “Fatal Slashed Wound To the Neck” (luka tetakan fatal pada bahagian leher). Pada 6/6/2018,jam lebih kurang 3.30 pagi, SP4 dan pasukannya telah pergi ke rumah B-510 Apartment Iris, Bandar Saujana Utama, Sg Buloh dan telah memecah masuk ke dalam rumah tersebut setelah mendapati tiada jawapan daripada penghuni rumah apabila SP4 mengetuk pintu rumah. SP4 dan pasukannya telah menangkap OKT. SP4 dan pasukannya berjaya menangkap OKT di rumah hasil daripada pandu arah oleh SP15 dan SP16. Setelah menangkap OKT, SP4 membuat soal siasat ke atas OKT dan OKT telah memaklumkan bahawa boleh menunjukkan parang. SP4 dan pasukannya telah dibawa ke Jalan 2/3A Jalan Jinjang Utara, KM12 Kuala Lumpur dan OKT menunjukkan tempat parang dibuang. Walaubagaimanapun, tiada parang dijumpai (rujuk laporan polis Jinjang/0103082/18 – P9). SP15 dan SP16 dalam keterangan mereka di mahkamah telah mengesahkan bahawa OKT telah meminta mereka untuk tolong carikan rumah sewa memandangkan OKT mempunyai masalah di pasar dan tiada tempat tinggal. OKT juga telah mengaku telah membunuh si mati kepada SP15.",
+    "LKK_ISSUES_AND_ARGUMENT": "Elemen pertama: mangsa telah mati SP8 telah sahkan pada 25/5/2018, SP8 menjalankan post mortem terhadap mayat yang dicamkan sebagai Kyar Aye, seorang warganegara Myanmar. Punca kematian adalah “Fatal Slashed Wound To the Neck” (luka tetakan fatal pada bahagian leher). Rakaman percakapan Ka Si Mah (IDD74) (ID74a-b) dan Ram (ID76). SP20 mengeluarkan kebenaran pelepasan jasad bagi mayat si mati dengan butiran si mati (P79). Fakta bahawa si mati adalah KYAR AYE telah dibuktikan. Elemen Kedua: kematian si mati adalah akibat kecederaan yang dialami olehnya dan kecederaan tersebut cukup pada lazimnya menyebabkan kematian si mati Laporan Post Mortem oleh SP12. Pemeriksaan bedah siasat menunjukkan satu luka tetakan yang dalam yang telah menyebabkan kecederaan parah yang terdiri daripada terpotong salur darah utama leher sebelah kiri, saraf utama leher sebelah kiri, pembuluh utama leher sebelah kiri sehingga terpotong sebahagian tulang servikal leher. Cause of death adalah : Fatal Slashed Wound to the neck Elemen ketiga: Kecederaan tersebut telah dilakukan oleh OKT dan dengan niat OKT untuk menyebabkan kecederaan tersebut dan ia telah dilakukan dengan sengaja SP15 dan SP16 dalam keterangan mereka di mahkamah telah mengesahkan bahawa OKT telah meminta mereka untuk tolong carikan rumah sewa memandangkan OKT mempunyai masalah di pasar dan tiada tempat tinggal. ISU BERBANGKIT 1 : KETERANGAN SP15 & IMPEACHMENT & KETERANGAN SP16 & HOSTILE keterangan SP15 telah dicabar kebolehpercayaannya di bawah seksyen 145 Akta Keterangan dibaca bersama seksyen 155 Akta Keterangan. Manakala SP16 pula, pihak pendakwaan memohon untuk memeriksa balas SP16 di bawah seksyen 145 Akta Keterangan dibaca bersama seksyen 154 Akta Keterangan berdasarkan rakaman percakapan yang dirakamkan di bawah seksyen 112 KTJ. Rakaman percakapan masing-masing telah ditandakan sebagai ID58 dan ID60. ISU BERBANGKIT 2 : KEBOLEHTERIMAAN RAKAMAN PERCAKAPAN IDD74, ID74A&B, ID75 DAN ID76 Pihak Pendakwaan telah mengemukakan rakaman percakapan 112 KTJ yang telah dirakam bagi saksi yang bernama Ka Si Mah (IDD 74, ID74a&ID74b), Raja (ID75) dan Ram (ID76).",
+    "LKK_DPP_SUGGESTION": "Tiada rayuan dicadangkan atas alasan: Tiada saksi mata kejadian. Adik beradik si mati iaitu Ka Si Mah dan Ram tidak berjaya dikesan. Impeachment proceeding telah dilakukan terhadap SP15 kerana SP15 menafikan OKT maklumkan kepadanya berkenaan kejadian yang berlaku serta pengakuan OKT dan bahawa OKT ingin menyembunyikan diri Hostile proceeding telah dimulakan terhadap SP16 CCTV di kawasan walkway apartment adalah tidak jelas dan tidak menampakkan muka OKT Raja iaitu orang yang memberikan kunci rumah kepada OKT kerana OKT ingin memasuki rumah si mati dan membunuh si mati gagal dikesan. Tiada DNA mahupun capjari OKT di tempat kejadian Tiada senjata dijumpai Saksi penting iaitu Raja gagal dikesan",
+    "LKK_DSP_SUGGESTION": "YBrs. Datin Ketua Unit Rayuan, Cadangan agar notis rayuan tidak difailkan dipersetujui kerana tiada keterangan yang boleh mengaitkan OKT dengan kematian simati dapat dikemukakan semasa perbicaraan apabila: SP15 dan SP16 yang menyatakan di dalam rakaman percakapan mereka, OKT ada membuat pengakuan berkenaan pembunuhan simati tetapi menafikan memberikan percakapan berkenaan perkara tersebut semasa memberikan keterangan. Raja yang memberikan kunci rumah simati telah tidak dapat dikesan untuk memberikan keterangan. Tiada DNA atau cap jari OKT ditemui di tempat kejadian. Senjata pembunuhan tidak ditemui. Tiada keterangan lain untuk mengaitkan OKT dengan kematian simati. Pohon arahan pihak YBrs. Berkenaan perkara ini",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": "LKK dan hujahan TPR Alison telah dikaji , cadangan PPN dan TPR Alison turut diteliti, berdasarkan keterangan yang dikemukakan di Mahkamah Tinggi, saya tidak cadang untuk merayu ke atas keputusan HMT, ini kerana adalah sukar untuk membuktikan intipati \"Responden yang menyebabkan kematian simati\", oleh itu, saya setuju dengan alasan-alasan TPR Alison bahawa rayuan tidak dibuat kerana tiada keterangan secara langsung ataupun circumstantial evidence yang mengaitkan Responden yang membunuh simati di dalam kes ini. Untuk makluman, Responden ialah seorang warga asing yang tidak memilik dokumen perjalanan yang sah ataupun passport, Responden sekarang berada di depot imigresen Semenyih. Note : 1)Sesalinan deraf Notis Rayuan dilampirkan sekiranyan rayuan perlu dibuat. 2)Pertuduhan : “Bahawa kamu pada 25hb Mei 2018 jam lebih kurang 4.00 pagi bertempat di rumah No. B-21-2A, Blok B, Pangsapuri Sri Gotong, Batu Caves, Selangor dalam daerah Gombak dalam Negeri Selangor Darul Ehsan telah melakukan bunuh dengan menyebabkan kematian Kyar Aye (No.passport MD 227481). Oleh yang demikian, kamu telah melakukan suatu kesalahan yang boleh dihukum di bawah seksyen 302 kanun keseksaan” 3)Hujahan DPP Alison dilampirkan untuk rujuk Y Bhg Dato'. Walaubagaimanapun, saya mohon arahan lanjut Y Bgh Dato; TKBPR.",
+    "LKK_PENGISIAN_DATE": "2022-11-10 16:13:38",
+    "LKK_PENGISIAN_STAFFNAME": "WONG POI YOKE",
+    "LKK_PENGISIAN_STAFFID": "3420",
+    "LKK_PENGISIAN_PATHRAYUAN": "Apps/LT/LKK/Rayuan/142",
+    "LKK_CATATAN_PENGESYOR": "Setelah mengkaji fakta dan ulasan TPR yang mengendalikan kes dan TPR A&T maka dipersetujui kes tidak dirayu.Mangsa dalam kes ini adalah warganegara asing.Tiada keterangan langsung dan ikut keadaan yang kukuh terhadap OKT.",
+    "LKK_PENGESYOR_DATE": "2022-11-10 17:26:52",
+    "LKK_PENGESYOR_STAFFID": "6418",
+    "LKK_PENGESYOR_STAFFNAME": "ASMAH BINTI MUSA",
+    "LKK_CADANGANTKB_PEMUTUS": "Saya telah berbincang mengenai kedudukan kes ini bersama Datin KUR dan telah meneliti cadangan yang dikemukakan oleh TPR yang berkenaan. Berdasarkan kepada keterangan kes yang dikemukakan, elemen utama iaiatu \"OKT yang menyebabkan kematian si mati\" adalah telah gagal dibuktikan. Keterangan ikut keadaan juga adalah lemah. Oleh itu, adalah wajar Notis Rayuan tidak difailkan dalam kes ini.",
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": "2022-11-11 10:47:42",
+    "LKK_PEMUTUSTKB_STAFFNAME": "MOHD DUSUKI BIN MOKHTAR",
+    "LKK_PEMUTUSTKB_STAFFID": "6872",
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2022-11-04 10:02:57",
+    "LKK_CREATEDBY": "alison.chan",
+    "LKK_UPDATEDATE": "2022-11-11 11:38:49",
+    "LKK_UPDATEBY": "syarida",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": "1",
+    "LKK_KEPUTUSANTKB_PEMUTUS": "2",
+    "LKK_SENDDATE": "2022-11-08 23:15:37",
+    "LKK_COMPLETE_BY": "PENUTUP_ANT",
+    "LKK_COMPLETE_DATE": "2022-11-11 11:38:49",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 156,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6117,
+    "LKK_FILE_NO": "TPR SEL (A)335/2021",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "RAYUAN JENAYAH NO. MT: BA-41H-120-10/2021- PP v. JOSEPH PRAKASH A/L SUGUMARAN (No.k/p: 780718-10-5611)",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KU HAYATI BINTI KU HARON",
+          "CCATStaff": "5952"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "14/11/2022",
+        "catatanTindakanLKK": "LKK dimaklumi dan tahniah.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "02/12/2021",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "keputusanTutup": "TIDAK RAYU",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "Rayuan Perayu dibenarkan. Hukuman denda dikekalkan Mahkamah Tinggi menambah hukuman penjara 1 tahun dari tarikh hari ini. Permohonan stay of execution ditolak",
+    "LKK_RESULT_DATE": "2022-11-10",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-11-24",
+    "LKK_GROUNDS_OF_JUDGEMENT": "Hukuman perlu deteren Mengikut fakta yang dibentangkan, kesalahan telah dilakukan di luar perkarangan IPD Serdang dan telah menyebabkan kekecohan di jalan hadapan laluan keluar masuk IPD Serdang. Responden juga telah dalam keadaan marah dan menjerit serta melakukan provokasi terhadap polis di lokasi kejadian.Responden juga telah cuba meninggalkan tempat kejadian sewaktu itu untuk melarikan diri.",
+    "LKK_CASE_FACT": "Pada 29/9/2021, jam lebih kurang 4.00 petang, di luar perkarangan IPD Serdang, Responden telah melakukan khianat dengan memecahkan cermin kereta milik Mani Maran a/l Manickam (No.k/p: 800425-08-5739) jenis Proton Waja warna kelabu dengan menggunakan objek. Responden telah ditangkap pada hari yang sama jam lebih kurang 4.15 petang di mana pihak polis telah dimaklumkan berkenaan kekecohan yang dilakukan di hadapan laluan keluar masuk IPD Serdang. Pihak polis telah keluar dan nampak Responden dalam keadaan marah sambil menjerit dan membuat provokasi terhadap pihak polis dalam keadaan marah. Responden kemudiannya mencuba melarikan diri. Pihak polis telah berjaya menangkap responden.",
+    "LKK_ISSUES_AND_ARGUMENT": "Hukuman yang diberikan oleh Tuan HMS adalah terlampau ringan (‘ manifestly inadequate’ ). PP LWN LING LEH HOE [2015] 4 CLJ 869 Pertimbangan tentang apa yang boleh menjadi suatu hukuman yang berpatutan di dalam sesuatu kes telah ditetapkan oleh kes PP v. Morah Chekwube Chukwudi [2017] 1 LNS 864 Pengakuan salah Responden Responden adalah pesalah kali pertama. Responden harus diberi peluang untuk berubah P",
+    "LKK_DPP_SUGGESTION": "Tiada rayuan dicadangkan Keputusan memihak kepada pihak pendakwaan dan dalam lingkungan trend hukuman",
+    "LKK_DSP_SUGGESTION": "YBrs. Datin Ketua Unit Rayuan, Keputusan berpihak kepada pihak Pendakwa Raya dan hukuman berada dalam linkungan trend hukuman bagi kesalahan yang sama. Oleh itu cadangan rayuan tidak difailkan adalah disokong. Terima Kasih.",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2022-11-10 10:26:26",
+    "LKK_CREATEDBY": "alison.chan",
+    "LKK_UPDATEDATE": "2022-11-14 08:09:43",
+    "LKK_UPDATEBY": "asmah",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-11-11 09:55:55",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2022-11-14 08:09:43",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 163,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6117,
+    "LKK_FILE_NO": "BA-42-JSKS-5-10/2020",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "MOHD ZIQRUL FHAHMIE BIN DERAMAN … PERAYU LWN PENDAKWA RAYA … RESPONDEN",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KU HAYATI BINTI KU HARON",
+          "CCATStaff": "5952"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "16/11/2022",
+        "catatanTindakanLKK": "Berdasarkan keadaan dimana Rekod Rayuan tidak lengkap maka adalah dipersetujui tiada rayuan difailkan.Malahan perintah retrial juga adalah tidak memenuhi syarat suatu keputusan dibawah s3 CJA.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "15/10/2020",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "keputusanTutup": "TIDAK RAYU",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "Mahkamah telah mengenepikan keputusan sabitan dan hukuman oleh HMS dan telah memerintahkan agar kes dikembalikan ke Mahkamah Sesyen untuk dibicarakan semula di hadapan Hakim yang lain. NOTA: Pada 21.9.2020, Hakim Mahkamah Sesyen, Tuan Harith Sham bin Mohamed Yasin, di akhir kes pembelaan telah memutuskan bahawa Perayu bersalah dan disabitkan terhadap kedua-dua pertuduhan. HMS telah menjatuhkan hukuman seperti berikut; Bagi pertuduhan pertama, Perayu dijatuhkan hukuman penjara 15 tahun dari tarikh jatuh hukum 21.9.2019 dan 7 sebatan rotan. Bagi pertuduhan kedua, Perayu dijatuhkan hukuman penjara selama 5 tahun dari tarikh jatuh hukum 21.9.2019.",
+    "LKK_RESULT_DATE": "2022-11-11",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-11-23",
+    "LKK_GROUNDS_OF_JUDGEMENT": "Mahkamah berpandangan bahawa sememangnya terdapat satu kelompangan yang besar di dalam Rekod Rayuan dan Mahkamah berpendapat suatu perbicaraan semula wajar diperintahkan untuk kes ini.",
+    "LKK_CASE_FACT": "SP1 iaitu mangsa di dalam kes ini merupakan seorang kanak-kanak yang belajar di darjah 6 di Sekolah Kebangsaan Jalan Tanjung, Teluk Panglima Garang sewaktu kejadian. Perayu adalah seorang guru yang ditukarkan dan bertugas di sekolah yang sama pada tahun 2015. Pada masa yang sama, Perayu juga mengendalikan dan menguruskan sebuah pusat tuisyen di rumah sewanya di alamat No. 11, Lot 1977, Jalan Tanjung, Kampung Sijangkang, Teluk Panglima Garang iaitu berhadapan dengan rumah SP1. Menurut keterangan dalam kes ini, SP1 mula mengenali Perayu pada awal bulan Januari 2015 pabila Perayu berpindah ke sekolah SP1 tersebut. Perayu ditugaskan untuk mengajar mata pelajaran Kajian Tempatan bagi SP1 dan kelasnya. Pada suatu hari semasa sesi pengajaran di sekolah, Perayu telah mengedarkan satu kertas berhubung peluang pekerjaan di pusat tuisyen yang dikendalikan olehnya. SP1 telah menyerahkan kertas tersebut kepada sepupunya bernama Nursafina iaitu SP6. Seterusnya SP1 membawa SP6 berjumpa dengan Perayu dan isterinya di pusat tuisyen tersebut. Sejak itu Perayu dan SP1 mula mengenali rapat dan mula bermesej dalam ‘messenger Facebook’. Pada 13.2.2015 selepas balik dari sekolah, SP1 telah menerima mesej dari Perayu menyatakan Perayu hendak berjumpa dengan SP1 pada pukul 6 petang di pusat tuisyen tersebut. Selepas membalas mesej Perayu, SP1 pergi ke sekolah sesi petang sehingga pukul 6 petang. Selepas balik dari sekolah, SP1 terus menukar tudungnya dan terus ke pusat tuisyen tersebut tanpa menukar pakaian sekolah. SP1 telah memasuki pusat tuisyen tersebut dan melihat tiada sesiapa di pusat tuisyen tersebut. Pada mulanya Perayu duduk di meja mengajar manakala SP1 duduk di meja pelajar. Selepas seketika, Perayu telah menukar posisi dengan duduk di hadapan SP1 sambil menghulurkan sebuah tab dan menyuruh SP1 melihat gambar-gambar dan video-video lucah. SP1 tidak mahu tengok gambar atau video lucah tersebut. Sewaktu itu, Perayu telah duduk di sebelah SP1 dan memegang tangan SP1 sambil meraba-raba leher SP1 dengan memasukkan tangannya ke dalam tudung SP1 sehingga leher SP1. SP1 telah menarik keluar tangan Perayu. Selepas itu, Perayu telah memegang tangan dan menyuruh SP1 membuka zip seluar serta memegang kemaluannya. Selepas SP1 telah dipapah dan dibawa masuk ke dalam bilik. Di dalam bilik itu, Perayu telah membuka pakaian SP1 dan meramas buah dada SP1 dengan menggunakan kedua-dua tangannya serta menghisap buah dadanya. Selang seminit, Perayu cuba memasukkan tangannya ke dalam seluar SP1 tetapi SP1 menghalang menyatkaan dia masih berhaid (period). Perayu terus mengeluarkan tangannya. Selepas itu, SP1 telah membasuh muka dan balik ke rumah. Pada 15.2.2015 sekali lagi Perayu telah menghantar mesej kepada SP1 supaya datang ke pusat tuisyen tersebut pada pukul 2 petang. SP1telah pergi ke pusat tuisyen tersebut apabila ahli keluarganya telah pergi ke WetWorld, Shah Alam. Apabila SP1 sampai, Perayu telah mengulangi perbuatannya sama seperti yang dilakukan pada 13.2.2015 di mana Perayu duduk berhampiran dengan SP1 dan memberikan tab untuk menonton video lucah. Selepas itu, Perayu telah membawa SP1 ke bilik dan membogelkan SP1 serta membuka pakaiannya sendiri. Perayu telah membaringkan SP1 di atas katil dan meramas dan menghisap buah dada SP1. Selepas itu, Perayu telah memasukkan kemaluannya ke dalam kemaluan SP1 beberapa kali. Perayu telah mengeluarkan air mani di atas katil. Sejurus selepas itu, Perayu dan SP1 mandi dan Perayu telah memesan kepada SP1 supaya jangan memberitahu kepada sesiapa. Seterusnya SP1 telah balik ke rumahnya. SP1 telah menceritakan kejadian ini kepada kawan-kawannya iaitu SP2 dan Zulaika serta SP6. SP6 telah memberitahu kakaknya yang bernama Siti Hajar dan Siti Hajar telah memaklumkan perkara ini kepada ibu SP1. Setelah ibu SP1 memaklumkan kepada ayah SP1 iaitu SP4, SP4 telah memanggil Perayu datang ke rumah. Sewaktu perbincangan di rumah, menurut SP4, isteri Perayu telah mencadangkan mengahwinkan SP1 dengan Perayu. Namun SP4 tetap dengan pendiriannya untuk membuat laporan polis dan telah membuat laporan polis di Balai Banting. Seterusnya pada 23.2.2015, SP1 telah dirujuk kepada doktor pakar wanita dan sakit puan (SP8) yang bertugas di Wad Ginekologi di Hospital Banting dan SP8 mengesahkan terdapat koyakan lama pada hymen SP1 pada posisi jam 4. Seterusnya Perayu telah ditangkap oleh polis pada 27.2.2015.",
+    "LKK_ISSUES_AND_ARGUMENT": "Pihak peguam telah berhujah bahawa terdapat begitu banyak kelompangan di dalam Nota Keterangan (rekod-rekod rayuan) sehingga menyukarkan suatu perbicaraan rayuan dijalankan. Pihak Peguam memohon agar Perayu dilepaskan dan dibebaskan dengan mengambil kira prinsip di dalam kes Yong King Ming v PP (2007) MLJU 676 di mana Mahkamah menyatakan bahawa satu perbicaran semula tidak boleh diberikan hanya dengan berdasarkan persetujuan pihak-pihak. Untuk mahkamah memberikan keputusan supaya kes ini dibicarakan semula, mahkamah perlu mengambil kira jarak masa bermulanya kes ini, keadilan buat perayu dan juga mengambil kira bahawa rayuan hari ini tidak boleh dijalankan kerana ketiadaan Nota Keterangan dan rakaman CRT yang boleh dirujuk dan juga Rekod Rayuan yang tidak lengkap. (Nota : Rekod Rayuan sebanyak 4 jilid adalah tidak sempurna di mana terdapat banyak ayat-ayat yang tidak lengkap sehingga menyukarkan maksud keterangan saksi-saksi. Peguam telah beberapa kali memohon pihak Mahkamah untuk menyediakan Rekod Rayuan yang baru. Mahkamah telah memenuhi permintaan Peguam namun masih juga Rekod Rayuan tidak sempurna. Rakaman CRT juga hanya merakam keterangan dua orang saksi pendakwaan sedangkan pihak Pendakwaan memanggil tujuh (7) orang saksi. Saya membalas hujahan peguam Perayu dengan menyatakan bahawa di dalam kes ini sememangnya terdapat kelompangan yang besar di dalam Rekod Rayuan yang tidak memungkinkan suatu perbicaraan rayuan dijalankan dengan adil dan sempurna walaupun Alasan Penghakiman lengkap. Namun untuk Perayu dilepaskan dan dibebaskan atas alasan kecacatan Nota Keterangan, pihak Responden membantah sama sekali dengan menyatakan bahawa keadilan kepada semua pihak harus dikembalikan dengan mengadakan sekali lagi perbicaraan, bukannya dengan melepaskan dan membebaskan Perayu.",
+    "LKK_DPP_SUGGESTION": "Saya mencadangkan agar keputusan Mahkamah Tinggi tidak dirayu. Dengan rendah hati saya berpandangan bahawa keputusan YA Hakim adalah wajar memandangkan Rekod Rayuan merupakan satu mekanisme yang penting dan utama di dalam suatu perbicaraan rayuan. Justeru jikalau terdapat kelompangan dan ketidaksempurnaan yang begitu material di dalam Rekod Rayuan pasti akan menyukarkan keadilan diberikan kepada semua pihak.",
+    "LKK_DSP_SUGGESTION": "YBrs. Datin KUR, Memandangkan dalam kes ini rekod rayuan telah tidak dapat dilengkapkan dengan sempurna walaupun mahkamah bicara telah beberapa kali diberikan peluang untuk berbuat demikian dan rakaman CRT hanya merekodkan keterangan 2 orang saksi pendakwaan daripada 7 orang saksi yang dipanggil memberikan keterangan, didapati perintah retrial ini adalah oleh Yang Arif Pesuruhjaya Kehakiman adalah satu perintah yang wajar kerana dalam keadaan rekod yang tidak sempurna sudah pasti Perayu tidak mendapat hak untuk kes rayuannya didengar dengan sempurna. Dalam keadaan ini cadangan untuk notis rayuan tidak difailkan adalah disokong. Terima Kasih. KU HAYATI BINTI KU HARON PENGARAH PENDAKWAAN NEGERI SELANGOR DARUL EHSAN 12 NOVEMBER 2022",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2022-11-14 17:38:02",
+    "LKK_CREATEDBY": "aidatul",
+    "LKK_UPDATEDATE": "2022-11-16 08:29:52",
+    "LKK_UPDATEBY": "asmah",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-11-14 18:00:20",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2022-11-16 08:29:52",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 164,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6117,
+    "LKK_FILE_NO": "PER JEN 173/22",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "CHE ENGKU MUHAMMAD FARITH DANIEL BIN CHE ENGKU HANAFI v. PP",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KU HAYATI BINTI KU HARON",
+          "CCATStaff": "5952"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "17/11/2022",
+        "catatanTindakanLKK": "LKK dimaklumi dan tahniah.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "21/04/2022",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "keputusanTutup": "TIDAK RAYU",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "Rayuan Perayu ditolak Hukuman dikekalkan ( 6 TAHUN PENJARA DAN 2 KALI SEBATAN ROTAN. HUKUMAN BERJALAN BERASINGAN BAGI KES NO.BH-62RS-9-04/2022)",
+    "LKK_RESULT_DATE": "2022-11-14",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-11-28",
+    "LKK_GROUNDS_OF_JUDGEMENT": "HMS tidak terkhilaf. Perayu mempunyai banyak rekod bagi kesalahan yang sama.",
+    "LKK_CASE_FACT": "Pada 16/4/2022 jam lebih kurang 6.00 pagi semasa Pengadu sedang bekerja di 7-Eleven No.29 Jalan Bunga Kantan 1, Taman Bunga Kantan 43000 Kajang, Selangor telah didatangi OKT yang bersenjatakan pisau. OKT telah memaksa Pengadu menyerahkan wang tetapi pada masa tersebut tiada wang tunai di dalam laci kaunter dan hanya ada RM20.00 duit tiub yang berada di bawah meja kaunter. Pengadu telah serahkan wang tersebut kepada OKT sebelum OKT beredar melarikan diri. Kawad cam adalah positif, Pengadu dapat mengecamkan OKT.",
+    "LKK_ISSUES_AND_ARGUMENT": "Pohon untuk hukuman dijalan serentak dan bukannya berasingan serta agar hukuman penjara dikurangkan. Perayu telah mengaku salah pada hari pertuduhan. Masih muda dan telah insaf. Perayu berumur 23 tahun dan telah berunang. Tarikh pernikahan terpaksa ditunda kerana hukuman pemenjaraan terlalu lama iaitu 12 tahun. Ia telah memberikan kesan impak yang tidak baik serta tekanan yang amat kuat. Perayu adalah anak keempat dari tujuh orang adik beradik. Perayu bertanggungjawab untuk menampung perbelanjaan keluarga. Ibu tidak sihat serta ibu bapa yang uzur. Berjanji untuk menjadi seorang anak yang baik untuk keluarga yang dirindui dan menjadi seorang rakyat Malaysia yang bertanggungjawab kepada agama, bangsa dan negara. Isu hukuman dijalankan secara berasingan atau serentak. PP v. SHARI MOHD SHARIFF [2005] 5 CLJ 439 dirujuk. R ompakan yang dilakukan oleh OKT mempunyai fakta yang berlainan, tarikh dan masa berlainan serta barang kes yang dirompak juga adalah berlainan. Justeru, tiada sebarany proximity of time, proximity of place, continuity of action and continuity of purpose or design di dalam kes-kes tersebut. Maka, hukuman penjara dijalankan secara berasingan adalah berpatutan.",
+    "LKK_DPP_SUGGESTION": "TIADA RAYUAN DICADANGKAN Keputusan memihak kepada pihak pendakwaan dan dalam lingkungan trend hukuman",
+    "LKK_DSP_SUGGESTION": "YBrs. Datin KUR, Rayuan Perayu dalam kes ini telah ditolak. Keputusan memihak kepada Pendakwa Raya dan diedarkan untuk makluman sahaja. Terima Kasih.",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2022-11-16 12:31:03",
+    "LKK_CREATEDBY": "alison.chan",
+    "LKK_UPDATEDATE": "2022-11-17 16:18:48",
+    "LKK_UPDATEBY": "asmah",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-11-16 20:45:31",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2022-11-17 16:18:48",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 187,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6117,
+    "LKK_FILE_NO": "TPR SEL (A) 137/22",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "PP v ZAINOL ABIDIN BIN MD ZAIN",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KU HAYATI BINTI KU HARON",
+          "CCATStaff": "5952"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "01/12/2022",
+        "catatanTindakanLKK": "LKK dimaklumi dan tahniah.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "09/05/2022",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "keputusanTutup": "TIDAK RAYU",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "Rayuan Perayu dibenarkan Pertuduhan Pertama: 10 bulan penjara dari tarikh keputusan di Mahkamah Tinggi Pertuduhan Kedua: 3 bulan penjara dari tarikh keputusan di Mahkamah Tinggi Kedua-dua hukuman berjalan serentak Stay of execution dibenarkan. Jamin Responden RM6,000.00.",
+    "LKK_RESULT_DATE": "2022-11-29",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-12-14",
+    "LKK_GROUNDS_OF_JUDGEMENT": "Tindakan Responden adalah zalim terhadap binatang. Responden telah mengambil tindakan sesuka hati walaupun ada pelbagai cara yang boleh diambil untuk menangani masalah tersebut.",
+    "LKK_CASE_FACT": "Pada 1/7/2020, jam lebih kurang 6.40 petang, semasa Pengadu iaitu Muhammad Shafiq bin Ariffin sedang menunggang motosikal bersama sepupunya untuk meronda kawasan kampong. Setibanya di Lorong Setia 12, Kg. Setia Kuang, Pengadu nampak Responden sedang memegang senapang sambil mengacukan senapang tersebut pada seekor kucing. Pengadu terus menunggang motosikal. Tidak lama selepas itu, Pengadu terdengar bunyi letupan yang kuat, Pengadu telah patah balik dan mendapati ada bangkai kucing yang mempunyai kecederaan pada bahagian leher di tepi jalan. Pengadu nampak Responden lelaki Melayu tersebut sedang mencangkul tanah untuk tanam bangkai kucing tersebut. Responden telah ditangkap pada hari yang sama jam lebih kurang 10.00 malam oleh Insp Amirul Syazwan bin Alias. Rampasan telah dilakukan oleh Insp Amirul ke atas 1 senjata jenis senapang patah satu barel model 37-STEELBUILT-12 GA. No Senjata 24765 berserta dengan 4 kotak peluru yang mengandungi 99 butir peluru jenis 12 Bore. Turut dirampas daripada Responden adalah 1 buah buku lesen senjata atas nama Responden. Laporan Bedah Siasat Forensik telah disediakan oleh Dr. Nur Athirah bt Mohd Azhar bagi bangkai kucing yang telah ditembak oleh Responden (rujuk m/s 23 RR Jilid 3(a))",
+    "LKK_ISSUES_AND_ARGUMENT": "Hukuman adalah manifestly inadequate Kepentingan awam Hukuman berbentuk deterrence patut diberikan Responden telah mengaku salah ke atas pertuduhan. Hukuman adalah berlandaskan undang-undang. Responden telah membayar denda. Responden tidak mempunyai sebarang rekod lampau. Responden merupakan seorang pesara polis.",
+    "LKK_DPP_SUGGESTION": "tiada rayuan dicadangkan. Keputusan kes memihak kepada pihak Pendakwaan. Hukuman adalah memadai.",
+    "LKK_DSP_SUGGESTION": "YBrs. Datin KUR, Keputusan memihak kepada pihak pendakwaan oleh itu tiada rayuan dicadangkan untuk difailkan. Keputusan diedarkan untuk pemakluman sahaja. Terima Kasih",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2022-11-30 14:44:36",
+    "LKK_CREATEDBY": "alison.chan",
+    "LKK_UPDATEDATE": "2022-12-01 10:12:23",
+    "LKK_UPDATEBY": "asmah",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-12-01 10:06:33",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2022-12-01 10:12:23",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  }
+]

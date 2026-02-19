@@ -1,0 +1,543 @@
+[
+  {
+    "LKK_INFOID": 51,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6116,
+    "LKK_FILE_NO": "TPR KL 2045/2018 (No. kes: BA-45C-4-09/2018 & BA-45C-5-09/2018)",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "PENDAKWA RAYA LAWAN 1. JEVAN A/L S RAMAMURTHY (NO. K/P: 750726-14-6045) 2. SURENDRAN A/L SIVASAMY (NO. K/P: 820907-14-6221) 3. MOHAN A/L SELORAJOO (NO. K/P: 840924-05-5709) 4. PIRAKHAS A/L SUBRAMANIAM (NO. K/P: 831102-10-5443) 5. MUNIANDY A/L ACHAIYAH KANNIAH (NO. K/P: 571123-10-5443) 6. UTHAYA KUMAR A/L PONNUSAMY (NO. K/P: 920405-14-5921) 7. BARIQUE (NO. PASPORT: BB0375440) 8. POONGANESWARAN A/L KUNARAJU (NO. K/P: 830215-14-5315) 9. VIJAYA LETCHUMY A/P SANNASI (NO. K/P: 820326-04-5254)",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KHAIRUL AZREEM BIN MAMAT",
+          "CCATStaff": "6184"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        },
+        {
+          "ANTCC": "HO KWONG CHIN",
+          "CCATStaff": "4885"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "21/09/2022",
+        "catatanTindakanLKK": "LKK dimaklumi.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "01/12/2017",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "keputusanTutup": "TIDAK RAYU",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "KEPUTUSAN : OKT3, OKT4, OKT6, OKT7 dan OKT8 didapati bersalah dan disabit seperti pertuduhan pilihan di bawah seksyen 365 Kanun Keseksaan. Mahkamah Tinggi Jenayah 3 Shah Alam menjatuhkan hukuman penjara lima (5) tahun dari tarikh tangkap iaitu 16 Januari 2018 (OKT3), 19 Januari 2018 (OKT4), 3 Januari 2018 (OKT8), 25 Januari 2018 (OKT6) dan; 27 Februari 2018 (OKT7) Nota: Pertuduhan di bawah seksyen 3(1) Akta Culik 1961 dikekalkan dan diteruskan terhadap OKT1, OKT2, OKT5 manakala pertuduhan di bawah seksyen 5(1) Akta Culik dikekalkan terhadap OKT9. Tarikh sambung bicara adalah 3 hingga 5 Otober 2022.",
+    "LKK_RESULT_DATE": "2022-09-19",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-10-02",
+    "LKK_GROUNDS_OF_JUDGEMENT": "Tidak disediakan oleh Mahkamah setakat hari ini",
+    "LKK_CASE_FACT": "Fakta Kes Di dalam kes ini, kesemua tertuduh (OKT) telah dituduh bersama-sama atas pertuduhan di bawah seksyen 3(1) Akta Culik 1961 yang dibaca bersama dengan seksyen 34 Kanun Keseksaan kerana telah melarikan secara salah seorang lelaki bernama Pratap a/l Panndien (No. K/P: 830819-14-6239) bagi maksud mendapatkan wang tebusan yang dilakukan pada 12 Disember 2017, jam lebih kurang 9.10 malam, di Jalan 1B/8, Bandar Baru Sg Buloh, dalam Daerah Petaling, dalam negeri Selangor Darul Ehsan. Keterangan pendakwaan menunjukkan bahawa pada 12 Disember 2017, jam lebih kurang 9.10 malam, di Jalan 1B/8, Bandar Baru Sg Buloh, dalam Daerah Petaling, dalam negeri Selangor Darul Ehsan, Pratap a/l Panndien (mangsa) telah memberhentikan kereta beliau di bahu jalan tersebut. Keterangan menunjukkan bahawa pada masa tersebut mangsa telah diculik oleh dan kemudiannya dibawa ke beberapa tempat/rumah dan dikurung di sana. Kemudian penculik telah menghubungi dan meminta wang tebusan daripada Panndien a/l Govindasamy iaitu ayah mangsa untuk menyediakan wang tebusan sebanyak RM300,000 bagi tujuan pembebasan mangsa. Pendakwaan telah mengemukakan keterangan bahawa pada 1 Januari 2018, ayah mangsa telah mencampakkan satu beg hitam berisi wang tersebut di KM13.6 Lebuhraya Lingkaran Tengah 2 (MRR2) dan beg tersebut jatuh ke bawah sebuah jambatan di Jalan Gombak yang berada di bawah MRR2 atas arahan OKT sebelum mangsa dibebaskan di tepi lebuhraya berdekatan dengan hentian rehat Jasin, Melaka pada 3 Januari 2018. OKT3, OKT4, OKT6, OKT7 dan OKT8 telah memasukkan surat representasi melalui peguam mereka masing-masing. Representasi tersebut telah dipertimbankan dan mereka ditawarkan pertuduhan pilihan di bawah seksyen 365 Kanun Keseksaan. Mereka telah mengaku salah tanpa syarat terhadap pertuduhan pilihan tersebut apabila ia dibacakan dan diterangkan buat pertama kalinya di Mahkamah Bicara. Fakta kes telah dibaca, diterangakn dan diakui benar oleh mereka tanpa syarat. Secara ringkasnya, fakta kes yang diakui oleh mereka adalah yang berikut: OKT3 OKT3 terlibat dalam kes ini sebagai individu yang telah pergi membuat pemantauan ke atas mangsa ke sini iaitu Pratap a/l Panndien (No. K/P: 830819-14-6239) sebanyak beberapa kali di Sungai Buloh tetapi tidak ikut pada hari penculikan dibuat. OKT3 telah meminjamkan stor simpanan bir dan tong gas miliknya untuk dijadikan tempat kurung mangsa tersebut dan dijanjikan wang sebanyak RM20,000. Mangsa tersebut telah dihantar ke stor miliknya pada awal pagi jam lebih kurang 0530hrs pada 22/12/2017. OKT3 memaklumkan bahawa terdapat beberapa individu termasuk tertuduh-tertuduh yang lain menjaga mangsa tersebut di premisnya. OKT3 bersama dengan tertuduh yang lain telah membawa mangsa tersebut menaiki motokarnya jenis Ford Ranger Biru dan melepaskan mangsanya di tepi lebuhraya di Melaka pada tengah malam 02/01/2018. OKT4 OKT4 terlibat dalam kes ini sebagai individu yang telah pergi membuat pemantauan awal ke atas mangsa kes ini iaitu Pratap a/l Panndien (No. K/P: 830819-14-6239) OKT4 telah bersama dengan tertuduh yang lain dan OKT8 mengambil mangsa tersebut. OKT4 telah menjaga mangsa tersebut di beberapa tempat serta bercakap dengan bapa mangsa tersbeut iaitu Panddien a/l Govindasamy (pengadu kes penculikan ini) untuk meminta wang tebusan dimana segalanya adalah arahan daripada tertuduh lain. OKT6 OKT6 telah ditawarkan kerja untuk menjaga mangsa kes ini iaitu Pratap a/l Panndien (No. K/P: 830819-14-6239) di sebuah rumah di Kawasan Rawang dan kemudiannya di satu Stor simpanan barang di mana dijanjikan wang tunai sebanyak RM10,000 sebagai upah tetapi masih belum terima bayaran tersebut. OKT6 juga memaklumkan bahawa sepanjang masa dia menjaga mangsa tersebut, dia ada nampak tertuduh lain turut bersama datang beberapa kali melihat keadaan mangsa tersebut. OKT7 OKT7 telah ditawarkan kerja untuk menjaga mangsa kes ini iaitu Pratap a/l Panndien (No. K/P: 830819-14-6239) di sebuah rumah di Kawasan Rawang dan kemudiannya di satu Stor simpanan barang di mana dijanjikan wang tunai sebanyak RM1,000 sebagai upah tetapi masih belum terima bayaran tersebut. OKT7 adalah kenalan kepada seorang tertuduh di mana beliau mengesahkan bahawa tertuduh tersebut ada meminta bantuannya dalam menjayakan kes penculikan ini. OKT7 memaklumkan bahawa beliau ada 2 hari buat pemantauan di Sg Buloh bersama dengan tertuduh yang lain. Selain itu, OKT7 turut ada menjaga mangsa tersebut di stor simpanan barang milik OKT3. OKT8 OKT 8 terlibat dalam kes ini sebagai individu yang menjaga dan mengawal mangsa iaitu Pratap a/l Panndien (No. K/P: 830819-14-6239) semasa di Banting, Serdang serta Rawang. OKT8 jugalah orang pertama yang datang berhadapan dengan mangsa tersebut semasa dalam proses menculik mangsa tersebut pada 12 Disember 2017. OKT8 juga telah pergi ke Genting Highland untuk “cuci duit” selepas terima wang habuan sebanyak RM 33,000. OKT8 memaklumkan bahawa beliau banyak menerima arahan daripada seorang tertuduh dalam menyempurnakan jenayah culik ini. Kesimpulannya, OKT3, OKT4, OKT6, OKT7 dan OKT8 telah menculik dan melarikan secara salah mangsa tersebut dengan niat hendak mengurungnya dengan sulit. Oleh yang demikian, mereka telah melakukan kesalahan dan boleh dihukum di bawah seksyen 365 Kanun Keseksaan.",
+    "LKK_ISSUES_AND_ARGUMENT": "Tidak berkaitan",
+    "LKK_DPP_SUGGESTION": "Tidak dirayu terhadap keputusan iaitu sabitan dan hukuman. Hukuman adalah dalam lingkungan trend hukuman",
+    "LKK_DSP_SUGGESTION": "YA Datin Ketua Unit Rayuan, Setelah meneliti cadangan oleh TPR Ho Kwong Chin saya bersetuju dengan syor beliau agar rayuan tidak difailkan memandangan keputusan pengurangan pertuduhan adalah selaras dengan arahan YBhg. Dato’ KBP semasa sesi Naziran Selangor pada 25 Ogos 2022 dan hukuman adalah memadai serta selari dengan trend hukuman. Walau bagaimanapun, saya mohon nasihat dan arahan lanjut YA Datin jua. Sekian, terima kasih. PENGARAH PENDAKWAAN NEGERI SELANGOR 20 SEPTEMBER 2022",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2022-09-20 23:16:43",
+    "LKK_CREATEDBY": "hokwongchin",
+    "LKK_UPDATEDATE": "2022-09-21 09:20:55",
+    "LKK_UPDATEBY": "asmah",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-09-21 08:12:04",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2022-09-21 09:20:55",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 773,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6116,
+    "LKK_FILE_NO": "BA-45C-4-09/2018 BA-45C-5-09/2018 BA-45-19-06/2019",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "1) JEVAN A/L S RAMAMURTHY NO K/P: 750726-14-6045 2) SURENDRAN A/L SIVASAMY NO K/P: 820907-14-6221 3) MUNIANDY A/L ACHAIYAH KANNIAH NO.K/P 571123-10-5443 4) VIJAYA LETCHUMI A/P SANNASI NO.K/P 820326-04-5254",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "YUSAINI AMER BIN ABDUL KARIM",
+          "CCATStaff": "6686"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KU HAYATI BINTI KU HARON",
+          "CCATStaff": "5952"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "IZYAN LIANA BINTI RADZUAN",
+          "CCATStaff": "2521"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "29/09/2023",
+        "catatanTindakanLKK": "LKK dimaklumi dan tahniah.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "26/09/2018",
+      "UserCreateLKK": "1788",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "KEPUTUSAN: Pembelaan gagal menimbulkan keraguan munasabah. Pendakwaan berjaya menimbulkan kes melampaui keraguan munasabah. OKT 1 dan 2 disabitkan di bawah Seksyen 3(1) Akta Culik dan OKT4 di sabitkan dibawah Seksyen 5(1) Akta Culik. OKT 1 dan 2 dihukum penjara seumur hidup dan 3 kali sebatan. OKT 4 dihukum penjara 5 tahun dari tarikh jatuh hukum. Stay of execution dibenarkan ke atas OKT4 dengan jaminan sebanyak RM10,000 dan notis rayuan difailkan pada hari Jumaat. OKT3 telah meninggal dunia semasa di dalam reman perbicaraan dan kes terhadapnya telah di DNAA",
+    "LKK_RESULT_DATE": "2023-09-21",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2023-10-05",
+    "LKK_GROUNDS_OF_JUDGEMENT": "-Keterangan bahawa Rovin Jothy serah duit adalah tidak logik. Mahkamah perlu menentukan sama ada Pembelaan berjaya menimbulkan keraguan munasabah. Tiada keterangan munasabah ditemui oleh Mahkamah di akhir kes Pembelaan.",
+    "LKK_CASE_FACT": "Pengadu SP10 telah membuat laporan Polis bersabit Sg Buloh Report 12038/17 yang menyatakan bahawa anaknya iaitu SP12 telah diculik pada 12.12.2017, pada jam lebih kurang 9.10 malam semasa berada di kawasan Bandar Baru Sg Buloh. Pengadu telah dihubungi oleh anak saudaranya memberitahu bahawa ternampak ada orang telah tarik anak pengadu masuk ke dalam m/kar jenis Perodua Myvi warna kuning dan meminta pengadu untuk cuba hubungi anaknya. Pengadu telah hubungi telefon bimbit mangsa dan telah dijawab oleh seorang Lelaki India bertutur dalam Bahasa Melayu dan telah meminta wang tunai RM500,000 untuk mangsa dilepaskan. Sejak SP12 ditahan oleh tertuduh-tertuduh, perbincangan berkenaan wang tebusan dan pembebasan SP12 telah berlaku antara SP10 dengan tertuduh-tertuduh. Oleh itu, pada 1.1.2018, SP10 telah mencampakkan satu beg hitam berisi wang tebusan sebanyak RM300,000 di KM 13.6 Lebuhraya Lingkaran Tengah 2 (MRR2) dan beg tersebut telah jatuh ke Jalan Gombak yang berada di bawah MRR2. Pada 3.1.2018 pula, SP12 telah dibebaskan di tepi lebuhraya berdekatan dengan hentian rehat Jasin, Melaka. Susulan daripada itu, tertuduh-tertuduh telah ditahan dan rampasan telah dilakukan dalam beberapa siri serbuan dan juga pandu arah oleh tertuduh-tertuduh.",
+    "LKK_ISSUES_AND_ARGUMENT": "HUJAHAN PIHAK PENDAKWAAN Berdasarkan keterangan yang dikemukakan oleh OKT-OKT atau SD1, SD2 dan SD3, pihak pendakwaan menghujahkan bahawa keterangan yang dikemukakan oleh SD1 dan SD2 adalah hanya bersifat penafian kosong semata-mata ( bare denial ). Hal ini adalah kerana, dengan tertangkapnya OKT-OKT, wang tebusan yang terlibat di dalam kes penculikan tersebut juga telah dijumpai bersama dengan OKT-OKT. Oleh itu, penafian bahawa wang tebusan tersebut diberikan oleh Ravin Jothy adalah tidak munasabah. OKT-OKT juga gagal menimbulkan keraguan munasabah bagaimana wang tebusan tersebut ada dalam milikan mereka. Adalah penafian semata-mata bahawa Ravin Jothy memberikan wang tersebut kepada OKT4 (SD3) untuk membantu OKT1 melantik peguam. Namun, adalah tidak munasabah seseorang yang tidak dikenali telah memberikan wang sebanyak itu dan untuk membantu OKT1 daripada kes penculikan ini. Walhal OKT1 hanya mengenali adik Ravin Jothy sahaja. Keterangan OKT1 di atas jelas sekali menunjukkan percanggahan, penafian dan ketidakpastian berkenaan Ravin Jothy dan wang RM100,000 yang kononnya diberikan oleh Ravin Jothy. Walaubagaimanapun, OKT-OKT juga telah gagal memanggil penama Ravin Jothy untuk membuktikan, dan mengesahkan fakta tersebut jika benar. Selain itu, pembelaan OKT2 juga menafikan tentang wang tebusan yang dijumpai oleh pihak Polis di dalam bilik sembahyang di rumah OKT2 yang disembunyikan juga adalah penafian kosong semata-mata. OKT2 hanya menafikan begitu sahaja tanpa ada keterangan yang kuat dan kukuh bagi menyangkal fakta tersebut. Masakan wang tebusan tersebut boleh dijumpai di dalam beg warna coklat dan di belakang gambar dewa yang disorokkan di dalam bilik sembahyang di rumah OKT2. Pendakwaan juga menghujahkan bahawa keterangan OKT4 (SD3) adalah penafian kosong juga. Pembelaan yang dibangkitkan oleh OKT4 juga adalah langsung tidak dapat menimbulkan keraguan yang munasabah melampaui keterangan oleh saksi-saksi Pendakwaan. Fakta bagaimana OKT4 menyembunyikan wang-wang tebusan yang diperolehinya juga secara jelas menunjukkan motif dan pengetahuan OKT4 berkenaan status wang tersebut adalah wang tebusan. Oleh itu, turut dihujahkan bahawa keterangan dan pembelaan OKT-OKT tersebut juga adalah tidak boleh dipercayai dan tidak kredibel. Selain itu, pihak pendakwaan juga menghujahkan bahawa keterangan yang dikemukakan oleh OKT-OKT juga adalah suatu keterangan yang bersifat pemikiran terkemudian ( after thought ). Hal ini kerana, keterangan OKT-OKT berkenaan wang tebusan yang dijumpai dalam milikan mereka adalah fakta yang diada-adakan bagi memenuhi fakta pembelaan yang diwujudkan. Pendakwaan menghujahkan sedemikian kerana, fakta bahawa wang tebusan tersebut diperolehi daripada penama Ravin Jothy bagi keterangan OKT1 dan 9, dan wang tebusan tersebut tidak dijumpai di dalam bilik sembahyang di rumah OKT2 hanyalah dibangkitkan semasa kes pembelaan sahaja. Perkara tersebut tidak pernah di soal balas ke atas saksi-saksi pendakwaan terutamanya kepada Pegawai Penyiasat. Isu berkenaan wang tebusan adalah penting yang mana ia merupakan salah satu elemen pertuduhan. Selain itu, fakta berkenaan bagaimana DNA OKT 1 yang dijumpai di dalam m/kar milik OKT3 yang telah meninggal dunia Muniandy juga bersifat pemikiran terkemudian yang mana kononnya Muniandy pernah menjemput OKT1 naiki m/karnya untuk pergi sembahyang di Kuil. Perkara tersebut juga tidak pernah di bangkitkan semasa kes pendakwaan dan disoal balas terutama kepada Pegawai Penyiasat. HUJAHAN PEMBELAAN OKT-OKT tidak terlibat dengan penculikan mangsa. Pendakwaan gagal kemukakan dokumen atau keterangan saksi yang boleh mengaitkan OKT dengan pertuduhan. OKT tidak melakukan sebarang perbuatan yang menjurus kepada sebarang elemen yang dinyatakan dalam kes PP v Prem Seegar Manoharan & Yang lain [2019] 1 LNS 2280. Saksi-saksi pendakwaan juga gagal mengecam OKT dalam kelibat kes penculikan ini. Terdapat keraguan telah ditimbulkan dalam kes pembelaan iaitu; OKT bukan individu yang melarikan dan/atau menculik mangsa OKT bukan individu yang meminta wang tebusan daripada bapa mangsa, OKT tidak mempunyai sebarang nexus dan/atau kaitan dengan penculikan mangsa dalam kes ini, OKT-OKT tidak mempunyai niat bersama dengan 5 OKT yang telah mengaku salah di peringkat kes pendakwaan.",
+    "LKK_DPP_SUGGESTION": "CADANGAN TPR Syor tiada rayuan. ALASAN KEPADA CADANGAN Keputusan rayuan berpihak kepada pendakwaan.",
+    "LKK_DSP_SUGGESTION": "ULASAN OLEH PPN YBrs Datin KUR, Cadangan TPR yang mengendalikan kes untuk keputusan tidak dirayu adalah disokong mengambilkira hukuman yang dijatuhkan ke atas B1, B2 dan B4 adalah setimpal dengan kesalahan yang telah dilakukan. Saya juga telah mendapatkan penjelasan berkenaan jumlah hukuman penjara yang dijatuhkan ke atas OKT1 dan OKT2 dan dimaklumkan oleh TPR yang YA Hakim di dalam mahkamah terbuka menyatakan ianya adalah untuk tempoh 30 tahun. Sekian, terima kasih KU HAYATI BINTI KU HARON PPN SELANGOR BERTARIKH: 27.9.2023",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2023-09-27 18:29:51",
+    "LKK_CREATEDBY": "shahrul.ekhsan",
+    "LKK_UPDATEDATE": "2023-09-29 08:32:35",
+    "LKK_UPDATEBY": "asmah",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2023-09-27 18:29:51",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2023-09-29 08:32:35",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 1122,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6151,
+    "LKK_FILE_NO": "WA-45C-1-06/2023 & WA-45C-2-06/2023",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "109",
+      "stateId": "14",
+      "caseName": "WA- 45C-1-06/2023: PP v EDY KO’IM BIN SAID & 10 LG WA-45C-2-06/2023: PP v 1.MOHD ZAIDI BIN MOHD ZAIN 2.TENGKU HAZARUL ISMAIL BIN TENGKU HAMID",
+      "courtDesc": "MAHKAMAH TINGGI KUALA LUMPUR",
+      "stateDesc": "WILAYAH PERSEKUTUAN (KUALA LUMPUR)",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "SUZANA BINTI ATAN",
+          "CCATStaff": "6720"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "YUSAINI AMER BIN ABDUL KARIM",
+          "CCATStaff": "6686"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "IZYAN LIANA BINTI RADZUAN",
+          "CCATStaff": "2521"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        },
+        {
+          "ANTCC": "KALMIZAH BINTI SALLEH",
+          "CCATStaff": "6793"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "07/12/2023",
+        "catatanTindakanLKK": "Sila kaji dan bincang. Untuk makluman TPR YBhg Datin Kalmizah ada menghubungi saya dan memaklumkan bahawa Datuk Manoh bersetuju untuk rayuan.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "1",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELANJUTNYA"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "06/12/2023",
+      "tarikhRayuan": "15/12/2023",
+      "UserCreateLKK": "2329",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "keputusanTutup": "RAYU",
+      "firstChargeDate": null,
+      "tarikhTutupFail": "18/12/2023",
+      "catatanTutupFail": "Notis Rayuan ke Mahkamah Rayuan telah difailkan pada 15 Disember 2023 melalui Sistem E-Filing. LKK selesai dan ditutup pada 18 Disember 2023.",
+      "staffIdTutupFail": "",
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "staffNameTutupFail": "IZYAN LIANA BINTI RADZUAN",
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "YA Hakim Mahkamah Tinggi telah memutuskan untuk memindahkan kes-kes di hadapan YA Mahkamah Tinggi Jenayah ini ke Mahkamah Sesyen dengan menggunapakai peruntukan seksyen 52 Akta Pemansuhan Hukuman Mati Mandatori 2023 [Akta 846] dan seksyen 12 kepada Jadual dibawah Seksyen 25(2) Akta Mahkamah Kehakiman 1964 [Akta 91].",
+    "LKK_RESULT_DATE": "2023-12-06",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2023-12-20",
+    "LKK_GROUNDS_OF_JUDGEMENT": "YA Hakim Mahkamah Tinggi telah memutuskan untuk memindahkan kes-kes di hadapan YA Mahkamah Tinggi Jenayah ini ke Mahkamah Sesyen dengan menggunapakai peruntukan seksyen 52 Akta Pemansuhan Hukuman Mati Mandatori 2023 [Akta 846] dan seksyen 12 kepada Jadual dibawah Seksyen 25(2) Akta Mahkamah Kehakiman 1964 [Akta 91] memandangkan Hakim Mahkamah Tinggi mempunyai kuasa untuk memindahkan kes-kes tersebut berdasarkan peruntukan undang-undang tersebut.",
+    "LKK_CASE_FACT": "OKT-OKT di dalam kes Perbicaraan Jenayah No.: WA-45C-1-06/2023 telah dikemukakan di Mahkamah Majistret Jenayah (7) Kuala Lumpur pada 14 Oktober 2022 untuk dikenakan satu pertuduhan di bawah seksyen 3 Akta Penculikan 1961 [ Akta 365 ] dan dibaca bersama-sama seksyen 34 Kanun Keseksaan. Selanjutnya, pada 26 Oktober 2022, (2) dua orang lagi OKT di dalam kes Perbicaraan Jenayah No.: WA-45C-2-06/2023 telah dihadapkan di Mahkamah Majistret Jenayah (7) Kuala Lumpur bagi satu pertuduhan di bawah seksyen 3 Akta Penculikan 1961 [ Akta 365 ] dan dibaca bersama-sama seksyen 34 Kanun Keseksaan.Kesemua OKT tidak mengaku bersalah atas pertuduhan yang dihadapkan. Kedua-dua kes tersebut telah ditangguhkan beberapa kali untuk sebutan bagi laporan kimia dan dokumen berkaitan lengkap dikemukakan kepada pihak Pendakwaan sebelum pihak Pendakwaan meneliti sama ada Izin Pendakwaan di bawah Seksyen 177A(1) Kanun Tatacara Jenayah, wajar dikemukakan terhadap kesemua OKT atau sebaliknya. Pihak Pendakwaan telah meneliti kedua-dua kes tersebut dan mendapati Izin Pendakwaan di bawah seksyen 177 A (1) Kanun Tatacara Jenayah hendaklah dikemukakan bagi meneruskan kes di hadapan Mahkamah Tinggi Jenayah, Kuala Lumpur. Selaras dengan Hasrat pihak Pendakwaan untuk meneruskan kes di Mahkamah Tinggi Jenayah Kuala Lumpur, pihak Pendakwaan pada masa material telah mengemukakan Izin Pendakwaan di bawah seksyen 177 A (1) Kanun Tatacara Jenayah bertarikh 13 Jun 2023 (“Izin Pendakwaan”) dan seterusnya pada 14 Jun 2023, Izin Pendakwaan tersebut telah dikemukakan ke Mahkamah Majistret Jenayah 7 bagi kedua-dua kes dipindahkan ke Mahkamah Tinggi Jenayah untuk didengar di bawah bidang kuasa Mahkamah Tinggi Jenayah. Seterusnya, pada 14 Julai 2023, kedua-dua kes telah disebut di Mahkamah Tinggi Jenayah (2) Kuala Lumpur dan Izin Pendakwaan telah dikemukakan kepada Mahkamah Tinggi Jenayah, bagi kedua-dua kes ini didengar oleh YA Hakim Mahkamah Tinggi Jenayah. Mahkamah telah menetapkan sebutan bagi lantikan peguam serta penyerahan dokumen di bawah seksyen 51 A Kanun Tatacara Jenayah. Pada 21 September 2023, YA Hakim Mahkamah Tinggi telah membangkitkan isu sama ada Mahkamah Tinggi Jenayah atau Mahkamah Sesyen mempunyai bidangkuasa untuk mendengar kedua-dua kes tersebut setelah terdapat perkembangan terkini di dalam undang-undang berkenaan pemansuhan hukuman mati mandatori kepada hukuman penjara 30 tahun sehingga 40 tahun bagi kesalahan di bawah seksyen 3 Akta 365. Pihak Pendakwaan telah memohon supaya satu hujahan bertulis difailkan kepada Mahkamah dan diserahkan kepada pihak-pihak berkenaan isu bidang kuasa tersebu. Selanjutnya, YA Hakim telah menetapkan tarikh hujahan secara lisan pada 29 November 2023. YA Mahkamah Tinggi pada hari ini memutuskan kes-kes di Mahkamah Tinggi dipindahkan ke Mahkamah Sesyen Jenayah Kuala Lumpur dan sebutan di Mahkamah Sesyen Jenayah KL ditetapkan pada 19.1.2024.",
+    "LKK_ISSUES_AND_ARGUMENT": "HUJAHAN PIHAK PENDAKWAAN: - JUSTIFIKASI PIHAK PENDAKWAAN SUPAYA KEDUA-DUA KES INI DITERUSKAN DI MAHKAMAH TINGGI JENAYAH KUALA LUMPUR: - KUASA PEGUAM NEGARA UNTUK MENENTUKAN MAHKAMAH BAGI PENDENGARAN DAN/ATAU PERBICARAAN SESUATU KES - PIHAK PENDAKWAAN TELAH MEMATUHI KETETAPAN PROSEDUR- PROSEDUR YANG TELAH DITETAPKAN DI BAWAH KANUN TATACARA JENAYAH - PINDAAN TERHADAP AKTA PENCULIKAN 1961 [AKTA 365] DAN KESAN TERHADAP KES DI MAHKAMAH TINGGI - TIADA PERUNTUKAN UNDANG–UNDANG BAGI KES DARI MAHKAMAH TINGGI DI PINDAHKAN KE MAHKAMAH RENDAH HUJAHAN PIHAK PEGUAM BELA OKT-OKT: Bersetuju dengan hujahan pihak Pendakwaan dan tidak memfailkan hujahan berkenaan isu bidang kuasa Mahkamah Tinggi. Pada masa yang sama pihak Pembelaan menyerahkan kepada YA Hakim untuk memutuskan isu ini.",
+    "LKK_DPP_SUGGESTION": "Cadangan untuk merayu terhadap keputusan YA Hakim Mahkamah Tinggi Jenayah (2) memandangkan keputusan YA Hakim tersebut tidak diputuskan selaras dengan peruntukan undang-undang. YA Hakim Mahkamah Tinggi telah terkhilaf apabila memutuskan untuk memindahkan kes-kes ke Mahkamah Sesyen Jenayah KL dengan menggunakan seksyen 12 kepada Jadual dibawah Seksyen 25(2) Akta Mahkamah Kehakiman 1964 [Akta 91] tanpa membaca peruntukan undang-undang tersebut yang memperuntukkan ia hendaklah dijalankan mengikut mana-mana undang-undang bertulis atau kaedah-kaedah Mahkamah yang berhubungan dengannya. Dalam konteks kes ini, seksyen 417 KTJ adalah terpakai. Pihak Pendakwaan telah pun menghujahkan isu ini diperenggan 40 Hujahan Bertulis Pihak Pendakwaan [ Hujahan telah dikepilkan bersama-sama LKK) ini.",
+    "LKK_DSP_SUGGESTION": "Bersetuju agar rayuan difailkan.",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": "Y.Bhg Datin, Saya mencadangkan rayuan dibuat atas keputusan Mahkamah Tinggi atas alasan-alasan berikut; 1. Kuasa perogatif PP untuk memulakan pendakwaan di Mahkamah Tinggi. 2. Mahkamah Tinggi mempunyai bidang kuasa untuk mendengar kes-kes yang dipertuduhkan terhadap OKT-OKT. 3. Ini adalah kes berkepentingan awam. Y.bhg Datuk KBPR bersetuju untuk rayu. Sekian. Terima kasih.",
+    "LKK_PENGISIAN_DATE": "2023-12-13 11:49:12",
+    "LKK_PENGISIAN_STAFFNAME": "TETRALINA BINTI AHMED FAUZI",
+    "LKK_PENGISIAN_STAFFID": "5378",
+    "LKK_PENGISIAN_PATHRAYUAN": "Apps/LT/LKK/Rayuan/1122",
+    "LKK_CATATAN_PENGESYOR": "Dipersetujui agar rayuan difailkan. Untuk makluman Dato' jua, saya telah dimaklumkan oleh TPR Datin Kalmizah bahawa Dato' Manoj juga bersetuju rayuan difailkan memandangkan kes ini adalah kes berkepentingan awam. LKK ini telah dikaji oleh TPR Tetralina dan beliau boleh dihubungi bagi penyediaan notis rayuan kelak. Secara prinsipnya saya berpandangan kuasa Pendakwa Raya adalah termaktub dalam S376 CPC dan Artikel 145 FC.",
+    "LKK_PENGESYOR_DATE": "2023-12-14 10:10:05",
+    "LKK_PENGESYOR_STAFFID": "6418",
+    "LKK_PENGESYOR_STAFFNAME": "ASMAH BINTI MUSA",
+    "LKK_CADANGANTKB_PEMUTUS": "Setuju rayuan difailkan kerana keputusan Mahkamah bertentangan dengan peruntukan s376 KPJ dfan perkara 145 Perlembagaan Persekutuan. Mahkamah tinggi juga tiada bidangkuasa memindahkan kes ke Mahkamah yang lebih rendah.",
+    "LKK_CADANGANKB_PEMUTUS": "Perkara ini telah dibincangkan dan berdasarkan kepada fakta serta keadaan kes ini, rayuan adalah wajar difailkan.",
+    "LKK_PEMUTUS_DATE": "2023-12-15 17:25:57",
+    "LKK_PEMUTUSTKB_STAFFNAME": "YUSAINI AMER BIN ABDUL KARIM",
+    "LKK_PEMUTUSTKB_STAFFID": "6686",
+    "LKK_PEMUTUSKB_STAFFNAME": "MOHD DUSUKI BIN MOKHTAR",
+    "LKK_PEMUTUSKB_STAFFID": "6872",
+    "LKK_CREATEDDATE": "2023-12-06 15:22:59",
+    "LKK_CREATEDBY": "nur.aqilah",
+    "LKK_UPDATEDATE": "2023-12-18 10:31:35",
+    "LKK_UPDATEBY": "izyan",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": "1",
+    "LKK_KEPUTUSANTKB_PEMUTUS": "1",
+    "LKK_SENDDATE": "2023-12-06 17:17:03",
+    "LKK_COMPLETE_BY": "PENUTUP_ANT",
+    "LKK_COMPLETE_DATE": "2023-12-18 10:31:35",
+    "LKK_PENGISIAN_ATTACHMENT": "NO",
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 2225,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6117,
+    "LKK_FILE_NO": "1509",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "104",
+      "stateId": "02",
+      "caseName": "MOHD SIKRI BIN DERIS [NO. K/P: 630206-03-5695] V PENDAKWA RAYA",
+      "courtDesc": "MAHKAMAH TINGGI ALOR SETAR",
+      "stateDesc": "KEDAH",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        },
+        {
+          "ANTName": "MANGAIARKARASI A/P KRISHNAN",
+          "NATStaff": "6413"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "SUZANA BINTI ATAN",
+          "CCATStaff": "6720"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "YUSAINI AMER BIN ABDUL KARIM",
+          "CCATStaff": "6686"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "IZYAN LIANA BINTI RADZUAN",
+          "CCATStaff": "2521"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "KHAIRUL ANUAR BIN ABD HALIM",
+          "CCATStaff": "6243"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "09/07/2024",
+        "catatanTindakanLKK": "Keputusan Mahkamah Tinggi diambil maklum.",
+        "staffIdPenerimaLKK": "6413",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "MANGAIARKARASI A/P KRISHNAN",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "03/07/2024",
+      "UserCreateLKK": "496",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "memihakKepada": "",
+      "keputusanTutup": "TIDAK RAYU",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "pertuduhanPilihan": "TIADA",
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "Permohonan Pemohon untuk dilepaskan dengan jaminan dibawah Seksyen 388 KTJ sementara menunggu perbicaraan selesai ditolak Permohonan Pemohon tidak bermerit kerana tiada sebarang “execeptional circumstances atau special reason” yang dikemukakan untuk melayakkan Pemohon diberikan jaminan. Kes induk ditetapkan untuk perbicaraan pada 17/07/2024",
+    "LKK_RESULT_DATE": "2024-07-04",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2024-07-18",
+    "LKK_GROUNDS_OF_JUDGEMENT": "Permohonan Pemohon untuk jaminan dibawah Seksyen 388 KTJ ditolak Permohonan Pemohon tidak bermerit kerana tiada sebarang “execeptional circumstances atau special reason” yang dikemukakan. Kes induk ditetapkan untuk perbicaraan pada 17/07/2024 Alasan lain tidak dinyatakan",
+    "LKK_CASE_FACT": "SP1: ABDUL MUDTALIB BIN ISMAIL SP1 dan SP6 adalah mangsa dalam kes ini. Pada 30/11/20 jam lebih kurang 1.00 petang datang sebuah kereta Honda no tidak tahu warna coklat masuk ke dalam kawasan halaman rumah milik SP1 . Kemudian SP1 melihat 4 lelaki berbangsa Melayu yang tidak dikenali keluar daripada kereta Honda tersebut. 2 daripadanya memakai vest polis dan 2 lagi tidak memakai vest polis. Salah seorang yang tidak memakai vest tersebut memperkenalkan diri sebagai pegawai polis berpangkat ASP bernama Rizal dari Bukit Aman untuk menggeledah rumahnya dan mendapat arahan daripada pegawai berpangkat 2 bintang daripada Bukit Aman. Kemudian saspek telah gari tangan SP1 di bawa masuk ke dalam kereta Hilux. Kejadian itu turut disaksikan oleh SP4 dan A7 . Semasa SP1 berada di dalam kereta Hilux, SP1 lihat SP6 balik ke rumah. Kemudian SP1 lihat SP6 berbual dengan salah seorang lelaki Melayu yang dikenali awal sebagai ASP Rizal . Selepas itu, SP6 turut masuk ke dalam kereta Hilux. Kemudian SP1 dan SP6 dan menaiki Hilux bersama saspek. Di dalam kereta Hilux tersebut, lelaki Melayu yang dikenali sebagai ASP Rizal Saspe k telah meminta daripada SP1 dan SP6 menyediakan wang sejumlah RM2juta . SP6 terus menghubungi A4 untuk sediakan wang sebanyak RM50,000.00. Kemudian, kereta Hilux telah berhenti di sebuah masjid di Kepala Batas untuk menunggu A4 menghantar wang sebanyak RM50,000.00. Selepas itu, A4 telah tiba dan A4 telah campakkan wang sebanyak RM50,000.00 ke belakang kereta Hilux. Selepas itu SP1 dan SP6 telah di bawa ke sekitar ke kawasan Jitra. Kemudian kereta Hilux telah berhenti di kawasan hutan di Alor Batu dan SP1 dan SP6 telah diarahkan untuk keluar dari kereta Hilux dan masuk ke dalam hutan. Semasa SP1 dan SP6 berada di dalam hutan, mereka telah diikat di tangan dan kaki menggunakan kabel tie berwarna putih. Selepas itu, SP1 telah disepak muka, pijak kepala dan ditendang dibahagian perut. Kemudian, kabel tie telah dibuka dan SP1 dan SP6 dibawa masuk semula dalam kereta Hilux dan telah digari tangan semula. Kemudian SP1 dan SP6 sekali lagi di bawa sekitar Jitra sehingga ke malam hari. Selepas itu, SP1 dan SP6 di bawa ke sebuah Homestay yang beralamat No. 263, Taman Pasu, Jitra, Kedah. Semasa berada di dalam Homestay gari tangan kedua-duanya telah dibuka. Kedua-duanya bermalam di dalam bilik di Homestay tersebut. Manakala, semua saspek ada bersama di dalam Homestay. Sepanjang berada dalam Homestay, saspek-saspek tidak berhenti meminta SP1 untuk membuat panggilan kepada A4 untuk mendapat baki wang. Keesokan harinya,OKT bangunkan SP1 dan SP6 membuat panggilan sekali lagi kepada A4 untuk bertanya duit. A4 telah maklumkan kepada SP6 duit akan dapat jam 2 petang. Selepas itu, SP6 keluar daripada Homestay. Kemudian SP6 keluar bersama 2 OKT daripada homestay dan di bawa sekitar kawasan Jitra dan telah singgah di beberapa tempat. Akhir sekali SP6 di bawa ke tempat sama beliau diikat pada awalnya menggunakan kabel tie. SP1 turut diperlakukan dengan diikat dengan kabel tie . Kemudian SP1 diikat dibahagian lehernya menggunakan baju yang dipotong pada sebatang pokok . SP1 menjerit kerana sukar bernafas. Saspek telah membuka ikatan baju dan menggantikan dengan tali pinggang dan memasukkan plastic ke dalam SP1 dan ikat mulut SP1 . OKT tendang betis SP1 dan berlalu pergi dengan kereta Hilux. SP1 akhirnya dapat melepaskan diri sendiri dan mendapatkan bantuan. SP6: WAN NADIA NABILA BINTI WAN ISMAIL Keterangan SP6 saling menyokong dengan keterangan SP1. SP6 turut mengecam barang kes yang dirampas iaitu barang kemas, bag, laptop dan telefon bimbitnya. SP4: AZRUL BIN ABD KHATIB merupakan adik ipar kepada SP2 dan suami kepada A8 pada petang 30/11/20 semasa berada di rumah SP1 , telah datang okt menyamar polis lalu tangkap SP1 dan SP6 dan untuk dilepaskan OKT minta duit. duit telah diserahkan dan SP1 bersama SP6 telah dibebaskan. SP5: TAMIL SELVAN A/L MUNIPAN merupakan rakan kepada SP2 yang memberi tumpang tidur di rumahnya selepas SP2 berjaya menyelamatkan diri Pada 02/12/20 jam lebih kurang 2.10 pagi, SP1 bersama A12 dengan menaiki kereta datang ke rumahnya yang mana SP2 hanya berseluar tanpa baju dan kasut. SP2 beritahu kepada SP5 ada orang kacaunya dan minta tumpang tinggal di rumah SP5 sehingga pagi. Pada jam lebih kurang 7.00 pagi, SP2 minta SP5 hantarnya ke sebuah restoran di Alor Setar dan sampai di situ didatangi oleh SP3 dan A11 juga rakan kepada SP2 . SP3: MOHD NAAIN BIN SAID merupakan rakan kepada SP1 yang membantu SP1 bawa ke IPD Kubang Pasu Pada 02/12/20 jam lebih kurang 7.30 pagi telah dihubungi oleh SP1 melalui telefon SP3 bersama A11 telah pergi bersama berjumpa dengan SP1 di restoran mee kari di Alor Setar. SP3 bersama A11 telah bawa SP1 pergi ke IPD Kubang Pasu untuk memaklumkan kejadian ini SP2: MOHD IDRUS BIN ISMAIL merupakan sepupu kepada SP1 Semasa di rumah telah hubungi oleh rakan sekampung memaklumkan SP1 dalam keadaan letih dan lesu terbaring di sebuah rumah di Muda Kuari Mukim Gelung. SP2 dapati SP1 tidak berbaju dan sebelah kasut tiada terbaring dalam keadaan letih dan lesu. Turut kelihatan calar-calar ditangannya. SP1 beritahu ada orang menyamar polis tangkap SP1 dan bawa lari dan SP1 minta SP2 hantar balik ke rumah. SP7: MOHD KHAIRI BIN JOHARI merupakan bekas bodyguard kepada SP1 SP7 telah memberi maklumat mengenai SP1 kepada OKT5 . telah memaklum kepada B1 mengenai kehadiran B3 , B4 , B5 dan B6 untuk tangkap A2 . SP7 camkan kehadiran OKT1 , 2 dan 4 SP8: MD REZAM BIN JALIL merupakan bodyguard kepada SP1 Pemberi maklumat kepada SP7 mengenai pergerakkan SP1 dan dimaklumkan oleh SP7 polis dari Bukit Aman datang untuk tangkap SP1 atas kesalahan kes komersial. Berada di tempat kejadian dan melihat kejadian berlaku, membantu pergerakkan A4 untuk jual barang kemas, Berunding dengan OKT1 untuk berjumpa dan membawa duit R M197000 /-. Berjumpa dengan B3 dan B6 untuk berunding A3 dilepaskan. SP6 telah dilepaskan atas jaminan SP8 untuk dapatkan RM1.7 Juta daripada anak SP1 .",
+    "LKK_ISSUES_AND_ARGUMENT": "HUJAHAN PEMOHON: Pemohon berhujaha bahawa jaminan wajar diberikan kepada Pemohon kerana sepanjang perbicaraan yang dijalankan tiada sebarang keterangan yang mengaitkan Pemohon dengan pertuduhan. Oleh itu, berdasarkan keadaan ini dan merujuk kepada peruntukkan Seskyen 388 Kanun Tatacara Jenayah Pemohon layak dipertimbangkan dengan jaminan. Pemohon turut merujuk kepada kes BarryJipmon & Ors v PP [2020] 1 lns 2393 dalam hujahannya dan menuntut Mahkamah Tinggi untuk menggunakan budibicaranya untuk memberikan jaminan kepada Pemohon. Pemohon juga turut menghujahkan bahawa keterangan yang dikatakan wujud dan berkait dengan Pemohon adalah tidak jelas. Malah Pemohon tidak terlibat sewaktu penculikan dilakukan ke atas kedua-dua mangsa. Oleh itu adalah wajar Pemohon dibebaskan kerana kes telah berlanjutan selama 4 tahun dan setelah 10 saksi dipanggil masih belum ada keterangan kukuh yang boleh menjadi “reason to believe accused committed the offence” Pemohon. HUJAHAN RESPONDEN (DPP): Memandangkan Pemohon dituduh dibawah Seksyen 3(1) Akta Penculikan 1961 yang di baca bersama dengan Seksyen 109 Kanun Keseksaan ia membolehkan Pemohon dihukum dengan hukuman yang sama yang dinyatakan dalam Akta kesalahan. Ini menjadikan Pemohon berdepan dengan hukuman pemenjaraan minima 30 tahun dan maksima 40 tahun dan juga sebatan. Berdasarkan hukuman ini kesalahan yang dipertuduhkan adalah dikategorikan sebagai kesalahan serius dan merupakan”non-bailable offence”. Malah perbicaraan bagi kes yang dipertuduhkan ke atas Pemohon telah pun berjalan dengan seramai 10 orang saksi pendakwaan. Oleh itu, peruntukkan Seksyen 388 Kanun Tatacara Jenayah adalah terpakai. Secara asasnya bagi kesalahan kategori “non-bailable offence” ini dihujahkan bahawa jaminan tidak boleh diberikan melainkan dengan pertimbangan serta budi bicara Mahkamah. Dihujahkan jaminan tidak wajar diberikan kepada Pemohon memandangkan pertuduhan yang dibuat ke atas Pemohon adalah satu pertuduhan yang berat dan kes masih diperingkat kes pendakwaan dimana saksi pendakwaan masih belum selesai memberikan keterangan. Selain itu, merujuk kepada permohonan ini, Pemohon tidak mengemukakan sebarang ” exceptional circumstances” yang membuktikan jaminan wajar diberikan ke atasnya. Pemohon telah mengemukakan alasan-alasan seperti berikut:- Fakta-fakta yang masih dalam perbicaraan yang menyatakan Pemohon tidak terlibat secara langsung dalam kes penculikan yang dilakukan ke atas 2 mangsa; Pemohon bukanlah ”flight risk” kerana Pemohon merupakan seorang anggota polis berpangkat Sub-Insp sebelum ditangkap dan telah berkhidmat selama 40 tahun; Pemohon telah berkahwin dan mempunyai 2 orang anak dan salah seorang anak Pemohon merupakan seorang OKU yang memerlukan jagaan dan perhatian penuh dari Pemohon dan isteri; Pemohon tinggal di alamat tetap bersama isteri dan anak-anak Pemohon di alamat 5-1-8, Jalan 1/A Taman Kepong Indah, 52100 Kuala Lumpur ; Pemohon sedia untuk menerima syarat tambahan yang ditetapkan oleh Mahkamah termasuklah memakai alat Peranti Pengawasan Elektronik (EMD) sepertimana dibawah Seksyen 388 A Kanun Tatacara Jenayah; dan Kebarangkalian untuk Pemohon untuk menganggu saksi pendakwaan adalah sangat minima. Secara khususnya keterangan yang ada hanyalah boleh dinilai dan dipertimbangkan oleh Mahkamah perbicaraan secara keseluruhan. Setakat ini terdapat keterangan daripada SP7 yang mengaitkan Pemohon sebagai individu yang turut terlibat/ bersubahat dalam menjayakan usaha penculikan ke atas dua mangsa dalam kes yang dipertuduhkan. Keterangan SP7 ini turut disokong oleh SP8 yang juga dipanggil memberikan keterangan. Dihujahkan terdapat keterangan yang material serta boleh mengaitkan “ implicate” Pemohon terhadap pertuduhan ke atasnya. Pihak Pendakwaan tidak perlu membuktikan kes pada tahap Prima Facie ditahap ini. Pun begitu alasan-alasan lain yang dikemukakan bukanlah bersifat “special circumtances” atau “specific exceptions” yang dinyatakan dalam Seksyen 388 Kanun Tatacara Jenayah yang dikasifikasi dari segi jantina, umur (16 tahun), serta sakit dan uzur. Setakat ini tidak wujud sebarang ”unnecessary delay” dari segi perjalanan kes perbicaraan Pemohon. Hak Pemohon untuk merangka pembelaan juga tidak diprejudiskan sepanjang Pemohon ditahan reman di penjara. Walau bagaimanapun dihujahkan sebelum apa-apa syarat tambahan dikenakan ke atas Pemohon persoalan utamanya adalah sama ada Pemohon layak dipertimbangkan untuk diberikan jaminan. Sekiranya Mahkamah mendapati terdapat “special circumstance” atau “specific condition” yang dibuktikan oleh Pemohon dan ia layak dipertimbangkan untuk jaminan barulah Mahkamah boleh menetapkan sebarang syarat tambahan.",
+    "LKK_DPP_SUGGESTION": "1. Tiada rayuan dicadangkan ALASAN KEPADA CADANGAN Permohonan Perayu ditolak untuk memohon jaminan dibawah Seksyen 388 KTJ ditolak. Namun mohon arahan YA Dato’ selanjutnya Sekian, terima kasih. [FATIN FARAHIYAH BT NADZRI] TPR KEDAH DARUL AMAN",
+    "LKK_DSP_SUGGESTION": "Ybgh Datin KUR, LKK di teliti dan tiada rayuan dicadangkan. Permohonan ditolak dan status quo di kekalkan dimana OKT masih di tahan reman Pengarah Pendakwaan Negeri, Kedah Darul Aman 8.07.2024",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2024-07-09 10:29:19",
+    "LKK_CREATEDBY": "fatin.farahiyah",
+    "LKK_UPDATEDATE": "2024-07-09 10:40:24",
+    "LKK_UPDATEBY": "mangai",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2024-07-09 10:30:11",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2024-07-09 10:40:24",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  }
+]
