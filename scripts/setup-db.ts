@@ -148,6 +148,33 @@ async function main() {
         await pool.query(`GRANT EXECUTE ON FUNCTION match_documents TO anon, authenticated, service_role;`);
         console.log('Created function: match_documents');
 
+        // Grant SELECT access to the web app roles
+        await pool.query(`
+            GRANT SELECT ON cases TO anon, authenticated;
+            GRANT SELECT ON people TO anon, authenticated;
+            GRANT SELECT ON allegations TO anon, authenticated;
+            GRANT SELECT ON case_embeddings TO anon, authenticated;
+
+            -- Enable RLS but allow reads (if RLS is strictly enforced)
+            ALTER TABLE cases ENABLE ROW LEVEL SECURITY;
+            ALTER TABLE people ENABLE ROW LEVEL SECURITY;
+            ALTER TABLE allegations ENABLE ROW LEVEL SECURITY;
+            ALTER TABLE case_embeddings ENABLE ROW LEVEL SECURITY;
+
+            DROP POLICY IF EXISTS "Allow public read-only access" ON cases;
+            CREATE POLICY "Allow public read-only access" ON cases FOR SELECT USING (true);
+            
+            DROP POLICY IF EXISTS "Allow public read-only access" ON people;
+            CREATE POLICY "Allow public read-only access" ON people FOR SELECT USING (true);
+            
+            DROP POLICY IF EXISTS "Allow public read-only access" ON allegations;
+            CREATE POLICY "Allow public read-only access" ON allegations FOR SELECT USING (true);
+            
+            DROP POLICY IF EXISTS "Allow public read-only access" ON case_embeddings;
+            CREATE POLICY "Allow public read-only access" ON case_embeddings FOR SELECT USING (true);
+        `);
+        console.log('Granted anon/authenticated access to tables.');
+
         console.log('Database schema successfully reset.');
 
     } catch (err) {
