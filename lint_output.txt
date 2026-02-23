@@ -1,0 +1,69 @@
+﻿
+> agc2@0.1.0 lint
+> eslint
+
+
+C:\Users\aiman\AntiGrav\agc2\scripts\ingest-data.ts
+  17:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\scripts\seed-data.ts
+  10:7   warning  'BATCH_SIZE' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  17:35  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  26:15  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  40:15  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  45:17  error    Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\scripts\test-chat-logic.ts
+  46:49  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  74:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  80:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\scripts\test-chat.ts
+  68:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\scripts\test-import.ts
+  4:7  warning  'openai' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\aiman\AntiGrav\agc2\scripts\test-openai-key.ts
+  26:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\scripts\test-rag.ts
+  63:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\scripts\test-retrieval.ts
+  59:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\scripts\verify-function.ts
+  32:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  51:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\src\app\api\chat\route.ts
+  112:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\src\app\cases\[id]\page.tsx
+   4:27  warning  'Gavel' is defined but never used            @typescript-eslint/no-unused-vars
+   4:44  warning  'FileText' is defined but never used         @typescript-eslint/no-unused-vars
+  45:11  warning  'others' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\aiman\AntiGrav\agc2\src\app\page.tsx
+  23:49  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\src\components\ChatInterface.tsx
+  118:24  warning  '_' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\aiman\AntiGrav\agc2\src\components\layout\Sidebar.tsx
+  4:10  warning  'Home' is defined but never used    @typescript-eslint/no-unused-vars
+  4:36  warning  'Search' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\aiman\AntiGrav\agc2\src\lib\db.ts
+  19:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  20:20  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  24:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\aiman\AntiGrav\agc2\src\types\index.ts
+  12:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  28:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  51:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Γ£û 30 problems (22 errors, 8 warnings)
+

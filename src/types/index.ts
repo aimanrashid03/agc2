@@ -9,7 +9,7 @@ export interface Allegation {
     charge_notes: string;
     okt_name: string;
     charge_created_date: string;
-    raw_data: any;
+    raw_data?: Record<string, unknown>;
     created_at: string;
     updated_at: string;
 }
@@ -25,7 +25,7 @@ export interface Person {
     email: string;
     phone: string;
     address: string;
-    raw_data: any;
+    raw_data?: Record<string, unknown>;
     created_at: string;
     updated_at: string;
 }
@@ -48,7 +48,7 @@ export interface Case {
     issues_and_arguments: string | null;
     dpp_suggestion: string | null;
     dsp_suggestion: string | null;
-    raw_data?: any;
+    raw_data?: Record<string, unknown>;
     created_at: string;
     updated_at: string;
 

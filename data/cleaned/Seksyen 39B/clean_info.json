@@ -1,0 +1,676 @@
+[
+  {
+    "LKK_INFOID": 8,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6116,
+    "LKK_FILE_NO": "BA-45A-31-06/2020, BA-45-21-06/2020 & BA-45-29-09/2020",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "PP v Wan Mohd Herdy bin Wan Hamid",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KHAIRUL AZREEM BIN MAMAT",
+          "CCATStaff": "6184"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "02/09/2022",
+        "catatanTindakanLKK": "LKK dimaklumi dan tahniah.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "04/06/2020",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "Keputusan diakhir kes Pembelaan: Hukuman: Pertuduhan Eks P3: (Sek 39B ADB 1952) Gantung di leher sampai mati Pertuduhan Eks P4: (Sek 12(2) ADB 1952) Penjara 3 tahun bermula dari tarikh tangkap pada 14.6.2019 Pertuduhan Eks P5: (Sek 30(3) Akta Racun 1952) Penjara 3 tahun bermula dari tarikh tangkap pada 14.6.2019",
+    "LKK_RESULT_DATE": "2022-08-30",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-10-08",
+    "LKK_GROUNDS_OF_JUDGEMENT": "-Dalam perbicaraan ini yang dibicarakan bersama, tertuduh dituduh dengan 3 pertuduhan. Perbicaraan bermula pada 19.1.2022 dan kes berakhir pada 27.4.2022 di mana 9 saksi pendakwaan kes peringkat pendakwaan telah dipanggil. -Pada 9.6.2022, tertuduh dipanggil membela diri. Pendakwaan berjaya membukti kes prima facie bagi semua pertuduhan. -Kes pembelaan bermula pada 28.6.2022 dan ditutup pada 6.7.2022. 2 saksi dipanggil termasuk OKT. -Kes pendakwaan telah dibuktikan melampaui keraguan yang munasabah. -Secara umumnya pembelaan berkisar tentang kotak yang diminta ambil oleh Ganesan iaitu SP5 yang ditinggalkan di raga motor oleh Ganesan. Versi keterangan diragui dan tidak dipercayai oleh Mahkamah malahan bagaimana tertuduh terima daripada SD2 adalah bercanggah antara lain saya dapati terdapat elemen-elemen ‘afterthought’ terutamanya dari segi tertuduh baru timbulkan tentang bengkel dan nama Epol atau Saiful dan Didi. Malahan tertuduh nyatakan bahawa beliau tidak maklumkan tentang nama Ubi dan Ganesan sebab polis tidak tanya. -Manakala dari segi keterangan SD2 ada percanggahan yang mana SD2 kata masa di bengkel jawab agak jauh dan bergegas pergi dan datang balik. Bercanggah SD2 kata dia berada di bengkel dan tanya pada Epul dan Epul bagi kotak hitam. Keterangan ini tidak diterima dan tidak munasabah apabila kata kotak milik Ganesan. Tertuduh mengatakan bahawa motor telah berada 2 minggu di bengkel Maman. Motor Ganesan 1 hari lebih awal maka tidak munasabah iainya masih berada di raga motor milik Ganesan. -Setelah meneliti keterangan keseluruhan kes pendakwaan dan pembelaan dan dapati tertuduh gagal timbulkan keraguan yang munasabah dan Mahkamah mendapati keterangan saksi pendakwaan utuh dan tiada keraguan dibangkitkan. Atas imbangan kebarangkalian, tertuduh gagal patahkah. Mahkamah berpuas hati pendakwaan berjaya membuktikan kes melampaui keraguan munasabah.",
+    "LKK_CASE_FACT": "Pada 14.6.2019 jam lebih kurang 8.00 malam, Insp Amir Noridzham Bin Rambeli (SP4) yang merupakan Pengadu / Pegawai yang mengetuai serbuan dalam kes ini telah terima maklumat berkaitan aktiviti dadah di kawasan Kg. Parit Serong Tanjung Karang, Selangor. SP4 dan pasukan serbuan telah sampai di lokasi di kawasan sebuah lorong di Jalan Tiram Buruk, Kg Parit Serong, 45500 Tg Karang, di mana dalam kawasan lorong tersebut terdapat sebuah pondok dengan beberapa tembok batu dan semakin ke arah dalam lorong tersebut terdapat beberapa buah rumah. Apabila sampai di kawasan lorong tersebut, SP4 dan anggota serbuan telah membuat pemerhatian selama lebih kurang 5 minit dalam jarak 20-30 meter di kawasan sekitar lorong tersebut. Dalam tempoh pemerhatian tersebut, SP4 melihat ada 2 atau 3 orang sedang berbual di hadapan salah sebuah rumah di kawasan lorong tersebut. Lain-lain anggota serbuan telah mengambil tempat masing-masing untuk bersembunyi dan melakukan pemerhatian di kawasan sekitar mereka. Pada jam lebih kurang 10.30 malam, SP4 nampak satu lelaki Melayu yang merupakan OKT dalam kes ini sedang menunggang sebuah motorsikal jenis Honda CBR 1000 berwarna kuning tanpa nombor pendaftaran di tepi jalan Tiram Buruk dalam keadaan yang mencurigakan. OKT menunggang motorsikal menuju ke arah salah sebuah rumah di dalam lorong di tepi Jalan Tiram Buruk tersebut. Walaubagaimanapun, apabila OKT menyedari SP4 dan anggota pasukan serbuan dengan tiba-tiba telah cuba melarikan diri dengan membuat pusingan U dan seterusnya memecutkan mtorsikal yang dinaiki. SP4 telah mengarahkan lain-lain anggota pasukan serbuan untuk mengejar dan menghalang OKT dari terus melarikan diri. Pasukan serbuan telah berjaya mengejar OKT yang menunggang motorsikal yang menyebabkan OKT hilang kawalan lalu terjatuh setelah melanggar salah satu tembok batu di tepi pondok di tepi Jalan Tiram Buruk. Setelah OKT terjatuh, 2 anggota pasukan serbuan iaitu Insp Amin Shukery (SP7) bersama D/kpl Nafizi telah menahan dan menangkap OKT yang pada ketika sedang memakai sebuah beg galas berwarna hitam kuning (Ekshibit P23) di belakang badannya. SP4 pergi ke arah OKT yang telah ditangkap lalu perkenalkan diri sebagai pegawai polis dan menunjukkan kad kuasa polis. SP4 membuat pemeriksaan ke atas tubuh badan OKT dan menjumpai beg galas (Ekshibit P23) yang dipakai oleh OKT di belakang badannya. Pemeriksaan lanjut dalam beg galas tersebut menjumpai : 1 kotak plastik berwana hitam (P24) yang di dalamnya mengandungi 40 paket plastik lutsinar berisi bahan disyaki dadah syabu, 1 paket plastik lutsinar di dalamnya mengandungi 7 paket plastik berisi bahan disyaki dadah jenis Ketamine serta 3 foil berwarna merah di mana setiap satu foil mengandungi 10 biji pil disyaki pil Eramin 5. Di dalam beg galas hitam kuning tesebut (P23) turut dijumpai :- 1 pucuk pistol jenama Carl Walther Waffenfabrik Ulm/Dp Model PP Cal. 9mm P.A.K. bersama dengan kelopak berusi 1 kelongsong peluru; ii. wang tunai pelbagai dominasi berjumlah RM970 [P27(a)] ; iii. 1 beg duit berwarna coklat (P25) di dalamnya mengandungi 1 lesen memandu atas nama OKT (P26) , lesen memandu atas nama Zaharah Binti Yaakup (D28) dan 2 lagi kad bank atas nama OKT. Keterangan SP4 telah disokong oleh keterangan angota serbuan iaitu Insp Amin Shukery (SP7). Menurut SP7, semasa serbuan, SP7 bersembunyi di kawasan semak di tepi Jalan Tiram Buruk bersama D/kpl Nafizi sambal menunggu arahan lanjut dari SP4. Ketika SP7 sedang bersembunyi, SP7 melihat ada sebuah motorsikal berwarna kuning ditunggang oleh seseorang dengan memakai topi keledar berpenutup penuh (full face helmet), menuju ke rumah bertanda A di dalam gambar P14(3). SP7 melihat penunggang motorsikal tersebut tiba-tiba membuat pusingan U dan menerima arahan dari SP4 untuk menahan dan menangkap penunggang motorsikal tersebut. SP7 juga menyaksikan SP4 memeriksa dan menggeledah barang-barang yang dijumpai di dalam beg galas (P23) tersebut. Menurut SP7, beliau melihat 1 kotak hitam dan beberapa paket plastik berisi bahan disyaki dadah, sepucuk pistol dan wang tunai pelbagai dominasi dikeluarkan oleh SP4 dari ‘compartment’ yang sama pada beg galas (P23) tersebut. SP7 juga menyaksikan SP4 telah membuat rampasan beg galas tersebut bersama semua isi kandungan di dalamnya. Seterusnya, OKT dan barang-barang rampasan telah dibawa ke BSJN IPD Kuala Selangor. Ujian saringan awal air kencing OKT juga telah dijalankan dan didapati OKT positif dadah jenis ‘methamphetamine’. Pada 20.6.2019, jam lebih kurang 8.00 pagi, sampul surat bertanda RBH yang berisi dadah diserahkan kepada ahli kimia Jabatan Kimia Malaysia (SP1) untuk dianalisa. SP1 telah membuat analisa dan mengesahkan berat bersih dadah selepas analisa ialah 92.91 gram dadah jenis Methamphetamine dan 3.60 gram ketamine. Turut disahkan oleh SP1 adalah racun jenis Etizolam dengan berat bersih 5.84 gram. Rujuk laporan kimia (P10). Pada malam kejadian, Ganesan (SP5) dan Ubi (SP8) telah ditangkap di rumah OKT. Tiada pertuduhan ke atas SP5 dan SP8 kerana tiada barang salah ditemui pada mereka. SP5 dan SP8 menyatakan barang kes (dadah) dalam beg OKT bukan milik mereka dan mereka tidak tahu menahu tentang dadah-dadah yang dijumpai pada OKT. SP8 menyatakan beliau pergi ke rumah OKT pada malam tersebut untuk mengambil speaker radio dari rumah OKT. SP5 pula sekadar menemankan SP8 untuk ambil speaker radio pada malam tersebut.",
+    "LKK_ISSUES_AND_ARGUMENT": "HUJAHAN PEGUAM Keterangan bahawa tertuduh hanya mengambil kotak hitam atas arahan Ganesan dan tidak mengetahui mengenai kandungan dalam kotak. Tertuduh telah memanggil SD2 untuk menyokong keterangan tertuduh mengenai kedudukan kotak hitam yang berada pada motorsikal Ganesan yang menunjukkan bahawa tertuduh tiada milikan dan pengetahuan mengenai kotak hitam dan kandungannya. Tindakan tertuduh berpatah balik apabila diserbu bukan kerana takut memiliki dadah namun takut jika ada orang cuba melakukan sesuatu yang jahat terhadap beliau. Pistol dalam simpanan tertuduh juga bertujuan untuk menembak ayam dan tertuduh juga telah berniat untuk menjual pistol tersebut kepada seorang bernama Didi hujahan dilampirkan seperti di dalam dokumen sokongan.",
+    "LKK_DPP_SUGGESTION": "Tiada cadangan memandangkan keputusan memihak kepada pihak pendakwaan",
+    "LKK_DSP_SUGGESTION": "YA Datin Ketua Unit Rayuan, Sekalung tahniah kepada TPR Nur Zatil Hidayah Binti Ali kerana telah berjaya mensabitkan tertuduh. Sekian, terima kasih. KHAIRUL AZREEM BIN HJ MAMAT PENGARAH PENDAKWAAN NEGERI SELANGOR BERTARIKH 1.9.2022",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2022-09-01 15:40:14",
+    "LKK_CREATEDBY": "siti.suriatey",
+    "LKK_UPDATEDATE": "2022-09-02 08:48:08",
+    "LKK_UPDATEBY": "asmah",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-09-02 07:49:30",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2022-09-02 08:48:08",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 17,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6116,
+    "LKK_FILE_NO": "BA-45A-64-9/20",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "ANBARASAN A/L MURUGAYAH (NO. KAD PENGENALAN: 911023-08-6757)",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KHAIRUL AZREEM BIN MAMAT",
+          "CCATStaff": "6184"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "06/10/2022",
+        "catatanTindakanLKK": "LKK dimaklumi dan tahniah. DPP Mangai Ketua Unit Bicara",
+        "staffIdPenerimaLKK": "6413",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "MANGAIARKARASI A/P KRISHNAN",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "15/10/2020",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "Keputusan di akhir kes pembelaan, OKT didapati bersalah ke atas pertuduhan dan dijatuhkan hukuman gantung leher sampai mati.",
+    "LKK_RESULT_DATE": "2022-10-04",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-10-18",
+    "LKK_GROUNDS_OF_JUDGEMENT": "Mahkamah mendapati bahawa pihak pembelaan telah gagal menimbulkan keraguan yang munasabah terhadap kes pendakwaan.",
+    "LKK_CASE_FACT": "Pada 10.10.2019, jam lebih kurang 10 pagi, Insp G17296 Mohd Amel Husny bin Mohd Supian iaitu SP3 telah menerima maklumat berkenaan dengan kegiatan aktiviti pengedaran dadah jenis syabu yang melibatkan seorang lelaki India yang menggunakan kereta jenis BMW berwarna ungu dengan nombor pendaftaran tidak pasti di sekitar kawasan Restoran Azhar Maju, Jalan Dagang SB, Taman Sungai Besi Indah, 43300 Seri Kembangan, Selangor. Pada 10/10/2019, jam lebih kurang 12 tengahari, SP3 telah mengarahkan anggota polis seramai 15 orang yang terdiri daripada Bahagian Operasi, Bahagian Siasatan Jenayah Narkotik IPD Serdang untuk menghadiri ke bilik taklimat Narkotik IPD Serdang untuk saya memberikan taklimat penugasan anggota serbuan masing-masing. SP3 telah memberi maklumat yang diterima olehnya kepada anggota serbuan dan kemudian telah mengarahkan supaya pemerhatian dilakukan bermula jam 2 petang di sekitar kawasan Restoran Azhar Maju, Jalan Dagang SB, Taman Sungai Besi Indah, 43300 Seri Kembangan, Selangor. Sebarang tindakan untuk menahan, menangkap atau menyerbu adalah berdasarkan arahan SP3 melalui walkie-talkie . Pada 10/10/2019, jam lebih kurang 1:30 tengahari, SP3 dan pasukannya telah bergerak menuju ke Restoran Azhar Maju, Jalan Dagang SB, Taman Sungai Besi Indah, 43300 Seri Kembangan, Selangor dengan menaiki kenderaan persendirian. SP3 telah menaiki kereta persendirian bersama L/Kpl 185369 Ezwan dan Konst 204160 Azim iaitu SP4. Pada 10/10/2019, jam lebih kurang 2:00 petang, SP3 dan pasukannya telah sampai di tempat tersebut dan SP3 mendapati cuaca pada hari tersebut baik dan cahaya terang. Pada masa itu, petak letak kereta di sekitar kawasan Restoran Azhar Maju, Jalan Dagang SB dipenuhi dengan kereta tetapi jalan tidak sibuk dengan kereta. SP3 telah mengambil kedudukan dengan meletakkan keretanya di dalam salah satu petak parking yang berhadapan dengan Restoran Azhar Maju untuk membuat pemerhatian. Penglihatan SP3 ke arah kawasan petak parking yang lain dan juga premis Restoran Azhar Maju adalah jelas dan tidak terhalang. Kemudian, SP3 telah mengarahkan L/Kpl 185369 Ezwan dan SP4 untuk keluar dari kereta dan masuk ke dalam Restoran Azhar Maju untuk membuat pemerhatian manakala anggota serbuan yang lain telah mengambil kedudukan masing-masing di sekitar kawasan Restoran Azhar Maju dan memaklumkan kepada SP3 kedudukan mereka melalui walkie-talkie. Pada 10/10/2019, jam lebih kurang 2:30 petang, SP3 telah nampak sebuah kereta jenis BMW 320i berwarna ungu dengan nombor pendaftaran WUU 1515 telah hadir di kawasan pemerhatian SP3 dan seterusnya telah berhenti di tepi Jalan SB berhadapan dengan Restoran Azhar Maju. Jarak antara kereta SP3 dengan kereta tersebut tidak kurang daripada 5 meter dan tiada sebarang halangan penglihatan antara SP3 dengan kereta BMW tersebut. Kemudian, SP3 telah nampak seorang lelaki India yang kemudian dikenali sebagai OKT telah keluar dari bahagian pemandu kereta tersebut dan pergi ke bahagian bonet belakang kereta. Seterusnya SP3 juga lihat OKT telah buka bonet belakang lalu mengambil satu bungkusan plastik berwarna ungu keluar dari bonet belakang kereta tersebut dan kemudian membawa masuk ke dalam kereta melalui pintu bahagian pemandu. SP3 telah melihat keseluruhan insiden tersebut melalui tingkap keretanya di bahagian pemandu dengan jelas. Selepas itu, OKT telah mengundurkan keretanya dalam jarak lebih kurang 100 meter dari tempat SP3 dan berhenti dan kemudian telah keluar semula dari keretanya tanpa nampak dia membawa bungkusan plastik berwarna ungu pada tangannya dan hanya sebuah telefon bimbit sahaja dan berjalan kaki memasuk ke dalam Restoran Azhar Maju. Pada masa itu, SP3 telah mengarahkan L/Kpl 185369 Ezwan dan SP4 untuk membuat pemerhatian dan memaklumkan gerak geri OKT dalam restoran tersebut di mana SP3 diberitahu OKT telah masuk ke dalam tandas. Selepas lebih kurang 5 minit, L/Kpl 185369 Ezwan dan SP4 telah memaklumkan kepada SP3 bahawa OKT telah keluar dari tandas dan berjalan kaki menghala ke pintu hadapan Restoran Azhar Maju dan apabila SP3 nampak OKT keluar dari restoran tersebut dan berjalan kaki menuju ke kereta BMW 320i berwarna ungu dengan nombor pendaftaran WUU 1515, SP3 telah memberi arahan kepada anggota serbuan untuk menahan OKT melalui walkie talkie. SP4 bersama dengan L/Kpl 185369 Ezwan telah bangun secara serentak dan telah cepat menuju ke arah OKT untuk menahan OKT di kawasan luar premis Restoran Azhar Maju manakala SP3 keluar dari kereta dan menuju ke arah OKT dan SP3 lihat L/Kpl 185369 Ezwan dan SP4 telah berjaya menahan OKT di kawasan luar premis Restoran Azhar Maju lalu SP3 telah berlari menghampiri OKT dan memperkenalkan diri sebagai polis dengan menunjukkan kad kuasa kepada OKT. SP3 telah menjelaskan kepada OKT bahawa SP3 ingin membuat pemeriksaan badan terhadap OKT dan hasil pemeriksaan tidak menjumpai apa-apa barang yang salah tetapi menjumpai satu kunci alat kawalan jauh dalam poket seluar sebelah kanan yang sedang dipakai oleh OKT. SP3 bersama pasukan serbuan telah membawa OKT ke kereta yang dibawa oleh OKT iaitu kereta BMW 320i berwarna ungu dengan nombor pendaftaran WUU 1515 yang berhenti di tepi jalan. SP3 mendapati kereta tersebut dalam keadaan berkunci dan tingkap juga bertutup rapat, maka SP3 memaklumkan kepada OKT bahawa SP3 akan membuat pemeriksaan terhadap kereta tersebut. Sebelum SP3 membuka kereta tersebut, OKT telah merayu kepada SP3 untuk tolong dia dan berkata boleh settle. SP3 tidak menghirau dan telah membuka pintu kereta tersebut dengan menggunakan kunci alat kawalan jauh yang dirampas daripada OKT. Selepas SP3 membuka pintu kereta, SP3 mendapati tiada orang dalam kereta dan kemudian SP3 telah membuat pemeriksaan terhadap kereta tersebut di hadapan pasukan serbuan dan juga OKT dan menjumpai satu bungkusan plastik berwarna ungu di atas tempat duduk penumpang hadapan kereta tersebut. Semakan seterusnya terhadap bungkusan plastik berwarna ungu didapati mengandungi satu peket plastik berwarna hijau muda bertulis GUANYINWANG berbalut pita pelekat jernih berisi ketulan kristal yang disyaki dadah jenis syabu dengan anggaran berat (AB: 1065.89 gram) dan juga serbuk kerana terdapat ketulan yang pecah. SP3 juga turut menjumpai satu beg silang berwarna kelabu berjenama ZORO PAUL yang mana dalamnya mengandungi satu telefon bimbit jenis Samsung Galaxy J7 berwarna gold dan satu lesen memandu atas nama ANBARASAN A/L MURUGAYAH, no lesen 13681379 di atas tempat duduk penumpang hadapan. Kesemua barang yang dijumpai di atas tempat duduk penumpang hadapan adalah jelas dilihat. SP3 telah membuat rampasan terhadap kesemua barang yang SP3 menjumpai termasuk kereta tersebut dan kemudian telah membuat penangkapan terhadap OKT dengan menjelaskan kesalahan dan hak-hak kepada OKT. Sepanjang tempoh masa OKT keluar dari kereta BMW 320i berwarna ungu dengan nombor pendaftaran WUU 1515 dan masuk ke dalam restoran sehingga OKT ditahan, SP3 hanya nampak OKT seorang sahaja dan SP3 tidak nampak sesiapa menghampiri kereta BMW 320i berwarna ungu dengan nombor pendaftaran WUU 1515. SP3 telah membawa OKT ke pejabat Bahagian Siasatan Jenayah Narkotik IPD Serdang dengan menaiki kereta SP3 di mana SP3 menjaga barang kes yang dirampas dari OKT manakala L/Kpl 185369 Ezwan dan SP4 mengawal OKT di bahagian belakang kereta SP3 dan kereta BMW 320i berwarna ungu dengan nombor pendaftaran WUU 1515 dibawa balik oleh anggota serbuan yang lain ke pejabat Bahagian Siasatan Jenayah Narkotik IPD Serdang. Apabila sampai di pejabat, SP3 telah membuat penimbangan terhadap barang kes yang dirampas dengan alat penimbang yang tidak dikaliberasikan dan seterusnya telah membuat penandaan, tandatangan dan tarikh terhadap barang-barang yang SP3 rampas daripada OKT manakala OKT dikawal oleh L/Kpl 185369 Ezwan dan SP4 atas arahan SP3. Kemudian, SP3 juga telah membuat satu laporan polis dengan nombor repot Serdang/6905/19 dan juga telah menyediakan sesalinan borang senarai geledah dan borang serah menyerah terhadap barang-barang yang dirampas daripada OKT. SP3 telah memberi penjelasan kepada OKT tentang borang senarai geledah tetapi OKT enggan menandantangani tanpa memberi sebarang penjelasan dan hanya meletakkan butiran pada borang tersebut sahaja. Pada 10/10/2019, jam lebih kurang 7.50 malam, SP3 telah menyerahkan kesemua barang kes, dokumentasi dan juga OKT kepada pegawai penyiasat iaitu Insp Eric Lim Chee Chuang, SP6 untuk tindakan beliau selanjutnya. SP3 mengesahkan bahawa barang kes adalah di bawah kawalan dan jagaannya bermula dari rampasan sehingga diserahkan kepada SP6. Pada masa yang sama, SP3 juga akan memaklumkan kepada SP6 bahawa isu berkenaan dengan keengganan OKT untuk menandatangani borang senarai pemeriksaan tersebut. SP6 kemudian telah membuat timbangan, tandaan dan simpan dalam almari yang berada di bilik SP6 di mana hanya SP6 seorang sahaja yang mempunyai kunci tersebut dan barang kes tidak bercampur dengan barang lain. Pada 14.10.2019, SP6 telah menghantar barang kes dadah ke Jabatan Kimia di Petaling Jaya untuk dianalisa oleh SP2 dan seterusnya dipungut semula oleh SP5 bersama dengan laporan kimia pada 5.6.2020. Hasil analisa terhadap barang rampasan tersebut mendapati satu sampul surat bertanda ‘E’ berisi satu bungkusan plastik bertanda \"A1\" dan di dalamnya berisi satu peket plastik bercap GUANYINWANG berisi satu peket plastik yang mengandungi bahan kristal jernih. Setelah dianalisis, mendapati berat bersih bahan tersebut ialah 997.0 gram yang mengandungi 756.7 gram Methamphetamine. Methamphetamine merupakan dadah berbahaya yang disenaraikan dalam Jadual Pertama Akta Dadah Berbahaya 1952 Seterusnya, SP6 telah membuat siasatan di tempat kejadian dan mendapati terdapat CCTV di kedai Restoran Azhar Maju yang paling dekat dengan lokasi tempat kejadian tetapi tidak berfungsi dan rosak. SP6 juga membuat semakan dengan pihak Jabatan Pengangkutan Jalan terhadap kereta tersebut dan mendapati kereta jenis BMW 320i berwarna Ungu dengan nombor pendaftaran WUU 1515 didaftarkan di atas nama Nurmaryam binti Hamidun dan dimaklumkan oleh ahli keluarga kepada Nurmaryam binti Hamidun bahawa pemilik kereta telah meninggal dunia. Semakan juga dibuat dengan Jabatan Pendaftaran Negera dan mendapati Nurmaryam binti Hamidun telah meninggal dunia pada 30.9.2016 dan seterusnya memperolehi sesalinan sah daftar kematian yang telah diakui sah oleh Penguasa Pendaftar Kelahiran dan Kematian. Selanjutnya, siasatan SP6 menunjukkan bahawa ahli keluarga kepada arwah Nurmaryam binti Hamidun telah menjualkan kereta jenis BMW 320i berwarna Ungu dengan nombor pendaftaran WUU 1515 kepada SP5 melalui surat perjanjian jual beli kereta kaedah sambung bayar (P24) pada 16.11.2016 Kemudian SP5 telah menggunakan kereta tersebut selama 3 tahun sehingga 9.7.2019 dan telah berhasrat untuk menjualkan kereta tersebut dengan mengiklankan melalui aplikasi Facebook. Pada 10.7.2019, SP5 telah berjumpa dengan OKT dan telah menjualkan kereta tersebut kepada OKT dengan menandatangani perjanjian jual beli kenderaan secara sewa beli dan juga pergi ke balai polis untuk membuat covering report (P26) sebelum penyerahan kereta kepada OKT. SP5 mengesahkan bahawa beliau telah menyemak kereta BMW dan memastikan saya tidak tinggal apa-apa barang dan kemudian telah menyerahkan kereta BMW kepada Anbarasan a/l Murugayah dalam keadaan yang bersih dan kosong bersama dengan satu kunci alat kawalan kepada Anbarasan a/l Murugayah di Jalan SBC 1, Taman Sri Batu Caves 68100 Batu Caves, Selangor selepas laporan polis dibuat dan tidak lagi menggunakan kereta tersebut sehingga dipanggil oleh pihak polis.",
+    "LKK_ISSUES_AND_ARGUMENT": "Hujahan Peguam Secara ringkasnya, pihak pembelaan telah membangkitkan beberapa isu seperti yang berikut: identiti dadah diragui SP3 menyatakan balutan yang membalut bungkusan plastik GUANYINWANG adalah pita pelekat manakala SP2 menyatakan ia adalah bungkusan plastik yang menimbulkan keraguan sama ada dadah yang dianalisa oleh SP2 adalah dadah yang dirampas oleh SP3 kedudukan dadah dalam kereta pihak OKT mendakwa dadah yang dijumpai sebenarnya di belakang bonet kereta dan bukan di tempat duduk penumpang bahagian hadapan. kereta turut diakses oleh orang lain pihak OKT mendakwa pihak SJ Motorsport iaitu syarikat SP5 dan juga pemilik kereta mempunyai akses terhadap kereta tersebut. siasatan tidak lengkap pihak OKT mendakwa SP6 gagal membuat penimbulan cap jari dan juga tidak mendapatkan rakaman CCTV di sekitar kawasan tersebut. kereta tidak dikemukakan sebagai ekshibit pihak OKT mendakwa pihak pendakwaan tidak mengemukakan kereta sebagai ekshibit dan hanya melalui gambar kereta sahaja telah menyebabkan seksyen 114 (g) Akta Keterangan 1950 diguna pakai dan kredibiliti saksi pendakwaan dipertikaikan memandangkan kunci kereta yang dirampas tidak dapat dibuka kereta yang dikemukakan oleh pihak pembelaan semasa kes pembelaan. Hujahan Pendakwaan Keterangan saksi pendakwaan iaitu melalui SP3 dan SP4 menunjukkan pada setiap masa yang material, hanya OKT seorang sahaja dalam kereta di mana dadah dijumpai. Keterangan yang dikemukakan hanya OKT sahaja menggunakan kereta sahaja dan tidak pernah dicadangkan dipinjam kepada sesiapa. Pembelaan OKT agak mengelirukan memandangkan OKT telah mengemukakan kereta tersebut semasa kes pembelaan yang mana kunci kereta yang dirampas oleh SP3 tidak boleh diguna untuk buka dan warna kereta serta warna tempat duduk telah berbeza dengan gambar kereta semasa dirampas untuk menyatakan kredibilti saksi pendakwaan dipertikaikan maka seksyen 114(g) Akta Keterangan 1950 ditimbulkan dan kemudian mendakwa kereta juga diakses oleh orang lain iaitu ayah OKT yang telah meninggal dunia yang tidak pernah dicadangkan semasa kes pendakwaan. SP3 dan SP4 telah masing-masing mengesahkan dadah dijumpai di tempat duduk penumpang sebelah hadapan kereta tersebut. SP2 hingga SP4, SP6 dan juga OKT telah masing-masing mengecamkan P12 merupakan balutan yang berada di luar bungkusan plastik GUANYINWANG dengan tandaan masing-masing dan hanya penggunaan bahasa berbeza. Oleh yang demikian, isu yang dibangkitkan adalah tidak berasas dan pembelaan OKT hanya semata-mata menafikan milikan dadah tersebut sahaja.",
+    "LKK_DPP_SUGGESTION": "Tiada rayuan difailkan.",
+    "LKK_DSP_SUGGESTION": "YBhg. Datin Ketua Unit Rayuan, Sekalung tahniah atas kejayaan TPR Mary Phoon Keat Mee mensabitkan tertuduh dengan pertuduhan. Sekian, terima Kasih. Khairul Azreem bin Mamat Pengarah Pendakwaan Negeri Selangor Bertarikh 5.10.2022",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2022-09-05 10:31:00",
+    "LKK_CREATEDBY": "mary.pkm",
+    "LKK_UPDATEDATE": "2022-10-06 08:04:05",
+    "LKK_UPDATEBY": "mangai",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-10-05 15:02:19",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2022-10-06 08:04:05",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 23,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6116,
+    "LKK_FILE_NO": "BA-45A-33-03/2022",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "PENDAKWA RAYA LAWAN 1.MOHAMMED FADL ELMOLA GASMELSEED KHIRALLA (NO.PASPOT: P02094653) 2.ABDELAZIZ ABDALLA MOHAMED AHMED (NO.PASPOT: P03190033) 3.MODASIR FADLEMOLA GASMELSEED KHIRALLA (NO.PASPOT: P06711026) 4.ABDIRISAK OSMAN ABDINUR (NO.PASPOT: P00759177)",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KHAIRUL AZREEM BIN MAMAT",
+          "CCATStaff": "6184"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "12/09/2022",
+        "catatanTindakanLKK": "Minit HQ 26.8.22 dimaklumi. Setuju tiada rayuan.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "2",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELESAI"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "08/09/2022",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "firstChargeDate": null,
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "OKT 1 dijatuhkan dengan hukuman 10 tahun penjara dan 10 sebatan. Pertuduhan terhadap OKT2, OKT3 dan OKT4 di DNAA.",
+    "LKK_RESULT_DATE": "2022-09-08",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-09-22",
+    "LKK_GROUNDS_OF_JUDGEMENT": "Mahkamah telah mengambilkira hukuman maksima 30 tahun penjara dan hukuman minima 5 tahun penjara serta 10 sebatan bagi kes ini, keseriusan kesalahan yang dilakukan, faktor kepentingan awam, faktor OKT1 berusia 24 tahun ketika ditangkap, tren hukuman yang dikemukakan. Mahkamah mendapati hukuman 10 tahun penjara dan 10 sebatan adalah berpadanan bagi kesalahan yang dilakukan.",
+    "LKK_CASE_FACT": "Pada 31/03/2021 jam lebih kurang 12.20 tengah malam, Pengadu iaitu Insp. G/21380 Muhammad Fitri bin Ridzuan telah mengetuai pasukannya membuat serbuan di alamat C2-07-02 Apartment Cendekiawan UNITEN, 43009 Kajang, Selangor. Setelah sampai di hadapan alamat tersebut, Pengadu mendapati pintu hadapan dalam keadaan berkunci dan Pengadu bertindak mengetuk pintu tersebut beberapa kali. Pintu telah dibuka oleh OKT1. Pengadu kemudian telah memperkenalkan diri dan menunjukkan kad kuasa kepada OKT1 sebelum Pengadu dan anggota serbuan masuk ke dalam rumah tersebut. Di dalam rumah, Pengadu mendapati OKT2, OKT3 dan OKT4 berada di ruang tamu rumah tersebut. Pengadu kemudian memperkenalkan diri dengan menunjukkan kad kuasa kepada OKT2, OKT3 dan OKT4. Pengadu bertindak menjalankan pemeriksaan di dalam bilik no. 1 iaitu bilik milik OKT1 dan telah menjumpai 1 bekas plastik lutsinar yang di dalamnya mengandungi ketulan dan leraian dedaun kering disyaki ganja (ab: 14 gram) yang dijumpai di atas lantai. Turut ditemui di atas lantai yang sama ialah sebilah pisau dan satu unit penimbang berwarna hijau/putih tidak berjenama. Pemeriksaan lanjut ke atas almari pakaian yang berada dalam keadaan tertutup di dalam bilik tersebut dibuat dan Pengadu menjumpai satu ketulan mampat dedaun kering disyaki dadah jenis ganja (ab: 207 gram) yang ditemui di bawah timbunan baju di dalam almari tersebut. Turut ditemui ialah dompet berwarna hitam tertera tulisan ‘imperial horse original’ yang dijumpai di atas katil di dalam bilik tersebut. Hasil pemeriksaan dalam dompet yang sama mendapati satu keping i-kad tertera nama OKT1 dan lesen memandu antarabangsa atas nama OKT1. Turut dijumpai di atas katil ial",
+    "LKK_ISSUES_AND_ARGUMENT": "Hujahan TPR: Hukuman minima adalah 5 tahun penjara dan hukuman maksima adalah 30 tahun penjara dan minima 10 sebatan Kesalahan serius Jumlah hukuman itu menunjukkan bahawa ini adalah kesalahan serius Dadah adalah musuh negara dan bangsa serta punca jenayah yang lain Faktor kepentingan awam sepatutnya dipertimbangkan melebihi faktor kepentingan peribadi OKT Hukuman berbentuk tauladan/deterrent perlu dijatuhkan Tren Hukuman dirujuk – lingkungan hukuman 10 ke 15 tahun penjara dan 10 sebatan bagi dadah jenis Cannabis yang mempunyai berat yang hampir sama. Hujahan Peguam : OKT berumur 24 tahun ketika ditahan dan merupakan seorang pelajar di UNITEN OKT menghidap penyakit eczema yang teruk OKT pesalah kali pertama dan tiada rekod jenayah",
+    "LKK_DPP_SUGGESTION": "YBrs. Datin KUR, Saya berpandangan bahawa hukuman 10 tahun penjara dan 10 sebatan adalah berpadanan dengan kesalahan yang dilakukan dan didalam lingkungan tren hukuman. Justeru itu, rayuan tidak dicadangkan. Walaubagaimanapun, pohon arahan YBrs. Datin jua.",
+    "LKK_DSP_SUGGESTION": "YBrs. Datin KUR, Setuju supaya rayuan tidak difailkan. Hukuman berpadanan dengan kesalahan yang dilakukan. Walaubagaimanapun, pohon nasihat dan arahan YBrs. Datin jua. TPR MOHD ASNAWI ABU HANIPAH Timbalan Pendakwa Raya Selangor 8.9.2022",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": null,
+    "LKK_PENGISIAN_DATE": null,
+    "LKK_PENGISIAN_STAFFNAME": null,
+    "LKK_PENGISIAN_STAFFID": null,
+    "LKK_PENGISIAN_PATHRAYUAN": null,
+    "LKK_CATATAN_PENGESYOR": null,
+    "LKK_PENGESYOR_DATE": null,
+    "LKK_PENGESYOR_STAFFID": null,
+    "LKK_PENGESYOR_STAFFNAME": null,
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": null,
+    "LKK_PEMUTUS_DATE": null,
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": null,
+    "LKK_PEMUTUSKB_STAFFID": null,
+    "LKK_CREATEDDATE": "2022-09-08 14:53:47",
+    "LKK_CREATEDBY": "tengku.intan",
+    "LKK_UPDATEDATE": "2022-09-12 09:18:08",
+    "LKK_UPDATEBY": "asmah",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": null,
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-09-09 15:24:41",
+    "LKK_COMPLETE_BY": "KUR_ANT",
+    "LKK_COMPLETE_DATE": "2022-09-12 09:18:08",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 31,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6116,
+    "LKK_FILE_NO": "BA-45A-32-03/2021",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "PENDAKWA RAYA DAN VIKNES WAREN A/L S.SELVAM RAJ (No. KP: 911221-14-5981)",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KHAIRUL AZREEM BIN MAMAT",
+          "CCATStaff": "6184"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "12/09/2022",
+        "catatanTindakanLKK": "Sila kaji.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "1",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELANJUTNYA"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "09/09/2022",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "firstChargeDate": null,
+      "tarikhTutupFail": "14/09/2022",
+      "catatanTutupFail": "Notis Rayuan ke Mahkamah Rayuan telah selesai difailkan melalui sistem e-filing pada 14 September 2022. LKK selesai dan ditutup pada 14 September 2022.",
+      "staffIdTutupFail": "",
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "staffNameTutupFail": "SYARIDA HANUM BINTI JAMEL",
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "Okt lepas dan bebas tanpa dipanggil bela diri",
+    "LKK_RESULT_DATE": "2022-09-09",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-09-22",
+    "LKK_GROUNDS_OF_JUDGEMENT": "KEPUTUSAN DI MAHKAMAH TINGGI 2 SHAH ALAM: Sebelum pergi kepada elemen pertuduhan, Mahkamah berhujah mengenai ID30 seperti berikut: -ID30-keterangan (rakaman percakapan beramaran Gunaalan)-SP5 -ID30 boleh diterima masuk melalui saksi lain berdasarkan pengecualian dengar cakap Seksyen 32(1)(i) namun terdapat Pra syarat yang perlu dipenuhi iaitu telah dibuktikan bahawa rakaman adalah pengataan daripada seseorang yang ‘who cannot be found’ atau ‘whose attendance cannot be procured without an amount of delay or expense’. Gunalan telah keluar negara –P35 namun Mahkamah dapati usaha tidak memuaskan maka prasyarat tidak dipatuhi. Usaha hanya dibuat pada 9/1/2022 iaitu setelah kes telah bicara. Peranan saksi berdasarkan keterangan SP3 iaitu Gunaalan hampiri tempat serbuan. ID30 ditolak sebagai keterangan bawah Seksyen 32(1)(i) Akta Keterangan. Elemen pertuduhan: i) Dadah: berjaya dibuktikan. ii) Milikan dan pengetahuan: milikan secara fizikal dan elemen mental iaitu pengetahuan. Dalam kes Brahim Mohd & Another v PP. Kes dalam maklumat awam, pendakwaan perlu buktikan tiada sebarang akses oleh orang lain. Abdullah Zawawi Bin Yusoff v PP dan kes Brahim. OKT ada dalam kereta Estima walaupun berdekatan dengan OKT tidak cukup untuk buat inference dia ada kawalan terhadap dadah. Ada kemungkinan akses oleh individu yang lain. Pendakwaan gagal buktikan milikan/possession terhadap dadah. Gagal bukti ada kawalan dan pengetahuan terhadap dadah. Pendakwaan gagal bawa pemilik kereta Estima. Serbuan berdasarkan maklumat awam (‘tip off’) dan pemerhatian hanyalah 5 minit dan tidak cukup untuk ada pengetahuan tentang akses terhadap kenderaan, SP3 dalam keterangan berkenaan overt conduct kata cuba lari, cemas dan merayu untuk tidak diambil tindakan. Pengetahuan ini tidak disokong/corroborate oleh saksi lain dan tidak dinyatakan dalam laporan polis P15. Kegagalan panggil IO atau kemukakan ID siasatan untuk jelaskan banyak keraguan dalam siasatan IO. Kegagalan kesan Gunaalan yang telah lari ke luar negara timbul keraguan tentang peranan Gunaalan. Cubaan kemukakan ID30, jelaskan tentang peranan beliau iaitu saksi penting. Cubaan masuk gagal sebab tidak patuhi pra syarat. iii) Pengedaran: tidak dibincangkan memandangkan elemen milikan dan pengetahuan gagal dibuktikan.",
+    "LKK_CASE_FACT": "FAKTA KES: 1. Pada 4.5.2020 jam lebih kurang 4.00 petang, pengadu, ASP Mohd Hasni bin Hussin (SP3) menerima maklumat awam berkenaan aktiviti pengedaran dadah yang giat dilakukan oleh seorang lelaki berbangsa India di kawasan Jalan Mahkota Cheras, Kajang, Selangor. 2. Pada jam lebih kurang 5.00 petang, SP3 telah mengumpulkan anggota serbuan seramai 6 orang dan mentaklimatkan mereka berkenaan operasi serbuan yang dijalankan. Anggota serbuan telah dibahagikan kepada dua kumpulan di mana kumpulan pertama bergerak ke lokasi dengan kereta pasukan yang tidak berlambang polis iaitu jenis Toyota Vios manakala satu lagi kumpulan menaiki kereta Nissan Sentra. SP3 menaiki kereta pasukan yang pertama iaitu Toyota Vios. Semua anggota memakai baju biasa (bukan uniform) semasa serbuan. 3. Pada jam lebih kurang 5.40 petang, SP3 bersama anggota serbuan telah sampai di kawasan Jalan Mahkota Residence 2, Bandar Mahkota Cheras, Kajang, Selangor. SP3 nampak 1 kereta jenis Toyota Estima bernombor pendaftaran WSW 1122 (kereta Estima tersebut) berada di kawasan tempat letak kereta. SP3 juga nampak seorang lelaki berbangsa India di dalam kereta tersebut. 4. Kedua-dua kereta polis tidak berlambang tersebut telah diletakkan di belakang kereta Estima tersebut. Di dalam kereta tersebut hanya ada pemandu kereta yang merupakan OKT dalam kes ini. 5. SP3 telah menghampiri bahagian pemandu kereta Estima tersebut, SP3 mengetuk tingkap kereta dan perkenalkan diri sebagai polis. SP3 cuba membuka pintu kereta tetapi didapati berkunci. SP3 kemudian minta OKT memberikan kerjasama penuh. OKT enggan memberikan kerjasama dan cuba untuk keluar dari pintu bahagian tempat penumpang hadapan. Pada ketika itu, salah seorang anggota serbuan telah berada di tepi pintu tersebut dan menjerit kepada OKT supaya jangan lari. Hanya setelah itu OKT memberikan kerjasama dan keluar dari kereta Estima tersebut. 6. Menurut SP3, sebaik sahaja beliau membuka pintu kereta Estima untuk membuat pemeriksaan, beliau terus nampak plastic hitam tersebut yang berada di atas lantai bahagian tengah antara tempat duduk pemandu dan penumpang bahagian hadapan. SP3 telah bertanya kepada OKT apakah plastik hitam tersebut dan SP3 lihat OKT dalam keadaan cemas dan merayu kepada SP3 agar tidak diambil tindakan ke atasnya. Menurut SP3, semasa SP3 menyoal OKT tersebut, SP3 belum lagi memeriksa isi kandungan plastik hitam tersebut. Menurut SP3 juga, plastik hitam itu dalam keadaan terbuka (tidak terikat). 7. Pemeriksaan lanjut dalam kereta Estima tersebut telah menjumpai 1 beg plastik berwarna hitam dari atas lantai bahagian tengah tempat duduk hadapan kereta Estima tersebut. Pemeriksaan lanjut beg plastik hitam tersebut mengandungi 1 bungkusan plastik Teh Cina bertulisan GUANYINWANG di dalamnya terdapat 1 plastik lutsinar bahan disyaki dadah jenis Syabu, anggaran berat 1050 gram. Turut dijumpai di atas lantai bahagian tempat duduk hadapan kereta tersebut adalah 1 beg silang berwarna hitam bertulisan ‘TOUGH ARMY’ di dalamnya mengandungi 2 telefon bimbit jenama iphone dan 1 beg duit warna hitam jenama ‘KICKERS’ di dalamnya mengandungi 1 kad pengenalan atas nama Viknes Waren a/l S. Selvam Raj, No. k/p: 911221-14-5981, 1 lesen memandu atas nama Viknes Waren a/l S Selvam Raj, No. k/p: 911221-14-5981, 1 kad ATM (Mastercard), CIMB Bank atas nama : Viknes Waren a/l S. Selvam Raj. 8. Semasa SP3 memeriksa isi kandungan plastik hitam tersebut, SP3 dapat rasa ketulan mampat pada bungkusan Teh cina yang dalam keadaan berseal. Menurut SP3, rasa ketulan mampat tersebut tidak seperti serbuk teh. SP3 kemudian menghiris bungkusan teh cina dan dapati ia berisi bahan Kristal disyaki dadah jenis syabu. 9. Setelah 5 minit serbuan dilakukan di dalam kereta Estima, SP3 memyedari ada seorang lelaki India yang menghampiri kawasan serbuan dalam keadaan mencurigakan dan menahan lelaki India yang bernama Gunaalan kerana SP3 mengesyaki Gunaalan ada kaitan dengan OKT dalam kes ini. Pemeriksaan ke atas Gunaalan pada ketika itu tidak menjumpai apa-apa barang salah. 10. SP3 rampas kesemua barang kes dan tangkap OKT serta Gunaalan dan bawa ke Pejabat Narkotik IPD Kajang untuk tindakan selanjutnya. 11. SP1, Ahli Kimia, setelah menjalankan analisa ke atas barang-barang kes dadah tersebut mendapati barang kes yang dianalisa mengandungi dadah jenis Methamphetamine dengan berat bersih 767.2 gram.",
+    "LKK_ISSUES_AND_ARGUMENT": "HUJAHAN TPR: 1. Isu mengenai Gunaalan, TPR Puan Zatil telah membuat permohonan untuk rakaman percakapan Beramaran Gunaalan a/l Subramaniam dimasukkan melalui seksyen 32(1)(i) Akta Keterangan 1950 atas alasan bahawa usaha-usaha telah dibuat untuk mengesan saksi melalui semakan JPN, menghubungi telefon, mengesan melalui Pihak Penjara dan AADK, siaran akhbar Sinar Harian dan Malaysia Nanban, pergi ke alamat terakhir, berhubung dengan abang Gunaalan bernama Gobi a/l subramaniam dan akhir sekali semakan melalui Imigresen menunjukkan Gunaalan telah keluar dari Malaysia sejak 16.10.2021 dan tiada rekod beliau kembali ke Malaysia. 2. Berkenaan dengan pembuktian elemen pertuduhan, pendakwaan berhujah bahawa semua eleman telah berjaya dibuktikan. Elemen pertama iaitu dadah berbahaya telah dibuktikan melalui keterangan SP1, Ahli Kimia, dan Laporan Kimia (‘eksibit P7’) telah menunjukkan barang kes dadah tersebut merupakan dadah berbahaya jenis ‘Methamphetamine’ dengan berat bersih 767.2 gram. 3. Pendakwaan berhujah bahawa isu milikan dan pengetahuan juga telah berjaya dibuktikan melalui keterangan SP3 yang sahkan hanya OKT seorang sahaja dalam kenderaan Estima tersebut dan tiada orang lain bersamanya. Plastik hitam yang dijumpai juga berada berdekatan dengan OKT dalam keadaan terbuka. Selain itu, turut dijumpai barang-barang milik peribadi OKT di tempat duduk hadapan kereta di dalam beg silang berwarna hitam bertuisan ‘TOUGH ARMY’. 4. Satu-satunya individu lain yang ditangkap bersama dalam serbuan tersebut adalah Gunaalan a/l Subramaniam. Berdasarkan kepada ID30, Gunaalan pergi ke RHB Bank untuk mengeluarkan duit dan tiba-tiba ditangkap oleh polis. Gunaalan tidak mengenali OKT dan tidak tahu berkenaan dengan dadah yang dirampas dari OKT. Gunaalan juga tidak pernah nampak kereta Estima tersebut dengan nombor pendaftaran WSW 1122. 5. Kunci kereta Estima juga dirampas dari OKT dan ini menunjukkan OKT mempunyai kawalan dan jagaan sepenuhnya terhadap dadah-dadah yang dirampas. Selain itu, melalui perlakuan OKT juga jelas OKT mempunyai pengetahuan terhadap milikan dadah tersebut apabila OKT enggan memberikan kerjasama ketika pengadu dan anggota serbuan datang untuk memeriksaan kenderaan Estima tersebut semasa OKT berada di dalamnya. OKT juga ada cuba untuk melarikan diri. Rantaian barang kes juga adalah tidak terputus. 6. Berkenaan pemilik kenderaan Estima tersebut iaitu atas nama Rayvendran a/l Surinder Dass, pelbagai usaha telah dibuat untuk cuba mengesan pemilik kenderaan namun gagal. Berdasarkan semakan, terdapat rekod keluar dari Malaysia sejak 11.7.2019 dan sejak itu tiada rekod kemasukan semula ke Malaysia. 7. Elemen terakhir iaitu OKT mengedar dadah berbahaya juga berjaya dibuktikan apabila berat bersih dadah tersebut adalah melebihi berat minima statutori maka anggapan pengedaran dadah berbahaya di bawah seksyen 37(da) Akta Dadah Berbahaya 1952 adalah terpakai. HUJAHAN PEGUAMBELA: 1. Peguambela tertuduh berhujah bahawa serbuan dilakukan berdasarkan maklumat awam yang memaklumkan kenderaan dan penglibatan seorang lelaki berbangsa India di lokasi serbuan. 2. Polis juga telah membuat tangkapan terhadap seorang lelaki India nama Gunaalan a/l Subramaniam yang tidak dipertuduhkan di Mahkamah mahupun dipanggil sebagai saksi. 3. Peguambela turut berhujah bahawa pendakwaan gagal untuk memanggil pemilik kenderaan iaitu Rayvendran a/l Surinder Dass. 4. Selain itu, pendakwaan gagal untuk memanggil pegawai penyiasat atau sekurang-kurangnya mengemukakan diari siasatan bagi menjelaskan rantaian penyimpanan barang kes sebelum diserahkan ke Jabatan Kimia Malaysia di mana dalam kes ini barang kes hanya dihantar 28 selepas diterima.",
+    "LKK_DPP_SUGGESTION": "Saya mencadangkan rayuan difailkan namun terpulang kepada arahan lanjut Tuan kerana terdapat kelemahan dalam kes pendakwaan. ALASAN KEPADA CADANGAN: SP3 sendiri mengesahkan ada membuat tangkapan terdapat Gunaalan yang dikatakan ada kaitan dengan serbuan dan tangkapan terhadap OKT. Maka kegagalan untuk memanggil Gunaalan sebagai saksi pendakwaan menimbulkan keraguan. Permohonan memasukkan Rakaman Percakapan Beramaran Gunaalan juga telah ditolak oleh Mahkamah kerana gagal mematuhi pra syarat. IO kes juga gagal untuk mengesan pemilik kenderaan iaitu kenderaan Estima yang dinaiki oleh OKT semasa dadah dijumpai dalam kereta. Walaupun usaha dilakukan namun pemilik kenderaan tetap gagal dikesan malahan semakan di pihak Imigresen juga menunjukkan pemilik kereta Estima juga telah keluar Malaysia dan tiada rekod kemasukan semula. IO tidak dipanggil memanggil keteragan akibat masalah kesihatan yang teruk. Cubaan untuk mengemukakan Diari Siasatan juga tidak boleh dibuat memandangkan Diari Siasatan adalah tidak lengkap.",
+    "LKK_DSP_SUGGESTION": "YBhg. Datin KUR, Dengan hormatnya, saya telah diarah memberikan ulasan kepada LKK ini. 2. Saya setuju agar keputusan MT dirayu atas alasan-alasan berikut: a) Elemen pertuduhan berjaya dibuktikan. Dadah dijumpai dalam plastik hitam tidak berikat di atas lantai dalam kereta berdekatan bahagian kaki pemandu. Ketika serbuan, OKT di bahagian pemandu kereta tersebut. Tiada orang lain bersama OKT. Kunci kereta dirampas daripadanya selain beg yang mengandungi dokumen peribadi OKT iaitu kad pengenalan, lesen dan kad bank. Tiada barang peribadi orang lain dijumpai. Jagaan dan kawalan dadah tersebut jelas pada OKT. b) Tingkah laku OKT ketika serbuan perlu dipertimbangkan. OKT cuba melarikan diri atau bergerak ke pintu yang belum dikawal oleh pasukan serbuan dan selepas itu merayu agar tiada tindakan diambil ke atasnya iaitu sebelum beg plastik hitam berisi dadah diperiksa. c) Pemilik kereta tidak dirakam percakapan kerana telah keluar dari Malaysia 10 bulan sebelum kejadian dan tiada rekod masuk kembali. Tempoh tersebut dan mengambil kira cara dadah dijumpai, ketiadaan keterangan pemilik kereta tidak boleh diputuskan melemahkan kes pendakwaan atau apa-apa anggapan bertentangan dibuat. d) Gunalan tidak ditangkap bersama dadah. Ia ditangkap kerana berjalan menghampiri kereta tersebut selepas serbuan dibuat. Gunalan bukan saksi penting atau pendakwaan tidak cuba menyembunyikan keterangannya. Malah cubaan dibuat untuk memasukkan rakaman percakapannya untuk menunjukkan Gunalan tidak kenal OKT atau ada kaitan tentang dadah tersebut. Secara alternatif, rakaman percakapan Gunalan adalah relevan dan MT telah tersilap menolak keterangan itu. 3. Saya berpendapat kes prima facie telah dibuktikan dan OKT sepatutnya dipanggil membela diri. 4. Walau bagaimanapun, tertakluk kepada arahan YBhg. Datin jua. Sekian. Terima kasih MOHD ASNAWI BIN ABU HANIPAH Timbalan Pendakwa Raya Selangor 11 September 2022 Walau bagaimanapun, saya mohon nasihat dan arahan lanjut YA Datin jua. Sekian, terima kasih. KHAIRUL AZREEM BIN MAMAT PPN SELANGOR",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": "Saya mencadangkan rayuan difailkan sepertimana syor Tuan PPN dan TPR Zatil atas alasan berikut: a) Penemuan dadah dalam kes ini adalah di bahagian penumpang bahagian lantai sebelah Tertuduh dan pada waktu kejadian hanya ada OKT di bahagian pemandu kereta tersebut dalam kereta tersebut dapat membuktikan Tertuduh mempunyai kawalan dan jagaan terhadap bungkusan dadah tersebut. Kunci kereta dirampas daripadanya selain beg yang mengandungi dokumen peribadi OKT iaitu kad pengenalan, lesen dan kad bank. Tiada barang peribadi orang lain dijumpai. b) Tingkah laku OKT ketika serbuan perlu dipertimbangkan. OKT cuba melarikan diri atau bergerak ke pintu yang belum dikawal oleh pasukan serbuan dan selepas itu merayu agar tiada tindakan diambil ke atasnya iaitu sebelum beg plastik hitam berisi dadah diperiksa. c) Walaupun pemilik kereta tidak dipanggil dan tidak direkod percakapan, ianya tidak menimbulkan 'adverse inference' dalam kes pendakwaan. Mengikut keterangan, pemilik kereta telah keluar dari Malaysia 10 bulan sebelum kejadian dan tiada rekod masuk kembali. Tempoh tersebut dan mengambil kira cara dadah dijumpai, menyokong keterangan pihak pendakwaan bahawa pemilik kereta tiada akses kepada kenderaan Estima dalam tempoh 10 bulan sebelum kejadian. d) Berkenaan Gunalan, adalah jelas Gunalan tidak ditangkap bersama dadah. Ia ditangkap kerana berjalan menghampiri kereta tersebut selepas serbuan dibuat. Melalui rakaman percakapan Gunalan (ID30) juga menyatakan, Gunalan tidak mempenyui pengetahuan berkenaan dengan dadah tersebut dan Gunalan bukan saksi penting atau pendakwaan tidak cuba menyembunyikan keterangannya. Malah cubaan dibuat untuk memasukkan rakaman percakapannya untuk menunjukkan Gunalan tidak kenal OKT atau ada kaitan tentang dadah tersebut. Kegagalan ID30 dimasukkan melalui seksyen 32(1)(i) Akta Keterangan 1950 tidak menimbulkan kelompangan dalam kes pendakwaan.Secara alternatif, rakaman percakapan Gunalan adalah relevan dan MT telah tersilap menolak keterangan itu. Walaubagaimanapun, saya pohon nasihat dan arahan lanjut pihak YBhg Datin. Sekian, terima kasih. NURUL FARHANA BINTI KHALID Timbalan Pendakwa Raya Bahagian Perbicaraan dan Rayuan",
+    "LKK_PENGISIAN_DATE": "2022-09-13 10:15:17",
+    "LKK_PENGISIAN_STAFFNAME": "NURUL FARHANA BINTI KHALID",
+    "LKK_PENGISIAN_STAFFID": "3656",
+    "LKK_PENGISIAN_PATHRAYUAN": "Apps/LT/LKK/Rayuan/31",
+    "LKK_CATATAN_PENGESYOR": "Setuju rayuan difailkan. Penama Gunalan tidak disebut semasa tangkapan dan dalam caution statement.",
+    "LKK_PENGESYOR_DATE": "2022-09-14 10:12:32",
+    "LKK_PENGESYOR_STAFFID": "6418",
+    "LKK_PENGESYOR_STAFFNAME": "ASMAH BINTI MUSA",
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": "Setuju rayuan difailkan. Notis telah ditandatangani.",
+    "LKK_PEMUTUS_DATE": "2022-09-14 13:03:39",
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": "MANOJ KURUP",
+    "LKK_PEMUTUSKB_STAFFID": "7127",
+    "LKK_CREATEDDATE": "2022-09-11 21:03:29",
+    "LKK_CREATEDBY": "siti.suriatey",
+    "LKK_UPDATEDATE": "2022-09-14 15:08:26",
+    "LKK_UPDATEBY": "syarida",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": "1",
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-09-11 22:20:44",
+    "LKK_COMPLETE_BY": "PENUTUP_ANT",
+    "LKK_COMPLETE_DATE": "2022-09-14 13:03:39",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  },
+  {
+    "LKK_INFOID": 43,
+    "LKK_PROJECT_ID": null,
+    "LKK_SM_FUNCTION": 6116,
+    "LKK_FILE_NO": "BA-45A-58-08/2020",
+    "LKK_STATUS": "SELESAI",
+    "LKK_DATA": {
+      "courtId": "108",
+      "stateId": "10",
+      "caseName": "PENDAKWA RAYA V 1.YONG CHIN CAN 2.MOHAMAD KHAIRUL HAFIZ BIN ADNAN 3.MR HAKEEM SAMAE 4.SYAMIL BIN TAUFIK @ ZAINAL ABIDIN",
+      "courtDesc": "MAHKAMAH TINGGI SHAH ALAM",
+      "stateDesc": "SELANGOR",
+      "NATOfficer": [
+        {
+          "ANTName": "ASMAH BINTI MUSA",
+          "NATStaff": "6418"
+        }
+      ],
+      "CCATOfficer": [
+        {
+          "ANTCC": "AHMAD TERRIRUDIN BIN MOHD SALLEH",
+          "CCATStaff": "6747"
+        },
+        {
+          "ANTCC": "NIK SUHAIMI BIN NIK SULAIMAN",
+          "CCATStaff": "7196"
+        },
+        {
+          "ANTCC": "MANOJ KURUP",
+          "CCATStaff": "7127"
+        },
+        {
+          "ANTCC": "MASRI BIN MOHD DAUD",
+          "CCATStaff": "6840"
+        },
+        {
+          "ANTCC": "MOHD DUSUKI BIN MOKHTAR",
+          "CCATStaff": "6872"
+        },
+        {
+          "ANTCC": "MUHAMAD ISKANDAR BIN AHMAD",
+          "CCATStaff": "6732"
+        },
+        {
+          "ANTCC": "MUHAMMAD SAIFUDDIN BIN HASHIM MUSAIMI",
+          "CCATStaff": "6939"
+        },
+        {
+          "ANTCC": "KHAIRUL AZREEM BIN MAMAT",
+          "CCATStaff": "6184"
+        },
+        {
+          "ANTCC": "MANGAIARKARASI A/P KRISHNAN",
+          "CCATStaff": "6413"
+        },
+        {
+          "ANTCC": "SYARIDA HANUM BINTI JAMEL",
+          "CCATStaff": "4997"
+        },
+        {
+          "ANTCC": "RAIKHANNAH BINTI ABDULLAH SANI",
+          "CCATStaff": "8110"
+        },
+        {
+          "ANTCC": "RAHAYU BINTI ABDOL RGANI",
+          "CCATStaff": "3893"
+        }
+      ],
+      "MemenuhiKPI": "1",
+      "PenerimaLKK": {
+        "datePenerimaLKK": "15/09/2022",
+        "catatanTindakanLKK": "Sila kaji.",
+        "staffIdPenerimaLKK": "6418",
+        "keputusanTindakanId": "1",
+        "staffNamePenerimaLKK": "ASMAH BINTI MUSA",
+        "keputusanTindakanDesc": "TINDAKAN SELANJUTNYA"
+      },
+      "courtTypeId": "3",
+      "fileOpenDate": "14/09/2022",
+      "courtTypeDesc": "MAHKAMAH TINGGI",
+      "keputusanTutup": "RAYU",
+      "firstChargeDate": null,
+      "tarikhTutupFail": "27/09/2022",
+      "catatanTutupFail": "Notis Rayuan ke Mahkamah Rayuan (terhadap OKT 3) telah difailkan melalui sistem e-filing pada 27 September 2022. LKK selesai dan ditutup pada 27 September 2022.",
+      "staffIdTutupFail": "",
+      "applicationTypeId": null,
+      "projectIdOriginal": null,
+      "staffNameTutupFail": "SYARIDA HANUM BINTI JAMEL",
+      "applicationTypeDesc": ""
+    },
+    "LKK_RESULT": "OKT1, OKT2 dan OKT 3 dilepas dan dibebaskan di akhir kes pendakwaan. OKT 4 diarahkan untuk membela diri untuk pertuduhan di bawah Sek. 39B ADB 1952. Kes ditetapkan untuk Sambung Bicara pada 6 dan 7 Oktober 2022 di peringkat pembelaan.",
+    "LKK_RESULT_DATE": "2022-09-14",
+    "LKK_FINAL_DATE_FOR_APPEAL": "2022-09-28",
+    "LKK_GROUNDS_OF_JUDGEMENT": "Mengenai keterangan SP2, Mahkamah telah menilai dan mendapati SP2 adalah saksi yang kredibel. Mahkamah menerima penjelasan SP2 mengenai analisa tersebut dan merujuk kepada kes Noloose Albert. Mengenai pengambilan sampel sebanyak 10%, Mahkamah dapati ia adalah selaras dengan undang-undang dan merujuk kepada kes Gunalan Ramachandran. Walaubagaimanapun, secara keseluruhan, Mahkamah mendapati bahawa pihak pendakwaan telah gagal untuk membuktikan elemen niat bersama terhadap OKT1, OKT2 dan OKT3. Tiada sebarang keterangan yang dikemukakan untuk menunjukkan kaitan di antara OKT1, OKT2 dan OKT3 dengan dadah yang terkandung di dalam beg-beg yang dirampas. Mereka hanyalah ‘mere presence’di tempat kejadian. Telefon yang dirampas juga telah gagal disiasat oleh pegawai penyiasat yang mana kegagalan ini secara jelas tidak memihak kepada pihak pendakwaan. Mengenai keterangan SP4 bahawa OKT3 cuba melarikan diri, ketika pemeriksaan balas, SP4 menyatakan SP4 tidak melihat perkara tersebut dan cuma dimaklumkan oleh anggota yang menangkap OKT3. Perbuatan cuba melarikan diri itu tidak mencukupi untuk menunjukkan kaitan atau pengetahuan OKT3 kerana dadah tersebut tersembunyi di dalam plastik teh Guanyinwang yang berada di dalam beg tersebut dan tiada keterangan yang menunjukkan OKT3 ada membuka beg tersebut. Terdapat lebih dari satu inferen yang boleh dibuat daripada perbuatan tersebut memandangkan pihak polis melakukan serbuan dengan berpakaian preman dan di dalam jumlah anggota yang ramai. Perbuatan OKT3 yang mengangkut beg dari kereta honda TAF 1111 ke kereta Toyota VC 63 itu tidak menunjukkan pengetahuan OKT3 terhadap apa yang terkandung di dalam beg itu. Bagi OKT4, Mahkamah mendapati bahawa pihak pendakwaan telah berjaya membuktikan OKT4 mempunyai kawalan dan jagaan serta pengetahuan terhadap beg-beg berisi dadah tersebut. Meskipun Syariman tidak dipanggil,Mahkamah mendapati terdapat keterangan yang mencukupi untuk pihak pendakwaan membuktikan kes terhadap OKT4 terutamanya perbuatan OKT4 yang dilihat memandu kereta tersebut dan kemudian keluar dari kereta dan mengambil beg-beg berisi dadah di bahagian tempat duduk belakang kereta dan membawa ke bonet belakang kereta Toyota VC 63. OKT4 yang membawa beg-beg tersebut mesti tahu apakah yang terkandung di dalam beg-beg tersebut. Bagi elemen pengedaran, Mahkamah mendapati perbuatan OKT4 itu termasuk di bawah Sek. 2 Akta Dadah Berbahaya 1952 iaitu ‘carrying’ dan ‘transporting’.",
+    "LKK_CASE_FACT": "Pada 9/12/2020 jam Pada 12.1.2020, jam lebih kurang 4.00 petang SP4 telah terima maklumat tentang aktiviti pengedaran dadah di kawasan berhampiran tempat letak kereta berhadapan 1977 New Ipoh Chicken Rice, Jalan Gasing 10/1, Petaling Jaya, Selangor. SP4 kemudiannya mentaklimatkan penugasan operasi yang berkaitan dengan maklumat tersebut kepada anggota pasukan. Pada jam 8.45 malam, SP4 dan pasukan tiba di tempat operasi iaitu berhampiran tempat letak kereta berhadapan 1977 New Ipoh Chicken Rice, Jalan Gasing 10/1 Petaling Jaya dan telah membuat pemerhatian di kawasan tersebut. Lebih kurang 30 minit kemudian, SP4 nampak keretaToyota Alphard VC 63 dan Honda Jazz TAF 1111 telah berhenti berhampiran tempat pemerhatian dijalankan. Kemudian, SP4 lihat OKT1 telah keluar dari restoren New Ipoh Chicken Rice. OKT1 dilihat berjalan menuju ke kereta Toyota Alphard no pendaftaran VC 63 dan masuk ke bahagian tempat duduk penumpang bahagian belakang kereta tersebut. Pada masa yang sama, OKT2 yang merupakan pemandu kereta Toyota Alphard VC 63 telah keluar dari bahagian pemandu dan masuk ke bahagian penumpang belakang kerusi kereta tersebut. Kemudian, SP4 nampak OKT3 keluar dari bahagian penumpang sebelah pemandu kereta Toyota Alphard VC 63 dan SP4 nampak OKT4 kelUAR dari bahagian pemandu kereta Honda Jazz TAF 1111. SP4 lihat OKT3 dan OKT4 telah mengambil 2 beg dari tempat duduk belakang kereta Honda Jazz TAF 1111 dan masukkan beg beg tersebut ke dalam bonet belakang kereta Toyota Alphard VC 63. Seterusnya SP4 arahkan pasukan untuk membuat serbuan di mana OKT 1 dan OKT 2 telah ditahan di dalam kereta Toyota Alphard VC 63, OKT4 telah ditahan di belakang kereta Toyota Alphard VC 63 dan OKT3 ditangkap berdekatan setelah cuba melarikan diri. Hasil pemeriksaan badan tiada menjumpai apa-apa barang salah. SP4 kemudiannya telah menjumpai kunci kereta Toyota Alphard VC 63 dari seluar poket kanan yang dipakai oleh OKT3 dan kunci kereta Honda Jazz TAF 1111 dari seluar poket kanan yang dipakai oleh OKT4. Hasil pemeriksaan di bahagian bonet kereta Toyota Alphard VC 63, SP4 telah menjumpai : (1) beg berzip berwarna hitam dan biru bertulisan Western Blue One Scar di mana di dalamnya terdapat (20) bungkusan teh cina bertulisan Guanyinwang di mana setiap bungkusan di dalamnya mengandungi (1) bungkusan plastik lutsinar berisi bahan disyaki dadah jenis Syabu. Anggaran berat bagi keseluruhan (20) bungkusan tersebut adalah 21,000 gram. (1) beg galas berwarna hijau dan kelabu bertulisan Deuter Futura 70L+10L di mana di dalamnya terdapat (20) bungkusan teh cina bertulisan Guanyiwang di mana setiap bungkusan di dalamnya mengandungi (1) bungkusan plastik lutsinar berisi bahan disyaki dadah jenis Syabu. Anggaran berat keseluruhan (20) bungkusan tersebut adalah 21,000 gram. SP4 kemudiannya telah terangkan kesalahan dan membuat tangkapan terhadap OKT-OKT serta telah merampas barang-barang yang dijumpai di bahagian bonet kereta Toyota Alphard VC 63. Kesemua OKT dan rampasan telah dibawa balik ke pejabat JSJN IPK Selangor untuk tindakan lanjut dan diserahkan kepada SP6. SP6 telah menghantar barang kes dadah ke Jabatan Kimia Malaysia dan hasil analisa, SP2 mengesahkan barang kes tersebut adalah dadah jenis Methamphetamine seberat 29997.9 gram",
+    "LKK_ISSUES_AND_ARGUMENT": "HUJAHAN PEGUAMBELA PEGUAM OKT 1 Elemen Niat Bersama tidak dibuktikan Penama ‘William’ gagal disiasat oleh Pegawai Penyiasat CCTV tidak dikemukakan sedangkan SP1 menyatakan terdapat CCTV OKT1 ditangkap berhampiran New Ipoh Chicken Rice dan bukan di tempat letak kereta Telefon OKT1 yang hilang selepas dirampas oleh pihak polis membolehkan inferen dibuat bahawa OKT1 tidak mempunyai kaitan/nexus dengan beg-beg berisi dadah tersebut. PEGUAM OKT2 DAN OKT3 Analisa SP2 adalah tidak mengikut UN Guidelines dan tidak patut diterima oleh Mahkamah OKT2 hanya pandu kereta ke tempat kejadian dan tidak mempunyai kaitan dengan beg-beg berisi dadah tersebut; OKT2 juga tidak melarikan diri ketika serbuan dilakukan OKT3 pada bila-bila masa tidak pernah memegang beg-beg tersebut dan tidak terdapat sebarang cap jari OKT3 pada mana-mana beg Pegawai Penyiasat telah gagal untuk menyiasat 7 telefon bimbit yang dirampas di dalam kes ini Pegawai Penyiasat telah gagal untuk menyiasat penama Muhaimin yang merupakan majikan kepada OKT2 dan mempunyai Kedai Ikan Singgang di Serdang Elemen niat bersama gagal dibuktikan kerana tiada sebarang komunikasi di antara semua OKT dikemukakan PEGUAM OKT4 Pemilik kereta TAF 1111 iaitu Syariman Taufik (abang OKT4) tidak dipanggil memberi keterangan. OKT4 tidak mempunyai pengetahuan terhadap dadah yang terkandung di dalam beg-beg tersebut. OKT4 juga tidak melarikan diri ketika serbuan dilakukan. OKT4 telah memberitahu bahawa OKT4 hanya diminta untuk membawa beg itu ke tempat kejadian oleh Syariman Taufik. HUJAHAN TPR : Mengenai keterangan SP2 (Ahli Kimia), SP2 menjelaskan UN Guidelines adalah satu manual yang boleh digunakan sebagai rujukan untuk penyediaan kaedah ujian bagi makmal-makmal mengikut kesesuaian dan juga keupayaan sesuatu makmal tersebut dari segi peralatan. SP2 juga menjelaskan bahawa analisis adalah satu proses langkah awal iaitu langkah penimbangan barang seterusnya proses homogenisasi dan baru dijalankan ujian warna, kulitatif dan kuantittatif (Rujuk kes : PP v Nolose Albert Raleshome [2014] 8 CLJ 689, Junaidi Berimang v PP [2022] 1 LNS 522 , Ramasamy Mahendran v PP [2017] 1 LNS 398 dan Mary George Unazi v PP [2017] 5 CLJ 34. ) Bagi elemen kawalan/jagaan , OKT3 dan OKT4 dilihat mengambil beg P11(1) dari kereta Honda Jazz TAF1111 dan membawa ke bonet belakang kereta Toyota Alphard VC63. Bagi elemen pengetahuan , cara bagaimana dadah tersebut disembunyikan serta jumlah dadah yang banyak juga membolehkan inferen dibuat tentang pengetahuan OKT-OKT terhadap dadah-dadah tersebut. Di dalam kes ini, dadah tersebut telah dijumpai di dalam plastic lutsinar yang berada di dalam bungkusan teh cina Guanyinwang. Cara pembungkusan tersebut adalah begitu rapi kerana ingin menyembunyikan dadah-dadah tersebut daripada pengetahuan pihak berkuasa . Dadah yang terlibat di dalam kes ini adalah hampir 30kg yang mana pihak pendakwaan hujahkan adalah satu amaun yang besar dan kedua-dua beg itu dibawa oleh OKT4 dengan menaiki kereta Honda Jazz TAF 1111 serta di bawa dari satu tempat yang lain ke tempat kejadian. Perbuatan OKT4 yang membawa dadah yang banyak ke tempat kejadian juga membolehkan inferen dibuat bahawa OKT4 mempunyai pengetahuan terhadap dadah-dadah yang berada di dalam 40 bungkusan Guanyinwang tersebut (Rujuk kes : Teh Hock Leong v PP [2008] 4 CLJ 764, Wjchai Onprom v PP [2006] 3 CLJ 724, Nhong Khoi a/p Iteng v Public Prosecutor [2014] 1 LNS 1528 ) Bagi elemen pengedaran , pihak pendakwaan bergantung kepada Sek. 2 Akta Dadah Berbahaya 1952 (Rujuk kes : Johar Mustapha v PP [2009] 6 CLJ 193, PP v. Abdul Manaf bin Muhamad Hassan [2006] 2 CLJ 129, PP v Kulandai Sepathi Raj [2016] 9 CLJ 192, PP v Herlina Purnama Sari [2016] 1 LNS 1855 ) Bagi elemen niat bersama, keterangan yang menunjukkan kaitan OKT-OKT dengan dadah adalah : OKT2 adalah merupakan pemandu Toyota Alphard VC63 dan memandu kereta tersebut ke tempat kejadian bersama OKT3; Ketika itu juga OKT4 tiba di tempat kejadian berseorangan dengan menaiki Honda Jazz TAF 1111 yang mana ini menunjukkan ada komunikasi di antara OKT2,OKT3 dan OKT4 untuk ke tempat kejadian pada waktu yang sama; Pada masa yang sama juga, OKT1 juga telah keluar dari Restoren New Ipoh Chicken Rice dan terus menuju ke bahagian penumpang belakang sebelah kiri Toyota Alphard VC63 dan OKT2 terus keluar dari bahagian pemandu dan masuk ke bahagian penumpang belakang sebelah kanan yang mana ini menunjukkan ada ‘deal’ / persetujuan di antara OKT1 dan OKT2; Seterusnya OKT3 terus keluar dari kereta Toyota Alphard VC63 dan pergi ke bahagian kiri penumpang belakang kereta Honda Jazz TAF 1111 dan pada masa yang sama OKT4 juga pergi ke bahagian kiri penumpang belakang kereta Honda Jazz TAF 111; OKT3 kemudian mengangkat beg P14(2) dan OKT4 mengangkat beg P11(1) dan bawa masuk ke dalam bonet belakang kereta Toyota Alphard VC63; Ketika serbuan, OKT3 cuba melarikan diri; OKT4 berada di belakang kereta dan berdekatan dengan dadah tersebut; OKT1 dan OKT2 berada di dalam kereta dan berdekatan dengan dadah tersebut memustahilkan untuk mereka tidak tahu OKT3 dan OKT4 memasukkan beg-beg tersebut ke dalam kereta itu; Ketika ditahan, kesemua OKT juga tidak pernah menafikan mereka tidak mempunyai pengetahuan terhadap dadah-dadah yang berada di dalam 40 bungkusan Guanyinwang tersebut. Rakaman CCTV – SP6 telah melihat rakaman CCTV di restoren tersebut pada 15.1.2020 dan mendapati bahawa rakaman pada 12.1.2020 telah auto-delete. Jadi tiada rakaman CCTV yang dapat diambil daripada restoren tersebut. Syariman – SP7 tidak dapat mengesan Syariman dan tiada sebarang usaha untuk mengesan Syariman selain daripada menghubungi melalui telefon Mana-mana orang yang berada di posisi Syariman juga akan menghilangkan diri jika benar Syariman terlibat di dalam kes ini (Rujuk kes : Ghazalee Kassim & Ors v PP [2009] 4 CLJ 737 ). Hasil siasatan SP6, ketika kejadian, Syariman berada di Terengganu dan kereta digunaka oleh OKT4. Ketika ditangkap, OKT4 tidak sekali-kali menimbulkan nama Syariman kepada SP4 dan SP5 dan OKT4 dilihat membawa kereta itu serta kemudiannya memunggah beg-beg berisi dadah tersebut. Dengan keterangan sedemikian rupa, pihak pendakwaan menghujahkan bahawa pihak pendakwaan masih berjaya membuktikan kes pendakwaan terhadap OKT-OKT walaupun tanpa memanggil Syariman. (Rujuk kes : G Vasan Gunasegaran v. PP [2018] 1 LNS 1604 ). William dan Muhai min – tiada sebarang butiran diberikan kepada SP6 untuk membolehkan SP6 menyiasat tentang mereka. Malah, sehingga SP6 memberi keterangan di Mahkamah juga, butiran mengenai William dan Muhaimin juga tidak dikemukakan di Mahkamah (Rujuk kes : Teng Howe Seng v PP ).",
+    "LKK_DPP_SUGGESTION": "YBrs. Datin, Saya dengan rendah diri mencadangkan agar rayuan difailkan terhadap OKT3 atas alasan : 1. OKT3 dilihat mengangkat beg dari kereta Honda TAF 1111 di mana di dalam beg tersebut telah dijumpai 20 peket Guanyinwang yang berisi dadah 2. Perbuatan OKT3 mengangkat beg tersebut menunjukkan kaitan di antara OKT3 dengan dadah tersebut 3.Beg berisi dadah itu mengandungai 20 peket Guanyinwang yang mana anggaran berat kasar adalah lebih kurang 20kg di mana ia adalah jumlah yang berat untuk diangkat oleh OKT3 Bagi OKT 1 dan OKT 2 , saya tidak mencadangkan rayuan difailkan atas alasan: 1. tiada sebarang ' relevant conduct ' yang membolehkan inferen dibuat terhadap pengetahuan / kaitan OKT1 dan OKT2 dengan dadah yang dijumpai di dalam beg-beg tersebut 2. Kegagalan Pegawai Penyiasat untuk menyiasat telefon bimbit yang dirampas juga melemahkan kes pendakwaan terhadap OKT1 dan OKT2 di dalam membuktikan elemen niat bersama sedangkan kesemua telefon tersebut boleh dibuka dan disemak kerana telah dibekalkan dengan password telefon oleh OKT-OKT Untuk makluman YBrs. Datin, OKT3 juga mempunyai 1 lagi kes di Mahkamah Majistret Shah Alam di mana ditetapkan untuk sebutan pada 13.10.2022 di mana pertuduhan adalah di bawah Seksyen 12(2)/39A(1) Akta Dadah Berbahaya 1952. Sekiranya OKT3 mengaku salah dan sudah selesai menjalani hukuman, OKT3 adalah ditahan oleh Jabatan Imigresen Malaysia bagi kesalahan 'overstay' sebelum dihantar pulang ke negara asal iaitu Thailand. Walaubagaimanapun, saya pohon arahan daripada YBrs. Datin jua.",
+    "LKK_DSP_SUGGESTION": "YA Datin Ketua Unit Rayuan, Setelah meneliti cadangan oleh YM TPR Tengku Intan Suraya binti Tengku Ismail saya berpandangan bahawa syor untuk tidak merayu terhadap pelepasan dan pembebasan OKT1 dan OKT2 dan syor untuk merayu terhadap pelepasan dan pembebasan OKT3 wajar diberikan pertimbangan. Berdasarkan kepada keterangan kes didapati pada masa yang material OKT1 dan OKT2 telah berjumpa dan hanya berada bersama di bahagian penumpang kenderaan Toyota Alphard no pendaftaran VC 63. Kedua-dua OKT1 dan OKT2 didapati tidak berjumpa dengan OKT4 yang hadir dengan memandu kenderaan Honda Jazz no pendaftaran TAF 111. Berdasarkan rentetan fakta kes tersebut adalah sukar untuk membuktikan elemen niat bersama memandangkan tiada hubungan atau nexus dengan barang kes dadah yang diangkat dan dimasukkan masing-masing oleh OKT3 dan OKT4 ke dalam kenderaan Toyota Alphard no pendaftaran VC 63. Dalam hal ini, terdapat pelbagai inferens yang boleh dibangkitkan mengenai ketiadaan pengetahuan kedua-dua OKT1 dan OKT2 berkenaan dengan barang kes dadah kerana peranan mereka yang pasif dan sekadar berada dalam kenderaan tersebut sahaja. Namun begitu, keterangan terhadap OKT3 adalah sangat kuat berhubung dengan elemen niat bersama antara lain kerana OKT3 bukan sahaja membantu OKT4 mengangkat dan meletakkan barang kes dadah secara bersama malah didapati YA Hakim telah gagal mengambilkira faktor bahawa anggaran berat barang kes dadah adalah 21kg. Berat ini merupakan suatu bebanan berat yang amat ketara yang perlu diberikan perhatian dan pertimbangan yang sewajarnya. Percanggahan mengenai keterangan sama ada OKT3 cuba melarikan diri atau sebaliknya tidak memprejudiskan kes pendakwaan kerana keterangan OKT3 mengambil dan menangkut barang kes dadah tersebut adalah kukuh dan ia disokong dengan bebanan berat barang kes dadah.yang amat ketara. Walau bagaimanapun, saya mohon nasihat dan arahan lanjut YA Datin jua. Sekian, terima kasih. KHAIRUL AZREEM BIN MAMAT Pengarah Pendakwaan Negeri Selangor Tarikh : 14 September 2022",
+    "LKK_DPP_ANT_SUGGESTION": null,
+    "LKK_HOU_ANT_REVIEWS": null,
+    "LKK_DHOD_ANT_REVIEWS": null,
+    "LKK_HOD_DECISION": null,
+    "LKK_CATATAN_PENGISIAN": "YBhg. Datin KUR, Setelah mengkaji dan meneliti LKK yang di kemukakan, saya bersetuju dengan syor TPR dan Tuan PPN bahawa rayuan difailkan terhadap OKT3 berdasarkan alasan-alasan berikut: 1. Keterangan menunjukkan OKT telah bersama dengan OKT 4 mengambil beg dari kereta Honda Jazz dan memasukkan beg-beg tersebut ke dalam bonet kereta Toyota Alphard dengan jelas menunjukkan kaitan SP3 dengan dadah tersebut dan juga SP4 yang telah dipanggil membela diri; 2. Keterangan bahawa kunci kereta Toyota Alphard dari poket seluar OKT 3 menunjukkan bahawa OKT 3 adalah pemandu kereta Alphard dimana dadah tersebut dijumpai turut menguatkan lagi bukti bahawa OKT sememangnya ada kaitan dengan dadah yang dirampas. 3. Berdasarkan fakta (1) dan (2) diatas, elemen niat bersama seharusnya dapat dibuktikan terhadap OKT 3. 4. Bagi OKT 1 dan OKT 2, saya turut bersetuju dengan syor Puan TPR dan Tuan PPN bahawa adalah sukar untuk mengaitkan mereka dengan dadah tersebut dan juga elemen niat bersama dengan OKT 3 dan OKT 4. Pandangan saya kedua-dua OKT 1 dan OKT hanya memainkan peranan pasif sahaja dalam kejadian ini dan adalah sukar untuk mengaitkan kedua-duanya dengan kes ini.",
+    "LKK_PENGISIAN_DATE": "2022-09-26 10:45:50",
+    "LKK_PENGISIAN_STAFFNAME": "LEO ANAK SAGA",
+    "LKK_PENGISIAN_STAFFID": "5945",
+    "LKK_PENGISIAN_PATHRAYUAN": "Apps/LT/LKK/Rayuan/43",
+    "LKK_CATATAN_PENGESYOR": "Setuju dengan cadangan agar rayuan difailkan keatas OKT3. Terdapat keterangan bahawa OKT 3 adalah orang yang turut mengangkat beg berisi dadah daripada kereta Honda Jazz dan memasukkan beg tersebut kedalam bonet kereta Toyota Alphard.",
+    "LKK_PENGESYOR_DATE": "2022-09-26 16:22:38",
+    "LKK_PENGESYOR_STAFFID": "6418",
+    "LKK_PENGESYOR_STAFFNAME": "ASMAH BINTI MUSA",
+    "LKK_CADANGANTKB_PEMUTUS": null,
+    "LKK_CADANGANKB_PEMUTUS": "Setuju rayuan difailkan terhadap OKT3 sahaja. Notis rayuan TIDAK disertakan bersama LKK ini.",
+    "LKK_PEMUTUS_DATE": "2022-09-26 16:43:15",
+    "LKK_PEMUTUSTKB_STAFFNAME": null,
+    "LKK_PEMUTUSTKB_STAFFID": null,
+    "LKK_PEMUTUSKB_STAFFNAME": "MANOJ KURUP",
+    "LKK_PEMUTUSKB_STAFFID": "7127",
+    "LKK_CREATEDDATE": "2022-09-14 22:26:36",
+    "LKK_CREATEDBY": "tengku.intan",
+    "LKK_UPDATEDATE": "2022-09-27 12:02:06",
+    "LKK_UPDATEBY": "syarida",
+    "LKK_QUERY": null,
+    "LKK_QUERY_STAFFNAME": null,
+    "LKK_QUERY_STAFFID": null,
+    "LKK_QUERY_ANT": null,
+    "LKK_QUERY_ANT_STAFFNAME": null,
+    "LKK_QUERY_ANT_STAFFID": null,
+    "LKK_KEPUTUSAN_PENGESYOR": "1",
+    "LKK_KEPUTUSANTKB_PEMUTUS": null,
+    "LKK_SENDDATE": "2022-09-14 22:49:40",
+    "LKK_COMPLETE_BY": "PENUTUP_ANT",
+    "LKK_COMPLETE_DATE": "2022-09-27 12:02:06",
+    "LKK_PENGISIAN_ATTACHMENT": null,
+    "LKK_QUERY_KUR": null,
+    "LKK_QUERY_KUR_STAFFNAME": null,
+    "LKK_QUERY_KUR_STAFFID": null
+  }
+]

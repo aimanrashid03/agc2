@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
             );
         `, [
             vectorStr,
-            0.5, // Threshold
+            0.3, // Lowered threshold from 0.5 to 0.3 to accommodate vague/conversational queries
             5,   // Top 5
             {}   // Filter (passed as object, pg handles jsonb conversion)
         ]);
@@ -61,10 +61,10 @@ export async function POST(req: NextRequest) {
 Tugas anda:
 1. Jawab soalan pengguna berdasarkan konteks yang diberikan SAHAJA.
 2. Jawab dalam BAHASA MELAYU secara lalai (default), melainkan pengguna bertanya dalam Bahasa Inggeris.
-3. Gunakan nada profesional, tepat, dan membantu.
+3. Gunakan nada profesional, tepat, dan membantu. Anda boleh memahami loghat tempatan atau soalan ringkas.
 4. JIKA anda tidak tahu jawapan berdasarkan konteks, katakan "Maaf, maklumat tersebut tiada dalam pangkalan data kes saya."
-5. SENTIASA sertakan rujukan (citation) kepada kes yang digunakan.
-6. Format rujukan: [[Nama Kes]](case_id). Nama Kes dan case_id ada dalam konteks.
+5. SENTIASA sertakan rujukan (citation) kepada kes yang digunakan. PENTING: Jika menyebut nama kes, formatkan sebagai [[Nama Kes]](case_id).
+6. JIKA soalan pengguna terlalu ringkas (contoh: "kes bunuh") dan terdapat beberapa kes berbeza dalam konteks, sila minta penjelasan lanjut (cth: "Terdapat beberapa kes bunuh dalam rekod saya, adakah anda merujuk kepada kes X atau kes Y?").
 7. Jika Nama Kes tiada, gunakan "kes ini".
 
 PENTING: Jangan reka fakta. Hanya guna maklumat dari konteks di bawah.
@@ -109,8 +109,9 @@ ${contextText}
             },
         });
 
-    } catch (error: any) {
+    } catch (error) {
         console.error('Error in chat API:', error);
-        return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
+        const errorMessage = error instanceof Error ? error.message : 'Internal Server Error';
+        return NextResponse.json({ error: errorMessage }, { status: 500 });
     }
 }

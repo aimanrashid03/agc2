@@ -120,7 +120,8 @@ async function main() {
                 match_filter jsonb DEFAULT '{}'
             )
             RETURNS TABLE (
-                id bigint,
+                id integer,
+                case_id integer,
                 content text,
                 metadata jsonb,
                 similarity float
@@ -131,6 +132,7 @@ async function main() {
                 RETURN QUERY
                 SELECT
                     case_embeddings.id,
+                    case_embeddings.case_id,
                     case_embeddings.content,
                     case_embeddings.metadata,
                     1 - (case_embeddings.embedding <=> query_embedding::vector) AS similarity

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Home, FileText, Settings, Search, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
+import { FileText, Settings, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
 import { useState } from 'react';
 
 const Sidebar = () => {

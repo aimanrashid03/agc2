@@ -1,0 +1,163 @@
+[
+  {
+    "LTL_PERSON_ID": 6790,
+    "LTL_DATA": {
+      "peranan": "Pesuruhjaya Kehakiman",
+      "category": "corum",
+      "namaPihak": "Yang Arif Puan Suriyati Hasimah binti Mohd Hashim"
+    },
+    "LKK_INFOID": 3203,
+    "CREATEDDATE": "2024-12-13 14:39:16",
+    "CREATEDBY": "chanlee.lee",
+    "UPDATEDDATE": null,
+    "UPDATEDBY": null
+  },
+  {
+    "LTL_PERSON_ID": 6791,
+    "LTL_DATA": {
+      "noKP": "Tidak Berkaitan",
+      "negaraO": "MYS",
+      "poskodO": "79100",
+      "category": "prosecutors",
+      "daerahId": "0124",
+      "negeriId": "01",
+      "daerahDesc": "NUSA JAYA",
+      "negaraDesc": "MALAYSIA",
+      "negeriDesc": "JOHOR",
+      "guamanAgensi": "Pendakwa Raya",
+      "namaPeguamTpr": "TPR Chan Lee Lee",
+      "officeAddressO": "Aras 2, Bangunan Dato' Jaafar Muhamamd",
+      "officePhoneNoO": "013-3339158",
+      "PerayuRespondenId": "Pendakwa Raya",
+      "namaPerayuResponden": "Pendakwa Raya",
+      "emailPerayuResponden": "Tidak Berkaitan",
+      "noPhonePerayuResponden": "Tidak Berkaitan"
+    },
+    "LKK_INFOID": 3203,
+    "CREATEDDATE": "2024-12-13 14:41:09",
+    "CREATEDBY": "chanlee.lee",
+    "UPDATEDDATE": null,
+    "UPDATEDBY": null
+  },
+  {
+    "LTL_PERSON_ID": 6792,
+    "LTL_DATA": {
+      "noKP": "720429-01-5113",
+      "negaraO": "MYS",
+      "poskodO": "81200",
+      "category": "accused",
+      "daerahId": "0102",
+      "negeriId": "01",
+      "daerahDesc": "JOHOR BAHRU",
+      "negaraDesc": "MALAYSIA",
+      "negeriDesc": "JOHOR",
+      "guamanAgensi": "Tetuan Shaik Adam & Co",
+      "namaPeguamTpr": "Encik Shaik Saleem",
+      "officeAddressO": "No-20-01, Jalan Cenderasari 3, Taman Perbadanan Islam Larkin",
+      "officePhoneNoO": "019-7707270",
+      "PerayuRespondenId": "Tertuduh",
+      "namaPerayuResponden": "Abd Aziz bin Yahya",
+      "emailPerayuResponden": "Tiada",
+      "noPhonePerayuResponden": "Tiada"
+    },
+    "LKK_INFOID": 3203,
+    "CREATEDDATE": "2024-12-13 14:44:50",
+    "CREATEDBY": "chanlee.lee",
+    "UPDATEDDATE": null,
+    "UPDATEDBY": null
+  },
+  {
+    "LTL_PERSON_ID": 6793,
+    "LTL_DATA": {
+      "noKP": "910912-01-5014",
+      "negaraO": "MYS",
+      "poskodO": "81200",
+      "category": "accused",
+      "daerahId": "0102",
+      "negeriId": "01",
+      "daerahDesc": "JOHOR BAHRU",
+      "negaraDesc": "MALAYSIA",
+      "negeriDesc": "JOHOR",
+      "guamanAgensi": "Tetuan Shaik Adam & Co",
+      "namaPeguamTpr": "Encik Shaik Saleem",
+      "officeAddressO": "No.20-01, Jalan Cenderasari 3, Taman Perbadanan Islam Larkin",
+      "officePhoneNoO": "019-7707270",
+      "PerayuRespondenId": "Tertuduh",
+      "namaPerayuResponden": "Ramizah Binti Rahmat",
+      "emailPerayuResponden": "Tiada",
+      "noPhonePerayuResponden": "Tiada"
+    },
+    "LKK_INFOID": 3203,
+    "CREATEDDATE": "2024-12-13 14:47:16",
+    "CREATEDBY": "chanlee.lee",
+    "UPDATEDDATE": null,
+    "UPDATEDBY": null
+  },
+  {
+    "LTL_PERSON_ID": 7857,
+    "LTL_DATA": {
+      "peranan": "Pesuruhjaya Kehakiman",
+      "category": "corum",
+      "namaPihak": "YA Puan Suriyati Hasimah Binti Mohd Hashim"
+    },
+    "LKK_INFOID": 3658,
+    "CREATEDDATE": "2025-03-12 22:37:18",
+    "CREATEDBY": "chanlee.lee",
+    "UPDATEDDATE": null,
+    "UPDATEDBY": null
+  },
+  {
+    "LTL_PERSON_ID": 7858,
+    "LTL_DATA": {
+      "noKP": "Tidak Berkaitan",
+      "negaraO": "MYS",
+      "poskodO": "79100",
+      "category": "prosecutors",
+      "daerahId": "0102",
+      "negeriId": "01",
+      "daerahDesc": "JOHOR BAHRU",
+      "negaraDesc": "MALAYSIA",
+      "negeriDesc": "JOHOR",
+      "guamanAgensi": "Pendakwa Raya",
+      "namaPeguamTpr": "TPR Chan Lee Lee",
+      "officeAddressO": "Aras 2, Bangungan Dato' Jaafar Muhammad, 79100 Iskandar Puteri",
+      "officePhoneNoO": "013-3339158",
+      "PerayuRespondenId": "Pendakwa Raya",
+      "namaPerayuResponden": "Pendakwa Raya",
+      "emailPerayuResponden": "Tidak Berkaitan",
+      "noPhonePerayuResponden": "Tidak Berkaitan"
+    },
+    "LKK_INFOID": 3658,
+    "CREATEDDATE": "2025-03-12 22:38:42",
+    "CREATEDBY": "chanlee.lee",
+    "UPDATEDDATE": null,
+    "UPDATEDBY": null
+  },
+  {
+    "LTL_PERSON_ID": 7859,
+    "LTL_DATA": {
+      "noKP": "841019-14-5178",
+      "negaraO": "MYS",
+      "poskodO": "50400",
+      "category": "accused",
+      "daerahId": "1401",
+      "negeriId": "14",
+      "daerahDesc": "KUALA LUMPUR",
+      "negaraDesc": "MALAYSIA",
+      "negeriDesc": "WILAYAH PERSEKUTUAN (KUALA LUMPUR)",
+      "guamanAgensi": "Tetuan T.Y. Teh & Partners",
+      "namaPeguamTpr": "Encik Lim Chee Chau",
+      "officeAddressO": "Suite B-11-7, Megan Avenue 1, No. 189 Jalan Tun Razak, 50400 Kuala Lumpur",
+      "officePhoneNoO": "03-21647002",
+      "PerayuRespondenId": "Tertuduh",
+      "namaPerayuResponden": "Chong Kim Pooi",
+      "emailPerayuResponden": "Tiada",
+      "noPhonePerayuResponden": "Tiada"
+    },
+    "LKK_INFOID": 3658,
+    "CREATEDDATE": "2025-03-12 22:41:49",
+    "CREATEDBY": "chanlee.lee",
+    "UPDATEDDATE": null,
+    "UPDATEDBY": null
+  }
+]

@@ -9,7 +9,7 @@ dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 
 // Dummy request body simulation
 const messages = [
-    { role: 'user', content: 'Apakah hukuman bagi penculikan?' }
+    { role: 'user', content: 'Ceritakan kes bunuh di Batu Caves' }
 ];
 
 async function main() {
@@ -32,14 +32,14 @@ async function main() {
         const vectorStr = `[${embeddingResponse.data[0].embedding.join(',')}]`;
 
         console.log('2. Querying...');
-        // match_documents now returns case_id
+        // match_documents now returns case_id and similarity
         const { rows: documents } = await pool.query(`
             SELECT * FROM match_documents($1, $2, $3, $4);
-        `, [vectorStr, 0.5, 3, {}]);
+        `, [vectorStr, 0.0, 5, {}]); // Set threshold to 0 to see all top 5 matches
 
         console.log(`Found ${documents.length} docs.`);
         if (documents.length > 0) {
-            console.log('Sample Doc IDs:', documents.map(d => ({ id: d.id, case_id: d.case_id })));
+            console.log('Top Docs:', documents.map(d => ({ case_id: d.case_id, similarity: d.similarity })));
         }
 
         console.log('3. Generating Response (Malay Prompt)...');

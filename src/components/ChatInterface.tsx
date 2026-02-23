@@ -115,7 +115,7 @@ export default function ChatInterface() {
         return parts.map((part, index) => {
             const match = part.match(/\[\[(.*?)\]\]\((\d+)\)/);
             if (match) {
-                const [_, title, id] = match;
+                const [, title, id] = match;
                 return (
                     <Link
                         key={index}

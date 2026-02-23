@@ -64,7 +64,7 @@ export default function CasesTable({ cases }: { cases: Case[] }) {
                     <thead className="bg-purple-50 sticky top-0 z-10 shadow-sm">
                         <tr>
                             <th scope="col" className="px-2 py-2 text-left text-[10px] font-bold text-gray-600 uppercase tracking-wider w-28">No. Fail</th>
-                            <th scope="col" className="px-2 py-2 text-left text-[10px] font-bold text-gray-600 uppercase tracking-wider w-48">Case Name</th>
+                            <th scope="col" className="px-2 py-2 text-left text-[10px] font-bold text-gray-600 uppercase tracking-wider w-48">Nama Kes</th>
                             <th scope="col" className="px-2 py-2 text-left text-[10px] font-bold text-gray-600 uppercase tracking-wider w-40">Nama OKT</th>
                             <th scope="col" className="px-2 py-2 text-left text-[10px] font-bold text-gray-600 uppercase tracking-wider w-24">Tarikh Buka</th>
                             <th scope="col" className="px-2 py-2 text-left text-[10px] font-bold text-gray-600 uppercase tracking-wider w-32">Mahkamah</th>

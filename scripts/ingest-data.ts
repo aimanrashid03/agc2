@@ -52,8 +52,8 @@ async function main() {
     try {
         await pool.connect();
 
-        // Optional: Clear existing embeddings if you want a fresh start
-        // await pool.query('DELETE FROM case_embeddings');
+        // Clear existing embeddings for a fresh start
+        await pool.query('DELETE FROM case_embeddings');
 
         const cleanedDataPath = path.join(process.cwd(), 'data', 'cleaned');
         const directories = await getDirectories(cleanedDataPath);
@@ -111,17 +111,18 @@ async function main() {
                 }]);
 
                 // 4. Generate Embeddings & Insert
-                // Process in batches to avoid rate limits? For now serial is safer for simple script.
                 for (const doc of docs) {
+                    const enrichedContent = `Case Name: ${c.LKK_DATA?.caseName || 'N/A'}\nCourt: ${c.LKK_DATA?.courtDesc || 'N/A'}\nState: ${c.LKK_DATA?.stateDesc || 'N/A'}\n---\n${doc.pageContent}`;
+
                     const embeddingResponse = await openai.embeddings.create({
                         model: 'text-embedding-3-small',
-                        input: doc.pageContent,
+                        input: enrichedContent,
                     });
                     const embedding = embeddingResponse.data[0].embedding;
 
                     await pool.query(
                         `INSERT INTO case_embeddings (case_id, content, metadata, embedding) VALUES ($1, $2, $3, $4)`,
-                        [caseId, doc.pageContent, doc.metadata, `[${embedding.join(',')}]`]
+                        [caseId, enrichedContent, doc.metadata, `[${embedding.join(',')}]`]
                     );
                 }
                 // console.log(`  Processed case ${c.LKK_INFOID}: ${docs.length} chunks.`);

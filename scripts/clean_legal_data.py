@@ -10,9 +10,16 @@ CLEAN_DIR = os.path.join(DATA_DIR, 'cleaned')
 
 # File mapping
 FILES_TO_PROCESS = {
+    'LT_LKK_INFOID.sql': 'clean_info.json',
     'LKK_INFOID.sql': 'clean_info.json',
+    'LT_LKK_INFO.sql': 'clean_info.json',
+    
+    'LT_LKK_ALLEGATION.sql': 'clean_allegation.json',
     'LKK_ALLEGATION.sql': 'clean_allegation.json',
-    'LKK_PERSON_INVOLVE.sql': 'clean_people.json'
+    
+    'LT_LKK_PERSON_INVOLVE.sql': 'clean_people.json',
+    'LKK_PERSON_INVOLVE.sql': 'clean_people.json',
+    'LT_LKK_PERSON_RESPONSIBLE.sql': 'clean_people.json'
 }
 
 def clean_text(text):
@@ -38,6 +45,9 @@ def clean_text(text):
 
     # Remove literal \n sequences often found in SQL dumps
     text = text.replace('\\n', ' ')
+    
+    # Replace STX control character (\x02 / \u0002) which seems to replace hyphens in this data dump
+    text = text.replace('\x02', '-')
     
     # Normalize whitespace (replace newlines, tabs, multiple spaces with single space)
     text = re.sub(r'\s+', ' ', text).strip()
@@ -179,7 +189,7 @@ def process_file(filepath, output_filename):
                 for k, v in row.items():
                     if isinstance(v, str):
                         # Attempt to parse nested JSON if it looks like it
-                        # e.g. LKK_DATA, LTL_DATA often contain JSON strings
+                        # e.g. LT_LKK_DATA, LTL_DATA often contain JSON strings
                         if (v.strip().startswith('{') and v.strip().endswith('}')) or \
                            (v.strip().startswith('[') and v.strip().endswith(']')):
                             try:
@@ -198,8 +208,8 @@ def process_file(filepath, output_filename):
                     else:
                         cleaned_row[k] = v
                 
-                # Ensure LKK_INFOID is present (it's the join key)
-                if 'LKK_INFOID' in cleaned_row:
+                # Ensure LT_LKK_INFOID is present (it's the join key)
+                if 'LT_LKK_INFOID' in cleaned_row:
                      # ensure it's standard type (e.g. string or int)? 
                      # The prompt implies preserving it. It's usually int.
                      pass

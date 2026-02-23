@@ -20,7 +20,7 @@ export default async function Home() {
     );
   }
 
-  const formattedCases: Case[] = cases?.map((c: any) => {
+  const formattedCases: Case[] = cases?.map((c: Case) => {
     // 1. Nama OKT
     const okts = c.people
       ?.filter((p: Person) => p.category === 'accused' || p.role?.toLowerCase().includes('tertuduh') || p.category === 'respondent')
@@ -47,8 +47,9 @@ export default async function Home() {
 
     // 5. KPI
     let kpi = "-";
-    if (c.raw_data && c.raw_data.LKK_DATA && c.raw_data.LKK_DATA.MemenuhiKPI) {
-      kpi = c.raw_data.LKK_DATA.MemenuhiKPI === "1" ? "Ya" : "Tidak";
+    const rawData = c.raw_data as any;
+    if (rawData && rawData.LKK_DATA && rawData.LKK_DATA.MemenuhiKPI) {
+      kpi = rawData.LKK_DATA.MemenuhiKPI === "1" ? "Ya" : "Tidak";
     }
 
     return {
