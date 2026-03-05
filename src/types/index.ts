@@ -60,4 +60,7 @@ export interface Case {
     okt_name?: string;
     akta?: string;
     seksyen?: string;
+    jenis_fail?: string;
+    no_kes?: string;
+    kpi?: string;
 }

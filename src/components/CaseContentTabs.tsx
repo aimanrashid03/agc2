@@ -1,24 +1,22 @@
 'use client';
 
-import { useState } from 'react';
 import { FileText, Gavel, Scale, AlignLeft } from 'lucide-react';
+import { useState } from 'react';
+
+const ALL_TABS = [
+    { id: 'fakta', label: 'Fakta Kes', icon: AlignLeft },
+    { id: 'alasan', label: 'Alasan Penghakiman', icon: Gavel },
+    { id: 'hujahan', label: 'Isu & Hujahan', icon: Scale },
+    { id: 'cadangan', label: 'Cadangan', icon: FileText },
+];
 
 export default function CaseContentTabs({ facts, judgement, issues, suggestions }: { facts: string | null, judgement: string | null, issues: string | null, suggestions: string | null }) {
-    const [activeTab, setActiveTab] = useState('fakta');
+    const contentMap: Record<string, string | null> = { fakta: facts, alasan: judgement, hujahan: issues, cadangan: suggestions };
+    const tabs = ALL_TABS.filter(t => contentMap[t.id]);
 
-    const tabs = [
-        { id: 'fakta', label: 'Fakta Kes', icon: AlignLeft, content: facts },
-        { id: 'alasan', label: 'Alasan Penghakiman', icon: Gavel, content: judgement },
-        { id: 'hujahan', label: 'Isu & Hujahan', icon: Scale, content: issues },
-        { id: 'cadangan', label: 'Cadangan', icon: FileText, content: suggestions },
-    ].filter(t => t.content); // Only show tabs with content
+    const [activeTab, setActiveTab] = useState(() => tabs[0]?.id ?? 'fakta');
 
     if (tabs.length === 0) return null;
-
-    // Set initial custom active tab if default 'fakta' has no content
-    if (!tabs.find(t => t.id === activeTab) && tabs.length > 0) {
-        setActiveTab(tabs[0].id);
-    }
 
     return (
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden flex flex-col h-[600px]"> {/* Fixed height container */}
@@ -45,7 +43,7 @@ export default function CaseContentTabs({ facts, judgement, issues, suggestions 
                 {tabs.map((tab) => (
                     <div key={tab.id} className={activeTab === tab.id ? 'block' : 'hidden'}>
                         <div className="prose max-w-none text-gray-700 text-sm whitespace-pre-wrap leading-relaxed">
-                            {tab.content?.replace(/\\n/g, '\n')}
+                            {contentMap[tab.id]?.replace(/\\n/g, '\n')}
                         </div>
                     </div>
                 ))}

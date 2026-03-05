@@ -4,12 +4,9 @@ import Link from 'next/link';
 import { ArrowLeft, User, Calendar, Scale, Folder, MapPin, Info } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { Case, Person, Allegation } from '@/types';
-
-export const revalidate = 0;
-
 import CaseContentTabs from '@/components/CaseContentTabs';
 
-// ... (imports remain same)
+export const revalidate = 0;
 
 export default async function CaseDetails(props: { params: Promise<{ id: string }> }) {
     const params = await props.params;

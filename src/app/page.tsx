@@ -42,13 +42,13 @@ export default async function Home() {
     if (match) noKes = match[1].trim();
 
     // 4. Akta & Seksyen (Aggregate from allegations)
-    const uniqueActs = Array.from(new Set(c.allegations?.map((a: Allegation) => a.act_desc).filter(Boolean))).join(', ');
-    const uniqueSections = Array.from(new Set(c.allegations?.map((a: Allegation) => a.section).filter(Boolean))).join(', ');
+    const uniqueActs = Array.from(new Set(c.allegations?.map((a: Allegation) => a.act_desc).filter(Boolean) ?? [])).join(', ');
+    const uniqueSections = Array.from(new Set(c.allegations?.map((a: Allegation) => a.section).filter(Boolean) ?? [])).join(', ');
 
     // 5. KPI
     let kpi = "-";
-    const rawData = c.raw_data as any;
-    if (rawData && rawData.LKK_DATA && rawData.LKK_DATA.MemenuhiKPI) {
+    const rawData = c.raw_data as Record<string, Record<string, string>> | null;
+    if (rawData?.LKK_DATA?.MemenuhiKPI) {
       kpi = rawData.LKK_DATA.MemenuhiKPI === "1" ? "Ya" : "Tidak";
     }
 

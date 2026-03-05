@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FileText, Settings, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
+import { FileText, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
 import { useState } from 'react';
 
 const Sidebar = () => {
@@ -37,12 +37,6 @@ const Sidebar = () => {
                 </Link>
             </nav>
 
-            <div className="p-2 border-t border-gray-100">
-                <Link href="/settings" className={`flex items-center ${isCollapsed ? 'justify-center px-0' : 'px-3'} py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-md transition-colors`}>
-                    <Settings className="w-4 h-4 flex-shrink-0" />
-                    {!isCollapsed && <span className="ml-3 truncate">Tetapan</span>}
-                </Link>
-            </div>
         </div>
     );
 };
