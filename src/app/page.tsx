@@ -20,6 +20,18 @@ export default async function Home() {
     );
   }
 
+  // Derive unique categories from source_folder
+  const uniqueCategories = Array.from(
+    new Set(cases?.map((c: Case) => c.source_folder).filter(Boolean) ?? [])
+  ) as string[];
+
+  // Find the latest updated_at across all cases
+  const latestUpdate = cases?.reduce((latest: string | null, c: Case) => {
+    if (!c.updated_at) return latest;
+    if (!latest || c.updated_at > latest) return c.updated_at;
+    return latest;
+  }, null as string | null);
+
   const formattedCases: Case[] = cases?.map((c: Case) => {
     // 1. Nama OKT
     const okts = c.people
@@ -66,14 +78,21 @@ export default async function Home() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center px-1">
-        <h1 className="text-xl font-bold text-gray-800 tracking-tight">Senarai LKK</h1>
+        <div>
+          <h1 className="text-xl font-bold text-gray-800 tracking-tight">Senarai Laporan Kes Kehakiman</h1>
+          {latestUpdate && (
+            <p className="text-xs text-gray-400 mt-0.5">
+              Tarikh Kemaskini: {new Date(latestUpdate).toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' })}
+            </p>
+          )}
+        </div>
         <div className="text-xs text-gray-500">
           {formattedCases.length} rekod
         </div>
       </div>
 
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <CasesTable cases={formattedCases} />
+        <CasesTable cases={formattedCases} categories={uniqueCategories} />
       </div>
     </div>
   );
