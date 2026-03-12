@@ -51,8 +51,11 @@ export async function POST(req: NextRequest) {
         const contextText = documents.map(doc => {
             const metadata = doc.metadata;
             const source = metadata?.source_folder || 'Unknown Act';
-            const caseId = doc.case_id; // Use real Case ID from DB (was doc.id which is embedding ID)
-            return `Case ID: ${caseId}\nSource: ${source}\nContent:\n${doc.content}`;
+            const caseId = doc.case_id;
+            // Extract case name from content (first line is "Case Name: ...")
+            const caseNameMatch = doc.content?.match(/Case Name:\s*(.+)/);
+            const caseName = caseNameMatch?.[1]?.trim() || 'Kes Tidak Diketahui';
+            return `Case ID: ${caseId}\nCase Name: ${caseName}\nCitation format: [[${caseName}]](${caseId})\nSource: ${source}\nContent:\n${doc.content}`;
         }).join('\n\n---\n\n');
 
         // 4. Generate Response with Streaming
@@ -63,7 +66,11 @@ Tugas anda:
 2. Jawab dalam BAHASA MELAYU secara lalai (default), melainkan pengguna bertanya dalam Bahasa Inggeris.
 3. Gunakan nada profesional, tepat, dan membantu. Anda boleh memahami loghat tempatan atau soalan ringkas.
 4. JIKA anda tidak tahu jawapan berdasarkan konteks, katakan "Maaf, maklumat tersebut tiada dalam pangkalan data kes saya."
-5. SENTIASA sertakan rujukan (citation) kepada kes yang digunakan. PENTING: Jika menyebut nama kes, formatkan sebagai [[Nama Kes]](case_id).
+5. SENTIASA sertakan rujukan (citation) kepada kes yang digunakan.
+   FORMAT WAJIB: [[Nama Kes]](case_id) — guna double square brackets.
+   Contoh: Dalam kes [[Pendakwa Raya lwn Ahmad bin Ali]](42), mahkamah memutuskan...
+   Contoh: Merujuk kepada [[PP v Lee Chong Fook]](15), fakta kes menunjukkan...
+   JANGAN guna format markdown biasa seperti [text](url). MESTI guna [[double brackets]](id).
 6. JIKA soalan pengguna terlalu ringkas (contoh: "kes bunuh") dan terdapat beberapa kes berbeza dalam konteks, sila minta penjelasan lanjut (cth: "Terdapat beberapa kes bunuh dalam rekod saya, adakah anda merujuk kepada kes X atau kes Y?").
 7. Jika Nama Kes tiada, gunakan "kes ini".
 

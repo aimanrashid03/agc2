@@ -111,9 +111,10 @@ export default function ChatInterface() {
     // Helper to render markdown-like citations
     // Format: [[Case Name]](case_id)
     const renderContent = (content: string) => {
-        const parts = content.split(/(\[\[.*?\]\]\(\d+\))/g);
+        // Match [[Case Name]](id) or fallback to [Case Name](id) with numeric-only IDs
+        const parts = content.split(/(\[\[.*?\]\]\(\d+\)|\[(?!\[)[^\]]+\]\(\d+\))/g);
         return parts.map((part, index) => {
-            const match = part.match(/\[\[(.*?)\]\]\((\d+)\)/);
+            const match = part.match(/\[\[?(.*?)\]?\]\((\d+)\)/);
             if (match) {
                 const [, title, id] = match;
                 return (
