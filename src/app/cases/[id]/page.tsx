@@ -5,6 +5,7 @@ import { ArrowLeft, User, Calendar, Scale, Folder, MapPin, Info } from 'lucide-r
 import { notFound } from 'next/navigation';
 import { Case, Person, Allegation } from '@/types';
 import CaseContentTabs from '@/components/CaseContentTabs';
+import ExportPDFButton from '@/components/ExportPDFButton';
 
 export const revalidate = 0;
 
@@ -50,6 +51,14 @@ export default async function CaseDetails(props: { params: Promise<{ id: string 
                 <ArrowLeft className="w-3.5 h-3.5 mr-1" />
                 Kembali
             </Link>
+
+            <div className="flex justify-end">
+                <ExportPDFButton
+                    caseId={String(caseData.id)}
+                    fileName={caseData.file_no || `kes_${caseData.id}`}
+                    size="md"
+                />
+            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Left Column: Case Info & People (Compact) */}

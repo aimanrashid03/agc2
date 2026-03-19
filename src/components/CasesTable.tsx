@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Eye, Search, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ChevronDown, ChevronUp, X } from 'lucide-react';
 import { useState, useRef, useCallback, Fragment } from 'react';
 import { Case } from '@/types';
+import ExportPDFButton from '@/components/ExportPDFButton';
 
 interface CategoryOption {
     value: string;
@@ -28,6 +29,7 @@ const COLUMNS = [
     { label: 'Seksyen',        width: 96,  min: 40,  resizable: true  },
     { label: 'Status Laporan', width: 100, min: 40,  resizable: true  },
     { label: 'Papar',          width: 52,  min: 52,  resizable: false },
+    { label: 'Muat Turun',     width: 88,  min: 88,  resizable: false },
 ];
 
 export default function CasesTable({ cases, categories, states }: CasesTableProps) {
@@ -273,6 +275,14 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                                         >
                                             <Eye className="w-4 h-4" />
                                         </Link>
+                                    </td>
+                                    <td className="px-3 py-2.5 whitespace-nowrap text-center align-top">
+                                        <ExportPDFButton
+                                            caseId={String(c.id)}
+                                            fileName={c.file_no || `kes_${c.id}`}
+                                            variant="icon"
+                                            className="text-gray-500 group-hover:text-green-700"
+                                        />
                                     </td>
                                     <td />
                                 </tr>
