@@ -45,16 +45,14 @@ export default function MultiCaseExportButton({
         throw new Error(message);
       }
 
-      // Get the blob and open in new tab for printing
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const win = window.open(url, '_blank');
-      if (win) {
-        // Give it a moment to load, then trigger print dialog
-        setTimeout(() => {
-          win.print();
-        }, 500);
-      }
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `LaporanPelbagaiKes_${new Date().toISOString().replace(/[:]/g, '-').replace(/\..+$/, '')}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
       window.URL.revokeObjectURL(url);
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown error';

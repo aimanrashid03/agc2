@@ -127,11 +127,12 @@ export async function POST(request: NextRequest) {
     console.log(`[PDF Export] PDF generated successfully`);
 
     const pdfBody = new Uint8Array(pdfBuffer);
+    const timestamp = new Date().toISOString().replace(/[:]/g, '-').replace(/\..+$/, '');
     return new NextResponse(pdfBody, {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': `inline; filename="Trend_of_Sentencing_${new Date().toISOString().split('T')[0]}.pdf"`,
+        'Content-Disposition': `attachment; filename="LaporanPelbagaiKes_${timestamp}.pdf"`,
         'Cache-Control': 'no-store',
       },
     });
