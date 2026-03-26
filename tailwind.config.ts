@@ -12,18 +12,18 @@ const config: Config = {
                 background: "var(--background)",
                 foreground: "var(--foreground)",
                 primary: {
-                    DEFAULT: '#4a1d96', // Adjust based on design (purple accent mentioned in prompt "purple accent")
-                    50: '#f5f3ff',
-                    100: '#ede9fe',
-                    200: '#ddd6fe',
-                    300: '#c4b5fd',
-                    400: '#a78bfa',
-                    500: '#8b5cf6',
-                    600: '#7c3aed',
-                    700: '#6d28d9',
-                    800: '#5b21b6',
-                    900: '#4c1d95',
-                }
+  DEFAULT: '#7d041a',
+  50: '#fdf2f4',
+  100: '#fce7ea',
+  200: '#f9d0d8',
+  300: '#f3a8b7',
+  400: '#ea748d',
+  500: '#dc4a6f',
+  600: '#c92a52',
+  700: '#a8183b',
+  800: '#7d041a',
+  900: '#5f0416',
+}
             },
             fontFamily: {
                 sans: ["var(--font-public-sans)", "sans-serif"],

@@ -137,14 +137,14 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                         </div>
                         <input
                             type="text"
-                            className="block w-full pl-9 pr-3 py-1.5 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-purple-500 focus:border-purple-500 text-sm transition duration-150 ease-in-out"
+                            className="block w-full pl-9 pr-3 py-1.5 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 text-sm transition duration-150 ease-in-out"
                             placeholder="Carian..."
                             value={searchTerm}
                             onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); setExpandedRow(null); }}
                         />
                     </div>
                     <select
-                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 bg-white ${selectedCategory ? 'border-purple-400 text-purple-700' : 'border-gray-300 text-gray-700'}`}
+                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 bg-white ${selectedCategory ? 'border-primary-400 text-primary-700' : 'border-gray-300 text-gray-700'}`}
                         value={selectedCategory}
                         onChange={(e) => { setSelectedCategory(e.target.value); setCurrentPage(1); setExpandedRow(null); }}
                     >
@@ -155,7 +155,7 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                         ))}
                     </select>
                     <select
-                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 bg-white ${selectedStatus ? 'border-purple-400 text-purple-700' : 'border-gray-300 text-gray-700'}`}
+                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 bg-white ${selectedStatus ? 'border-primary-400 text-primary-700' : 'border-gray-300 text-gray-700'}`}
                         value={selectedStatus}
                         onChange={(e) => { setSelectedStatus(e.target.value); setCurrentPage(1); setExpandedRow(null); }}
                     >
@@ -164,7 +164,7 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                         <option value="BELUM SELESAI">Belum Selesai</option>
                     </select>
                     <select
-                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 bg-white ${selectedState ? 'border-purple-400 text-purple-700' : 'border-gray-300 text-gray-700'}`}
+                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 bg-white ${selectedState ? 'border-primary-400 text-primary-700' : 'border-gray-300 text-gray-700'}`}
                         value={selectedState}
                         onChange={(e) => { setSelectedState(e.target.value); setCurrentPage(1); setExpandedRow(null); }}
                     >
@@ -176,7 +176,7 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                     {hasActiveFilters && (
                         <button
                             onClick={resetFilters}
-                            className="inline-flex items-center gap-1 px-2 py-1.5 text-xs font-medium text-purple-600 hover:text-purple-800 hover:bg-purple-50 rounded-md transition-colors"
+                            className="inline-flex items-center gap-1 px-2 py-1.5 text-xs font-medium text-primary-600 hover:text-primary-800 hover:bg-primary-50 rounded-md transition-colors"
                         >
                             <X className="h-3 w-3" />
                             Reset
@@ -186,7 +186,7 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                 <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <span>Papar:</span>
                     <select
-                        className="border border-gray-300 rounded p-1 focus:outline-none focus:border-purple-500 bg-white text-sm"
+                        className="border border-gray-300 rounded p-1 focus:outline-none focus:border-primary-500 bg-white text-sm"
                         value={rowsPerPage}
                         onChange={(e) => { setRowsPerPage(Number(e.target.value)); setCurrentPage(1); setExpandedRow(null); }}
                     >
@@ -206,13 +206,13 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                         ))}
                         <col />
                     </colgroup>
-                    <thead className="bg-purple-50 sticky top-0 z-10 shadow-sm">
+                    <thead className="bg-primary-50 sticky top-0 z-10 shadow-sm">
                         <tr>
                             {COLUMNS.map((col, i) => (
                                 <th
                                     key={i}
                                     scope="col"
-                                    className={`py-2.5 text-left text-xs font-bold text-gray-600 uppercase tracking-wider relative${i === COLUMNS.length - 1 ? ' text-center' : ''}${col.resizable ? ' border-r border-purple-200' : ''}`}
+                                    className={`py-2.5 text-left text-xs font-bold text-gray-600 uppercase tracking-wider relative${i === COLUMNS.length - 1 ? ' text-center' : ''}${col.resizable ? ' border-r border-primary-200' : ''}`}
                                 >
                                     <span className="px-3 block truncate overflow-hidden">{col.label}</span>
                                     {col.resizable && (
@@ -220,7 +220,7 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                                             className="absolute top-0 -right-1.5 h-full w-3 cursor-col-resize z-10 group/resize flex items-center justify-center"
                                             onMouseDown={(e) => startResize(e, i)}
                                         >
-                                            <div className="w-0.5 h-4 rounded-full bg-transparent group-hover/resize:bg-purple-500 transition-colors" />
+                                            <div className="w-0.5 h-4 rounded-full bg-transparent group-hover/resize:bg-primary-500 transition-colors" />
                                         </div>
                                     )}
                                 </th>
@@ -232,7 +232,7 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                         {paginatedCases.map((c) => (
                             <Fragment key={c.id}>
                                 <tr
-                                    className="hover:bg-purple-50/50 transition-colors group cursor-pointer"
+                                    className="hover:bg-primary-50/50 transition-colors group cursor-pointer"
                                     onClick={() => toggleRow(c.id)}
                                 >
                                     <td className="px-1 py-2.5 text-center align-top">
@@ -241,7 +241,7 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                                             : <ChevronDown className="w-4 h-4 text-gray-400 inline" />
                                         }
                                     </td>
-                                    <td className="px-3 py-2.5 text-sm text-purple-700 font-semibold align-top max-w-0">
+                                    <td className="px-3 py-2.5 text-sm text-primary-700 font-semibold align-top max-w-0">
                                         <span className={expandedRow === c.id ? 'whitespace-normal wrap-break-word' : 'block truncate'}>{c.file_no}</span>
                                     </td>
                                     <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
@@ -270,7 +270,7 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                                     <td className="px-3 py-2.5 whitespace-nowrap text-center align-top">
                                         <Link
                                             href={`/cases/${c.id}`}
-                                            className="text-gray-400 group-hover:text-purple-600 inline-flex items-center justify-center w-7 h-7 rounded-full hover:bg-purple-100 transition-colors"
+                                            className="text-gray-400 group-hover:text-primary-600 inline-flex items-center justify-center w-7 h-7 rounded-full hover:bg-primary-100 transition-colors"
                                             onClick={(e) => e.stopPropagation()}
                                         >
                                             <Eye className="w-4 h-4" />

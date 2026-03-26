@@ -121,7 +121,7 @@ export default function ChatInterface() {
                     <Link
                         key={index}
                         href={`/cases/${id}`}
-                        className="inline-flex items-center gap-1 px-1.5 py-0.5 mx-1 text-sm font-medium text-purple-600 bg-purple-50 rounded hover:bg-purple-100 transition-colors"
+                        className="inline-flex items-center gap-1 px-1.5 py-0.5 mx-1 text-sm font-medium text-primary-600 bg-primary-50 rounded hover:bg-primary-100 transition-colors"
                     >
                         <FileText size={14} />
                         {title}
@@ -136,7 +136,7 @@ export default function ChatInterface() {
         <div className="flex flex-col h-[calc(100vh-6rem)] max-w-4xl mx-auto">
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-white/50 backdrop-blur-sm">
                 <div className="flex items-center gap-2">
-                    <Bot size={20} className="text-purple-600" />
+                    <Bot size={20} className="text-primary-600" />
                     <h2 className="font-semibold text-gray-800">Legal Assistant</h2>
                 </div>
                 {messages.length > 0 && (
@@ -152,8 +152,8 @@ export default function ChatInterface() {
             <div className="flex-1 overflow-y-auto p-4 space-y-6">
                 {messages.length === 0 && (
                     <div className="flex flex-col items-center justify-center h-full text-center text-gray-500 space-y-4">
-                        <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
-                            <Bot size={32} className="text-purple-600" />
+                        <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                            <Bot size={32} className="text-primary-600" />
                         </div>
                         <div>
                             <h2 className="text-xl font-semibold text-gray-900">Legal Assistant</h2>
@@ -173,7 +173,7 @@ export default function ChatInterface() {
                         <div
                             className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${msg.role === 'user'
                                 ? 'bg-gray-900 text-white'
-                                : 'bg-purple-100 text-purple-600'
+                                : 'bg-primary-100 text-primary-600'
                                 }`}
                         >
                             {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
@@ -199,7 +199,7 @@ export default function ChatInterface() {
                 ))}
                 {isLoading && messages[messages.length - 1]?.role === 'user' && (
                     <div className="flex gap-4 justify-start">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center">
                             <Bot size={16} />
                         </div>
                         <div className="bg-white border border-gray-200 shadow-sm rounded-2xl px-4 py-3">
@@ -217,13 +217,13 @@ export default function ChatInterface() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Ask a question about cases..."
-                        className="flex-1 py-3 px-4 pr-12 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 transition-all"
+                        className="flex-1 py-3 px-4 pr-12 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                         disabled={isLoading}
                     />
                     <button
                         type="submit"
                         disabled={!input.trim() || isLoading}
-                        className="absolute right-2 p-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        className="absolute right-2 p-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                         {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
                     </button>

@@ -89,7 +89,7 @@ export default function ExportPDFButton({
     <button
       onClick={handleExport}
       disabled={loading}
-      className={`inline-flex items-center gap-2 font-medium rounded-lg border border-purple-200 bg-purple-50 text-purple-700 hover:bg-purple-100 hover:border-purple-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${sizeClasses[size]} ${className}`}
+      className={`inline-flex items-center gap-2 font-medium rounded-lg border border-primary-200 bg-primary-50 text-primary-700 hover:bg-primary-100 hover:border-primary-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors ${sizeClasses[size]} ${className}`}
       title="Muat turun laporan kes dalam format PDF"
     >
       {loading ? (
