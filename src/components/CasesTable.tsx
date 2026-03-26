@@ -15,11 +15,12 @@ interface CasesTableProps {
     cases: Case[];
     categories: CategoryOption[];
     states: string[];
+    onSelectedCasesChange?: (selectedIds: number[]) => void;
 }
 
 // Column definitions: label, initial width (px), min width (px), resizable
 const COLUMNS = [
-    { label: '',               width: 32,  min: 32,  resizable: false },
+    { label: '',               width: 40,  min: 40,  resizable: false },
     { label: 'No. Fail',       width: 112, min: 40,  resizable: true  },
     { label: 'Nama Kes',       width: 192, min: 40,  resizable: true  },
     { label: 'Nama OKT',       width: 160, min: 40,  resizable: true  },
@@ -32,7 +33,7 @@ const COLUMNS = [
     { label: 'Muat Turun',     width: 88,  min: 88,  resizable: false },
 ];
 
-export default function CasesTable({ cases, categories, states }: CasesTableProps) {
+export default function CasesTable({ cases, categories, states, onSelectedCasesChange }: CasesTableProps) {
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -40,6 +41,7 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedStatus, setSelectedStatus] = useState('');
     const [selectedState, setSelectedState] = useState('');
+    const [selectedCaseIds, setSelectedCaseIds] = useState<Set<number>>(new Set());
 
     // Column resize state
     const [colWidths, setColWidths] = useState<number[]>(COLUMNS.map(c => c.width));
@@ -75,6 +77,29 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
     }, []);
+
+    const toggleCaseSelection = (caseId: number, e: React.MouseEvent | React.ChangeEvent<HTMLInputElement>) => {
+        e.stopPropagation?.();
+        const newSelected = new Set(selectedCaseIds);
+        if (newSelected.has(caseId)) {
+            newSelected.delete(caseId);
+        } else {
+            newSelected.add(caseId);
+        }
+        setSelectedCaseIds(newSelected);
+        onSelectedCasesChange?.(Array.from(newSelected));
+    };
+
+    const toggleSelectAllOnPage = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newSelected = new Set(selectedCaseIds);
+        if (e.target.checked) {
+            paginatedCases.forEach(c => newSelected.add(c.id));
+        } else {
+            paginatedCases.forEach(c => newSelected.delete(c.id));
+        }
+        setSelectedCaseIds(newSelected);
+        onSelectedCasesChange?.(Array.from(newSelected));
+    };
 
     const hasActiveFilters = selectedCategory || selectedStatus || selectedState;
 
@@ -214,7 +239,18 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                                     scope="col"
                                     className={`py-2.5 text-left text-xs font-bold text-gray-600 uppercase tracking-wider relative${i === COLUMNS.length - 1 ? ' text-center' : ''}${col.resizable ? ' border-r border-primary-200' : ''}`}
                                 >
-                                    <span className="px-3 block truncate overflow-hidden">{col.label}</span>
+                                    {i === 0 ? (
+                                        <div className="px-3 flex items-center justify-center">
+                                            <input
+                                                type="checkbox"
+                                                checked={paginatedCases.length > 0 && paginatedCases.every(c => selectedCaseIds.has(c.id))}
+                                                onChange={toggleSelectAllOnPage}
+                                                className="h-4 w-4 rounded border-gray-300 cursor-pointer"
+                                            />
+                                        </div>
+                                    ) : (
+                                        <span className="px-3 block truncate overflow-hidden">{col.label}</span>
+                                    )}
                                     {col.resizable && (
                                         <div
                                             className="absolute top-0 -right-1.5 h-full w-3 cursor-col-resize z-10 group/resize flex items-center justify-center"
@@ -235,11 +271,13 @@ export default function CasesTable({ cases, categories, states }: CasesTableProp
                                     className="hover:bg-primary-50/50 transition-colors group cursor-pointer"
                                     onClick={() => toggleRow(c.id)}
                                 >
-                                    <td className="px-1 py-2.5 text-center align-top">
-                                        {expandedRow === c.id
-                                            ? <ChevronUp className="w-4 h-4 text-gray-400 inline" />
-                                            : <ChevronDown className="w-4 h-4 text-gray-400 inline" />
-                                        }
+                                    <td className="px-1 py-2.5 text-center align-top" onClick={(e) => e.stopPropagation()}>
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedCaseIds.has(c.id)}
+                                            onChange={(e) => toggleCaseSelection(c.id, e)}
+                                            className="h-4 w-4 rounded border-gray-300 cursor-pointer"
+                                        />
                                     </td>
                                     <td className="px-3 py-2.5 text-sm text-primary-700 font-semibold align-top max-w-0">
                                         <span className={expandedRow === c.id ? 'whitespace-normal wrap-break-word' : 'block truncate'}>{c.file_no}</span>

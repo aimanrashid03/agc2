@@ -728,7 +728,7 @@ export async function generateLaporanPdf(caseData: LaporanCaseData): Promise<Buf
 		const singleColumnLayout = { x, right, bottom };
 
 		drawTwoColumnRow(doc, state, 'Korum', audit.korum, tableLayout);
-		drawTwoColumnRow(doc, state, 'Perayu', audit.perayu, tableLayout);
+		drawTwoColumnRow(doc, state, 'Pendakwaan', audit.perayu, tableLayout);
 		drawTwoColumnRow(doc, state, 'Responden', audit.responden, tableLayout);
 		drawTwoColumnRow(doc, state, 'Pertuduhan', audit.pertuduhan, tableLayout);
 		drawSingleColumnRow(doc, state, 'Keputusan', audit.keputusan, singleColumnLayout);
@@ -738,8 +738,8 @@ export async function generateLaporanPdf(caseData: LaporanCaseData): Promise<Buf
 		drawSingleColumnRow(doc, state, 'Alasan Penghakiman', audit.alasanPenghakiman, singleColumnLayout);
 		drawSingleColumnRow(doc, state, 'Latar Belakang dan Fakta Kes', audit.latarBelakangDanFaktaKes, singleColumnLayout);
 		drawSingleColumnRow(doc, state, 'Isu Yang Dibangkitkan dan Hujahan', audit.isuDanHujahan, singleColumnLayout);
-		drawSingleColumnRow(doc, state, 'Cadangan TPR', audit.cadanganTPR, singleColumnLayout);
-		drawSingleColumnRow(doc, state, 'Cadangan PPN', audit.cadanganPPN, singleColumnLayout);
+		drawSingleColumnRow(doc, state, 'Cadangan Timbalan Pendakwa Raya', audit.cadanganTPR, singleColumnLayout);
+		drawSingleColumnRow(doc, state, 'Cadangan Pengarah Pendakwaan Negeri', audit.cadanganPPN, singleColumnLayout);
 		drawSingleColumnRow(doc, state, 'Tutup Fail', audit.tutupFail, singleColumnLayout);
 
 		// Add page numbers to all pages before finalizing
