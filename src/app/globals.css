@@ -10,6 +10,17 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: #7d041a;
+  --color-primary-50: #fdf2f4;
+  --color-primary-100: #fce7ea;
+  --color-primary-200: #f9d0d8;
+  --color-primary-300: #f3a8b7;
+  --color-primary-400: #ea748d;
+  --color-primary-500: #dc4a6f;
+  --color-primary-600: #c92a52;
+  --color-primary-700: #a8183b;
+  --color-primary-800: #7d041a;
+  --color-primary-900: #5f0416;
   --font-sans: var(--font-public-sans);
   --font-body: var(--font-source-sans);
 }

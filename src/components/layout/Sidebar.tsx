@@ -15,7 +15,7 @@ const Sidebar = () => {
                 {!isCollapsed && (
                     <div className="overflow-hidden">
                         <h1 className="text-lg font-bold text-gray-900 tracking-tight whitespace-nowrap">AGC Cases</h1>
-                        <p className="text-[10px] uppercase tracking-wider text-purple-600 font-semibold mt-0.5 whitespace-nowrap">Sistem Pengurusan Kes</p>
+                        <p className="text-[10px] uppercase tracking-wider text-primary-600 font-semibold mt-0.5 whitespace-nowrap">Sistem Pengurusan Kes</p>
                     </div>
                 )}
                 <button
@@ -27,12 +27,12 @@ const Sidebar = () => {
             </div>
 
             <nav className="flex-1 px-2 py-4 space-y-1">
-                <Link href="/" className={`flex items-center ${isCollapsed ? 'justify-center px-0' : 'px-3'} py-2 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-md transition-colors group`}>
-                    <FileText className="w-4 h-4 group-hover:text-purple-600 flex-shrink-0" />
+                <Link href="/" className={`flex items-center ${isCollapsed ? 'justify-center px-0' : 'px-3'} py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 rounded-md transition-colors group`}>
+                    <FileText className="w-4 h-4 group-hover:text-primary-600 flex-shrink-0" />
                     {!isCollapsed && <span className="ml-3 truncate">Senarai Kes</span>}
                 </Link>
-                <Link href="/chat" className={`flex items-center ${isCollapsed ? 'justify-center px-0' : 'px-3'} py-2 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-md transition-colors group`}>
-                    <MessageSquare className="w-4 h-4 group-hover:text-purple-600 flex-shrink-0" />
+                <Link href="/chat" className={`flex items-center ${isCollapsed ? 'justify-center px-0' : 'px-3'} py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 rounded-md transition-colors group`}>
+                    <MessageSquare className="w-4 h-4 group-hover:text-primary-600 flex-shrink-0" />
                     {!isCollapsed && <span className="ml-3 truncate">Chat AI</span>}
                 </Link>
             </nav>

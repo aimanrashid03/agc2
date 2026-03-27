@@ -28,7 +28,7 @@ export default function CaseContentTabs({ facts, judgement, issues, suggestions 
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex items-center px-6 py-3 text-xs font-bold uppercase tracking-wider transition-colors border-r border-gray-100 outline-none ${activeTab === tab.id
-                                    ? 'bg-white text-purple-600 border-t-2 border-t-purple-600'
+                                    ? 'bg-white text-primary-600 border-t-2 border-t-primary-600'
                                     : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
                                 }`}
                         >

@@ -1,6 +1,6 @@
 
 import { supabase } from '@/lib/supabaseClient';
-import CasesTable from '@/components/CasesTable';
+import CasesTableWrapper from '@/components/CasesTableWrapper';
 import { Case, Person, Allegation } from '@/types';
 
 export const revalidate = 0;
@@ -106,9 +106,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-        <CasesTable cases={formattedCases} categories={uniqueCategories} states={uniqueStates} />
-      </div>
+      <CasesTableWrapper cases={formattedCases} categories={uniqueCategories} states={uniqueStates} />
     </div>
   );
 }
