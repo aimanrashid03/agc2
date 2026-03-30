@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Public_Sans, Source_Sans_3 } from "next/font/google";
-import Sidebar from "@/components/layout/Sidebar";
+import AppShell from "@/components/layout/AppShell";
 import "./globals.css";
 
 const publicSans = Public_Sans({
@@ -28,12 +28,7 @@ export default function RootLayout({
       <body
         className={`${publicSans.variable} ${sourceSans.variable} antialiased font-sans bg-gray-50 text-gray-900`}
       >
-        <div className="flex h-screen overflow-hidden">
-          <Sidebar />
-          <main className="flex-1 overflow-y-auto p-4">
-            {children}
-          </main>
-        </div>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

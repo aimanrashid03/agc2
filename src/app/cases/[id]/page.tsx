@@ -1,5 +1,5 @@
 
-import { supabase } from '@/lib/supabaseClient';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { ArrowLeft, User, Calendar, Scale, Folder, MapPin, Info } from 'lucide-react';
 import { notFound } from 'next/navigation';
@@ -10,6 +10,8 @@ import ExportPDFButton from '@/components/ExportPDFButton';
 export const revalidate = 0;
 
 export default async function CaseDetails(props: { params: Promise<{ id: string }> }) {
+    const supabase = await createClient();
+
     const params = await props.params;
     const { id } = params;
 

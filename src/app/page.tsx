@@ -1,15 +1,17 @@
 
-import { supabase } from '@/lib/supabaseClient';
+import { createClient } from '@/lib/supabase/server';
 import CasesTableWrapper from '@/components/CasesTableWrapper';
 import { Case, Person, Allegation } from '@/types';
 
 export const revalidate = 0;
 
 export default async function Home() {
+  const supabase = await createClient();
+
   const { data: cases, error } = await supabase
     .from('cases')
     .select('*, people(*), allegations(*)')
-    .order('file_open_date', { ascending: false });
+    .order('file_open_date', { ascending: true });
 
   if (error) {
     console.error('Error fetching cases:', JSON.stringify(error));

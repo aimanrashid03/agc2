@@ -1,11 +1,50 @@
 'use client';
 
 import Link from 'next/link';
-import { FileText, ChevronLeft, ChevronRight, MessageSquare } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { FileText, ChevronLeft, ChevronRight, MessageSquare, LogOut, LayoutDashboard } from 'lucide-react';
 import { useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
+
+const NAV_ITEMS = [
+    { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/', label: 'Senarai Kes', icon: FileText },
+    { href: '/chat', label: 'Chat AI', icon: MessageSquare },
+];
 
 const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const pathname = usePathname();
+    const supabase = createClient();
+
+    const isActiveRoute = (href: string) => {
+        if (href === '/') {
+            return pathname === '/' || pathname.startsWith('/cases/');
+        }
+
+        return pathname === href || pathname.startsWith(`${href}/`);
+    };
+
+    const getNavClassName = (href: string) => {
+        const isActive = isActiveRoute(href);
+
+        return `group flex items-center ${isCollapsed ? 'justify-center px-0' : 'px-3'} py-2 text-sm font-medium rounded-md transition-colors ${
+            isActive
+                ? 'bg-primary-100 text-primary-800 border border-primary-200'
+                : 'text-gray-700 hover:bg-primary-50 hover:text-primary-700'
+        }`;
+    };
+
+    const getIconClassName = (href: string) => {
+        const isActive = isActiveRoute(href);
+
+        return `w-4 h-4 flex-shrink-0 ${isActive ? 'text-primary-700' : 'group-hover:text-primary-600'}`;
+    };
+
+    const handleSignOut = async () => {
+        await supabase.auth.signOut();
+        window.location.href = '/auth/login';
+    };
 
     return (
         <div
@@ -27,15 +66,34 @@ const Sidebar = () => {
             </div>
 
             <nav className="flex-1 px-2 py-4 space-y-1">
-                <Link href="/" className={`flex items-center ${isCollapsed ? 'justify-center px-0' : 'px-3'} py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 rounded-md transition-colors group`}>
-                    <FileText className="w-4 h-4 group-hover:text-primary-600 flex-shrink-0" />
-                    {!isCollapsed && <span className="ml-3 truncate">Senarai Kes</span>}
-                </Link>
-                <Link href="/chat" className={`flex items-center ${isCollapsed ? 'justify-center px-0' : 'px-3'} py-2 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700 rounded-md transition-colors group`}>
-                    <MessageSquare className="w-4 h-4 group-hover:text-primary-600 flex-shrink-0" />
-                    {!isCollapsed && <span className="ml-3 truncate">Chat AI</span>}
-                </Link>
+                {NAV_ITEMS.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = isActiveRoute(item.href);
+
+                    return (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            className={getNavClassName(item.href)}
+                            aria-current={isActive ? 'page' : undefined}
+                        >
+                            <Icon className={getIconClassName(item.href)} />
+                            {!isCollapsed && <span className="ml-3 truncate">{item.label}</span>}
+                        </Link>
+                    );
+                })}
             </nav>
+
+            <div className="px-2 py-3 border-t border-gray-100">
+                <button
+                    type="button"
+                    onClick={handleSignOut}
+                    className={`w-full flex items-center ${isCollapsed ? 'justify-center px-0' : 'px-3'} py-2 text-sm font-medium text-gray-700 hover:bg-red-50 hover:text-red-700 rounded-md transition-colors group`}
+                >
+                    <LogOut className="w-4 h-4 flex-shrink-0" />
+                    {!isCollapsed && <span className="ml-3 truncate">Log Keluar</span>}
+                </button>
+            </div>
 
         </div>
     );

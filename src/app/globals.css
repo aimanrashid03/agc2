@@ -41,3 +41,25 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
 }
+
+.judicial-wash {
+  background:
+    radial-gradient(1000px 600px at 10% 0%, rgba(255, 255, 255, 0.16), transparent 60%),
+    linear-gradient(145deg, #2b1117 0%, #6f1328 45%, #8f1934 100%);
+}
+
+.auth-enter {
+  animation: auth-enter 420ms ease-out;
+}
+
+@keyframes auth-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

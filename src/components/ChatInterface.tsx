@@ -1,13 +1,67 @@
 
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, type ReactNode } from 'react';
 import { Send, FileText, User, Bot, Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import MultiCaseExportButton from '@/components/MultiCaseExportButton';
 
 interface Message {
     role: 'user' | 'assistant';
     content: string;
+}
+
+function parseAssistantContent(content: string): {
+    nodes: ReactNode[];
+    caseIds: number[];
+} {
+    const citationPattern = /\[\[([^\[\]]+?)\]\]\((\d+)\)|\[(?!\[)([^\]]+)\]\((\d+)\)/g;
+    const nodes: ReactNode[] = [];
+    const uniqueCaseIds = new Set<number>();
+    let lastIndex = 0;
+
+    for (const match of content.matchAll(citationPattern)) {
+        const fullMatch = match[0] || '';
+        const startIndex = match.index ?? 0;
+
+        if (startIndex > lastIndex) {
+            nodes.push(
+                <span key={`text-${startIndex}`}>{content.slice(lastIndex, startIndex)}</span>,
+            );
+        }
+
+        const idString = match[2] || match[4];
+        const caseId = Number.parseInt(idString, 10);
+        if (Number.isInteger(caseId)) {
+            uniqueCaseIds.add(caseId);
+            const title = (match[1] || match[3] || 'Kes').trim();
+            nodes.push(
+                <Link
+                    key={`citation-${startIndex}-${caseId}`}
+                    href={`/cases/${caseId}`}
+                    className="mx-1 inline-flex items-center gap-1 rounded bg-primary-50 px-1.5 py-0.5 text-sm font-medium text-primary-600 transition-colors hover:bg-primary-100"
+                >
+                    <FileText size={14} />
+                    {title}
+                </Link>,
+            );
+        }
+
+        lastIndex = startIndex + fullMatch.length;
+    }
+
+    if (lastIndex < content.length) {
+        nodes.push(<span key="text-tail">{content.slice(lastIndex)}</span>);
+    }
+
+    if (nodes.length === 0) {
+        nodes.push(<span key="plain">{content}</span>);
+    }
+
+    return {
+        nodes,
+        caseIds: Array.from(uniqueCaseIds),
+    };
 }
 
 export default function ChatInterface() {
@@ -33,26 +87,24 @@ export default function ChatInterface() {
         }
     }, []);
 
-    // Save messages to localStorage whenever they change
+    // Save messages to localStorage whenever they change.
     useEffect(() => {
         if (messages.length > 0) {
             localStorage.setItem('chat_messages', JSON.stringify(messages));
         }
     }, [messages]);
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    };
-
     useEffect(() => {
-        scrollToBottom();
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!input.trim() || isLoading) return;
+        const trimmedInput = input.trim();
+        if (!trimmedInput || isLoading) return;
 
-        const userMessage: Message = { role: 'user', content: input };
+        const userMessage: Message = { role: 'user', content: trimmedInput };
+        const outgoingMessages = [...messages, userMessage];
         setMessages((prev) => [...prev, userMessage]);
         setInput('');
         setIsLoading(true);
@@ -64,7 +116,7 @@ export default function ChatInterface() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    messages: [...messages, userMessage],
+                    messages: outgoingMessages,
                 }),
             });
 
@@ -108,30 +160,6 @@ export default function ChatInterface() {
         }
     };
 
-    // Helper to render markdown-like citations
-    // Format: [[Case Name]](case_id)
-    const renderContent = (content: string) => {
-        // Match [[Case Name]](id) or fallback to [Case Name](id) with numeric-only IDs
-        const parts = content.split(/(\[\[.*?\]\]\(\d+\)|\[(?!\[)[^\]]+\]\(\d+\))/g);
-        return parts.map((part, index) => {
-            const match = part.match(/\[\[?(.*?)\]?\]\((\d+)\)/);
-            if (match) {
-                const [, title, id] = match;
-                return (
-                    <Link
-                        key={index}
-                        href={`/cases/${id}`}
-                        className="inline-flex items-center gap-1 px-1.5 py-0.5 mx-1 text-sm font-medium text-primary-600 bg-primary-50 rounded hover:bg-primary-100 transition-colors"
-                    >
-                        <FileText size={14} />
-                        {title}
-                    </Link>
-                );
-            }
-            return <span key={index}>{part}</span>;
-        });
-    };
-
     return (
         <div className="flex flex-col h-[calc(100vh-6rem)] max-w-4xl mx-auto">
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-white/50 backdrop-blur-sm">
@@ -164,7 +192,13 @@ export default function ChatInterface() {
                     </div>
                 )}
 
-                {messages.map((msg, i) => (
+                {messages.map((msg, i) => {
+                    const parsedAssistantContent = msg.role === 'assistant'
+                        ? parseAssistantContent(msg.content)
+                        : null;
+                    const recommendedCaseIds = parsedAssistantContent?.caseIds || [];
+
+                    return (
                     <div
                         key={i}
                         className={`flex gap-4 ${msg.role === 'user' ? 'justify-end' : 'justify-start'
@@ -188,15 +222,24 @@ export default function ChatInterface() {
                             <div className="prose prose-sm max-w-none dark:prose-invert">
                                 {msg.role === 'assistant' ? (
                                     <p className="whitespace-pre-wrap leading-relaxed">
-                                        {renderContent(msg.content)}
+                                        {parsedAssistantContent?.nodes}
                                     </p>
                                 ) : (
                                     <div className="whitespace-pre-wrap">{msg.content}</div>
                                 )}
                             </div>
+                            {msg.role === 'assistant' && recommendedCaseIds.length > 0 && (
+                                <div className="mt-3 border-t border-gray-100 pt-3">
+                                    <MultiCaseExportButton
+                                        selectedCaseIds={recommendedCaseIds}
+                                        className="w-full justify-center"
+                                    />
+                                </div>
+                            )}
                         </div>
                     </div>
-                ))}
+                    );
+                })}
                 {isLoading && messages[messages.length - 1]?.role === 'user' && (
                     <div className="flex gap-4 justify-start">
                         <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center">
