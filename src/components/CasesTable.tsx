@@ -15,6 +15,7 @@ interface CasesTableProps {
     cases: Case[];
     categories: CategoryOption[];
     states: string[];
+    selectedCaseIds?: number[];
     onSelectedCasesChange?: (selectedIds: number[]) => void;
 }
 
@@ -59,7 +60,7 @@ const SORTABLE_COLUMN_MAP: Record<number, SortField | null> = {
     10: null,
 };
 
-export default function CasesTable({ cases, categories, states, onSelectedCasesChange }: CasesTableProps) {
+export default function CasesTable({ cases, categories, states, selectedCaseIds = [], onSelectedCasesChange }: CasesTableProps) {
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -67,7 +68,7 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedStatus, setSelectedStatus] = useState('');
     const [selectedState, setSelectedState] = useState('');
-    const [selectedCaseIds, setSelectedCaseIds] = useState<Set<number>>(new Set());
+    const internalSelectedSet = new Set(selectedCaseIds);
     const [sortField, setSortField] = useState<SortField>('file_open_date');
     const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
 
@@ -106,24 +107,22 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
 
     const toggleCaseSelection = (caseId: number, e: React.MouseEvent | React.ChangeEvent<HTMLInputElement>) => {
         e.stopPropagation?.();
-        const newSelected = new Set(selectedCaseIds);
+        const newSelected = new Set(internalSelectedSet);
         if (newSelected.has(caseId)) {
             newSelected.delete(caseId);
         } else {
             newSelected.add(caseId);
         }
-        setSelectedCaseIds(newSelected);
         onSelectedCasesChange?.(Array.from(newSelected));
     };
 
     const toggleSelectAllOnPage = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newSelected = new Set(selectedCaseIds);
+        const newSelected = new Set(internalSelectedSet);
         if (e.target.checked) {
             paginatedCases.forEach(c => newSelected.add(c.id));
         } else {
             paginatedCases.forEach(c => newSelected.delete(c.id));
         }
-        setSelectedCaseIds(newSelected);
         onSelectedCasesChange?.(Array.from(newSelected));
     };
 
@@ -323,7 +322,7 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
                                         <div className="px-3 flex items-center justify-center">
                                             <input
                                                 type="checkbox"
-                                                checked={paginatedCases.length > 0 && paginatedCases.every(c => selectedCaseIds.has(c.id))}
+                                                checked={paginatedCases.length > 0 && paginatedCases.every(c => internalSelectedSet.has(c.id))}
                                                 onChange={toggleSelectAllOnPage}
                                                 className="h-4 w-4 rounded border-gray-300 cursor-pointer"
                                             />
@@ -383,7 +382,7 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
                                     <td className="px-1 py-2.5 text-center align-top" onClick={(e) => e.stopPropagation()}>
                                         <input
                                             type="checkbox"
-                                            checked={selectedCaseIds.has(c.id)}
+                                            checked={internalSelectedSet.has(c.id)}
                                             onChange={(e) => toggleCaseSelection(c.id, e)}
                                             className="h-4 w-4 rounded border-gray-300 cursor-pointer"
                                         />
