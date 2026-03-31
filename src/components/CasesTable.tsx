@@ -15,8 +15,21 @@ interface CasesTableProps {
     cases: Case[];
     categories: CategoryOption[];
     states: string[];
+    selectedCaseIds?: number[];
     onSelectedCasesChange?: (selectedIds: number[]) => void;
 }
+
+type SortField =
+    | 'file_no'
+    | 'case_name'
+    | 'okt_name'
+    | 'file_open_date'
+    | 'court_desc'
+    | 'akta'
+    | 'seksyen'
+    | 'status';
+
+type SortDirection = 'asc' | 'desc';
 
 // Column definitions: label, initial width (px), min width (px), resizable
 const COLUMNS = [
@@ -33,7 +46,21 @@ const COLUMNS = [
     { label: 'Muat Turun',     width: 88,  min: 88,  resizable: false },
 ];
 
-export default function CasesTable({ cases, categories, states, onSelectedCasesChange }: CasesTableProps) {
+const SORTABLE_COLUMN_MAP: Record<number, SortField | null> = {
+    0: null,
+    1: 'file_no',
+    2: 'case_name',
+    3: 'okt_name',
+    4: 'file_open_date',
+    5: 'court_desc',
+    6: 'akta',
+    7: 'seksyen',
+    8: 'status',
+    9: null,
+    10: null,
+};
+
+export default function CasesTable({ cases, categories, states, selectedCaseIds = [], onSelectedCasesChange }: CasesTableProps) {
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -41,18 +68,18 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedStatus, setSelectedStatus] = useState('');
     const [selectedState, setSelectedState] = useState('');
-    const [selectedCaseIds, setSelectedCaseIds] = useState<Set<number>>(new Set());
+    const internalSelectedSet = new Set(selectedCaseIds);
+    const [sortField, setSortField] = useState<SortField>('file_open_date');
+    const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
 
     // Column resize state
     const [colWidths, setColWidths] = useState<number[]>(COLUMNS.map(c => c.width));
     const [isResizing, setIsResizing] = useState(false);
     const resizingRef = useRef<{ colIdx: number; startX: number; startWidth: number } | null>(null);
-    const colWidthsRef = useRef(colWidths);
-    colWidthsRef.current = colWidths;
 
     const startResize = useCallback((e: React.MouseEvent, colIdx: number) => {
         e.preventDefault();
-        resizingRef.current = { colIdx, startX: e.clientX, startWidth: colWidthsRef.current[colIdx] };
+        resizingRef.current = { colIdx, startX: e.clientX, startWidth: colWidths[colIdx] };
         setIsResizing(true);
 
         const onMouseMove = (ev: MouseEvent) => {
@@ -76,28 +103,26 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
 
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
-    }, []);
+    }, [colWidths]);
 
     const toggleCaseSelection = (caseId: number, e: React.MouseEvent | React.ChangeEvent<HTMLInputElement>) => {
         e.stopPropagation?.();
-        const newSelected = new Set(selectedCaseIds);
+        const newSelected = new Set(internalSelectedSet);
         if (newSelected.has(caseId)) {
             newSelected.delete(caseId);
         } else {
             newSelected.add(caseId);
         }
-        setSelectedCaseIds(newSelected);
         onSelectedCasesChange?.(Array.from(newSelected));
     };
 
     const toggleSelectAllOnPage = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newSelected = new Set(selectedCaseIds);
+        const newSelected = new Set(internalSelectedSet);
         if (e.target.checked) {
             paginatedCases.forEach(c => newSelected.add(c.id));
         } else {
             paginatedCases.forEach(c => newSelected.delete(c.id));
         }
-        setSelectedCaseIds(newSelected);
         onSelectedCasesChange?.(Array.from(newSelected));
     };
 
@@ -109,6 +134,44 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
         setSelectedState('');
         setCurrentPage(1);
         setExpandedRow(null);
+    };
+
+    const getStringValue = (value?: string | null) => (value || '').toString().trim().toLocaleLowerCase('ms');
+
+    const getSortValue = (item: Case, field: SortField): string | number | null => {
+        switch (field) {
+            case 'file_open_date':
+                return item.file_open_date ? new Date(item.file_open_date).getTime() : null;
+            case 'file_no':
+                return getStringValue(item.file_no);
+            case 'case_name':
+                return getStringValue(item.case_name);
+            case 'okt_name':
+                return getStringValue(item.okt_name);
+            case 'court_desc':
+                return getStringValue(item.court_desc);
+            case 'akta':
+                return getStringValue(item.akta);
+            case 'seksyen':
+                return getStringValue(item.seksyen);
+            case 'status':
+                return getStringValue(item.status);
+            default:
+                return null;
+        }
+    };
+
+    const handleSort = (field: SortField) => {
+        setCurrentPage(1);
+        setExpandedRow(null);
+
+        if (sortField === field) {
+            setSortDirection(prev => (prev === 'asc' ? 'desc' : 'asc'));
+            return;
+        }
+
+        setSortField(field);
+        setSortDirection(field === 'file_open_date' ? 'desc' : 'asc');
     };
 
     // Filter Logic
@@ -135,10 +198,26 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
         return matchesSearch && matchesCategory && matchesStatus && matchesState;
     });
 
+    const sortedCases = [...filteredCases].sort((a, b) => {
+        const aValue = getSortValue(a, sortField);
+        const bValue = getSortValue(b, sortField);
+
+        if (aValue === bValue) return 0;
+        if (aValue === null || aValue === '') return 1;
+        if (bValue === null || bValue === '') return -1;
+
+        const comparison =
+            typeof aValue === 'number' && typeof bValue === 'number'
+                ? aValue - bValue
+                : String(aValue).localeCompare(String(bValue), 'ms', { numeric: true, sensitivity: 'base' });
+
+        return sortDirection === 'asc' ? comparison : -comparison;
+    });
+
     // Pagination Logic
-    const totalPages = Math.ceil(filteredCases.length / rowsPerPage);
+    const totalPages = Math.ceil(sortedCases.length / rowsPerPage);
     const startIndex = (currentPage - 1) * rowsPerPage;
-    const paginatedCases = filteredCases.slice(startIndex, startIndex + rowsPerPage);
+    const paginatedCases = sortedCases.slice(startIndex, startIndex + rowsPerPage);
 
     const handlePageChange = (page: number) => {
         if (page >= 1 && page <= totalPages) {
@@ -243,13 +322,42 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
                                         <div className="px-3 flex items-center justify-center">
                                             <input
                                                 type="checkbox"
-                                                checked={paginatedCases.length > 0 && paginatedCases.every(c => selectedCaseIds.has(c.id))}
+                                                checked={paginatedCases.length > 0 && paginatedCases.every(c => internalSelectedSet.has(c.id))}
                                                 onChange={toggleSelectAllOnPage}
                                                 className="h-4 w-4 rounded border-gray-300 cursor-pointer"
                                             />
                                         </div>
                                     ) : (
-                                        <span className="px-3 block truncate overflow-hidden">{col.label}</span>
+                                        (() => {
+                                            const sortableField = SORTABLE_COLUMN_MAP[i];
+                                            const isActiveSort = sortableField === sortField;
+
+                                            if (!sortableField) {
+                                                return <span className="px-3 block truncate overflow-hidden">{col.label}</span>;
+                                            }
+
+                                            return (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleSort(sortableField)}
+                                                    className="px-3 w-full flex items-center justify-between gap-1 text-left hover:text-primary-700 transition-colors"
+                                                    aria-label={`Sort ${col.label}`}
+                                                >
+                                                    <span className="block truncate overflow-hidden">{col.label}</span>
+                                                    <span className="flex-shrink-0">
+                                                        {isActiveSort ? (
+                                                            sortDirection === 'asc' ? (
+                                                                <ChevronUp className="h-3.5 w-3.5" />
+                                                            ) : (
+                                                                <ChevronDown className="h-3.5 w-3.5" />
+                                                            )
+                                                        ) : (
+                                                            <ChevronDown className="h-3.5 w-3.5 opacity-30" />
+                                                        )}
+                                                    </span>
+                                                </button>
+                                            );
+                                        })()
                                     )}
                                     {col.resizable && (
                                         <div
@@ -274,7 +382,7 @@ export default function CasesTable({ cases, categories, states, onSelectedCasesC
                                     <td className="px-1 py-2.5 text-center align-top" onClick={(e) => e.stopPropagation()}>
                                         <input
                                             type="checkbox"
-                                            checked={selectedCaseIds.has(c.id)}
+                                            checked={internalSelectedSet.has(c.id)}
                                             onChange={(e) => toggleCaseSelection(c.id, e)}
                                             className="h-4 w-4 rounded border-gray-300 cursor-pointer"
                                         />
