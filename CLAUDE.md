@@ -1,81 +1,103 @@
-# AGC2 - Claude Code Instructions
+# AGC2 — CLAUDE.md
 
 ## Project Overview
-**AGC2** = Attorney General's Chambers (Malaysia) Law Case Viewer. A Next.js web app for managing and querying Malaysian criminal law cases (LKK - Laporan Kes Kehakiman). Deployed on Vercel.
+**AGC2** = Attorney General's Chambers (Malaysia) Law Case Viewer. A Next.js web app for managing and querying Malaysian criminal law cases (LKK — Laporan Kes Kehakiman): searchable case table, metrics dashboard, RAG chat assistant, and official PDF report export. Deployed on Vercel. UI language is Malay (Bahasa Melayu).
 
 ## Tech Stack
-- **Framework**: Next.js (App Router), React 19, TypeScript 5
-- **Styling**: Tailwind CSS v4, `clsx`, `tailwind-merge`, Lucide icons
-- **Database**: PostgreSQL via Supabase (hosted). Two clients:
-  - `pg` Pool (`src/lib/db.ts`) — used by API routes (chat RAG)
-  - `@supabase/supabase-js` (`src/lib/supabaseClient.ts`) — used by pages for data fetching
-- **AI/RAG**: OpenAI (`gpt-4o` + `text-embedding-3-small`), LangChain text splitters
-- **Fonts**: Public Sans, Source Sans 3
-- **Dev port**: 3001
+- **Framework**: Next.js 16 (App Router), React 19, TypeScript 5 strict
+- **Styling**: Tailwind CSS v4, `clsx` + `tailwind-merge`, Lucide icons, purple primary `#4a1d96`, fonts Public Sans + Source Sans 3
+- **Auth + DB**: Supabase (hosted Postgres + Auth via `@supabase/ssr`); raw `pg` Pool for API routes
+- **AI/RAG**: OpenAI `gpt-4o` + `text-embedding-3-small` (1536d), LangChain text splitters, pgvector
+- **PDF**: pdfkit + svg-to-pdfkit (Node runtime only)
 
-## App Router Structure
-```
-src/app/
-  page.tsx              - Home: server component, fetches cases via Supabase
-  layout.tsx            - Root layout: sidebar + main content area, flex h-screen
-  loading.tsx           - Loading state
-  not-found.tsx         - 404 page
-  chat/page.tsx         - Chat page wrapper
-  cases/[id]/page.tsx   - Case detail (server component)
-  api/chat/route.ts     - POST endpoint for RAG chat (Node.js runtime)
+## Commands
+```bash
+npm run dev      # dev server on port 3001 (not 3000)
+npm run build    # type-check + build — MUST pass with zero errors before any task is "done"
+npm run lint     # ESLint
+npx tsx scripts/<name>.ts   # pipeline/diagnostic scripts (need .env)
 ```
 
-## Key Components
-- `src/components/CasesTable.tsx` — Paginated, searchable cases table
-- `src/components/ChatInterface.tsx` — Chat UI with streaming, citation links
-- `src/components/CaseContentTabs.tsx` — Tabbed view (Facts, Judgement, Issues, Suggestions)
-- `src/components/layout/Sidebar.tsx` — Collapsible sidebar nav
-- `src/types/index.ts` — Case, Person, Allegation interfaces
-
-## Database Schema
-- `cases` — id, source_id, source_folder, file_no, status, case_name, court_desc, state_desc, file_open_date, result, result_date, appeal_date, grounds_of_judgement, case_facts, issues_and_arguments, dpp_suggestion, dsp_suggestion, raw_data (jsonb)
-- `people` — id, case_id (FK), source_id, role, category, name, id_no, email, phone, address, raw_data
-- `allegations` — id, case_id (FK), source_id, type, section, act_desc, charge_notes, okt_name, charge_created_date, raw_data
-- `case_embeddings` — case_id (FK), content, metadata (jsonb), embedding (vector)
-- `match_documents()` — PG function for vector similarity search
-
-## Data Model Relationships
-- Cases have many People (accused, prosecutors, judges/corum)
-- Cases have many Allegations (charges with act/section)
-- Cases have many Embeddings (chunked text for RAG)
-
-## RAG Chat Flow
-1. User sends message → POST `/api/chat`
-2. API generates embedding via OpenAI `text-embedding-3-small`
-3. Vector similarity search via `match_documents()` (threshold 0.3, top 5)
-4. Context injected into system prompt (Malay legal assistant persona)
-5. GPT-4o generates streaming response
-6. Frontend renders stream with citation links `[[Case Name]](case_id)` → clickable `/cases/:id`
-
-## Data Pipeline
-1. Raw legal data cleaned by `scripts/clean_legal_data.py` → `data/cleaned/<category>/clean_info.json`, `clean_people.json`, `clean_allegation.json`
-2. `scripts/seed-data.ts` loads cleaned JSON into cases/people/allegations tables
-3. `scripts/ingest-data.ts` chunks case text (LangChain splitter) + generates OpenAI embeddings → `case_embeddings`
-
-## Data Categories
-- AKTA KANUN KESEKSAAN (Penal Code)
-- AKTA PENCULIKAN 1961 (Kidnapping Act)
-- Seksyen 39B (Drug trafficking)
-- TPR Chan Lee Lee
-- Lain-lain (Others)
-
-## UI Design
-- Purple accent theme (`#4a1d96` primary)
-- Collapsible sidebar with nav links (Senarai Kes, Chat AI, Tetapan)
-- Cases table: searchable, paginated (10/20/50 rows)
-- Case detail: 3-col layout (1 info sidebar + 2 content area)
-- Chat: streaming responses with localStorage persistence
-- UI language: primarily Malay (Bahasa Melayu)
-
-## Required Environment Variables
+## Environment (`.env`; same vars on Vercel)
 ```
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
-DATABASE_URL       # PostgreSQL connection string
-OPENAI_API_KEY
+DATABASE_URL       # Postgres connection string (pg pool; falls back to local docker 127.0.0.1:54322)
+OPENAI_API_KEY     # not needed for build (dummy-key fallback), needed at runtime
 ```
+
+## Documentation Map — read the matching doc BEFORE working on an area
+| Area | Read first |
+|---|---|
+| Routes, auth/middleware, layout shell, dashboard, client choice | [docs/architecture.md](docs/architecture.md) |
+| RAG chat pipeline, prompt/citation contract, thresholds | [docs/rag-chat.md](docs/rag-chat.md) |
+| Schema, match_documents(), pg-vs-supabase clients | [docs/database.md](docs/database.md) |
+| Clean → seed → ingest pipeline, data categories, scripts inventory | [docs/data-pipeline.md](docs/data-pipeline.md) |
+| Laporan + Trend PDF generation, layout constants | [docs/pdf-export.md](docs/pdf-export.md) |
+| Component prop contracts (non-obvious) | [docs/components.md](docs/components.md) |
+| Env, first-time DB setup, smoke checks | [docs/local-setup.md](docs/local-setup.md) |
+
+## Task Skills — invoke the matching skill at the START of the task
+| Task type | Skill |
+|---|---|
+| Any React/UI/page/layout work (`src/app`, `src/components`) | `frontend` |
+| Chat, RAG, embeddings, prompts, OpenAI config | `rag-chat` |
+| PDF generation or export routes/buttons | `pdf-export` |
+| Anything under `scripts/` or `data/` | `data-pipeline` |
+| Schema, match_documents, RLS, connection handling | `database` |
+
+Skills carry the task-specific rules, pinned numbers, and verification checklists. When skills overlap (e.g. the chat route touches DB), apply both.
+
+## Hard Rules (always apply)
+- TypeScript strict; `npm run build` must pass with **zero errors** before any task is "done".
+- **Supabase client per context**: `src/lib/supabase/client.ts` (client components), `server.ts` (server components), `middleware.ts` (root middleware only). `src/lib/supabaseClient.ts` is legacy — no new usage. `pg` pool (`src/lib/db.ts`) only in API routes/scripts; never import it client-side.
+- API routes that use `pg` or pdfkit keep `export const runtime = 'nodejs'`.
+- **Citation contract**: chat prompt emits `[[Nama Kes]](case_id)`; `ChatInterface.tsx` parses it — change both together or neither.
+- UI text in Malay; Tailwind only; Lucide icons; accent `#4a1d96`.
+- Pinned RAG numbers (threshold 0.3, top 5, 1000/200 chunking, 1536d embeddings) — see the `rag-chat` skill before touching.
+- Keep `transpilePackages: ['@supabase/ssr']` in `next.config.ts`.
+- Do not auto-commit; do not push unless asked; never force-push.
+- Never run seed/ingest/schema scripts against a non-local `DATABASE_URL` without stating the target and getting confirmation.
+- After changing a component contract, update [docs/components.md](docs/components.md); after schema changes, update [docs/database.md](docs/database.md). **Do not turn this file into a progress log** — feature docs go in `docs/`, history goes in git.
+
+## Behavioral Rules
+
+### Verify-After-Complete (MANDATORY)
+After finishing any implementation, task, or plan — ALWAYS run a verification step before declaring it done.
+
+| Work Type | Verification |
+|---|---|
+| Code / feature | `npm run build` (zero errors) |
+| RAG/chat change | `npx tsx scripts/test-retrieval.ts` + one real chat with citations rendering |
+| PDF change | Generate and OPEN a real PDF (long-content case for pagination) |
+| Pipeline script | Run on local/dev data; check counts (`count-cases.ts`, `check-embeddings.ts`) |
+| Config change | Re-read the config to confirm the change landed |
+| Git operation | `git status` clean; `git log` shows the commit |
+| Fact/data update | Grep for the OLD value (absent everywhere) AND the NEW value (present) |
+
+- **Don't assume it worked** — run the check and report the actual output.
+- **End-to-end over unit** — the most important check is the final output the user would see.
+- **Report failures plainly** — never soften a failure into "mostly working".
+- **Finish the current task before expanding scope** — note adjacent issues, don't detour.
+
+### Diagnose-First (Before Any Fix)
+Before writing any fix:
+1. **Reproduce it** — run the failing command/page yourself; never fix from a description alone.
+2. **Check git state** — `git status` (unstaged deletion?) and `git log --oneline -5` (already fixed?).
+3. **Identify the error source** — editor diagnostic vs build error vs runtime log; confirm which before acting.
+4. **Minimum viable diagnosis** — the simplest explanation that fits ALL the evidence; state it before fixing.
+
+### Plan-First (MANDATORY)
+ALWAYS enter plan mode before non-trivial changes — even if the user doesn't ask.
+- **Non-trivial** = modifies >1 file, adds functionality, changes behavior, or touches config/middleware/schema.
+- **Trivial** (skip plan) = single-line typo fix, one-file rename.
+- Sequence: **Plan → User Review → Execute**.
+
+### Verify-Before-Exit-Plan
+Before presenting any plan, self-audit it:
+1. **Count check** — "N files" claims match the actual list.
+2. **Path check** — every path verified to exist (Read/Glob) or explicitly marked "new file".
+3. **Wiring check** — for every new file/feature: who consumes it? Read the consumer and confirm.
+4. **Policy check** — rules cited from CLAUDE.md/docs are quoted from the file, not from memory.
+5. **Completeness check** — each item traced through its lifecycle: creation → wiring → type-check → (run/ingest if applicable).
+6. **Stale value check** — when updating a fact, grep the whole target for the OLD value to catch stale copies.
