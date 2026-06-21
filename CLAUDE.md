@@ -3,6 +3,8 @@
 ## Project Overview
 **AGC2** = Attorney General's Chambers (Malaysia) Law Case Viewer. A Next.js web app for managing and querying Malaysian criminal law cases (LKK — Laporan Kes Kehakiman): searchable case table, metrics dashboard, RAG chat assistant, and official PDF report export. Deployed on Vercel. UI language is Malay (Bahasa Melayu).
 
+> **Migrating to on-prem (in progress, started 2026-06-21).** The code today runs the cloud stack (Vercel + hosted Supabase + OpenAI, `vector(1536)`); the target is a client self-hosted Ubuntu VM: **Postgres + pgvector**, **Ollama** (`bge-m3` 1024d embeddings + `qwen2.5:7b-instruct`), Auth.js, and a recurring sync from the client's MySQL. Read [docs/on-prem-migration.md](docs/on-prem-migration.md) before any stack/DB/model/auth work — treat the current docs/skills as *current reality* and that doc as *the plan*.
+
 ## Tech Stack
 - **Framework**: Next.js 16 (App Router), React 19, TypeScript 5 strict
 - **Styling**: Tailwind CSS v4, `clsx` + `tailwind-merge`, Lucide icons, purple primary `#4a1d96`, fonts Public Sans + Source Sans 3
@@ -29,6 +31,7 @@ OPENAI_API_KEY     # not needed for build (dummy-key fallback), needed at runtim
 ## Documentation Map — read the matching doc BEFORE working on an area
 | Area | Read first |
 |---|---|
+| **On-prem migration: Postgres/pgvector, Ollama models, Auth.js, MySQL sync, grounding** | [docs/on-prem-migration.md](docs/on-prem-migration.md) |
 | Routes, auth/middleware, layout shell, dashboard, client choice | [docs/architecture.md](docs/architecture.md) |
 | RAG chat pipeline, prompt/citation contract, thresholds | [docs/rag-chat.md](docs/rag-chat.md) |
 | Schema, match_documents(), pg-vs-supabase clients | [docs/database.md](docs/database.md) |

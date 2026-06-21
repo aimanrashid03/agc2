@@ -10,6 +10,8 @@ description: Use when working on the AI chat, RAG retrieval, embeddings, prompts
 2. Read `src/app/api/chat/route.ts` end-to-end (it's ~125 lines) before touching any part of it.
 3. If the change affects retrieval quality, also read [docs/database.md](../../../docs/database.md) (`match_documents` signature) and `scripts/ingest-data.ts` (chunking).
 
+> **⚠️ Planned migration (see [docs/on-prem-migration.md](../../../docs/on-prem-migration.md)).** The numbers below describe the CURRENT (cloud/OpenAI) code. The on-prem target swaps embeddings to `bge-m3` (**1024d**, via Ollama), chat to `qwen2.5:7b-instruct` (Ollama) / OpenRouter in dev, and adds a verdict-join-at-assembly + ~0.55 similarity refusal gate. Don't apply those until you're doing the migration — and when you do, update these pinned numbers.
+
 ## Pinned numbers (do not drift)
 - Embedding: OpenAI `text-embedding-3-small`, **1536 dims** — must match `case_embeddings.embedding vector(1536)` AND the ingest script. Changing the model requires re-embedding everything; say so explicitly.
 - Match threshold **0.3** (deliberately lowered from 0.5 for vague Malay queries — raising it back will silently empty results for conversational questions).

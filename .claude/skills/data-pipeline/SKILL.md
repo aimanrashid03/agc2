@@ -5,6 +5,8 @@ description: Use when working on data cleaning, seeding, or embedding ingestion 
 
 # Data Pipeline Work — AGC2
 
+> **⚠️ Planned migration (see [docs/on-prem-migration.md](../../../docs/on-prem-migration.md)).** Target replaces the manual JSON drop with a **recurring sync from the client's view-only MySQL** (upsert on `source_id`, incremental re-embed — not the current full `DELETE`+re-embed), and swaps the embedder to Ollama `bge-m3` (**1024d**). Rules below describe the CURRENT pipeline.
+
 ## Before writing any code (mandatory pre-flight)
 1. Read [docs/data-pipeline.md](../../../docs/data-pipeline.md) — stages, script inventory, ordering rules.
 2. Read the script you're changing in full; check whether a sibling script depends on its output shape (clean → seed → ingest are coupled by file/format contracts).

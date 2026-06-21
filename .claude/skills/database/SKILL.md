@@ -5,6 +5,8 @@ description: Use when changing the database schema, match_documents(), RLS/grant
 
 # Database Work — AGC2
 
+> **⚠️ Planned migration (see [docs/on-prem-migration.md](../../../docs/on-prem-migration.md)).** Target moves off hosted Supabase to **self-hosted Postgres + pgvector on the client VM**; embedding column `vector(1536)` → **`vector(1024)`** (bge-m3) with full re-ingest; Supabase Auth → Auth.js and the ~5 supabase-js reads → `pg`. Rules below describe the CURRENT cloud code — update them as migration items land.
+
 ## Before writing any code (mandatory pre-flight)
 1. Read [docs/database.md](../../../docs/database.md) — tables, relationships, `match_documents` signature, client-per-context table.
 2. Read `scripts/setup-db.ts` in full — it is the single source of truth for schema (there is no migrations folder).
