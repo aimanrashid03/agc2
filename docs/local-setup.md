@@ -1,14 +1,18 @@
 # Local Setup — AGC2
 
+> **On-prem note:** this describes the CURRENT cloud setup (Supabase + OpenAI). For the planned self-hosted VM setup (Postgres + pgvector + Ollama, different env vars), and for continuing work inside the VM with Claude CLI, see [on-prem-migration.md](on-prem-migration.md).
+
 ## Prerequisites
 - Node 20+, npm. Python 3 only if running the data-cleaning stage.
 - A Supabase project (hosted) — or local Supabase via docker (the `pg` pool falls back to `127.0.0.1:54322`).
 
-## Environment (`.env`)
+## Environment (`.env.local`)
+Copy [.env.example](../.env.example) to `.env.local` and fill in:
 ```
 NEXT_PUBLIC_SUPABASE_URL=        # Supabase project URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY=   # Supabase anon key
-DATABASE_URL=                    # Postgres connection string (Supabase pooler or local)
+SUPABASE_SERVICE_ROLE_KEY=       # server-only; used by verify-function.ts
+DATABASE_URL=                    # Postgres connection string (Supabase SESSION pooler :5432, or local)
 OPENAI_API_KEY=                  # embeddings + gpt-4o chat
 ```
 The two `NEXT_PUBLIC_*` vars are consumed with non-null assertions — the app crashes at runtime (not build) without them. `next build` works without `OPENAI_API_KEY` (dummy-key fallback in the chat route).
@@ -29,6 +33,16 @@ npx tsx scripts/ingest-data.ts     # chunk + embed into case_embeddings (needs O
 ```
 Order matters: setup → seed → ingest. See [docs/data-pipeline.md](data-pipeline.md).
 
+## Moving to a new Supabase project (different account/env)
+1. Create the new project; collect URL, anon key, service role key, and the **Session pooler** connection string (port 5432 — DDL/`CREATE EXTENSION` need a session connection, not the transaction pooler on 6543).
+2. Enable `pgvector` — `setup-db.ts` runs `CREATE EXTENSION IF NOT EXISTS vector`; if the pooled role can't, enable it via **Dashboard → Database → Extensions → `vector`** first.
+3. Put the new values in `.env.local` (and the Vercel project env).
+4. ⚠️ Confirm `DATABASE_URL` points at the **new, empty** project, then `npx tsx scripts/setup-db.ts` — it `DROP TABLE`s first.
+5. Verify: `verify_new_schema.ts`, `verify_connection.ts`. Then full seed + ingest (see above), and check counts.
+6. `auth.users` does **not** carry over — recreate the login user via `/auth/sign-up`.
+
+To add more cases later (one new act at a time), use the folder-scoped flow in [docs/data-pipeline.md](data-pipeline.md#incremental-case-adds-one-new-act--one-new-folder).
+
 ## Smoke checks
 ```bash
 npx tsx scripts/verify_connection.ts   # DB reachable
@@ -40,4 +54,4 @@ npx tsx scripts/test-retrieval.ts      # vector search works
 All pages except `/auth/*` require a logged-in Supabase user — create one via `/auth/sign-up` on first run.
 
 ## Deployment
-Vercel. Set all four env vars in the Vercel project; `transpilePackages: ['@supabase/ssr']` in `next.config.ts` must stay.
+Vercel. Set all five env vars in the Vercel project; `transpilePackages: ['@supabase/ssr']` in `next.config.ts` must stay.

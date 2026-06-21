@@ -151,6 +151,7 @@ async function processDirectory(pool: Pool, dirName: string, basePath: string) {
                     INSERT INTO people (
                         case_id, source_id, role, category, name, id_no, email, phone, address, raw_data
                     ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+                    ON CONFLICT (case_id, source_id) DO NOTHING
                 `, [
                     caseDbId,
                     p.LTL_PERSON_ID,
@@ -181,6 +182,7 @@ async function processDirectory(pool: Pool, dirName: string, basePath: string) {
                     INSERT INTO allegations (
                         case_id, source_id, type, section, act_desc, charge_notes, okt_name, charge_created_date, raw_data
                     ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                    ON CONFLICT (case_id, source_id) DO NOTHING
                 `, [
                     caseDbId,
                     a.LLA_ALLEGATION_ID,
@@ -211,7 +213,21 @@ async function main() {
         await pool.connect();
 
         const cleanedDataPath = path.join(process.cwd(), 'data', 'cleaned');
-        const directories = await getDirectories(cleanedDataPath);
+        const allDirectories = await getDirectories(cleanedDataPath);
+
+        // Optional CLI args: limit seeding to the named folder(s) for incremental adds.
+        // e.g. `npx tsx scripts/seed-data.ts "AKTA BARU"` — no args seeds every folder.
+        const requested = process.argv.slice(2);
+        let directories = allDirectories;
+        if (requested.length > 0) {
+            const missing = requested.filter(d => !allDirectories.includes(d));
+            if (missing.length > 0) {
+                error(`Folder(s) not found in data/cleaned: ${missing.join(', ')}`);
+                return;
+            }
+            directories = requested;
+            log(`Seeding only requested folder(s): ${directories.join(', ')}`);
+        }
 
         for (const dir of directories) {
             await processDirectory(pool, dir, cleanedDataPath);

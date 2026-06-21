@@ -73,7 +73,8 @@ async function main() {
                 address TEXT,
                 raw_data JSONB,
                 created_at TIMESTAMP DEFAULT NOW(),
-                updated_at TIMESTAMP DEFAULT NOW()
+                updated_at TIMESTAMP DEFAULT NOW(),
+                UNIQUE(case_id, source_id) -- Idempotency guard: safe re-seed of a folder
             );
         `);
         console.log('Created table: people');
@@ -92,7 +93,8 @@ async function main() {
                 charge_created_date TIMESTAMP,
                 raw_data JSONB,
                 created_at TIMESTAMP DEFAULT NOW(),
-                updated_at TIMESTAMP DEFAULT NOW()
+                updated_at TIMESTAMP DEFAULT NOW(),
+                UNIQUE(case_id, source_id) -- Idempotency guard: safe re-seed of a folder
             );
         `);
         console.log('Created table: allegations');

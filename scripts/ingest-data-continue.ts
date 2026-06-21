@@ -50,7 +50,21 @@ async function main() {
         await pool.connect();
 
         const cleanedDataPath = path.join(process.cwd(), 'data', 'cleaned');
-        const directories = await getDirectories(cleanedDataPath);
+        const allDirectories = await getDirectories(cleanedDataPath);
+
+        // Optional CLI args: limit ingestion to the named folder(s) for incremental adds.
+        // e.g. `npx tsx scripts/ingest-data-continue.ts "AKTA BARU"` — no args ingests every folder.
+        const requested = process.argv.slice(2);
+        let directories = allDirectories;
+        if (requested.length > 0) {
+            const missing = requested.filter(d => !allDirectories.includes(d));
+            if (missing.length > 0) {
+                console.error(`Folder(s) not found in data/cleaned: ${missing.join(', ')}`);
+                return;
+            }
+            directories = requested;
+            console.log(`Ingesting only requested folder(s): ${directories.join(', ')}`);
+        }
 
         for (const dir of directories) {
             console.log(`Processing directory: ${dir}`);

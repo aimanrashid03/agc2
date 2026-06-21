@@ -32,4 +32,15 @@ Run TS scripts with `npx tsx scripts/<name>.ts` (they load `.env` via dotenv and
 ## Ordering rule
 Seeding must complete before ingesting (embeddings reference `case_id`). Re-running ingest after re-seeding requires clearing `case_embeddings` first or you get stale/duplicate chunks.
 
+## Incremental case adds (one new act = one new folder)
+To add more cases without re-uploading every act, drop the new batch into its **own new** `data/cleaned/<NEW ACT>/` folder (never append to an already-seeded folder), then run the seed + ingest scripts **scoped to that folder**:
+
+```bash
+npx tsx scripts/seed-data.ts "<NEW ACT>"                # seeds only that folder
+npx tsx scripts/ingest-data-continue.ts "<NEW ACT>"     # embeds only that folder's new cases
+npx tsx scripts/count-cases.ts && npx tsx scripts/check-embeddings.ts
+```
+
+Both scripts take optional folder-name args (`process.argv.slice(2)`); with no args they process every folder (unchanged full-seed behavior). Idempotency: `cases` upserts on `(source_id, source_folder)`, `people`/`allegations` carry `UNIQUE(case_id, source_id)` + `ON CONFLICT DO NOTHING`, and `ingest-data-continue.ts` skips already-embedded cases — so a re-run of the same folder adds zero duplicates.
+
 > Maintenance: new scripts get a row in the inventory table above.
