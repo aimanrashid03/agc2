@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import { X } from 'lucide-react';
-import { Case } from '@/types';
+import { CaseListItem } from '@/types';
 import CasesTable from '@/components/CasesTable';
 import MultiCaseExportButton from '@/components/MultiCaseExportButton';
 
 interface CasesTableWrapperProps {
-  cases: Case[];
+  cases: CaseListItem[];
   categories: Array<{ value: string; label: string }>;
   states: string[];
 }

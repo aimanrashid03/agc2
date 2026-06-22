@@ -1,124 +1,117 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import pool from '@/lib/db';
+import { aiConfig } from '@/lib/aiConfig';
 
-// Force usage of Node.js runtime for pg compatibility
+// pg + streaming need the Node.js runtime
 export const runtime = 'nodejs';
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY || 'dummy_key_for_build',
-});
+const { embed: EMBED, chat: CHAT, retrieval: RET, refusalMsg: REFUSAL_MSG } = aiConfig;
 
-export async function POST(req: NextRequest) {
-    try {
-        const body = await req.json();
-        const { messages } = body;
+const embedder = new OpenAI({ baseURL: EMBED.baseUrl, apiKey: EMBED.apiKey });
+const chat = new OpenAI({ baseURL: CHAT.baseUrl, apiKey: CHAT.apiKey || 'missing-key' });
 
-        if (!messages || messages.length === 0) {
-            return NextResponse.json({ error: 'No messages provided' }, { status: 400 });
-        }
-
-        const currentMessage = messages[messages.length - 1].content;
-
-        // 1. Generate Embedding for the query
-        const embeddingResponse = await openai.embeddings.create({
-            model: 'text-embedding-3-small',
-            input: currentMessage,
-        });
-
-        const embedding = embeddingResponse.data[0].embedding;
-        const vectorStr = `[${embedding.join(',')}]`;
-
-        // 2. Retrieve relevant documents using PG
-        // Use match_documents function
-        const { rows: documents } = await pool.query(`
-            SELECT * FROM match_documents(
-                $1, -- query_embedding (text)
-                $2, -- match_threshold
-                $3, -- match_count
-                $4  -- match_filter
-            );
-        `, [
-            vectorStr,
-            0.3, // Lowered threshold from 0.5 to 0.3 to accommodate vague/conversational queries
-            5,   // Top 5
-            {}   // Filter (passed as object, pg handles jsonb conversion)
-        ]);
-
-        // 3. Format Context
-        const contextText = documents.map(doc => {
-            const metadata = doc.metadata;
-            const source = metadata?.source_folder || 'Unknown Act';
-            const caseId = doc.case_id;
-            // Extract case name from content (first line is "Case Name: ...")
-            const caseNameMatch = doc.content?.match(/Case Name:\s*(.+)/);
-            const caseName = caseNameMatch?.[1]?.trim() || 'Kes Tidak Diketahui';
-            return `Case ID: ${caseId}\nCase Name: ${caseName}\nCitation format: [[${caseName}]](${caseId})\nSource: ${source}\nContent:\n${doc.content}`;
-        }).join('\n\n---\n\n');
-
-        // 4. Generate Response with Streaming
-        // 4. Generate Response with Streaming
-        const systemPrompt = `Anda adalah pembantu undang-undang AI pakar dalam undang-undang jenayah Malaysia (Kanun Keseksaan & Akta Penculikan).
+function buildSystemPrompt(contextText: string): string {
+    return `Anda adalah pembantu undang-undang AI pakar dalam undang-undang jenayah Malaysia (Kanun Keseksaan & Akta Penculikan).
 Tugas anda:
 1. Jawab soalan pengguna berdasarkan konteks yang diberikan SAHAJA.
 2. Jawab dalam BAHASA MELAYU secara lalai (default), melainkan pengguna bertanya dalam Bahasa Inggeris.
-3. Gunakan nada profesional, tepat, dan membantu. Anda boleh memahami loghat tempatan atau soalan ringkas.
-4. JIKA anda tidak tahu jawapan berdasarkan konteks, katakan "Maaf, maklumat tersebut tiada dalam pangkalan data kes saya."
-5. SENTIASA sertakan rujukan (citation) kepada kes yang digunakan.
-   FORMAT WAJIB: [[Nama Kes]](case_id) — guna double square brackets.
-   Contoh: Dalam kes [[Pendakwa Raya lwn Ahmad bin Ali]](42), mahkamah memutuskan...
-   Contoh: Merujuk kepada [[PP v Lee Chong Fook]](15), fakta kes menunjukkan...
-   JANGAN guna format markdown biasa seperti [text](url). MESTI guna [[double brackets]](id).
-6. JIKA soalan pengguna terlalu ringkas (contoh: "kes bunuh") dan terdapat beberapa kes berbeza dalam konteks, sila minta penjelasan lanjut (cth: "Terdapat beberapa kes bunuh dalam rekod saya, adakah anda merujuk kepada kes X atau kes Y?").
+3. Gunakan nada profesional, tepat, dan membantu.
+4. JIKA TIADA satu pun kes berkaitan dalam konteks, katakan "${REFUSAL_MSG}" dan BERHENTI. Tetapi JIKA ADA kes berkaitan dalam konteks, JAWAB dengannya — jangan menolak.
+5. SENTIASA rujuk kes menggunakan PENANDA nombornya sahaja, cth [1], [2]. JANGAN tulis nama kes atau id penuh — cukup penanda nombor dalam kurungan siku.
+6. JIKA soalan pengguna terlalu ringkas dan terdapat beberapa kes berbeza dalam konteks, sila minta penjelasan lanjut.
 7. Jika Nama Kes tiada, gunakan "kes ini".
+8. WAJIB: akhiri setiap jawapan (kecuali penolakan di perkara 4) dengan satu baris "Rujukan: " yang menyenaraikan penanda SEMUA kes yang anda guna, cth: "Rujukan: [1], [2]".
 
-PENTING: Jangan reka fakta. Hanya guna maklumat dari konteks di bawah.
+PERATURAN ANTI-REKAAN (PALING PENTING — kes ini melibatkan keputusan undang-undang sebenar):
+- JANGAN SEKALI-KALI mereka-reka nama kes, nama pihak (OKT/Pengadu), mahkamah, seksyen, tarikh, atau hukuman. Setiap fakta MESTI datang terus dari konteks di bawah.
+- Apabila diminta memberi "contoh kes", pilih HANYA daripada kes yang ada dalam konteks dan sertakan penanda. Jika tiada kes berkaitan, katakan tiada.
+- Jika hukuman/keputusan sesuatu kes TIDAK dinyatakan dalam konteks (atau bertanda "Tidak dinyatakan"), nyatakan "hukuman tidak dinyatakan dalam rekod" — JANGAN agak atau anggar.
+- JANGAN gunakan pengetahuan luar. Hanya guna konteks di bawah.
+
+CARA RUJUKAN KES:
+- Setiap kes dalam konteks diberi PENANDA seperti [1], [2], [3].
+- Setiap kali anda menyebut fakta sesuatu kes, letak penanda nombornya. Tulis HANYA nombor dalam kurungan siku — JANGAN tulis nama atau id.
 
 Konteks:
 ${contextText}
 `;
+}
 
-        if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'dummy_key_for_build') {
-            throw new Error('OpenAI API Key is missing or invalid in server environment.');
+// Numbered-tag citation post-process: the model emits [1]; we deterministically expand it to the
+// contract [[Real Case Name]](real_id) from a tag->case map the code controls. Cannot mis-attribute.
+function expandTags(answer: string, tagMap: Map<number, { id: number; name: string }>): string {
+    return answer.replace(/\[(\d{1,2})\]/g, (full, n) => {
+        const t = tagMap.get(parseInt(n, 10));
+        return t ? `[[${t.name}]](${t.id})` : full;
+    });
+}
+
+function textStream(text: string): Response {
+    const encoder = new TextEncoder();
+    const readable = new ReadableStream({
+        start(controller) { controller.enqueue(encoder.encode(text)); controller.close(); },
+    });
+    return new Response(readable, {
+        headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive' },
+    });
+}
+
+export async function POST(req: NextRequest) {
+    try {
+        const { messages } = await req.json();
+        if (!messages?.length) return NextResponse.json({ error: 'No messages provided' }, { status: 400 });
+        const currentMessage = messages[messages.length - 1].content;
+
+        // 1. Embed the query (bge-m3)
+        const emb = await embedder.embeddings.create({ model: EMBED.model, input: currentMessage });
+        const vectorStr = `[${(emb.data[0].embedding as number[]).join(',')}]`;
+
+        // 2. Retrieve top candidates (low floor; gate applied in code)
+        const { rows: documents } = await pool.query(
+            `SELECT * FROM match_documents($1, $2, $3, $4)`,
+            [vectorStr, RET.retrieveFloor, RET.matchCount, {}]);
+
+        // 3. Deterministic refusal gate — refuse without calling the LLM on out-of-DB questions
+        const topSim = documents[0]?.similarity ?? 0;
+        if (!documents.length || topSim < RET.refuseGate) {
+            return textStream(REFUSAL_MSG);
         }
 
-        const stream = await openai.chat.completions.create({
-            model: 'gpt-4o',
-            messages: [
-                { role: 'system', content: systemPrompt },
-                ...messages
-            ],
-            stream: true,
-        });
+        // 4. Assign a numbered tag per distinct case (retrieval order) + look up name & official verdict
+        const tagOf = new Map<number, number>();
+        const orderedCaseIds: number[] = [];
+        for (const d of documents) {
+            if (!tagOf.has(d.case_id)) { tagOf.set(d.case_id, tagOf.size + 1); orderedCaseIds.push(d.case_id); }
+        }
+        const { rows: caseRows } = await pool.query(
+            `SELECT id, case_name, result FROM cases WHERE id = ANY($1)`, [orderedCaseIds]);
+        const caseInfo = new Map<number, { name: string; result: string }>();
+        for (const r of caseRows) caseInfo.set(r.id, { name: r.case_name || 'Kes Tidak Diketahui', result: r.result || 'Tidak dinyatakan dalam rekod' });
+        const tagMap = new Map<number, { id: number; name: string }>();
+        for (const [caseId, tag] of tagOf) tagMap.set(tag, { id: caseId, name: caseInfo.get(caseId)?.name || 'Kes' });
 
-        // 5. Return Stream
-        const encoder = new TextEncoder();
+        // 5. Assemble context: tag + name + verdict joined at assembly time (NOT embedded) + chunk
+        const contextText = documents.map(d => {
+            const tag = tagOf.get(d.case_id);
+            const info = caseInfo.get(d.case_id);
+            return `[${tag}] Case ID: ${d.case_id}\nCase Name: ${info?.name}\nPenanda rujukan: [${tag}]\nKeputusan rasmi kes ini: ${info?.result}\nContent:\n${d.content}`;
+        }).join('\n\n---\n\n');
 
-        const readable = new ReadableStream({
-            async start(controller) {
-                for await (const chunk of stream) {
-                    const content = chunk.choices[0]?.delta?.content || '';
-                    if (content) {
-                        controller.enqueue(encoder.encode(content));
-                    }
-                }
-                controller.close();
-            },
-        });
+        if (!CHAT.apiKey) throw new Error('Chat API key missing (set OPENROUTER_API_KEY or CHAT_API_KEY).');
 
-        return new Response(readable, {
-            headers: {
-                'Content-Type': 'text/event-stream',
-                'Cache-Control': 'no-cache',
-                'Connection': 'keep-alive',
-            },
+        // 6. Generate, then expand tags -> [[name]](id) before returning (expansion needs the full text)
+        const completion = await chat.chat.completions.create({
+            model: CHAT.model,
+            messages: [{ role: 'system', content: buildSystemPrompt(contextText) }, ...messages],
+            temperature: 0,
         });
+        const answer = completion.choices[0]?.message?.content || '';
+        return textStream(expandTags(answer, tagMap));
 
     } catch (error) {
         console.error('Error in chat API:', error);
-        const errorMessage = error instanceof Error ? error.message : 'Internal Server Error';
-        return NextResponse.json({ error: errorMessage }, { status: 500 });
+        const msg = error instanceof Error ? error.message : 'Internal Server Error';
+        return NextResponse.json({ error: msg }, { status: 500 });
     }
 }

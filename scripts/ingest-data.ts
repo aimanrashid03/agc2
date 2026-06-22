@@ -1,142 +1,110 @@
-
+/**
+ * Embedding ingest (on-prem stack). Reads cases straight from Postgres (loaded by
+ * scripts/sync-mysql.ts), chunks each case, embeds with Ollama `bge-m3` (1024d via
+ * the OpenAI-compatible API), and writes to case_embeddings.
+ *
+ * Incremental: a case is (re)embedded only when it has no up-to-date embedding —
+ * i.e. no case_embeddings row whose metadata.content_hash == cases.content_hash.
+ * Changed cases have their stale chunks deleted and are re-embedded; unchanged
+ * cases are skipped. Replaces the old full `DELETE FROM case_embeddings` + OpenAI.
+ *
+ *   npx tsx scripts/ingest-data.ts             # embed all cases needing it
+ *   npx tsx scripts/ingest-data.ts --limit 200 # subset (fast validation first)
+ */
 import { Pool } from 'pg';
-import fs from 'fs';
-import path from 'path';
-import dotenv from 'dotenv';
 import OpenAI from 'openai';
 import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters';
+import path from 'path';
+import dotenv from 'dotenv';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 
-const CONNECTION_STRING = process.env.DATABASE_URL || 'postgresql://postgres:postgres@127.0.0.1:54322/postgres';
+const PG_CONN = process.env.DATABASE_URL || 'postgresql://postgres:postgres@127.0.0.1:5432/postgres';
+const OLLAMA_URL = process.env.OLLAMA_URL || 'http://127.0.0.1:11434/v1';
+const EMBED_MODEL = process.env.EMBED_MODEL || 'bge-m3';
+const BATCH = 32; // chunks per embeddings request
 
-interface CaseData {
-    LKK_INFOID: number;
-    LKK_FILE_NO: string;
-    LKK_STATUS: string;
-    LKK_DATA: any;
-    LKK_RESULT: string;
-    LKK_RESULT_DATE: string;
-    LKK_FINAL_DATE_FOR_APPEAL: string;
-    LKK_GROUNDS_OF_JUDGEMENT: string;
-    LKK_CASE_FACT: string;
-    LKK_ISSUES_AND_ARGUMENT: string;
-    LKK_DPP_SUGGESTION: string;
-    LKK_DSP_SUGGESTION: string;
+const args = process.argv.slice(2);
+const LIMIT = (() => { const i = args.indexOf('--limit'); return i >= 0 ? parseInt(args[i + 1], 10) : 0; })();
+// --sample N: stratified subset of N cases spread round-robin across source_folder (Act),
+// so even the long-tail categories are represented (better than --limit's lowest-id slice).
+const SAMPLE = (() => { const i = args.indexOf('--sample'); return i >= 0 ? parseInt(args[i + 1], 10) : 0; })();
+
+const client = new OpenAI({ baseURL: OLLAMA_URL, apiKey: 'ollama' });
+
+// Mirrors scripts/sync-mysql.ts buildCaseText so content_hash stays consistent.
+function buildCaseText(c: any): string {
+    return [
+        `Case Name: ${c.case_name || 'N/A'}`,
+        `Court: ${c.court_desc || 'N/A'}`,
+        `State: ${c.state_desc || 'N/A'}`,
+        `Facts: ${c.case_facts || 'N/A'}`,
+        `Issues & Arguments: ${c.issues_and_arguments || 'N/A'}`,
+        `Judgment: ${c.grounds_of_judgement || 'N/A'}`,
+        `Decision: ${c.result || 'N/A'}`,
+    ].filter(p => p.length > 20).join('\n\n');
 }
 
-async function getDirectories(source: string) {
-    return fs.readdirSync(source, { withFileTypes: true })
-        .filter(dirent => dirent.isDirectory())
-        .map(dirent => dirent.name);
+async function embedBatch(inputs: string[]): Promise<number[][]> {
+    const r = await client.embeddings.create({ model: EMBED_MODEL, input: inputs });
+    return r.data.map(d => d.embedding as number[]);
 }
 
 async function main() {
-    console.log('Starting ingestion process...');
+    console.log(`Ingest via Ollama ${EMBED_MODEL} @ ${OLLAMA_URL}${LIMIT ? ` (limit ${LIMIT})` : ''}`);
+    const pool = new Pool({ connectionString: PG_CONN });
+    const splitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000, chunkOverlap: 200 });
 
-    if (!process.env.OPENAI_API_KEY) {
-        console.error('Error: OPENAI_API_KEY is not set in .env.local');
-        process.exit(1);
-    }
+    // Cases needing (re)embedding: no chunk carrying the current content_hash.
+    const cols = `c.id, c.source_id, c.source_folder, c.case_name, c.court_desc, c.state_desc,
+                  c.case_facts, c.issues_and_arguments, c.grounds_of_judgement, c.result, c.content_hash`;
+    const notEmbedded = `NOT EXISTS (SELECT 1 FROM case_embeddings e
+                         WHERE e.case_id = c.id AND e.metadata->>'content_hash' = c.content_hash)`;
+    const sql = SAMPLE
+        ? `WITH ranked AS (
+               SELECT ${cols}, row_number() OVER (PARTITION BY c.source_folder ORDER BY c.id) AS rn
+               FROM cases c WHERE ${notEmbedded})
+           SELECT * FROM ranked ORDER BY rn, source_folder LIMIT ${SAMPLE}`
+        : `SELECT ${cols} FROM cases c WHERE ${notEmbedded} ORDER BY c.id ${LIMIT ? `LIMIT ${LIMIT}` : ''}`;
+    const { rows: cases } = await pool.query(sql);
+    console.log(`${cases.length} case(s) need embedding.`);
+    if (!cases.length) { await pool.end(); console.log('Nothing to do.'); return; }
 
-    const pool = new Pool({ connectionString: CONNECTION_STRING });
-    const openai = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY,
-    });
+    let done = 0, chunkTotal = 0;
+    const t0 = Date.now();
+    for (const c of cases) {
+        const text = buildCaseText(c);
+        if (text.length < 50) { done++; continue; }
 
-    const splitter = new RecursiveCharacterTextSplitter({
-        chunkSize: 1000,
-        chunkOverlap: 200,
-    });
+        const docs = await splitter.createDocuments([text]);
+        const enriched = docs.map(d =>
+            `Case Name: ${c.case_name || 'N/A'}\nCourt: ${c.court_desc || 'N/A'}\nState: ${c.state_desc || 'N/A'}\n---\n${d.pageContent}`);
 
-    try {
-        await pool.connect();
+        // refresh: drop any stale chunks for this case, then insert fresh
+        await pool.query('DELETE FROM case_embeddings WHERE case_id = $1', [c.id]);
 
-        // Clear existing embeddings for a fresh start
-        await pool.query('DELETE FROM case_embeddings');
-
-        const cleanedDataPath = path.join(process.cwd(), 'data', 'cleaned');
-        const directories = await getDirectories(cleanedDataPath);
-
-        for (const dir of directories) {
-            console.log(`Processing directory: ${dir}`);
-            const casesPath = path.join(cleanedDataPath, dir, 'clean_info.json');
-
-            if (!fs.existsSync(casesPath)) {
-                console.warn(`  Skipping ${dir}: clean_info.json not found.`);
-                continue;
+        for (let i = 0; i < enriched.length; i += BATCH) {
+            const slice = enriched.slice(i, i + BATCH);
+            const embs = await embedBatch(slice);
+            for (let j = 0; j < slice.length; j++) {
+                const metadata = {
+                    caseId: c.id, source_id: c.source_id, source_folder: c.source_folder, content_hash: c.content_hash,
+                };
+                await pool.query(
+                    'INSERT INTO case_embeddings (case_id, content, metadata, embedding) VALUES ($1,$2,$3,$4)',
+                    [c.id, slice[j], metadata, `[${embs[j].join(',')}]`]);
             }
-
-            const casesData: CaseData[] = JSON.parse(fs.readFileSync(casesPath, 'utf8'));
-            console.log(`  Found ${casesData.length} cases.`);
-
-            for (const c of casesData) {
-                // 1. Find the database ID for this case
-                const res = await pool.query(
-                    'SELECT id FROM cases WHERE source_id = $1 AND source_folder = $2',
-                    [c.LKK_INFOID, dir]
-                );
-
-                if (res.rows.length === 0) {
-                    console.warn(`  Case not found in DB: ${c.LKK_INFOID} (Folder: ${dir}). Skipping.`);
-                    continue;
-                }
-
-                const caseId = res.rows[0].id;
-
-                // 2. Construct text content to embed
-                // prioritizing important fields
-                const textParts = [
-                    `Case Name: ${c.LKK_DATA?.caseName || 'N/A'}`,
-                    `Court: ${c.LKK_DATA?.courtDesc || 'N/A'}`,
-                    `State: ${c.LKK_DATA?.stateDesc || 'N/A'}`,
-                    `Facts: ${c.LKK_CASE_FACT || 'N/A'}`,
-                    `Issues & Arguments: ${c.LKK_ISSUES_AND_ARGUMENT || 'N/A'}`,
-                    `Judgment: ${c.LKK_GROUNDS_OF_JUDGEMENT || 'N/A'}`,
-                    `Decision: ${c.LKK_RESULT || 'N/A'}`
-                ].filter(part => part.length > 20); // Filter out very short/empty parts
-
-                const fullText = textParts.join('\n\n');
-
-                if (fullText.length < 50) {
-                    // console.log(`  Skipping case ${c.LKK_INFOID}: Content too short.`);
-                    continue;
-                }
-
-                // 3. Split text
-                const docs = await splitter.createDocuments([fullText], [{
-                    caseId: caseId,
-                    source_id: c.LKK_INFOID,
-                    source_folder: dir
-                }]);
-
-                // 4. Generate Embeddings & Insert
-                for (const doc of docs) {
-                    const enrichedContent = `Case Name: ${c.LKK_DATA?.caseName || 'N/A'}\nCourt: ${c.LKK_DATA?.courtDesc || 'N/A'}\nState: ${c.LKK_DATA?.stateDesc || 'N/A'}\n---\n${doc.pageContent}`;
-
-                    const embeddingResponse = await openai.embeddings.create({
-                        model: 'text-embedding-3-small',
-                        input: enrichedContent,
-                    });
-                    const embedding = embeddingResponse.data[0].embedding;
-
-                    await pool.query(
-                        `INSERT INTO case_embeddings (case_id, content, metadata, embedding) VALUES ($1, $2, $3, $4)`,
-                        [caseId, enrichedContent, doc.metadata, `[${embedding.join(',')}]`]
-                    );
-                }
-                // console.log(`  Processed case ${c.LKK_INFOID}: ${docs.length} chunks.`);
-            }
-            console.log(`  Finished processing ${dir}`);
         }
-
-        console.log('\nIngestion complete.');
-
-    } catch (err) {
-        console.error('Fatal error:', err);
-    } finally {
-        await pool.end();
+        chunkTotal += enriched.length;
+        if (++done % 50 === 0) {
+            const secs = (Date.now() - t0) / 1000;
+            console.log(`  ${done}/${cases.length} cases, ${chunkTotal} chunks (${(chunkTotal / secs).toFixed(1)} chunks/s)`);
+        }
     }
+
+    const secs = (Date.now() - t0) / 1000;
+    console.log(`\nDone: embedded ${chunkTotal} chunks across ${done} cases in ${secs.toFixed(0)}s (${(chunkTotal / secs).toFixed(1)} chunks/s).`);
+    await pool.end();
 }
 
-main().catch(console.error);
+main().catch(e => { console.error('INGEST ERROR:', e); process.exit(1); });

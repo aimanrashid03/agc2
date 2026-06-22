@@ -11,11 +11,11 @@ description: Use when creating or modifying React components, pages, layout, sty
 3. For feature areas, read the matching doc first: routing/auth/layout → docs/architecture.md; chat UI → docs/rag-chat.md; export buttons → docs/pdf-export.md.
 
 ## Hard rules
-- **Pick the right Supabase client** — `src/lib/supabase/client.ts` in `'use client'` components, `src/lib/supabase/server.ts` in server components, never `createClient` inline. `src/lib/supabaseClient.ts` is legacy — don't use it for new code. (Wrong client = broken cookies/session.)
+- **Data + auth access (Supabase removed)** — server components read via `src/lib/cases.ts` (`pg`); auth actions in `'use client'` components use `signIn`/`signOut` from `next-auth/react`; current user via `auth()` (server).
 - **UI language is Malay** (Bahasa Melayu) — labels, buttons, error messages, empty states. English only in code identifiers and comments.
 - Tailwind CSS v4 only (no CSS modules/styled-components); Lucide for icons; purple primary theme `#4a1d96`.
-- Server components fetch via Supabase; client components must not import `src/lib/db.ts` (pg is server-only — it will break the build/bundle).
-- New pages outside `/auth/*` are automatically auth-protected by the root middleware — don't add per-page auth checks; don't add new public paths without updating `PUBLIC_PATHS` in `src/lib/supabase/middleware.ts`.
+- Server components fetch via `src/lib/cases.ts` (pg); client components must not import `src/lib/db.ts` (pg is server-only — it will break the build/bundle).
+- New pages outside `/auth/*` are automatically auth-protected by **`src/proxy.ts`** — don't add per-page auth checks; don't add public paths without updating `PUBLIC_PATHS` in `src/proxy.ts`.
 - The citation regex in `ChatInterface.tsx` and the prompt rules in `src/app/api/chat/route.ts` are a matched pair — never change one without the other.
 - Sidebar nav items are hardcoded in `NAV_ITEMS` (`src/components/layout/Sidebar.tsx`); new top-level pages need a row there.
 
@@ -26,6 +26,6 @@ description: Use when creating or modifying React components, pages, layout, sty
 
 ## Common mistakes
 - Importing the pg pool (`@/lib/db`) into a client component → build breaks or secrets leak.
-- Using the legacy `supabaseClient.ts` for auth-aware reads → session ignored, RLS surprises.
+- Putting the route gate at root `middleware.ts`/`proxy.ts` in this `src/` project → silently ignored (must be `src/proxy.ts`).
 - English UI strings slipping in → inconsistent with the rest of the app.
 - Changing the chat prompt's citation format without updating the frontend regex → citations silently stop being links.

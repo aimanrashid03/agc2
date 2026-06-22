@@ -1,0 +1,26 @@
+# Local dev database for the on-prem migration — mirrors the client VM's
+# self-hosted Postgres + pgvector (NOT Supabase). See docs/on-prem-migration.md.
+#   docker compose up -d        # start
+#   docker compose down         # stop (keeps data in the named volume)
+#   docker compose down -v      # stop + wipe data
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: agc2-pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - agc2-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  agc2-pgdata:

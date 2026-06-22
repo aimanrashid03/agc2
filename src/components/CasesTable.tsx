@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Eye, Search, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, ChevronDown, ChevronUp, X } from 'lucide-react';
 import { useState, useRef, useCallback, Fragment } from 'react';
-import { Case } from '@/types';
+import { CaseListItem } from '@/types';
 import ExportPDFButton from '@/components/ExportPDFButton';
 
 interface CategoryOption {
@@ -12,7 +12,7 @@ interface CategoryOption {
 }
 
 interface CasesTableProps {
-    cases: Case[];
+    cases: CaseListItem[];
     categories: CategoryOption[];
     states: string[];
     selectedCaseIds?: number[];
@@ -59,6 +59,11 @@ const SORTABLE_COLUMN_MAP: Record<number, SortField | null> = {
     9: null,
     10: null,
 };
+
+// Render a cell value, falling back to a muted dash for empty/placeholder data.
+function display(value?: string | null): string {
+    return value && value.trim() ? value : '-';
+}
 
 export default function CasesTable({ cases, categories, states, selectedCaseIds = [], onSelectedCasesChange }: CasesTableProps) {
     const [searchTerm, setSearchTerm] = useState('');
@@ -138,7 +143,7 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
 
     const getStringValue = (value?: string | null) => (value || '').toString().trim().toLocaleLowerCase('ms');
 
-    const getSortValue = (item: Case, field: SortField): string | number | null => {
+    const getSortValue = (item: CaseListItem, field: SortField): string | number | null => {
         switch (field) {
             case 'file_open_date':
                 return item.file_open_date ? new Date(item.file_open_date).getTime() : null;
@@ -184,10 +189,13 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
 
         let matchesCategory = true;
         if (selectedCategory === 'Kes Dadah') {
+            // Drug cases now live under the "AKTA DADAH BERBAHAYA 1952" source_folder (the old "39B"
+            // folder is gone); match on either the folder or the aggregated akta text.
+            const folder = c.source_folder?.toUpperCase() ?? '';
+            const akta = c.akta?.toUpperCase() ?? '';
             matchesCategory =
-                (c.source_folder?.includes('39B') ?? false) ||
-                (c.akta?.toUpperCase().includes('DADAH') ?? false) ||
-                (c.akta?.toUpperCase().includes('BERBAHAYA') ?? false);
+                folder.includes('DADAH') || folder.includes('BERBAHAYA') ||
+                akta.includes('DADAH') || akta.includes('BERBAHAYA');
         } else if (selectedCategory) {
             matchesCategory = c.source_folder === selectedCategory;
         }
@@ -230,6 +238,15 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
         setExpandedRow(expandedRow === id ? null : id);
     };
 
+    const handleRowKeyDown = (e: React.KeyboardEvent, id: number) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleRow(id);
+        }
+    };
+
+    const focusRing = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1';
+
     return (
         <div className="flex flex-col h-full bg-white rounded-lg shadow-sm border border-gray-200">
             {/* Controls */}
@@ -241,14 +258,16 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                         </div>
                         <input
                             type="text"
-                            className="block w-full pl-9 pr-3 py-1.5 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 text-sm transition duration-150 ease-in-out"
+                            aria-label="Cari mengikut no. fail, nama kes atau nama OKT"
+                            className={`block w-full pl-9 pr-3 py-1.5 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 text-sm transition duration-150 ease-in-out ${focusRing}`}
                             placeholder="Carian..."
                             value={searchTerm}
                             onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); setExpandedRow(null); }}
                         />
                     </div>
                     <select
-                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 bg-white ${selectedCategory ? 'border-primary-400 text-primary-700' : 'border-gray-300 text-gray-700'}`}
+                        aria-label="Tapis mengikut kategori"
+                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 bg-white ${focusRing} ${selectedCategory ? 'border-primary-400 text-primary-700' : 'border-gray-300 text-gray-700'}`}
                         value={selectedCategory}
                         onChange={(e) => { setSelectedCategory(e.target.value); setCurrentPage(1); setExpandedRow(null); }}
                     >
@@ -259,7 +278,8 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                         ))}
                     </select>
                     <select
-                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 bg-white ${selectedStatus ? 'border-primary-400 text-primary-700' : 'border-gray-300 text-gray-700'}`}
+                        aria-label="Tapis mengikut status"
+                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 bg-white ${focusRing} ${selectedStatus ? 'border-primary-400 text-primary-700' : 'border-gray-300 text-gray-700'}`}
                         value={selectedStatus}
                         onChange={(e) => { setSelectedStatus(e.target.value); setCurrentPage(1); setExpandedRow(null); }}
                     >
@@ -268,7 +288,8 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                         <option value="BELUM SELESAI">Belum Selesai</option>
                     </select>
                     <select
-                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 bg-white ${selectedState ? 'border-primary-400 text-primary-700' : 'border-gray-300 text-gray-700'}`}
+                        aria-label="Tapis mengikut negeri"
+                        className={`border rounded-md px-2 py-1.5 text-sm focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 bg-white ${focusRing} ${selectedState ? 'border-primary-400 text-primary-700' : 'border-gray-300 text-gray-700'}`}
                         value={selectedState}
                         onChange={(e) => { setSelectedState(e.target.value); setCurrentPage(1); setExpandedRow(null); }}
                     >
@@ -280,7 +301,7 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                     {hasActiveFilters && (
                         <button
                             onClick={resetFilters}
-                            className="inline-flex items-center gap-1 px-2 py-1.5 text-xs font-medium text-primary-600 hover:text-primary-800 hover:bg-primary-50 rounded-md transition-colors"
+                            className={`inline-flex items-center gap-1 px-2 py-1.5 text-xs font-medium text-primary-600 hover:text-primary-800 hover:bg-primary-50 rounded-md transition-colors ${focusRing}`}
                         >
                             <X className="h-3 w-3" />
                             Reset
@@ -290,7 +311,8 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                 <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <span>Papar:</span>
                     <select
-                        className="border border-gray-300 rounded p-1 focus:outline-none focus:border-primary-500 bg-white text-sm"
+                        aria-label="Bilangan baris setiap halaman"
+                        className={`border border-gray-300 rounded p-1 focus:outline-none focus:border-primary-500 bg-white text-sm ${focusRing}`}
                         value={rowsPerPage}
                         onChange={(e) => { setRowsPerPage(Number(e.target.value)); setCurrentPage(1); setExpandedRow(null); }}
                     >
@@ -304,6 +326,7 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
             {/* Table */}
             <div className={`overflow-x-auto flex-1${isResizing ? ' cursor-col-resize select-none' : ''}`}>
                 <table className="min-w-full divide-y divide-gray-200" style={{ tableLayout: 'fixed' }}>
+                    <caption className="sr-only">Senarai Laporan Kes Kehakiman — jadual boleh diisih dan ditapis</caption>
                     <colgroup>
                         {COLUMNS.map((_, i) => (
                             <col key={i} style={{ width: colWidths[i] }} />
@@ -322,9 +345,10 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                                         <div className="px-3 flex items-center justify-center">
                                             <input
                                                 type="checkbox"
+                                                aria-label="Pilih semua kes pada halaman ini"
                                                 checked={paginatedCases.length > 0 && paginatedCases.every(c => internalSelectedSet.has(c.id))}
                                                 onChange={toggleSelectAllOnPage}
-                                                className="h-4 w-4 rounded border-gray-300 cursor-pointer"
+                                                className={`h-4 w-4 rounded border-gray-300 cursor-pointer ${focusRing}`}
                                             />
                                         </div>
                                     ) : (
@@ -340,11 +364,11 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                                                 <button
                                                     type="button"
                                                     onClick={() => handleSort(sortableField)}
-                                                    className="px-3 w-full flex items-center justify-between gap-1 text-left hover:text-primary-700 transition-colors"
-                                                    aria-label={`Sort ${col.label}`}
+                                                    className={`px-3 w-full flex items-center justify-between gap-1 text-left hover:text-primary-700 transition-colors ${focusRing}`}
+                                                    aria-label={`Isih mengikut ${col.label}`}
                                                 >
                                                     <span className="block truncate overflow-hidden">{col.label}</span>
-                                                    <span className="flex-shrink-0">
+                                                    <span className="shrink-0">
                                                         {isActiveSort ? (
                                                             sortDirection === 'asc' ? (
                                                                 <ChevronUp className="h-3.5 w-3.5" />
@@ -373,67 +397,77 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                        {paginatedCases.map((c) => (
-                            <Fragment key={c.id}>
-                                <tr
-                                    className="hover:bg-primary-50/50 transition-colors group cursor-pointer"
-                                    onClick={() => toggleRow(c.id)}
-                                >
-                                    <td className="px-1 py-2.5 text-center align-top" onClick={(e) => e.stopPropagation()}>
-                                        <input
-                                            type="checkbox"
-                                            checked={internalSelectedSet.has(c.id)}
-                                            onChange={(e) => toggleCaseSelection(c.id, e)}
-                                            className="h-4 w-4 rounded border-gray-300 cursor-pointer"
-                                        />
-                                    </td>
-                                    <td className="px-3 py-2.5 text-sm text-primary-700 font-semibold align-top max-w-0">
-                                        <span className={expandedRow === c.id ? 'whitespace-normal wrap-break-word' : 'block truncate'}>{c.file_no}</span>
-                                    </td>
-                                    <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
-                                        <span className={expandedRow === c.id ? '' : 'block truncate'}>{c.case_name}</span>
-                                    </td>
-                                    <td className="px-3 py-2.5 text-sm text-gray-800 align-top max-w-0">
-                                        <span className={expandedRow === c.id ? '' : 'block truncate'}>{c.okt_name}</span>
-                                    </td>
-                                    <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
-                                        <span className={expandedRow === c.id ? 'whitespace-normal' : 'block truncate'}>{c.file_open_date ? new Date(c.file_open_date).toLocaleDateString('ms-MY') : '-'}</span>
-                                    </td>
-                                    <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
-                                        <span className={expandedRow === c.id ? '' : 'block truncate'}>{c.court_desc}</span>
-                                    </td>
-                                    <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
-                                        <span className={expandedRow === c.id ? '' : 'block truncate'}>{c.akta}</span>
-                                    </td>
-                                    <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
-                                        <span className={expandedRow === c.id ? '' : 'block truncate'}>{c.seksyen}</span>
-                                    </td>
-                                    <td className="px-3 py-2.5 align-top max-w-0">
-                                        <span className={`px-1.5 py-0.5 inline-flex text-[11px] leading-4 font-semibold rounded-full ${c.status === 'SELESAI' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
-                                            {c.status}
-                                        </span>
-                                    </td>
-                                    <td className="px-3 py-2.5 whitespace-nowrap text-center align-top">
-                                        <Link
-                                            href={`/cases/${c.id}`}
-                                            className="text-gray-400 group-hover:text-primary-600 inline-flex items-center justify-center w-7 h-7 rounded-full hover:bg-primary-100 transition-colors"
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            <Eye className="w-4 h-4" />
-                                        </Link>
-                                    </td>
-                                    <td className="px-3 py-2.5 whitespace-nowrap text-center align-top">
-                                        <ExportPDFButton
-                                            caseId={String(c.id)}
-                                            fileName={c.file_no || `kes_${c.id}`}
-                                            variant="icon"
-                                            className="text-gray-500 group-hover:text-green-700"
-                                        />
-                                    </td>
-                                    <td />
-                                </tr>
-                            </Fragment>
-                        ))}
+                        {paginatedCases.map((c) => {
+                            const isSelected = internalSelectedSet.has(c.id);
+                            const isExpanded = expandedRow === c.id;
+                            return (
+                                <Fragment key={c.id}>
+                                    <tr
+                                        className={`transition-colors group cursor-pointer ${focusRing} focus-visible:ring-inset ${isSelected ? 'bg-primary-50' : 'hover:bg-primary-50/50'}`}
+                                        onClick={() => toggleRow(c.id)}
+                                        onKeyDown={(e) => handleRowKeyDown(e, c.id)}
+                                        tabIndex={0}
+                                        aria-expanded={isExpanded}
+                                        aria-label={`Kes ${display(c.file_no)}. Tekan Enter untuk ${isExpanded ? 'tutup' : 'papar penuh'}.`}
+                                    >
+                                        <td className="px-1 py-2.5 text-center align-top" onClick={(e) => e.stopPropagation()}>
+                                            <input
+                                                type="checkbox"
+                                                aria-label={`Pilih kes ${display(c.file_no)}`}
+                                                checked={isSelected}
+                                                onChange={(e) => toggleCaseSelection(c.id, e)}
+                                                className={`h-4 w-4 rounded border-gray-300 cursor-pointer ${focusRing}`}
+                                            />
+                                        </td>
+                                        <td className="px-3 py-2.5 text-sm text-primary-700 font-semibold align-top max-w-0">
+                                            <span className={isExpanded ? 'whitespace-normal wrap-break-word' : 'block truncate'} title={c.file_no ?? undefined}>{display(c.file_no)}</span>
+                                        </td>
+                                        <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
+                                            <span className={isExpanded ? '' : 'block truncate'} title={c.case_name ?? undefined}>{display(c.case_name)}</span>
+                                        </td>
+                                        <td className="px-3 py-2.5 text-sm text-gray-800 align-top max-w-0">
+                                            <span className={isExpanded ? '' : 'block truncate'} title={c.okt_name ?? undefined}>{display(c.okt_name)}</span>
+                                        </td>
+                                        <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
+                                            <span className={isExpanded ? 'whitespace-normal' : 'block truncate'}>{c.file_open_date ? new Date(c.file_open_date).toLocaleDateString('ms-MY') : '-'}</span>
+                                        </td>
+                                        <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
+                                            <span className={isExpanded ? '' : 'block truncate'} title={c.court_desc ?? undefined}>{display(c.court_desc)}</span>
+                                        </td>
+                                        <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
+                                            <span className={isExpanded ? '' : 'block truncate'} title={c.akta ?? undefined}>{display(c.akta)}</span>
+                                        </td>
+                                        <td className="px-3 py-2.5 text-sm text-gray-600 align-top max-w-0">
+                                            <span className={isExpanded ? '' : 'block truncate'} title={c.seksyen ?? undefined}>{display(c.seksyen)}</span>
+                                        </td>
+                                        <td className="px-3 py-2.5 align-top max-w-0">
+                                            <span className={`px-1.5 py-0.5 inline-flex text-[11px] leading-4 font-semibold rounded-full ${c.status === 'SELESAI' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                                                {display(c.status)}
+                                            </span>
+                                        </td>
+                                        <td className="px-3 py-2.5 whitespace-nowrap text-center align-top">
+                                            <Link
+                                                href={`/cases/${c.id}`}
+                                                aria-label={`Papar butiran kes ${display(c.file_no)}`}
+                                                className={`text-gray-400 group-hover:text-primary-600 inline-flex items-center justify-center w-7 h-7 rounded-full hover:bg-primary-100 transition-colors ${focusRing}`}
+                                                onClick={(e) => e.stopPropagation()}
+                                            >
+                                                <Eye className="w-4 h-4" />
+                                            </Link>
+                                        </td>
+                                        <td className="px-3 py-2.5 whitespace-nowrap text-center align-top" onClick={(e) => e.stopPropagation()}>
+                                            <ExportPDFButton
+                                                caseId={String(c.id)}
+                                                fileName={c.file_no || `kes_${c.id}`}
+                                                variant="icon"
+                                                className="text-gray-500 group-hover:text-green-700"
+                                            />
+                                        </td>
+                                        <td />
+                                    </tr>
+                                </Fragment>
+                            );
+                        })}
                     </tbody>
                 </table>
                 {filteredCases.length === 0 && (
@@ -449,16 +483,16 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                     <button
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
-                        className="relative inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50"
+                        className={`relative inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 ${focusRing}`}
                     >
-                        Previous
+                        Sebelumnya
                     </button>
                     <button
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage >= totalPages || totalPages === 0}
-                        className="relative inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50"
+                        className={`relative inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 ${focusRing}`}
                     >
-                        Next
+                        Seterusnya
                     </button>
                 </div>
                 <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
@@ -468,35 +502,39 @@ export default function CasesTable({ cases, categories, states, selectedCaseIds 
                         </p>
                     </div>
                     <div>
-                        <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                        <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Penomboran halaman">
                             <button
                                 onClick={() => handlePageChange(1)}
                                 disabled={currentPage === 1}
-                                className="relative inline-flex items-center px-2 py-1.5 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                                aria-label="Halaman pertama"
+                                className={`relative inline-flex items-center px-2 py-1.5 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 ${focusRing}`}
                             >
                                 <ChevronsLeft className="h-3.5 w-3.5" />
                             </button>
                             <button
                                 onClick={() => handlePageChange(currentPage - 1)}
                                 disabled={currentPage === 1}
-                                className="relative inline-flex items-center px-2 py-1.5 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                                aria-label="Halaman sebelumnya"
+                                className={`relative inline-flex items-center px-2 py-1.5 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 ${focusRing}`}
                             >
                                 <ChevronLeft className="h-3.5 w-3.5" />
                             </button>
-                            <span className="relative inline-flex items-center px-3 py-1.5 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                            <span className="relative inline-flex items-center px-3 py-1.5 border border-gray-300 bg-white text-sm font-medium text-gray-700" aria-current="page">
                                 {currentPage} / {totalPages || 1}
                             </span>
                             <button
                                 onClick={() => handlePageChange(currentPage + 1)}
                                 disabled={currentPage >= totalPages || totalPages === 0}
-                                className="relative inline-flex items-center px-2 py-1.5 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                                aria-label="Halaman seterusnya"
+                                className={`relative inline-flex items-center px-2 py-1.5 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 ${focusRing}`}
                             >
                                 <ChevronRight className="h-3.5 w-3.5" />
                             </button>
                             <button
                                 onClick={() => handlePageChange(totalPages)}
                                 disabled={currentPage >= totalPages || totalPages === 0}
-                                className="relative inline-flex items-center px-2 py-1.5 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50"
+                                aria-label="Halaman terakhir"
+                                className={`relative inline-flex items-center px-2 py-1.5 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 disabled:opacity-50 ${focusRing}`}
                             >
                                 <ChevronsRight className="h-3.5 w-3.5" />
                             </button>

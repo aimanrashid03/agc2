@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
+import { getDashboardCases, type DashboardCase } from '@/lib/cases';
 import {
   ArrowRight,
   Award,
@@ -10,17 +10,6 @@ import {
   Library,
   type LucideIcon,
 } from 'lucide-react';
-
-type DashboardCase = {
-  id: number;
-  status: string | null;
-  state_desc: string | null;
-  source_folder: string | null;
-  updated_at: string | null;
-  file_open_date: string | null;
-  file_no: string | null;
-  case_name: string | null;
-};
 
 function formatMonthKey(monthKey: string) {
   const [year, month] = monthKey.split('-');
@@ -158,22 +147,16 @@ function RankedSummaryList({
 }
 
 export default async function DashboardPage() {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
-    .from('cases')
-    .select('id, status, state_desc, source_folder, updated_at, file_open_date, file_no, case_name')
-    .order('updated_at', { ascending: false });
-
-  if (error) {
+  let cases: DashboardCase[];
+  try {
+    cases = await getDashboardCases();
+  } catch (error) {
     return (
       <div className="p-4 text-red-700 bg-red-50 border border-red-200 rounded-md">
-        Ralat memuatkan data dashboard: {error.message}
+        Ralat memuatkan data dashboard: {error instanceof Error ? error.message : String(error)}
       </div>
     );
   }
-
-  const cases = (data ?? []) as DashboardCase[];
 
   const totalKes = cases.length;
   let selesaiCount = 0;

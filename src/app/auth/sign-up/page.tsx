@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { ArrowRight, Library, ShieldAlert } from 'lucide-react';
-import { createClient } from '@/lib/supabase/client';
+import { signIn } from 'next-auth/react';
 
 export default function SignUpPage() {
-  const supabase = createClient();
+  const router = useRouter();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,22 +34,29 @@ export default function SignUpPage() {
 
     setIsSubmitting(true);
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/login`,
-      },
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
     });
+    const data = await res.json().catch(() => ({}));
 
-    setIsSubmitting(false);
-
-    if (error) {
-      setErrorMessage(error.message || 'Pendaftaran gagal. Sila cuba lagi.');
+    if (!res.ok) {
+      setIsSubmitting(false);
+      setErrorMessage(data.error || 'Pendaftaran gagal. Sila cuba lagi.');
       return;
     }
 
-    setSuccessMessage('Pendaftaran berjaya. Sila semak emel untuk pengesahan akaun sebelum log masuk.');
+    // Auto sign-in after registration (local dev: no email confirmation step)
+    const signInRes = await signIn('credentials', { email, password, redirect: false });
+    setIsSubmitting(false);
+
+    if (signInRes?.error) {
+      setSuccessMessage('Pendaftaran berjaya. Sila log masuk.');
+      return;
+    }
+    router.replace('/');
+    router.refresh();
   };
 
   return (

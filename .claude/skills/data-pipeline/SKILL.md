@@ -5,7 +5,7 @@ description: Use when working on data cleaning, seeding, or embedding ingestion 
 
 # Data Pipeline Work — AGC2
 
-> **⚠️ Planned migration (see [docs/on-prem-migration.md](../../../docs/on-prem-migration.md)).** Target replaces the manual JSON drop with a **recurring sync from the client's view-only MySQL** (upsert on `source_id`, incremental re-embed — not the current full `DELETE`+re-embed), and swaps the embedder to Ollama `bge-m3` (**1024d**). Rules below describe the CURRENT pipeline.
+> **⚠️ Migration LANDED for local dev (2026-06-22).** Current path is **`sync-mysql.ts` → `ingest-data.ts`**: read client MySQL `ilims_usr` directly → clean/triage/categorize → upsert on `source_id` → incremental `bge-m3` embed (skip unchanged via `content_hash`). The `clean → seed → ingest` JSON path below is **LEGACY/unused** (kept). Still TODO: schedule the sync (cron/systemd) on the VM + source-side change detection.
 
 ## Before writing any code (mandatory pre-flight)
 1. Read [docs/data-pipeline.md](../../../docs/data-pipeline.md) — stages, script inventory, ordering rules.
@@ -16,10 +16,10 @@ description: Use when working on data cleaning, seeding, or embedding ingestion 
 - Stage order is **setup-db → clean → seed → ingest**. Embeddings reference `case_id`; re-seeding invalidates `case_embeddings` (clear before re-ingesting).
 - Cleaned output shape: `data/cleaned/<category>/clean_info.json` + `clean_people.json` + `clean_allegation.json` — seed-data.ts expects exactly these names per category folder.
 - Chunking: `RecursiveCharacterTextSplitter`, **chunkSize 1000 / chunkOverlap 200**; each chunk begins with a `Case Name: ...` line that the chat route parses for citations. Changing the header format breaks chat citations until re-ingest + route update.
-- Embedding model `text-embedding-3-small` (1536d) must match the `vector(1536)` column and the chat route.
+- Embedding model Ollama `bge-m3` (1024d) must match the `vector(1024)` column and the chat route. (Legacy path used `text-embedding-3-small`/1536.)
 
 ## Hard rules
-- TS scripts run via `npx tsx scripts/<name>.ts` and read `.env` (dotenv) — they need `DATABASE_URL`; ingest also needs `OPENAI_API_KEY`.
+- TS scripts run via `npx tsx scripts/<name>.ts` and read `.env.local` (dotenv) — they need `DATABASE_URL`; `sync-mysql.ts` needs `MYSQL_*` (+ VPN); `ingest-data.ts` needs `OLLAMA_URL` (bge-m3). (Legacy ingest used `OPENAI_API_KEY`.)
 - Ingestion costs real OpenAI money and is resumable — prefer `ingest-data-continue.ts` after partial failures instead of re-running from scratch.
 - Never point a seeding/ingest run at production unless the user explicitly asked; state which `DATABASE_URL` the run will hit before running.
 - `clean_legal_data.py` is plain Python stdlib — keep it dependency-free.

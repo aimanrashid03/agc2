@@ -1,5 +1,5 @@
 
-import { createClient } from '@/lib/supabase/server';
+import { getCaseWithRelations } from '@/lib/cases';
 import Link from 'next/link';
 import { ArrowLeft, User, Calendar, Scale, Folder, MapPin, Info } from 'lucide-react';
 import { notFound } from 'next/navigation';
@@ -10,8 +10,6 @@ import ExportPDFButton from '@/components/ExportPDFButton';
 export const revalidate = 0;
 
 export default async function CaseDetails(props: { params: Promise<{ id: string }> }) {
-    const supabase = await createClient();
-
     const params = await props.params;
     const { id } = params;
 
@@ -21,22 +19,19 @@ export default async function CaseDetails(props: { params: Promise<{ id: string 
         return <div>Invalid Case ID</div>;
     }
 
-    const { data: rawCaseData, error } = await supabase
-        .from('cases')
-        .select('*, people(*), allegations(*)')
-        .eq('id', caseId)
-        .maybeSingle();
-
-    const caseData = rawCaseData as (Case & { people: Person[], allegations: Allegation[] });
-
-    if (error) {
+    let rawCaseData: Case | null;
+    try {
+        rawCaseData = await getCaseWithRelations(caseId);
+    } catch (error) {
         console.error('Error fetching case:', error);
-        return <div className="p-8 text-center text-red-600">Error loading case details: {error.message}</div>;
+        return <div className="p-8 text-center text-red-600">Error loading case details: {error instanceof Error ? error.message : String(error)}</div>;
     }
 
-    if (!caseData) {
+    if (!rawCaseData) {
         notFound();
     }
+
+    const caseData = rawCaseData as (Case & { people: Person[], allegations: Allegation[] });
 
     // Group people by role/category
     const accused = caseData.people.filter((p: Person) => p.category === 'accused' || p.role?.toLowerCase().includes('tertuduh') || p.category === 'respondent');

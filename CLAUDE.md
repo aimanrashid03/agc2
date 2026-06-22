@@ -8,7 +8,7 @@
 ## Tech Stack
 - **Framework**: Next.js 16 (App Router), React 19, TypeScript 5 strict
 - **Styling**: Tailwind CSS v4, `clsx` + `tailwind-merge`, Lucide icons, purple primary `#4a1d96`, fonts Public Sans + Source Sans 3
-- **Auth + DB**: Supabase (hosted Postgres + Auth via `@supabase/ssr`); raw `pg` Pool for API routes
+- **Auth + DB**: local dev = **Auth.js v5** (Credentials+JWT, `users` table) + **`pg` pool** against a local pgvector container (Supabase fully removed). Deployed cloud branch may still be Supabase until the VM cutover — see [docs/on-prem-migration.md](docs/on-prem-migration.md).
 - **AI/RAG**: OpenAI `gpt-4o` + `text-embedding-3-small` (1536d), LangChain text splitters, pgvector
 - **PDF**: pdfkit + svg-to-pdfkit (Node runtime only)
 
@@ -53,12 +53,12 @@ Skills carry the task-specific rules, pinned numbers, and verification checklist
 
 ## Hard Rules (always apply)
 - TypeScript strict; `npm run build` must pass with **zero errors** before any task is "done".
-- **Supabase client per context**: `src/lib/supabase/client.ts` (client components), `server.ts` (server components), `middleware.ts` (root middleware only). `src/lib/supabaseClient.ts` is legacy — no new usage. `pg` pool (`src/lib/db.ts`) only in API routes/scripts; never import it client-side.
+- **Data access (Supabase removed)**: server reads use the `pg` pool — pages via `src/lib/cases.ts`, API routes/scripts via `src/lib/db.ts`; never import `pg` client-side. **Auth = Auth.js v5** (`src/auth.ts` + edge-safe `src/auth.config.ts`, gate in `src/proxy.ts`, `users` table); client auth actions use `signIn`/`signOut` from `next-auth/react`.
 - API routes that use `pg` or pdfkit keep `export const runtime = 'nodejs'`.
-- **Citation contract**: chat prompt emits `[[Nama Kes]](case_id)`; `ChatInterface.tsx` parses it — change both together or neither.
+- **Citation contract** (two-stage since the on-prem migration): chat prompt emits bare tags `[1]`; `route.ts` `expandTags()` rewrites them to `[[Nama Kes]](case_id)`; `ChatInterface.tsx` parses that — keep all three in sync.
 - UI text in Malay; Tailwind only; Lucide icons; accent `#4a1d96`.
-- Pinned RAG numbers (threshold 0.3, top 5, 1000/200 chunking, 1536d embeddings) — see the `rag-chat` skill before touching.
-- Keep `transpilePackages: ['@supabase/ssr']` in `next.config.ts`.
+- Pinned RAG numbers — local dev (on-prem): bge-m3 **1024d**, refuse gate **0.59**, top 5, 1000/200 chunking; see the `rag-chat` skill / [docs/rag-chat.md](docs/rag-chat.md) before touching. (Deployed cloud still 1536d/gpt-4o/0.3.)
+- Auth routes (`/api/auth/*`) and credential checks run on **`nodejs` runtime** (bcrypt + pg); the `src/proxy.ts` gate stays **edge-safe** (imports only `auth.config.ts`). In a `src/` project the gate MUST be `src/proxy.ts` (root file is ignored).
 - Do not auto-commit; do not push unless asked; never force-push.
 - Never run seed/ingest/schema scripts against a non-local `DATABASE_URL` without stating the target and getting confirmation.
 - After changing a component contract, update [docs/components.md](docs/components.md); after schema changes, update [docs/database.md](docs/database.md). **Do not turn this file into a progress log** — feature docs go in `docs/`, history goes in git.

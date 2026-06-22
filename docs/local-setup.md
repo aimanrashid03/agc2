@@ -1,6 +1,17 @@
 # Local Setup — AGC2
 
-> **On-prem note:** this describes the CURRENT cloud setup (Supabase + OpenAI). For the planned self-hosted VM setup (Postgres + pgvector + Ollama, different env vars), and for continuing work inside the VM with Claude CLI, see [on-prem-migration.md](on-prem-migration.md).
+> **On-prem note:** the cloud setup below (Supabase + OpenAI) still powers **Auth and the deployed app**. The **data + RAG** path now runs the on-prem stack locally (see the quick-start just below). Full detail + VM handoff: [on-prem-migration.md](on-prem-migration.md).
+
+## On-prem local quick-start (data + RAG)
+Prereqs: Docker, Ollama with `bge-m3` + `qwen2.5:7b-instruct` pulled, VPN up (to reach MySQL), and `.env.local` with `MYSQL_*`, `OPENROUTER_API_KEY`, `OLLAMA_URL`, `DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5432/postgres`, and **Auth.js** `AUTH_SECRET` + `AUTH_URL=http://localhost:3001` + `AUTH_TRUST_HOST=true`. (No `NEXT_PUBLIC_SUPABASE_*` — Supabase removed.) Create the auth user store + a dev login: `npx tsx scripts/setup-auth.ts --seed admin@agc.local agc12345 "Admin"`.
+```bash
+docker compose up -d                 # local pgvector container (127.0.0.1:5432)
+npx tsx scripts/setup-db.ts          # schema: vector(1024) + roles + match_documents
+npx tsx scripts/sync-mysql.ts        # MySQL ilims_usr -> Postgres (clean/categorize/upsert)
+npx tsx scripts/ingest-data.ts --sample 800   # bge-m3 embeddings (subset; full ~10h on CPU)
+npx tsx scripts/test-retrieval.ts && npx tsx scripts/test-chat-v2.ts   # verify
+```
+The cloud first-time flow below is the **legacy** Supabase path.
 
 ## Prerequisites
 - Node 20+, npm. Python 3 only if running the data-cleaning stage.

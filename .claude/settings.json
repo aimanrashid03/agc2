@@ -6,7 +6,10 @@
       "Bash(npx tsx scripts/count-cases.ts)",
       "Bash(npx tsx scripts/check-embeddings.ts)",
       "Bash(npx tsx scripts/verify_connection.ts)",
-      "Bash(npx tsx scripts/test-retrieval.ts)"
+      "Bash(npx tsx scripts/test-retrieval.ts)",
+      "PowerShell($o=\"C:\\\\Users\\\\aiman\\\\AppData\\\\Local\\\\Programs\\\\Ollama\\\\ollama.exe\"; & $o list; Write-Output \"=== bge-m3 smoke test \\(dimension\\) ===\"; try { $body = '{\"model\":\"bge-m3\",\"input\":\"ujian embedding bahasa melayu\"}'; $r = Invoke-RestMethod -Uri \"http://127.0.0.1:11434/v1/embeddings\" -Method Post -ContentType \"application/json\" -Body $body; Write-Output \"embedding dims: $\\($r.data[0].embedding.Count\\)\" } catch { Write-Output \"bge-m3 not ready yet: $\\($_.Exception.Message\\)\" })",
+      "PowerShell(npm install next-auth@beta bcryptjs 2>&1)",
+      "PowerShell(npm install -D \"@types/bcryptjs\" 2>&1)"
     ]
   },
   "hooks": {

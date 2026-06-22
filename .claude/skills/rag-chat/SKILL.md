@@ -10,13 +10,14 @@ description: Use when working on the AI chat, RAG retrieval, embeddings, prompts
 2. Read `src/app/api/chat/route.ts` end-to-end (it's ~125 lines) before touching any part of it.
 3. If the change affects retrieval quality, also read [docs/database.md](../../../docs/database.md) (`match_documents` signature) and `scripts/ingest-data.ts` (chunking).
 
-> **⚠️ Planned migration (see [docs/on-prem-migration.md](../../../docs/on-prem-migration.md)).** The numbers below describe the CURRENT (cloud/OpenAI) code. The on-prem target swaps embeddings to `bge-m3` (**1024d**, via Ollama), chat to `qwen2.5:7b-instruct` (Ollama) / OpenRouter in dev, and adds a verdict-join-at-assembly + ~0.55 similarity refusal gate. Don't apply those until you're doing the migration — and when you do, update these pinned numbers.
+> **⚠️ Migration LANDED for local dev (2026-06-22).** `route.ts` now runs the on-prem stack — `bge-m3` (1024d) via Ollama, OpenRouter `qwen2.5-7b`, a 0.59 refusal gate, verdict-join, and numbered-tag citations — knobs in `src/lib/aiConfig.ts`. **The pinned numbers below are SUPERSEDED**; see [docs/rag-chat.md](../../../docs/rag-chat.md) for current values. Auth + the deployed app are still cloud/Supabase.
 
-## Pinned numbers (do not drift)
-- Embedding: OpenAI `text-embedding-3-small`, **1536 dims** — must match `case_embeddings.embedding vector(1536)` AND the ingest script. Changing the model requires re-embedding everything; say so explicitly.
-- Match threshold **0.3** (deliberately lowered from 0.5 for vague Malay queries — raising it back will silently empty results for conversational questions).
-- Match count **5**. Chat model `gpt-4o`.
+## Pinned numbers (CURRENT — on-prem)
+- Embedding: Ollama `bge-m3`, **1024 dims** — must match `case_embeddings.embedding vector(1024)` AND `scripts/ingest-data.ts`. Changing the model requires re-embedding everything + retuning the gate; say so explicitly.
+- **Refuse gate 0.59** (top sim below → deterministic refusal, no LLM). Retrieve floor 0.2. **Corpus-dependent — re-tune via `scripts/test-retrieval.ts` when the corpus grows** (more cases → out-of-DB queries find closer spurious matches; 0.55 was unsafe at 849 cases).
+- Match count **5**. Chat model `qwen/qwen-2.5-7b-instruct` (OpenRouter dev) / `qwen2.5:7b-instruct` (Ollama VM).
 - Chunking: 1000 chars / 200 overlap (`RecursiveCharacterTextSplitter` in ingest).
+- _(Superseded cloud values: `text-embedding-3-small`/1536, `gpt-4o`, threshold 0.3.)_
 
 ## Hard rules
 - The route stays on **Node runtime** (`export const runtime = 'nodejs'`) — `pg` does not run on Edge.

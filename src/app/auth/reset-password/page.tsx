@@ -4,12 +4,11 @@ import Link from 'next/link';
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowRight, Library, ShieldAlert } from 'lucide-react';
-import { createClient } from '@/lib/supabase/client';
 
 export default function ResetPasswordPage() {
-  const supabase = createClient();
   const router = useRouter();
 
+  const [currentPassword, setCurrentPassword] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -33,16 +32,21 @@ export default function ResetPasswordPage() {
 
     setIsSubmitting(true);
 
-    const { error } = await supabase.auth.updateUser({ password });
+    const res = await fetch('/api/auth/change-password', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ currentPassword, newPassword: password }),
+    });
+    const data = await res.json().catch(() => ({}));
 
     setIsSubmitting(false);
 
-    if (error) {
-      setErrorMessage(error.message || 'Penetapan semula gagal. Sila cuba lagi.');
+    if (!res.ok) {
+      setErrorMessage(data.error || 'Penetapan semula gagal. Sila cuba lagi.');
       return;
     }
 
-    setSuccessMessage('Kata laluan baharu berjaya disimpan. Anda akan dibawa ke halaman log masuk.');
+    setSuccessMessage('Kata laluan berjaya dikemas kini. Anda akan dibawa ke halaman log masuk.');
     setTimeout(() => {
       router.replace('/auth/login');
       router.refresh();
@@ -94,13 +98,31 @@ export default function ResetPasswordPage() {
 
           <div className="space-y-8">
             <div>
-              <h2 className="text-gray-900 text-3xl font-bold tracking-tight mb-2">Tetapkan Semula Kata Laluan</h2>
+              <h2 className="text-gray-900 text-3xl font-bold tracking-tight mb-2">Tukar Kata Laluan</h2>
               <p className="text-slate-500 text-sm font-medium">
-                Masukkan kata laluan baharu untuk akaun anda.
+                Anda mesti log masuk. Masukkan kata laluan semasa dan kata laluan baharu.
               </p>
             </div>
 
             <form onSubmit={onSubmit} className="space-y-6">
+              <div className="space-y-1">
+                <label
+                  htmlFor="currentPassword"
+                  className="block text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500/80"
+                >
+                  Kata Laluan Semasa
+                </label>
+                <input
+                  id="currentPassword"
+                  type="password"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  required
+                  className="w-full border-b-2 border-slate-300 focus:border-primary-700 bg-transparent py-3 text-gray-900 outline-none transition-all placeholder:text-slate-300 font-medium"
+                  placeholder="Kata laluan semasa anda"
+                />
+              </div>
+
               <div className="space-y-1">
                 <label
                   htmlFor="password"
@@ -169,8 +191,8 @@ export default function ResetPasswordPage() {
                     Amaran Keselamatan
                   </h4>
                   <p className="text-red-900/80 text-xs leading-relaxed">
-                    Jika pautan pemulihan telah tamat tempoh, kembali ke halaman Lupa Kata Laluan dan
-                    minta pautan yang baharu.
+                    Anda perlu log masuk untuk menukar kata laluan. Jika anda terlupa kata laluan,
+                    sila hubungi pentadbir sistem.
                   </p>
                 </div>
               </div>

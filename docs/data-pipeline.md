@@ -1,6 +1,17 @@
 # Data Pipeline — AGC2
 
-Three-stage pipeline: **clean → seed → ingest**. Source data is Malaysian criminal case records (LKK — Laporan Kes Kehakiman).
+Source data is Malaysian criminal case records (LKK — Laporan Kes Kehakiman).
+
+## Current path (on-prem, local dev): **sync → ingest**
+`scripts/sync-mysql.ts` reads the client's `ilims_usr` MySQL directly (`LT_LKK_INFO` + `LT_LKK_ALLEGATION` + `LT_LKK_PERSON_INVOLVE`), cleans every text field (HTML strip + entity unescape, ported from `clean_legal_data.py`; plus `denull()` which voids leaked dropdown placeholders like `Sila pilih..`/`-`/`N/A` in `court_desc`/`state_desc`), **triages** junk/empty rows (logged, not silently dropped), derives **categorization** (primary Act → `source_folder` by a severity rank in `SEVERITY`; all acts → `act_tags`), and **upserts** into Postgres (`cases`/`people`/`allegations`) on `source_id`. It writes `content_hash` so ingest can skip unchanged cases. Then `scripts/ingest-data.ts` embeds with Ollama `bge-m3` (1024d), incrementally.
+```bash
+npx tsx scripts/sync-mysql.ts [--dry] [--limit N]      # MySQL -> Postgres
+npx tsx scripts/ingest-data.ts [--sample N] [--limit N] # bge-m3 embeddings (incremental)
+```
+Needs `MYSQL_*`, `DATABASE_URL`, `OLLAMA_URL` in `.env.local` and the VPN up to reach MySQL. See [on-prem-migration.md](on-prem-migration.md).
+
+## Legacy path (manual JSON drop): **clean → seed → ingest**
+Kept for reference but **unused** now that data comes from MySQL: `clean_legal_data.py` (SQL-dump → JSON) → `seed-data.ts` (JSON → Postgres). The original three stages below describe this path.
 
 ## Stages
 1. **Clean** — `scripts/clean_legal_data.py` (Python; venv-free, stdlib): normalizes raw legal exports into `data/cleaned/<category>/clean_info.json`, `clean_people.json`, `clean_allegation.json`.
@@ -19,13 +30,17 @@ Each chunk's content starts with a `Case Name: ...` line — the chat route pars
 ## Script inventory (`scripts/`)
 | Script | Purpose |
 |---|---|
-| `setup-db.ts` | Create/recreate schema + `match_documents` |
-| `clean_legal_data.py` | Raw → cleaned JSON |
-| `seed-data.ts` / `check_seed.ts` | Load cleaned JSON / verify |
-| `ingest-data.ts` / `ingest-data-continue.ts` | Generate embeddings / resume |
-| `check-embeddings.ts`, `count-cases.ts` | Sanity counts |
-| `test-chat.ts`, `test-chat-logic.ts`, `test-rag.ts`, `test-retrieval.ts` | Manual RAG smoke tests |
-| `test-openai-key.ts`, `verify_connection.ts`, `verify-function.ts`, `verify_new_schema.ts`, `test-import.ts` | Env/db/function checks |
+| `setup-db.ts` | Create/recreate schema (`vector(1024)`, role bootstrap) + `match_documents` |
+| **`sync-mysql.ts`** | **MySQL → Postgres: clean + triage + categorize + upsert (current data source)** |
+| **`inspect-mysql.ts` / `inspect-lkk.ts`** | **Read-only MySQL schema/data inspection (diagnostics)** |
+| `ingest-data.ts` | Generate `bge-m3` embeddings from Postgres, incremental (`--sample`/`--limit`) |
+| `clean_legal_data.py`, `seed-data.ts`, `ingest-data-continue.ts` | **Legacy** (manual JSON path / OpenAI ingest) — kept, unused |
+| `check-embeddings.ts`, `count-cases.ts`, `check_seed.ts` | Sanity counts |
+| `test-retrieval.ts` (bge-m3) / `test-chat-v2.ts` (E2E qwen) | Current RAG smoke tests |
+| `test-chat.ts`, `test-chat-logic.ts`, `test-rag.ts` | Legacy RAG tests (OpenAI) |
+| `setup-auth.ts` | Idempotent `users` table create + `--seed` a login (Auth.js) |
+| `test-auth.ts`, `test-pages-data.ts` | Auth credential logic + page `pg` reads smoke tests |
+| `test-openai-key.ts`, `verify_new_schema.ts`, `test-import.ts` | Env/db/function checks (`verify_connection.ts`/`verify-function.ts` removed — Supabase-specific) |
 
 Run TS scripts with `npx tsx scripts/<name>.ts` (they load `.env` via dotenv and need `DATABASE_URL` + `OPENAI_API_KEY`).
 

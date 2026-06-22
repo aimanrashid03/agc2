@@ -3,11 +3,8 @@
 import Link from 'next/link';
 import { FormEvent, useState } from 'react';
 import { ArrowRight, Library, ShieldAlert } from 'lucide-react';
-import { createClient } from '@/lib/supabase/client';
 
 export default function ForgotPasswordPage() {
-  const supabase = createClient();
-
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
@@ -16,21 +13,12 @@ export default function ForgotPasswordPage() {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrorMessage('');
-    setSuccessMessage('');
     setIsSubmitting(true);
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/reset-password`,
-    });
-
+    // No email service on-prem (local dev) — direct the user to the administrator.
+    // (DECIDE AT VM SETUP: SMTP-based reset vs admin reset — see docs/on-prem-migration.md.)
+    setSuccessMessage('Pemulihan kata laluan melalui emel belum tersedia pada persekitaran ini. Sila hubungi pentadbir sistem untuk menetapkan semula kata laluan anda.');
     setIsSubmitting(false);
-
-    if (error) {
-      setErrorMessage(error.message || 'Permintaan gagal. Sila cuba lagi.');
-      return;
-    }
-
-    setSuccessMessage('Pautan penetapan semula kata laluan telah dihantar ke emel anda.');
   };
 
   return (

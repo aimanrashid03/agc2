@@ -64,3 +64,24 @@ export interface Case {
     no_kes?: string;
     kpi?: string;
 }
+
+/**
+ * Lightweight projection for the cases list/table (src/lib/cases.ts getCasesForList).
+ * Only the columns the table renders; okt_name/akta/seksyen are derived in SQL so the
+ * home page payload stays small. Defined here (not in cases.ts) so client components can
+ * import the type without pulling the `pg` pool into the client bundle.
+ */
+export interface CaseListItem {
+    id: number;
+    file_no: string | null;
+    case_name: string | null;
+    file_open_date: string | null;
+    court_desc: string | null;
+    status: string | null;
+    source_folder: string | null;
+    state_desc: string | null;
+    updated_at: string | null;
+    okt_name: string | null;
+    akta: string | null;
+    seksyen: string | null;
+}

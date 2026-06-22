@@ -14,6 +14,19 @@ async function main() {
     try {
         await pool.connect();
 
+        // Supabase defines anon/authenticated/service_role; a plain Postgres (local
+        // pgvector container / the on-prem VM) does not, so the GRANTs below would abort.
+        // Create them idempotently as NOLOGIN roles so this script runs on any Postgres.
+        await pool.query(`
+            DO $$
+            BEGIN
+                IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'anon') THEN CREATE ROLE anon NOLOGIN; END IF;
+                IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'authenticated') THEN CREATE ROLE authenticated NOLOGIN; END IF;
+                IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'service_role') THEN CREATE ROLE service_role NOLOGIN; END IF;
+            END $$;
+        `);
+        console.log('Ensured anon/authenticated/service_role roles exist');
+
         // Drop tables in reverse order of dependencies
         // Drop function with correct signature (or use CASCADE on table drop if it depends on it, but function doesn't depend on table usually)
         await pool.query(`DROP FUNCTION IF EXISTS match_documents(vector(1536), float, int)`);
@@ -23,6 +36,7 @@ async function main() {
         await pool.query(`DROP TABLE IF EXISTS allegations;`);
         await pool.query(`DROP TABLE IF EXISTS people;`);
         await pool.query(`DROP TABLE IF EXISTS cases;`);
+        await pool.query(`DROP TABLE IF EXISTS users;`);
 
         console.log('Dropped existing tables.');
 
@@ -51,6 +65,8 @@ async function main() {
                 dpp_suggestion TEXT,
                 dsp_suggestion TEXT,
                 raw_data JSONB,
+                content_hash TEXT,  -- hash of embed-source text; lets ingest skip unchanged cases
+                act_tags TEXT[],    -- every Act the case has charges under (primary Act -> source_folder)
                 created_at TIMESTAMP DEFAULT NOW(),
                 updated_at TIMESTAMP DEFAULT NOW(),
                 UNIQUE(source_id, source_folder) -- Prevent duplicates from same source
@@ -106,11 +122,26 @@ async function main() {
                 case_id INTEGER REFERENCES cases(id) ON DELETE CASCADE,
                 content TEXT, -- Chunk of text from the case
                 metadata JSONB, -- { source, title, etc. }
-                embedding vector(1536), -- OpenAI embedding size
+                embedding vector(1024), -- bge-m3 embedding size (Ollama); was 1536 (OpenAI text-embedding-3-small)
                 created_at TIMESTAMP DEFAULT NOW()
             );
         `);
         console.log('Created table: case_embeddings');
+
+        // Auth.js Credentials user store (on-prem auth; replaces Supabase Auth)
+        await pool.query(`
+            CREATE TABLE users (
+                id SERIAL PRIMARY KEY,
+                email TEXT NOT NULL,
+                password_hash TEXT NOT NULL,
+                name TEXT,
+                role TEXT NOT NULL DEFAULT 'officer',
+                created_at TIMESTAMP DEFAULT NOW(),
+                updated_at TIMESTAMP DEFAULT NOW()
+            );
+        `);
+        await pool.query(`CREATE UNIQUE INDEX users_email_lower_idx ON users (lower(email));`);
+        console.log('Created table: users');
 
         // Create similarity search function
         // Note: Using text for query_embedding to be compatible with supabase-js/JSON serialization

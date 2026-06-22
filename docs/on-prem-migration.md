@@ -1,9 +1,28 @@
 # On-Prem Migration — AGC2
 
-> **Status: PLANNING / IN PROGRESS (started 2026-06-21).** The code in `master`/`exp` today still
-> runs the **cloud** stack (Vercel + hosted Supabase + OpenAI, `vector(1536)`). This doc describes
-> where we are going. **Do not assume any of the "Target" column is implemented yet** — check the
-> code. When a target item lands, move it out of "planned" here and update the matching skill/doc.
+> **Status: IN PROGRESS (started 2026-06-21).** The **data + RAG** half of the on-prem stack is now
+> implemented and runs **locally** (see "What's landed" below). The **deployed** app is unchanged —
+> Vercel + hosted Supabase **Auth** + the ~5 supabase-js page reads still use the cloud path, and
+> `master` has not been cut over. Check the code before assuming any item ships in production.
+
+## What's landed (local dev, 2026-06-22)
+Runs against a local `pgvector` container + Ollama, sourced from the client's MySQL:
+- **DB:** `docker-compose.yml` → `pgvector/pgvector:pg16` on `127.0.0.1:5432`; `setup-db.ts` now creates `vector(1024)`, bootstraps the `anon/authenticated/service_role` roles (so plain Postgres doesn't choke on the Supabase grants), and adds `cases.content_hash` + `cases.act_tags`.
+- **Data source:** `scripts/sync-mysql.ts` reads `ilims_usr` MySQL directly (`LT_LKK_INFO`/`LT_LKK_ALLEGATION`/`LT_LKK_PERSON_INVOLVE`), cleans HTML/entities, triages junk rows, derives **primary Act → `source_folder`** (+ all acts in `act_tags`), and upserts. Replaces the `clean_legal_data.py` → `seed-data.ts` SQL-dump path (kept but **legacy/unused**).
+- **Embeddings:** `scripts/ingest-data.ts` now embeds with Ollama `bge-m3` (1024d), **incremental** via `content_hash` (no more blanket `DELETE`), with `--sample N`/`--limit N`.
+- **Chat:** `src/app/api/chat/route.ts` v2 — query embed via bge-m3, **refusal gate** (`sim < 0.59` → refuse, no LLM; recalibrated from the bake-off's 0.55, which leaked an out-of-DB hallucination at 849 cases), **verdict-join** (`cases.result` per case at assembly), **numbered-tag citations** (`[1]`→`[[name]](id)`), chat via OpenRouter `qwen2.5-7b` (env-driven). All knobs in `src/lib/aiConfig.ts`.
+- **Page reads:** home / dashboard / case-detail now read Postgres via `src/lib/cases.ts` (`pg`, `to_jsonb` to match supabase's nested shape + ISO dates) — no supabase-js anywhere. Citations resolve to local cases.
+- **Auth:** **Supabase Auth fully replaced by Auth.js v5** (Credentials + JWT) against a Postgres `users` table (bcrypt via `bcryptjs`). `src/auth.ts` (+ edge-safe `src/auth.config.ts`), gate in **`src/proxy.ts`** (Next 16 renamed `middleware`→`proxy`; in a `src/` project it MUST live at `src/proxy.ts` — a root file is silently ignored, which is why the old Supabase middleware likely never actually gated). Login/sign-up/sign-out/change-password rewired; `/api/auth/{[...nextauth],register,change-password}`. **Supabase packages + env vars removed**, `transpilePackages` dropped.
+- **Validated:** in-DB Q → correct verdict + citation; out-of-DB Q → refusal. Auth: unauth→login redirect (preserves `next`), credentials login sets a session, authed access works, wrong/unknown creds rejected. Build green. CPU embed ≈ **1.2 chunks/s** (full corpus ≈ 10h — dev uses a stratified subset; full embed deferred to the VM).
+
+**Still not done:** deploying to the VM, the recurring/scheduled MySQL sync (script is manual), the full 4,126-case embed (on the VM), and login rate-limiting.
+
+## ⚠️ DECIDE AT VM SETUP (deferred to client deployment)
+Local dev made pragmatic choices that should be **re-confirmed with the client before VM deployment**:
+1. **Account provisioning** — dev uses **self-service sign-up** (`/auth/sign-up` + `/api/auth/register`, auto-confirm). The login UI says access is "limited to authorized AGC officers" → on the VM this is likely **admin-provisioned** (seed via `scripts/setup-auth.ts --seed`, remove/gate public sign-up).
+2. **Password reset** — dev uses **self-reset** (logged-in change-password); forgotten passwords show a "contact admin" notice (no email infra). On the VM decide **SMTP-based reset** (needs an outbound mail relay — unknown, like the egress/GPU blockers) **vs admin reset**.
+3. **Auth strategy** — Credentials is self-contained; the client may want **AGC SSO/AD** instead (add a provider in `auth.ts`).
+4. **Hardening** — add login **rate-limiting**, ensure HTTPS + secure cookies, rotate `AUTH_SECRET`.
 
 ## Why
 The client (Attorney General's Chambers, Malaysia) requires the app to run **on their own on-prem VM**, not in foreign cloud — it handles government criminal-case data (incl. PII of accused persons). Vercel and hosted Supabase are therefore being dropped in favour of a fully self-hosted stack the client controls.
@@ -73,14 +92,14 @@ Tried two approaches on qwen-7b:
 **Other open item:** refuse-vs-answer logic is improved but the gate should own refusal so the LLM only runs when there's real context.
 
 ## Migration checklist (files to change when implementing)
-- **Schema** (`scripts/setup-db.ts`, authoritative rebuild path; also `supabase/migrations/`): `vector(1536)` → `vector(1024)`. `match_documents` body is dimension-agnostic but the column isn't.
-- **Embeddings**: `scripts/ingest-data.ts`, `scripts/ingest-data-continue.ts`, and the query embedding in `src/app/api/chat/route.ts` — point all at Ollama `bge-m3`. **Change all together** (query + stored embeddings must be the same model).
-- **Chat model + client**: `src/app/api/chat/route.ts` — `baseURL`/`model`/`apiKey` to Ollama (VM) / OpenRouter (dev chat). Add the verdict-join + similarity gate from v2 above.
-- **Auth**: replace `src/lib/supabase/{client,server,middleware}.ts` + `/auth/*` pages + Sidebar sign-out with Auth.js (or AGC SSO).
-- **Data reads**: convert the ~5 supabase-js `SELECT`s (`src/app/page.tsx`, `dashboard/page.tsx`, `cases/[id]/page.tsx`, Sidebar) to `pg`.
-- **Sync**: new script — MySQL extract → clean → upsert on `source_id` → incremental re-embed; schedule via systemd timer/cron on the VM.
-- **Config**: introduce env-driven model/baseURL/dimension (stop hardcoding `1536`/model names across files). Drop `transpilePackages: ['@supabase/ssr']` only after Supabase is fully removed.
-- **Docs/skills**: update `rag-chat`, `database`, `data-pipeline` skills + `docs/{rag-chat,database,data-pipeline,local-setup}.md` pinned numbers once each item lands.
+- [x] **Schema** (`scripts/setup-db.ts`): `vector(1536)` → `vector(1024)`; + role bootstrap, `content_hash`, `act_tags`. (`supabase/migrations/` left at 1536 — superseded by setup-db.ts.)
+- [x] **Embeddings**: `scripts/ingest-data.ts` + the query embedding in `src/app/api/chat/route.ts` → Ollama `bge-m3` (changed together). `ingest-data-continue.ts` now redundant (ingest is incremental) — still legacy.
+- [x] **Chat model + client**: `route.ts` v2 — OpenRouter `qwen2.5-7b` (dev) via env; verdict-join + similarity gate added.
+- [x] **Auth**: Supabase Auth → Auth.js v5 (Credentials+JWT, `users` table, bcrypt). `auth.ts`/`auth.config.ts`, `src/proxy.ts` gate, rewired `/auth/*` pages + Sidebar, `/api/auth/*`. Supabase removed. **See "DECIDE AT VM SETUP" above** for provisioning/reset/SSO.
+- [x] **Data reads**: the page `SELECT`s (`page.tsx`, `dashboard/page.tsx`, `cases/[id]/page.tsx`) → `pg` via `src/lib/cases.ts`. (Sidebar used Supabase only for auth, now Auth.js.)
+- [~] **Sync**: `scripts/sync-mysql.ts` does MySQL extract → clean → categorize → upsert on `source_id` + incremental re-embed. **Manual run only** — still needs a systemd timer/cron on the VM and a source-side change-detection (currently re-reads all rows).
+- [x] **Config**: env-driven model/baseURL/dimension in `src/lib/aiConfig.ts`. Drop `transpilePackages: ['@supabase/ssr']` only after Supabase is fully removed (**still in use**).
+- [~] **Docs/skills**: `docs/{on-prem-migration,database,data-pipeline,rag-chat,local-setup}.md` updated 2026-06-22. Skill banners note local-dev-vs-deployed split.
 
 ## Open blockers (need the client; user can't engage them yet as of 2026-06-21)
 1. **GPU** — CPU-only inference is too slow for 10 concurrent users at acceptable latency. Either get a GPU on the VM, or set hard expectations (queue + slow). No model choice fixes this.

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FileText, ChevronLeft, ChevronRight, MessageSquare, LogOut, LayoutDashboard } from 'lucide-react';
 import { useState } from 'react';
-import { createClient } from '@/lib/supabase/client';
+import { signOut } from 'next-auth/react';
 
 const NAV_ITEMS = [
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -15,7 +15,6 @@ const NAV_ITEMS = [
 const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const pathname = usePathname();
-    const supabase = createClient();
 
     const isActiveRoute = (href: string) => {
         if (href === '/') {
@@ -42,8 +41,7 @@ const Sidebar = () => {
     };
 
     const handleSignOut = async () => {
-        await supabase.auth.signOut();
-        window.location.href = '/auth/login';
+        await signOut({ redirectTo: '/auth/login' });
     };
 
     return (

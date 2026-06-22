@@ -4,10 +4,9 @@ import Link from 'next/link';
 import { FormEvent, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowRight, Library, ShieldAlert } from 'lucide-react';
-import { createClient } from '@/lib/supabase/client';
+import { signIn } from 'next-auth/react';
 
 export default function LoginPage() {
-  const supabase = createClient();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -24,15 +23,12 @@ export default function LoginPage() {
     setErrorMessage('');
     setIsSubmitting(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const res = await signIn('credentials', { email, password, redirect: false });
 
     setIsSubmitting(false);
 
-    if (error) {
-      setErrorMessage(error.message || 'Log masuk gagal. Sila cuba lagi.');
+    if (res?.error) {
+      setErrorMessage('Log masuk gagal. Sila semak emel dan kata laluan.');
       return;
     }
 

@@ -1,96 +1,65 @@
 
-import { createClient } from '@/lib/supabase/server';
+import { getCasesForList } from '@/lib/cases';
+import type { CaseListItem } from '@/types';
 import CasesTableWrapper from '@/components/CasesTableWrapper';
-import { Case, Person, Allegation } from '@/types';
 
 export const revalidate = 0;
 
+// A few folders get hand-written labels; everything else is Title-Cased (number tokens
+// like "1952" / "1959/63" are left intact). Keeps the 66 raw ALL-CAPS act names readable.
+const CATEGORY_LABEL_OVERRIDES: Record<string, string> = {
+  'KANUN KESEKSAAN': 'Kanun Keseksaan',
+  'Lain-lain': 'Lain-lain',
+};
+function formatCategoryLabel(folder: string): string {
+  if (CATEGORY_LABEL_OVERRIDES[folder]) return CATEGORY_LABEL_OVERRIDES[folder];
+  return folder
+    .split(' ')
+    .map(w => (/^[A-Za-z]/.test(w) ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase() : w))
+    .join(' ');
+}
+
 export default async function Home() {
-  const supabase = await createClient();
-
-  const { data: cases, error } = await supabase
-    .from('cases')
-    .select('*, people(*), allegations(*)')
-    .order('file_open_date', { ascending: true });
-
-  if (error) {
-    console.error('Error fetching cases:', JSON.stringify(error));
+  let cases: CaseListItem[];
+  try {
+    cases = await getCasesForList();
+  } catch (error) {
+    console.error('Error fetching cases:', error);
     return (
       <div className="p-4 text-red-500 bg-red-50 rounded-md">
-        Error loading cases: {error.message || error.code || JSON.stringify(error)}
+        Error loading cases: {error instanceof Error ? error.message : String(error)}
       </div>
     );
   }
 
-  // Derive unique categories from source_folder with clean labels
-  const categoryLabelMap: Record<string, string> = {
-    'AKTA KANUN KESEKSAAN': 'Kanun Keseksaan',
-    'AKTA PENCULIKAN 1961': 'Akta Penculikan',
-    'TPR Chan Lee Lee': 'TPR Chan Lee Lee',
-    'Lain-lain': 'Lain-lain',
-  };
-  const rawCategories = Array.from(
-    new Set(cases?.map((c: Case) => c.source_folder).filter(Boolean) ?? [])
-  ) as string[];
-  // Filter out Seksyen 39B (absorbed into "Kes Dadah") and map to clean labels
-  const uniqueCategories = rawCategories
-    .filter(cat => !cat.includes('39B'))
-    .map(cat => ({ value: cat, label: categoryLabelMap[cat] || cat }));
+  // Category options: count per source_folder, hide the drug folder (the hardcoded "Kes Dadah"
+  // umbrella option already covers it) + legacy 39B, sort most-common-first, map to clean labels.
+  const categoryCounts = new Map<string, number>();
+  for (const c of cases) {
+    if (c.source_folder) categoryCounts.set(c.source_folder, (categoryCounts.get(c.source_folder) ?? 0) + 1);
+  }
+  const uniqueCategories = Array.from(categoryCounts.keys())
+    .filter(cat => !/(39B|DADAH|BERBAHAYA)/i.test(cat))
+    .sort((a, b) => categoryCounts.get(b)! - categoryCounts.get(a)!)
+    .map(cat => ({ value: cat, label: formatCategoryLabel(cat) }));
 
-  // Derive unique states from state_desc
-  const uniqueStates = Array.from(
-    new Set(cases?.map((c: Case) => c.state_desc).filter(Boolean) ?? [])
-  ).sort() as string[];
+  // States for the Negeri filter.
+  const uniqueStates = (Array.from(new Set(cases.map(c => c.state_desc).filter(Boolean))) as string[]).sort();
 
-  // Find the latest updated_at across all cases
-  const latestUpdate = cases?.reduce((latest: string | null, c: Case) => {
+  // Latest updated_at across all cases.
+  const latestUpdate = cases.reduce<string | null>((latest, c) => {
     if (!c.updated_at) return latest;
     if (!latest || c.updated_at > latest) return c.updated_at;
     return latest;
-  }, null as string | null);
+  }, null);
 
-  const formattedCases: Case[] = cases?.map((c: Case) => {
-    // 1. Nama OKT
-    const okts = c.people
-      ?.filter((p: Person) => p.category === 'accused' || p.role?.toLowerCase().includes('tertuduh') || p.category === 'respondent')
-      .map((p: Person) => p.name)
-      .join(', ');
-
-    // 2. Jenis Fail - Logic: Check file_no prefix or source_folder
-    let jenisFail = 'Lain-lain';
-    if (c.file_no?.toUpperCase().includes('RAYUAN')) jenisFail = 'RAYUAN';
-    else if (c.file_no?.toUpperCase().includes('PERBICARAAN')) jenisFail = 'PERBICARAAN';
-    else if (c.file_no?.toUpperCase().includes('SAMAN')) jenisFail = 'SAMAN';
-    // Fallback to source folder name if helpful
-    else if (c.source_folder) jenisFail = c.source_folder.split(' ')[0]; // E.g. "AKTA..." might not be useful, maybe logic needs refinement.
-
-    // 3. No. Kes - Extract from Case Name or raw_data
-    let noKes = '-';
-    // Try to extract pattern like "NO : <something> -"
-    const match = c.case_name?.match(/NO\s*:\s*(.*?)(?:\s+-\s+|$)/i);
-    if (match) noKes = match[1].trim();
-
-    // 4. Akta & Seksyen (Aggregate from allegations)
-    const uniqueActs = Array.from(new Set(c.allegations?.map((a: Allegation) => a.act_desc).filter(Boolean) ?? [])).join(', ');
-    const uniqueSections = Array.from(new Set(c.allegations?.map((a: Allegation) => a.section).filter(Boolean) ?? [])).join(', ');
-
-    // 5. KPI
-    let kpi = "-";
-    const rawData = c.raw_data as Record<string, Record<string, string>> | null;
-    if (rawData?.LKK_DATA?.MemenuhiKPI) {
-      kpi = rawData.LKK_DATA.MemenuhiKPI === "1" ? "Ya" : "Tidak";
-    }
-
-    return {
-      ...c,
-      okt_name: okts || 'Tiada Maklumat',
-      jenis_fail: jenisFail,
-      no_kes: noKes,
-      akta: uniqueActs || '-',
-      seksyen: uniqueSections || '-',
-      kpi: kpi
-    };
-  }) || [];
+  // okt_name/akta/seksyen are already derived in SQL — just apply the Malay empty-state fallbacks.
+  const tableCases: CaseListItem[] = cases.map(c => ({
+    ...c,
+    okt_name: c.okt_name || 'Tiada Maklumat',
+    akta: c.akta || '-',
+    seksyen: c.seksyen || '-',
+  }));
 
   return (
     <div className="space-y-4">
@@ -104,11 +73,11 @@ export default async function Home() {
           )}
         </div>
         <div className="text-xs text-gray-500">
-          {formattedCases.length} rekod
+          {tableCases.length} rekod
         </div>
       </div>
 
-      <CasesTableWrapper cases={formattedCases} categories={uniqueCategories} states={uniqueStates} />
+      <CasesTableWrapper cases={tableCases} categories={uniqueCategories} states={uniqueStates} />
     </div>
   );
 }

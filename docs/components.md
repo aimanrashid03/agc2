@@ -3,18 +3,20 @@
 Non-obvious prop contracts and behaviors. Update when a contract changes.
 
 ## CasesTableWrapper (`src/components/CasesTableWrapper.tsx`)
-Props: `{ cases: Case[]; categories: {value,label}[]; states: string[] }`
+Props: `{ cases: CaseListItem[]; categories: {value,label}[]; states: string[] }`
 - Owns multi-select state; renders a selection banner (count + `MultiCaseExportButton` + clear-X) when anything is selected.
 - Passes `selectedCaseIds` + `onSelectedCasesChange` down to `CasesTable`.
 
 ## CasesTable (`src/components/CasesTable.tsx`)
-Props: `{ cases, categories, states, selectedCaseIds?, onSelectedCasesChange? }`
+Props: `{ cases: CaseListItem[], categories, states, selectedCaseIds?, onSelectedCasesChange? }`
+- `cases` is the **slim `CaseListItem` projection** (not full `Case`) from `getCasesForList` — `okt_name`/`akta`/`seksyen` are derived in SQL, no `raw_data`/relations. Keeps the home payload ~1.8 MB (was ~146 MB). Don't reach for fields outside `CaseListItem` here.
 - 11 columns incl. checkbox (40px), view icon, and per-row PDF download. Most columns are drag-resizable (min 40px); **widths are local state — lost on re-render, not persisted**.
-- Filters: text search (file_no, case_name, okt_name), category, status, state. "Kes Dadah" is a special category: `source_folder` contains `39B` OR akta contains `DADAH`/`BERBAHAYA`.
+- Filters: text search (file_no, case_name, okt_name), category, status, state. "Kes Dadah" is a special category: `source_folder` **or** akta contains `DADAH`/`BERBAHAYA` (the old `39B` folder no longer exists; the drug folder is hidden from the category dropdown since this umbrella option covers it). Category labels are Title-Cased + sorted by frequency in `page.tsx`.
 - Status dropdown hardcodes exactly two values: `SELESAI`, `BELUM SELESAI`.
 - Sort default: `file_open_date` desc; nulls sort to the end. Any filter change resets to page 1.
 - Pagination: 10 (default) / 20 / 50 rows.
-- Row click expands inline details; selection and expansion are independent.
+- Row click expands inline details (also keyboard-operable: `tabIndex`/Enter/Space + `aria-expanded`); selection and expansion are independent.
+- Accessibility: `aria-label`s on search/filters/checkboxes/pagination, visually-hidden `<caption>`, `focus-visible` rings; empty cells render a muted `-`, truncated cells expose full text via `title`.
 
 ## CaseContentTabs (`src/components/CaseContentTabs.tsx`)
 Props: `{ facts, judgement, issues, suggestions }` — all `string | null`

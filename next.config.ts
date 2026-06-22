@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['@supabase/ssr'],
+  // (Supabase removed — `transpilePackages: ['@supabase/ssr']` no longer needed.)
 };
 
 export default nextConfig;
