@@ -2,22 +2,23 @@ import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import pool from '@/lib/db';
 import { aiConfig } from '@/lib/aiConfig';
+import { getChatbotSettings } from '@/lib/chatbotSettings';
 
 // pg + streaming need the Node.js runtime
 export const runtime = 'nodejs';
 
-const { embed: EMBED, chat: CHAT, retrieval: RET, refusalMsg: REFUSAL_MSG } = aiConfig;
+const { embed: EMBED, chat: CHAT, retrieval: RET } = aiConfig;
 
 const embedder = new OpenAI({ baseURL: EMBED.baseUrl, apiKey: EMBED.apiKey });
 const chat = new OpenAI({ baseURL: CHAT.baseUrl, apiKey: CHAT.apiKey || 'missing-key' });
 
-function buildSystemPrompt(contextText: string): string {
-    return `Anda adalah pembantu undang-undang AI pakar dalam undang-undang jenayah Malaysia (Kanun Keseksaan & Akta Penculikan).
+function buildSystemPrompt(botName: string, refusalMsg: string, contextText: string): string {
+    return `Anda ialah ${botName}, seorang pembantu undang-undang AI yang pakar dalam undang-undang jenayah Malaysia (Kanun Keseksaan & Akta Penculikan).
 Tugas anda:
 1. Jawab soalan pengguna berdasarkan konteks yang diberikan SAHAJA.
 2. Jawab dalam BAHASA MELAYU secara lalai (default), melainkan pengguna bertanya dalam Bahasa Inggeris.
-3. Gunakan nada profesional, tepat, dan membantu.
-4. JIKA TIADA satu pun kes berkaitan dalam konteks, katakan "${REFUSAL_MSG}" dan BERHENTI. Tetapi JIKA ADA kes berkaitan dalam konteks, JAWAB dengannya — jangan menolak.
+3. Gunakan nada profesional, mesra, dan membantu — tetapi sentiasa tepat. Jangan ulang memperkenalkan diri pada setiap jawapan.
+4. JIKA TIADA satu pun kes berkaitan dalam konteks, katakan "${refusalMsg}" dan BERHENTI. Tetapi JIKA ADA kes berkaitan dalam konteks, JAWAB dengannya — jangan menolak.
 5. SENTIASA rujuk kes menggunakan PENANDA nombornya sahaja, cth [1], [2]. JANGAN tulis nama kes atau id penuh — cukup penanda nombor dalam kurungan siku.
 6. JIKA soalan pengguna terlalu ringkas dan terdapat beberapa kes berbeza dalam konteks, sila minta penjelasan lanjut.
 7. Jika Nama Kes tiada, gunakan "kes ini".
@@ -61,6 +62,11 @@ export async function POST(req: NextRequest) {
     try {
         const { messages } = await req.json();
         if (!messages?.length) return NextResponse.json({ error: 'No messages provided' }, { status: 400 });
+
+        // Admin-configurable settings (bot name, refusal text, maintenance). Falls back to defaults.
+        const settings = await getChatbotSettings();
+        if (settings.maintenanceEnabled) return textStream(settings.maintenanceMessage);
+
         const currentMessage = messages[messages.length - 1].content;
 
         // 1. Embed the query (bge-m3)
@@ -75,7 +81,7 @@ export async function POST(req: NextRequest) {
         // 3. Deterministic refusal gate — refuse without calling the LLM on out-of-DB questions
         const topSim = documents[0]?.similarity ?? 0;
         if (!documents.length || topSim < RET.refuseGate) {
-            return textStream(REFUSAL_MSG);
+            return textStream(settings.refusalMessage);
         }
 
         // 4. Assign a numbered tag per distinct case (retrieval order) + look up name & official verdict
@@ -103,7 +109,7 @@ export async function POST(req: NextRequest) {
         // 6. Generate, then expand tags -> [[name]](id) before returning (expansion needs the full text)
         const completion = await chat.chat.completions.create({
             model: CHAT.model,
-            messages: [{ role: 'system', content: buildSystemPrompt(contextText) }, ...messages],
+            messages: [{ role: 'system', content: buildSystemPrompt(settings.botName, settings.refusalMessage, contextText) }, ...messages],
             temperature: 0,
         });
         const answer = completion.choices[0]?.message?.content || '';

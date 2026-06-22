@@ -1,19 +1,15 @@
-
 import ChatInterface from '@/components/ChatInterface';
+import { getChatbotSettings } from '@/lib/chatbotSettings';
 
-export default function ChatPage() {
+// Read admin-configured chatbot settings at request time (not statically cached) so edits
+// in /admin show on the next load. Falls back to defaults if the table is missing.
+export const dynamic = 'force-dynamic';
+
+export default async function ChatPage() {
+    const settings = await getChatbotSettings();
     return (
-        <div className="min-h-screen bg-white">
-            <div className="border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-16">
-                        <h1 className="text-xl font-semibold text-gray-900">Document Assistant</h1>
-                    </div>
-                </div>
-            </div>
-            <main className="bg-gray-50/50 min-h-[calc(100vh-4rem)]">
-                <ChatInterface />
-            </main>
+        <div className="h-full bg-gray-50/50">
+            <ChatInterface {...settings} />
         </div>
     );
 }

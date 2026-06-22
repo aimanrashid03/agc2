@@ -3,9 +3,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import {
     Users, Activity, UserPlus, Trash2, KeyRound, ShieldCheck, X,
-    Database, FileText, Layers, FolderTree, Loader2,
+    Database, FileText, Layers, FolderTree, Loader2, Bot,
 } from 'lucide-react';
 import type { UserRecord } from '@/types';
+import ChatbotTab from '@/components/admin/ChatbotTab';
 
 interface Stats {
     users: { total: number; admin: number; officer: number };
@@ -14,7 +15,7 @@ interface Stats {
     folders: number;
 }
 
-type Tab = 'users' | 'system';
+type Tab = 'users' | 'system' | 'chatbot';
 
 const roleBadge = (role: string) =>
     role === 'admin'
@@ -36,10 +37,13 @@ export default function AdminPanel({ currentUserId }: { currentUserId: string })
 
             <div className="flex gap-1 border-b border-gray-200 mb-6">
                 <TabButton active={tab === 'users'} onClick={() => setTab('users')} icon={Users} label="Pengurusan Pengguna" />
+                <TabButton active={tab === 'chatbot'} onClick={() => setTab('chatbot')} icon={Bot} label="Chatbot" />
                 <TabButton active={tab === 'system'} onClick={() => setTab('system')} icon={Activity} label="Sistem" />
             </div>
 
-            {tab === 'users' ? <UsersTab currentUserId={currentUserId} /> : <SystemTab />}
+            {tab === 'users' && <UsersTab currentUserId={currentUserId} />}
+            {tab === 'chatbot' && <ChatbotTab />}
+            {tab === 'system' && <SystemTab />}
         </div>
     );
 }

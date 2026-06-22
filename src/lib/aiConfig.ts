@@ -23,5 +23,5 @@ export const aiConfig = {
         // Calibrated on the 849-case corpus (2026-06-22): in-DB Qs score 0.64-0.69, out-of-DB 0.50-0.55.
         // 0.59 sits in the gap. Bias slightly high — a false refusal is safe; a hallucination is not.
     },
-    refusalMsg: 'Maaf, maklumat tersebut tiada dalam pangkalan data kes saya.',
+    refusalMsg: 'Maaf, saya tidak menemui maklumat itu dalam pangkalan data kes saya. Cuba nyatakan seksyen, jenis kes, atau kata kunci lain — saya sedia membantu.',
 };

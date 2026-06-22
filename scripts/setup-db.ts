@@ -37,6 +37,7 @@ async function main() {
         await pool.query(`DROP TABLE IF EXISTS people;`);
         await pool.query(`DROP TABLE IF EXISTS cases;`);
         await pool.query(`DROP TABLE IF EXISTS users;`);
+        await pool.query(`DROP TABLE IF EXISTS chatbot_settings;`);
 
         console.log('Dropped existing tables.');
 
@@ -142,6 +143,29 @@ async function main() {
         `);
         await pool.query(`CREATE UNIQUE INDEX users_email_lower_idx ON users (lower(email));`);
         console.log('Created table: users');
+
+        // Admin-editable chatbot ("Arif") branding/copy + maintenance + uploaded avatar.
+        // Single row (id=1). Defaults mirror src/lib/chatbotDefaults.ts. App connects as
+        // owner via DATABASE_URL, so (like users) no RLS/GRANTs are needed.
+        await pool.query(`
+            CREATE TABLE chatbot_settings (
+                id INT PRIMARY KEY DEFAULT 1,
+                bot_name TEXT NOT NULL DEFAULT 'Arif',
+                welcome_heading TEXT NOT NULL DEFAULT 'Hai, saya Arif 👋',
+                welcome_subtitle TEXT NOT NULL DEFAULT 'Saya pembantu undang-undang AI anda. Tanyakan apa-apa tentang kes jenayah Malaysia (Kanun Keseksaan & Akta Penculikan) — saya beri jawapan tepat berdasarkan pangkalan data kes, lengkap dengan rujukan.',
+                starter_prompts JSONB NOT NULL DEFAULT '["Apakah hukuman bagi kesalahan di bawah seksyen 302 Kanun Keseksaan?", "Berikan contoh kes pecah amanah jenayah (seksyen 409).", "Apakah faktor yang dipertimbangkan mahkamah semasa menjatuhkan hukuman?"]'::jsonb,
+                refusal_message TEXT NOT NULL DEFAULT 'Maaf, saya tidak menemui maklumat itu dalam pangkalan data kes saya. Cuba nyatakan seksyen, jenis kes, atau kata kunci lain — saya sedia membantu.',
+                maintenance_enabled BOOLEAN NOT NULL DEFAULT false,
+                maintenance_message TEXT NOT NULL DEFAULT 'Maaf, sembang sedang dalam penyelenggaraan. Sila cuba sebentar lagi.',
+                avatar_data BYTEA,
+                avatar_mime TEXT,
+                avatar_updated_at TIMESTAMPTZ,
+                updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                CONSTRAINT chatbot_settings_singleton CHECK (id = 1)
+            );
+        `);
+        await pool.query(`INSERT INTO chatbot_settings (id) VALUES (1) ON CONFLICT (id) DO NOTHING;`);
+        console.log('Created table: chatbot_settings');
 
         // Create similarity search function
         // Note: Using text for query_embedding to be compatible with supabase-js/JSON serialization

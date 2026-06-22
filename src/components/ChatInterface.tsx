@@ -2,9 +2,11 @@
 'use client';
 
 import { useState, useRef, useEffect, type ReactNode } from 'react';
-import { Send, FileText, User, Bot, Loader2 } from 'lucide-react';
+import { Send, FileText, User, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import MultiCaseExportButton from '@/components/MultiCaseExportButton';
+import { DEFAULT_CHATBOT_SETTINGS, type ChatbotSettings } from '@/lib/chatbotDefaults';
 
 interface Message {
     role: 'user' | 'assistant';
@@ -64,7 +66,15 @@ function parseAssistantContent(content: string): {
     };
 }
 
-export default function ChatInterface() {
+export default function ChatInterface({
+    botName = DEFAULT_CHATBOT_SETTINGS.botName,
+    welcomeHeading = DEFAULT_CHATBOT_SETTINGS.welcomeHeading,
+    welcomeSubtitle = DEFAULT_CHATBOT_SETTINGS.welcomeSubtitle,
+    starterPrompts = DEFAULT_CHATBOT_SETTINGS.starterPrompts,
+    maintenanceEnabled = DEFAULT_CHATBOT_SETTINGS.maintenanceEnabled,
+    maintenanceMessage = DEFAULT_CHATBOT_SETTINGS.maintenanceMessage,
+    avatarSrc = DEFAULT_CHATBOT_SETTINGS.avatarSrc,
+}: Partial<ChatbotSettings> = {}) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -95,15 +105,14 @@ export default function ChatInterface() {
     }, [messages]);
 
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
     }, [messages]);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        const trimmedInput = input.trim();
-        if (!trimmedInput || isLoading) return;
+    const sendMessage = async (text: string) => {
+        const trimmed = text.trim();
+        if (!trimmed || isLoading || maintenanceEnabled) return;
 
-        const userMessage: Message = { role: 'user', content: trimmedInput };
+        const userMessage: Message = { role: 'user', content: trimmed };
         const outgoingMessages = [...messages, userMessage];
         setMessages((prev) => [...prev, userMessage]);
         setInput('');
@@ -153,41 +162,66 @@ export default function ChatInterface() {
             console.error('Error sending message:', error);
             setMessages((prev) => [
                 ...prev,
-                { role: 'assistant', content: 'Sorry, I encountered an error. Please try again.' },
+                { role: 'assistant', content: 'Maaf, berlaku ralat. Sila cuba lagi.' },
             ]);
         } finally {
             setIsLoading(false);
         }
     };
 
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        sendMessage(input);
+    };
+
     return (
-        <div className="flex flex-col h-[calc(100vh-6rem)] max-w-4xl mx-auto">
+        <div className="flex flex-col h-full w-full max-w-4xl mx-auto">
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-white/50 backdrop-blur-sm">
                 <div className="flex items-center gap-2">
-                    <Bot size={20} className="text-primary-600" />
-                    <h2 className="font-semibold text-gray-800">Legal Assistant</h2>
+                    <Image src={avatarSrc} alt={botName} width={36} height={36} unoptimized className="rounded-full object-cover" />
+                    <h2 className="font-semibold text-gray-800">{botName}</h2>
                 </div>
                 {messages.length > 0 && (
                     <button
                         onClick={clearChat}
                         className="text-xs font-medium text-gray-500 hover:text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
                     >
-                        Clear Chat
+                        Kosongkan Sembang
                     </button>
                 )}
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 space-y-6">
-                {messages.length === 0 && (
-                    <div className="flex flex-col items-center justify-center h-full text-center text-gray-500 space-y-4">
-                        <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                            <Bot size={32} className="text-primary-600" />
-                        </div>
+            <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-6">
+                {maintenanceEnabled && (
+                    <div className="mx-auto max-w-md rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-center text-sm text-amber-800">
+                        {maintenanceMessage}
+                    </div>
+                )}
+                {messages.length === 0 && !maintenanceEnabled && (
+                    <div className="flex flex-col items-center justify-center h-full text-center text-gray-500 space-y-5">
+                        <Image
+                            src={avatarSrc}
+                            alt={botName}
+                            width={88}
+                            height={88}
+                            unoptimized
+                            className="rounded-full object-cover shadow-sm"
+                        />
                         <div>
-                            <h2 className="text-xl font-semibold text-gray-900">Legal Assistant</h2>
-                            <p className="max-w-md mt-2">
-                                Ask me questions about penal code cases. I can provide summaries and direct citations to relevant cases.
-                            </p>
+                            <h2 className="text-xl font-semibold text-gray-900">{welcomeHeading}</h2>
+                            <p className="max-w-md mt-2">{welcomeSubtitle}</p>
+                        </div>
+                        <div className="flex flex-wrap items-center justify-center gap-2 max-w-lg">
+                            {starterPrompts.map((prompt) => (
+                                <button
+                                    key={prompt}
+                                    type="button"
+                                    onClick={() => sendMessage(prompt)}
+                                    className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-600 shadow-sm transition-colors hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700"
+                                >
+                                    {prompt}
+                                </button>
+                            ))}
                         </div>
                     </div>
                 )}
@@ -205,12 +239,12 @@ export default function ChatInterface() {
                             }`}
                     >
                         <div
-                            className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${msg.role === 'user'
+                            className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center overflow-hidden ${msg.role === 'user'
                                 ? 'bg-gray-900 text-white'
                                 : 'bg-primary-100 text-primary-600'
                                 }`}
                         >
-                            {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
+                            {msg.role === 'user' ? <User size={18} /> : <Image src={avatarSrc} alt={botName} width={40} height={40} unoptimized className="rounded-full object-cover" />}
                         </div>
 
                         <div
@@ -242,8 +276,8 @@ export default function ChatInterface() {
                 })}
                 {isLoading && messages[messages.length - 1]?.role === 'user' && (
                     <div className="flex gap-4 justify-start">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center">
-                            <Bot size={16} />
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center overflow-hidden">
+                            <Image src={avatarSrc} alt={botName} width={40} height={40} unoptimized className="rounded-full object-cover" />
                         </div>
                         <div className="bg-white border border-gray-200 shadow-sm rounded-2xl px-4 py-3">
                             <Loader2 className="w-5 h-5 animate-spin text-gray-400" />
@@ -259,13 +293,13 @@ export default function ChatInterface() {
                         type="text"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        placeholder="Ask a question about cases..."
-                        className="flex-1 py-3 px-4 pr-12 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
-                        disabled={isLoading}
+                        placeholder={maintenanceEnabled ? 'Sembang tidak tersedia buat masa ini' : 'Tanya soalan tentang kes...'}
+                        className="flex-1 py-3 px-4 pr-12 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                        disabled={isLoading || maintenanceEnabled}
                     />
                     <button
                         type="submit"
-                        disabled={!input.trim() || isLoading}
+                        disabled={!input.trim() || isLoading || maintenanceEnabled}
                         className="absolute right-2 p-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                         {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}

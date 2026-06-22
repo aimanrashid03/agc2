@@ -5,7 +5,7 @@ import { authConfig } from '@/auth.config';
 // authConfig has no Node deps. In a `src/` project this MUST live at src/proxy.ts.
 const { auth } = NextAuth(authConfig);
 
-const PUBLIC_PATHS = ['/auth/login', '/auth/sign-up', '/auth/forgot-password', '/auth/reset-password'];
+const PUBLIC_PATHS = ['/auth/login', '/auth/sign-up', '/auth/forgot-password', '/auth/reset-password', '/api/chatbot/avatar'];
 const GUEST_ONLY = ['/auth/login', '/auth/sign-up'];
 const matches = (list: string[], p: string) => list.some((x) => p === x || p.startsWith(`${x}/`));
 

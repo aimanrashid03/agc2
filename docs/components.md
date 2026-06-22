@@ -25,9 +25,11 @@ Props: `{ facts, judgement, issues, suggestions }` — all `string | null`
 - Replaces literal `\n` escape sequences with real newlines; fixed 600px height with internal scroll.
 
 ## ChatInterface (`src/components/ChatInterface.tsx`)
+- Props: `Partial<ChatbotSettings>` — `botName`, `welcomeHeading`, `welcomeSubtitle`, `starterPrompts`, `maintenanceEnabled`, `maintenanceMessage`, `avatarSrc`. Admin-configurable, defaulted from `src/lib/chatbotDefaults.ts`. The server page `src/app/chat/page.tsx` (`export const dynamic = 'force-dynamic'`) reads them via `getChatbotSettings()` and spreads them in; falls back to defaults if the `chatbot_settings` table is absent.
 - Message shape: `{ role: 'user' | 'assistant', content: string }`.
 - Citation regex parses `[[Name]](id)` (primary) and `[Name](id)` (fallback) → links to `/cases/:id`. **Coupled to the system prompt in `src/app/api/chat/route.ts`** — change both together.
 - Persists to `localStorage['chat_messages']`; clear button wipes state + storage.
+- Starter-question chips call `sendMessage(prompt)` directly. When `maintenanceEnabled`, the welcome/chips are replaced by a notice banner and the input is disabled (the chat route also returns the notice server-side, so it can't be bypassed). Avatar `<Image>`s use `unoptimized` (the src can be the dynamic `/api/chatbot/avatar`).
 
 ## ExportPDFButton / MultiCaseExportButton
 See [docs/pdf-export.md](pdf-export.md#frontend-buttons).
@@ -41,7 +43,7 @@ Props: `{ children; session: Session | null }` — `'use client'` wrapper around
 
 ## AdminPanel (`src/components/admin/AdminPanel.tsx`)
 Props: `{ currentUserId: string }` (the logged-in admin's id — used to disable self-delete/self-demote rows). `'use client'`; rendered by the server-guarded `src/app/admin/page.tsx`.
-- Two tabs: **Pengurusan Pengguna** (fetch `/api/admin/users`; add-user form, per-row role `<select>`, reset-password modal, delete with `confirm()`) and **Sistem** (fetch `/api/admin/stats`; read-only metric cards). All mutations re-fetch the list. Self row: role select + delete disabled.
+- Three tabs: **Pengurusan Pengguna** (fetch `/api/admin/users`; add-user form, per-row role `<select>`, reset-password modal, delete with `confirm()`), **Chatbot** (`ChatbotTab` — edit bot name / welcome / starter questions / refusal + maintenance toggle via `PUT /api/admin/chatbot-settings`; avatar upload via `POST /api/admin/chatbot-settings/avatar`, preview from `/api/chatbot/avatar`), and **Sistem** (fetch `/api/admin/stats`; read-only metric cards). All mutations re-fetch the list. Self row: role select + delete disabled.
 - Server enforces the real guards (403 + self/last-admin protection); the UI disables are cosmetic.
 
 ## SettingsTabs (`src/components/settings/SettingsTabs.tsx`)
