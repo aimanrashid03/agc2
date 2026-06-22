@@ -63,4 +63,4 @@ All pages except `/auth/*` require a logged-in user (Auth.js v5). Create the fir
 5. The `users` table does **not** carry over — recreate a login with `setup-auth.ts`.
 
 ## Deployment
-The deployed app currently runs on Vercel (`CloudDeploy` branch). The **target** is the client's self-hosted Ubuntu VM (Postgres + pgvector + Ollama, CPU-only); environment-specific details, VM specs, and the cutover checklist are in [on-prem-migration.md](on-prem-migration.md).
+The deployed app currently runs on Vercel (`CloudDeploy` branch). The **target** is the client's self-hosted Ubuntu VM (Postgres + pgvector + Ollama, CPU-only). For the actual on-VM steps follow the ordered runbook [vm-deployment.md](vm-deployment.md); the rationale, VM specs, and deferred client decisions are in [on-prem-migration.md](on-prem-migration.md).

@@ -1,0 +1,10 @@
+# Fires agc2-sync.service nightly. Adjust OnCalendar to the client's preferred window.
+[Unit]
+Description=Run AGC2 MySQL sync nightly
+
+[Timer]
+OnCalendar=*-*-* 02:30:00
+Persistent=true          # if the VM was off at the scheduled time, run on next boot
+
+[Install]
+WantedBy=timers.target

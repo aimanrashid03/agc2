@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but DO commit the no-secret templates (docs/local-setup.md + docs/vm-deployment.md depend on them)
+!.env.example
+!.env.vm.example
 
 # vercel
 .vercel

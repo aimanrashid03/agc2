@@ -31,6 +31,7 @@ OPENAI_API_KEY     # not needed for build (dummy-key fallback), needed at runtim
 ## Documentation Map — read the matching doc BEFORE working on an area
 | Area | Read first |
 |---|---|
+| **Deploying to the client VM (ordered runbook — read FIRST if you're the in-VM Claude)** | [docs/vm-deployment.md](docs/vm-deployment.md) |
 | **On-prem migration: Postgres/pgvector, Ollama models, Auth.js, MySQL sync, grounding** | [docs/on-prem-migration.md](docs/on-prem-migration.md) |
 | Routes, auth/middleware, layout shell, dashboard, client choice | [docs/architecture.md](docs/architecture.md) |
 | RAG chat pipeline, prompt/citation contract, thresholds | [docs/rag-chat.md](docs/rag-chat.md) |

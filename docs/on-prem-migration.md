@@ -71,7 +71,7 @@ Ollama exposes an **OpenAI-compatible** `/v1` API, so the app's existing `new Op
 Replaces the manual "client emails JSON → hand-clean" loop. MySQL is an **extraction source, not a runtime dependency** — the app still reads Postgres. Build an idempotent ETL on the VM (cron/systemd timer) that **upserts on `source_id` and only re-embeds changed rows** (the current `ingest-data.ts` does a full `DELETE FROM case_embeddings` + re-embed — fine once, wasteful per-sync). Their schema uses the `LKK_` prefix (~1732 cases), which matches what `ingest-data.ts` already expects, so mapping is likely near 1:1 — confirm exact column names.
 
 ## Bake-off findings (model + grounding) — 2026-06-21
-Ran a DB-free feasibility harness (`scripts/feasibility-bakeoff.ts`): bge-m3 embeddings, in-memory top-5, 8 grounded Malay legal Q&A, mirroring the real chat route's context + prompt.
+Ran a DB-free feasibility harness (`docs/archive/legacy-pipeline/feasibility-bakeoff.ts`): bge-m3 embeddings, in-memory top-5, 8 grounded Malay legal Q&A, mirroring the real chat route's context + prompt.
 
 - **Speed (laptop CPU, slow):** qwen-3b ~5.2 tok/s > qwen-7b ~2.4 > SEA-LION-9B ~1.2. CPU inference is the project's biggest risk for 10 concurrent users.
 - **Models:** SEA-LION (Gemma2-9B, SEA-tuned) had the **best Malay + cleanest refusals** but is slowest. **qwen2.5-3b dropped** — Indonesian-language bleed + weakest grounding. **qwen2.5-7b chosen** — best citation compliance, acceptable Malay.
@@ -111,9 +111,14 @@ Tried two approaches on qwen-7b:
 2. **VM egress** — does the locked-down gov VM allow outbound to OpenRouter/Voyage? If not, those are dead on the VM (on-prem Ollama is assumed for the VM regardless; this only affects whether dev-style cloud APIs are reachable there).
 
 ## Continuing inside the VM with Claude CLI
-The user's `~/.claude` **memory does not transfer** to the VM — this doc is the handoff. When starting a Claude CLI session on the VM:
-1. Read this doc first, then `CLAUDE.md` + the relevant skill.
-2. Expect a different env: `DATABASE_URL` → local VM Postgres; an `OLLAMA`/OpenAI-compatible base URL for chat + embeddings; **no** Supabase vars once Auth is migrated.
-3. `ollama list` should show `bge-m3` and `qwen2.5:7b-instruct`. If not, `ollama pull` them.
-4. The feasibility harness `scripts/feasibility-bakeoff.ts` is DB-free and a good first smoke test of the local model stack (uses Ollama `/v1`).
-5. Verify CPU tok/s on the VM early — it is the binding constraint.
+The user's `~/.claude` **memory does not transfer** to the VM — the repo is the handoff.
+
+➡️ **Follow the ordered runbook: [vm-deployment.md](vm-deployment.md)** — it takes a fresh VM from
+`git clone` to "officers using it" (install → env → DB bootstrap → full embed → **gate re-tune** →
+build/serve → scheduled sync → client decision points → end-to-end verification), with the
+ready-to-fill artifacts (`.env.vm.example`, `deploy/` systemd units).
+
+This document remains the **why**: rationale, the bake-off findings, and every
+"DECIDE AT VM SETUP" item the runbook tells you to confirm with the client. Read this for context,
+the runbook for the steps. (The DB-free model smoke `feasibility-bakeoff.ts` now lives under
+`docs/archive/legacy-pipeline/`, not `scripts/`.)

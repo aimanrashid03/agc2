@@ -1,0 +1,18 @@
+# AGC2 recurring MySQL->Postgres sync (oneshot, triggered by agc2-sync.timer).
+# Install: sudo cp deploy/agc2-sync.{service,timer} /etc/systemd/system/
+#          sudo systemctl daemon-reload && sudo systemctl enable --now agc2-sync.timer
+# Edit deploy/sync-cron.sh (APP_DIR), User=, and the paths below to match the VM.
+[Unit]
+Description=AGC2 nightly MySQL -> Postgres sync + incremental embed
+After=network-online.target postgresql.service ollama.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=agc2
+WorkingDirectory=/opt/agc2
+# .env.local holds DATABASE_URL / MYSQL_* / OLLAMA_URL — the scripts load it via dotenv,
+# so no EnvironmentFile is needed; just ensure the file exists in WorkingDirectory.
+ExecStart=/usr/bin/env bash /opt/agc2/deploy/sync-cron.sh
+# A full re-embed can take hours on CPU; don't let systemd kill it mid-run.
+TimeoutStartSec=0
