@@ -17,6 +17,7 @@ declare module 'svg-to-pdfkit' {
 }
 
 declare module 'pdfkit/js/pdfkit.standalone.js' {
-  const PDFDocument: any;
+  // The standalone build ships no types; reuse @types/pdfkit's typing.
+  import PDFDocument from 'pdfkit';
   export default PDFDocument;
 }

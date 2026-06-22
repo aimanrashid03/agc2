@@ -112,7 +112,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log(`[PDF Export] Fetching ${caseIds.length} cases...`);
     const cases = await getCases(caseIds);
 
     if (cases.length === 0) {
@@ -122,9 +121,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log(`[PDF Export] Generating PDF for ${cases.length} cases...`);
     const pdfBuffer = await generateTrendOfSentencingPdf(cases);
-    console.log(`[PDF Export] PDF generated successfully`);
 
     const pdfBody = new Uint8Array(pdfBuffer);
     const timestamp = new Date().toISOString().replace(/[:]/g, '-').replace(/\..+$/, '');

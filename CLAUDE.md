@@ -24,7 +24,7 @@ npx tsx scripts/<name>.ts   # pipeline/diagnostic scripts (need .env)
 ```
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
-DATABASE_URL       # Postgres connection string (pg pool; falls back to local docker 127.0.0.1:54322)
+DATABASE_URL       # Postgres connection string (pg pool; falls back to local docker 127.0.0.1:5432)
 OPENAI_API_KEY     # not needed for build (dummy-key fallback), needed at runtime
 ```
 

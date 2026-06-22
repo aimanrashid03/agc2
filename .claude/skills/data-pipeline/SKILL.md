@@ -1,6 +1,6 @@
 ---
 name: data-pipeline
-description: Use when working on data cleaning, seeding, or embedding ingestion — anything under scripts/ (clean_legal_data.py, seed-data.ts, ingest-data.ts, setup-db.ts) or the data/cleaned JSON files.
+description: Use when working on data sync, cleaning, or embedding ingestion — anything under scripts/ (sync-mysql.ts, ingest-data.ts, setup-db.ts) or the data pipeline.
 ---
 
 # Data Pipeline Work — AGC2
@@ -20,9 +20,9 @@ description: Use when working on data cleaning, seeding, or embedding ingestion 
 
 ## Hard rules
 - TS scripts run via `npx tsx scripts/<name>.ts` and read `.env.local` (dotenv) — they need `DATABASE_URL`; `sync-mysql.ts` needs `MYSQL_*` (+ VPN); `ingest-data.ts` needs `OLLAMA_URL` (bge-m3). (Legacy ingest used `OPENAI_API_KEY`.)
-- Ingestion costs real OpenAI money and is resumable — prefer `ingest-data-continue.ts` after partial failures instead of re-running from scratch.
+- Ingestion (`ingest-data.ts`) is **incremental** — it skips cases whose `content_hash` is unchanged, so after a partial failure just re-run it (no separate resume script). Legacy `ingest-data-continue.ts` is archived.
 - Never point a seeding/ingest run at production unless the user explicitly asked; state which `DATABASE_URL` the run will hit before running.
-- `clean_legal_data.py` is plain Python stdlib — keep it dependency-free.
+- Text cleaning now lives in `sync-mysql.ts` (ported from the archived `clean_legal_data.py`) — keep it aligned with the source-data quirks.
 - New scripts: add a row to the inventory table in docs/data-pipeline.md.
 
 ## After the change (mandatory verification)

@@ -30,7 +30,7 @@ description: Use when working on the AI chat, RAG retrieval, embeddings, prompts
 
 ## After the change (mandatory verification)
 1. `npm run build` — zero errors.
-2. Smoke-test retrieval without burning the UI: `npx tsx scripts/test-retrieval.ts` or `scripts/test-chat-logic.ts`.
+2. Smoke-test retrieval without burning the UI: `npx tsx scripts/test-retrieval.ts` or `scripts/test-chat-v2.ts`.
 3. If prompt or parsing changed: run one real chat in the dev server and confirm citations render as links to `/cases/:id`.
 
 ## Common mistakes

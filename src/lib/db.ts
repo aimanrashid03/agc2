@@ -8,7 +8,7 @@ declare global {
 }
 
 
-const CONNECTION_STRING = process.env.DATABASE_URL || 'postgresql://postgres:postgres@127.0.0.1:54322/postgres';
+const CONNECTION_STRING = process.env.DATABASE_URL || 'postgresql://postgres:postgres@127.0.0.1:5432/postgres';
 
 if (!process.env.DATABASE_URL) {
     console.warn('Warning: DATABASE_URL is missing. Using fallback connection string.');

@@ -12,7 +12,15 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Frozen, retired code — kept for reference, not maintained or linted.
+    "docs/archive/**",
   ]),
+  // scripts/ are diagnostic/pipeline glue over dynamic DB rows and untyped JSON;
+  // explicit `any` is pragmatic there. Keep src/ strict (no override).
+  {
+    files: ["scripts/**/*.ts"],
+    rules: { "@typescript-eslint/no-explicit-any": "warn" },
+  },
 ]);
 
 export default eslintConfig;

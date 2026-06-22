@@ -4,8 +4,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 console.log('CWD:', process.cwd());
-console.log('CWD:', process.cwd());
-const CONNECTION_STRING = process.env.DATABASE_URL || 'postgresql://postgres:postgres@127.0.0.1:54322/postgres';
+const CONNECTION_STRING = process.env.DATABASE_URL || 'postgresql://postgres:postgres@127.0.0.1:5432/postgres';
 const pool = new Pool({ connectionString: CONNECTION_STRING });
 async function main() {
     try {

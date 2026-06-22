@@ -11,7 +11,9 @@ npx tsx scripts/ingest-data.ts [--sample N] [--limit N] # bge-m3 embeddings (inc
 Needs `MYSQL_*`, `DATABASE_URL`, `OLLAMA_URL` in `.env.local` and the VPN up to reach MySQL. See [on-prem-migration.md](on-prem-migration.md).
 
 ## Legacy path (manual JSON drop): **clean → seed → ingest**
-Kept for reference but **unused** now that data comes from MySQL: `clean_legal_data.py` (SQL-dump → JSON) → `seed-data.ts` (JSON → Postgres). The original three stages below describe this path.
+**Archived** to [docs/archive/legacy-pipeline/](archive/legacy-pipeline/) now that data comes from MySQL: `clean_legal_data.py` (SQL-dump → JSON) → `seed-data.ts` (JSON → Postgres) → `ingest-data-continue.ts` (OpenAI resume). Kept for reference only — see that folder's README.
+
+> ⚠️ The **Stages** and **Incremental case adds** sections below document this **archived** path — those scripts now live in `docs/archive/legacy-pipeline/` and must not be run against the on-prem stack. For the live flow use `sync-mysql.ts` → `ingest-data.ts` (above).
 
 ## Stages
 1. **Clean** — `scripts/clean_legal_data.py` (Python; venv-free, stdlib): normalizes raw legal exports into `data/cleaned/<category>/clean_info.json`, `clean_people.json`, `clean_allegation.json`.
@@ -34,15 +36,14 @@ Each chunk's content starts with a `Case Name: ...` line — the chat route pars
 | **`sync-mysql.ts`** | **MySQL → Postgres: clean + triage + categorize + upsert (current data source)** |
 | **`inspect-mysql.ts` / `inspect-lkk.ts`** | **Read-only MySQL schema/data inspection (diagnostics)** |
 | `ingest-data.ts` | Generate `bge-m3` embeddings from Postgres, incremental (`--sample`/`--limit`) |
-| `clean_legal_data.py`, `seed-data.ts`, `ingest-data-continue.ts` | **Legacy** (manual JSON path / OpenAI ingest) — kept, unused |
+| `clean_legal_data.py`, `seed-data.ts`, `ingest-data-continue.ts`, `feasibility-bakeoff.ts` | **Legacy** — archived to `docs/archive/legacy-pipeline/` (manual JSON path / OpenAI ingest / model bake-off) |
 | `check-embeddings.ts`, `count-cases.ts`, `check_seed.ts` | Sanity counts |
 | `test-retrieval.ts` (bge-m3) / `test-chat-v2.ts` (E2E qwen) | Current RAG smoke tests |
-| `test-chat.ts`, `test-chat-logic.ts`, `test-rag.ts` | Legacy RAG tests (OpenAI) |
 | `setup-auth.ts` | Idempotent `users` table create + `--seed` a login (Auth.js) |
 | `test-auth.ts`, `test-pages-data.ts` | Auth credential logic + page `pg` reads smoke tests |
-| `test-openai-key.ts`, `verify_new_schema.ts`, `test-import.ts` | Env/db/function checks (`verify_connection.ts`/`verify-function.ts` removed — Supabase-specific) |
+| `verify_new_schema.ts` | Post-seed schema sanity check |
 
-Run TS scripts with `npx tsx scripts/<name>.ts` (they load `.env` via dotenv and need `DATABASE_URL` + `OPENAI_API_KEY`).
+Run TS scripts with `npx tsx scripts/<name>.ts` (they load `.env.local` via dotenv and need `DATABASE_URL`; ingest also needs `OLLAMA_URL`, sync needs `MYSQL_*`).
 
 ## Ordering rule
 Seeding must complete before ingesting (embeddings reference `case_id`). Re-running ingest after re-seeding requires clearing `case_embeddings` first or you get stale/duplicate chunks.

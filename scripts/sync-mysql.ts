@@ -30,7 +30,7 @@ const LIMIT = (() => { const i = args.indexOf('--limit'); return i >= 0 ? parseI
 // appeals that have a short facts field but a substantive result/grounds.
 const MIN_SUBSTANTIVE = 30;
 
-// ---------- cleaning (ported from scripts/clean_legal_data.py clean_text) ----------
+// ---------- cleaning (ported from clean_legal_data.py clean_text — now archived) ----------
 const NAMED_ENTITIES: Record<string, string> = {
     nbsp: ' ', amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", '#39': "'",
     ndash: '-', mdash: '-', hellip: '…', rsquo: '’', lsquo: '‘', ldquo: '“', rdquo: '”', middot: '·',

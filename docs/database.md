@@ -29,7 +29,7 @@ PostgreSQL. **Local dev** now runs a `pgvector/pgvector:pg16` container (`docker
 | Pages / server components | `pg` via `src/lib/cases.ts` | `getCasesForList` (slim flat projection — list/table; derives okt_name/akta/seksyen in SQL, **no `raw_data`/relations**, ~1.8 MB vs the ~146 MB full read), `getCaseWithRelations` (full nested — detail page), `getDashboardCases` (lightweight cols). `to_jsonb` for ISO dates / nested shape |
 | Auth (login / session / sign-out) | Auth.js (`src/auth.ts`, `next-auth/react`) | credential login, JWT session — **no supabase-js anywhere** |
 
-`src/lib/db.ts` caches the Pool on `global` in dev (survives Next.js hot reload) and falls back to `postgresql://postgres:postgres@127.0.0.1:54322/postgres` when `DATABASE_URL` is unset. **Local dev sets `DATABASE_URL` to the pgvector container at `127.0.0.1:5432`** (the `54322` fallback is the older local-Supabase default and is not used).
+`src/lib/db.ts` caches the Pool on `global` in dev (survives Next.js hot reload) and falls back to `postgresql://postgres:postgres@127.0.0.1:5432/postgres` — the local pgvector container (`docker-compose.yml`) — when `DATABASE_URL` is unset. Local dev normally sets `DATABASE_URL` explicitly to that same container.
 
 ## Status values
 `cases.status` effectively has two UI values: `SELESAI` and `BELUM SELESAI` (the table filter hardcodes these). Dashboard treats `SELESAI` as completed, everything else as active/unknown.
