@@ -34,4 +34,16 @@ See [docs/pdf-export.md](pdf-export.md#frontend-buttons).
 
 ## AppShell / Sidebar (`src/components/layout/`)
 - `AppShell`: hides sidebar entirely when `pathname.startsWith('/auth')`.
-- `Sidebar`: collapsible `w-60`↔`w-16`; `NAV_ITEMS` hardcoded; active-route rule: `/` is active for `/cases/*` too; sign-out uses `window.location.href` (intentional hard reload).
+- `Sidebar`: collapsible `w-60`↔`w-16`; `NAV_ITEMS` hardcoded (primary) + `SECONDARY_ITEMS` (Tetapan, all users) + `ADMIN_ITEM` (Pentadbiran) appended only when `useSession()` role is `admin`; footer shows name + role badge; active-route rule: `/` is active for `/cases/*` too; sign-out uses `signOut({ redirectTo: '/auth/login' })`. **Requires the `<SessionProvider>` from `Providers` (mounted in root layout) — without it `useSession()` returns null and the admin tab/role never show.**
+
+## Providers (`src/components/providers/Providers.tsx`)
+Props: `{ children; session: Session | null }` — `'use client'` wrapper around next-auth `<SessionProvider>`. Root layout (`src/app/layout.tsx`, now `async`) resolves `session` via `await auth()` and passes it in, so `useSession()` hydrates with no extra fetch.
+
+## AdminPanel (`src/components/admin/AdminPanel.tsx`)
+Props: `{ currentUserId: string }` (the logged-in admin's id — used to disable self-delete/self-demote rows). `'use client'`; rendered by the server-guarded `src/app/admin/page.tsx`.
+- Two tabs: **Pengurusan Pengguna** (fetch `/api/admin/users`; add-user form, per-row role `<select>`, reset-password modal, delete with `confirm()`) and **Sistem** (fetch `/api/admin/stats`; read-only metric cards). All mutations re-fetch the list. Self row: role select + delete disabled.
+- Server enforces the real guards (403 + self/last-admin protection); the UI disables are cosmetic.
+
+## SettingsTabs (`src/components/settings/SettingsTabs.tsx`)
+Props: `{ name; email; role }` (all strings, server-resolved from the session). `'use client'`; rendered by `src/app/settings/page.tsx`.
+- **Profil** tab: email + role read-only; editable display name → `PATCH /api/account/profile`, then `useSession().update({ name })` so the sidebar reflects it without re-login. **Security** tab: change password → `POST /api/auth/change-password` (client checks new==confirm; server verifies current).

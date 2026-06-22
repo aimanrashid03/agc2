@@ -19,7 +19,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 if (!email || !password) return null;
 
                 const { rows } = await pool.query(
-                    'SELECT id, email, name, password_hash FROM users WHERE lower(email) = $1 LIMIT 1',
+                    'SELECT id, email, name, role, password_hash FROM users WHERE lower(email) = $1 LIMIT 1',
                     [email]);
                 const u = rows[0];
                 if (!u) return null;
@@ -27,7 +27,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 const ok = await bcrypt.compare(password, u.password_hash);
                 if (!ok) return null;
 
-                return { id: String(u.id), email: u.email, name: u.name ?? undefined };
+                return { id: String(u.id), email: u.email, name: u.name ?? undefined, role: u.role ?? 'officer' };
             },
         }),
     ],

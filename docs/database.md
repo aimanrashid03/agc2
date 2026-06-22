@@ -9,7 +9,7 @@ PostgreSQL. **Local dev** now runs a `pgvector/pgvector:pg16` container (`docker
 | `people` | id, case_id (FK), source_id, role, category, name, id_no, email, phone, address, raw_data |
 | `allegations` | id, case_id (FK), source_id, type, section, act_desc, charge_notes, okt_name, charge_created_date, raw_data |
 | `case_embeddings` | case_id (FK), content, metadata (jsonb — incl. `content_hash`, `source_folder`), embedding `vector(1024)` (**bge-m3**; was `vector(1536)` OpenAI) |
-| `users` | id, email, password_hash (bcrypt), name, role (default `officer`), created_at, updated_at — **Auth.js Credentials store** (replaces Supabase Auth). Case-insensitive unique on `lower(email)`. Create idempotently via `scripts/setup-auth.ts` (also in `setup-db.ts`); seed with `--seed <email> <pw> [name]`. |
+| `users` | id, email, password_hash (bcrypt), name, role (default `officer`), created_at, updated_at — **Auth.js Credentials store** (replaces Supabase Auth). Case-insensitive unique on `lower(email)`. Create idempotently via `scripts/setup-auth.ts` (also in `setup-db.ts`); seed with `--seed <email> <pw> [name] [role]`, or `--promote <email>` to make an existing user admin. **`role` drives RBAC** — effective values `officer` \| `admin`; `admin` unlocks the `/admin` area + `/api/admin/*` (gate: `getAdminSession()` in `src/lib/auth-guard.ts`). Adding a role value means updating that guard + the role `<select>`s in `AdminPanel`. |
 
 ## Relationships
 - A case has many People (accused/OKT, prosecutors/TPR, judges/corum), many Allegations (charges with act + section), and many Embeddings (chunked text for RAG).

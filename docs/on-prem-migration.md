@@ -19,8 +19,8 @@ Runs against a local `pgvector` container + Ollama, sourced from the client's My
 
 ## ⚠️ DECIDE AT VM SETUP (deferred to client deployment)
 Local dev made pragmatic choices that should be **re-confirmed with the client before VM deployment**:
-1. **Account provisioning** — dev uses **self-service sign-up** (`/auth/sign-up` + `/api/auth/register`, auto-confirm). The login UI says access is "limited to authorized AGC officers" → on the VM this is likely **admin-provisioned** (seed via `scripts/setup-auth.ts --seed`, remove/gate public sign-up).
-2. **Password reset** — dev uses **self-reset** (logged-in change-password); forgotten passwords show a "contact admin" notice (no email infra). On the VM decide **SMTP-based reset** (needs an outbound mail relay — unknown, like the egress/GPU blockers) **vs admin reset**.
+1. **Account provisioning** — dev keeps **open self-service sign-up** (`/auth/sign-up` + `/api/auth/register`, auto-confirm) **in addition to** the new admin-provisioning UI (`/admin` → Pengurusan Pengguna, admin-only). The login UI says access is "limited to authorized AGC officers" → on the VM **decide whether to disable public sign-up** (remove the route + the "Daftar di sini" link on the login page) so accounts are **admin-provisioned only**. *(Confirmed 2026-06-22: leave open for local dev; revisit at cutover.)* Admins are bootstrapped via `scripts/setup-auth.ts --promote <email>` (or `--seed … admin`).
+2. **Password reset** — dev uses **self-reset** (logged-in change-password, under `/settings` → Keselamatan) plus **admin reset** (`/admin` → reset-password per user); forgotten passwords with no session still show a "contact admin" notice (no email infra). On the VM decide **SMTP-based reset** (needs an outbound mail relay — unknown, like the egress/GPU blockers) **vs admin reset only**.
 3. **Auth strategy** — Credentials is self-contained; the client may want **AGC SSO/AD** instead (add a provider in `auth.ts`).
 4. **Hardening** — add login **rate-limiting**, ensure HTTPS + secure cookies, rotate `AUTH_SECRET`.
 

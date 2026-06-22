@@ -55,6 +55,7 @@ Skills carry the task-specific rules, pinned numbers, and verification checklist
 - TypeScript strict; `npm run build` must pass with **zero errors** before any task is "done".
 - **Data access (Supabase removed)**: server reads use the `pg` pool — pages via `src/lib/cases.ts`, API routes/scripts via `src/lib/db.ts`; never import `pg` client-side. **Auth = Auth.js v5** (`src/auth.ts` + edge-safe `src/auth.config.ts`, gate in `src/proxy.ts`, `users` table); client auth actions use `signIn`/`signOut` from `next-auth/react`.
 - API routes that use `pg` or pdfkit keep `export const runtime = 'nodejs'`.
+- **RBAC**: `users.role` (`officer` | `admin`) flows into the JWT/session (`auth.config.ts` callbacks). `/admin/*` pages + `/api/admin/*` routes require `role === 'admin'` via `getAdminSession()` (`src/lib/auth-guard.ts`) — that server check is the boundary; the `proxy.ts` `/admin` redirect is secondary. Client role comes from `useSession()` (needs `<SessionProvider>` from `Providers`).
 - **Citation contract** (two-stage since the on-prem migration): chat prompt emits bare tags `[1]`; `route.ts` `expandTags()` rewrites them to `[[Nama Kes]](case_id)`; `ChatInterface.tsx` parses that — keep all three in sync.
 - UI text in Malay; Tailwind only; Lucide icons; accent `#4a1d96`.
 - Pinned RAG numbers — local dev (on-prem): bge-m3 **1024d**, refuse gate **0.59**, top 5, 1000/200 chunking; see the `rag-chat` skill / [docs/rag-chat.md](docs/rag-chat.md) before touching. (Deployed cloud still 1536d/gpt-4o/0.3.)

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Public_Sans, Source_Sans_3 } from "next/font/google";
 import AppShell from "@/components/layout/AppShell";
+import Providers from "@/components/providers/Providers";
+import { auth } from "@/auth";
 import "./globals.css";
 
 const publicSans = Public_Sans({
@@ -18,17 +20,21 @@ export const metadata: Metadata = {
   description: "Attorney General Chambers Law Case Viewer",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html lang="ms">
       <body
         className={`${publicSans.variable} ${sourceSans.variable} antialiased font-sans bg-gray-50 text-gray-900`}
       >
-        <AppShell>{children}</AppShell>
+        <Providers session={session}>
+          <AppShell>{children}</AppShell>
+        </Providers>
       </body>
     </html>
   );

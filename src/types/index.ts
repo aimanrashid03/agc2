@@ -1,4 +1,16 @@
 
+/**
+ * A row from the `users` table as surfaced to the admin user-management UI.
+ * Never includes password_hash. role effective values: 'officer' | 'admin'.
+ */
+export interface UserRecord {
+    id: number;
+    email: string;
+    name: string | null;
+    role: string;
+    created_at: string;
+}
+
 export interface Allegation {
     id: number;
     case_id: number;

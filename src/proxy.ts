@@ -26,6 +26,11 @@ export default auth((req) => {
     const next = nextUrl.searchParams.get('next') || '/';
     return Response.redirect(new URL(next, nextUrl));
   }
+  // Admin area: non-admins bounce home. Courtesy redirect only — the real boundary
+  // is the server guard (getAdminSession) in the /admin page and /api/admin/* routes.
+  if (isLoggedIn && (path === '/admin' || path.startsWith('/admin/')) && req.auth?.user?.role !== 'admin') {
+    return Response.redirect(new URL('/', nextUrl));
+  }
   // otherwise continue
 });
 

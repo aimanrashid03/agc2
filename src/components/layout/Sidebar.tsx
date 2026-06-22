@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FileText, ChevronLeft, ChevronRight, MessageSquare, LogOut, LayoutDashboard } from 'lucide-react';
+import { FileText, ChevronLeft, ChevronRight, MessageSquare, LogOut, LayoutDashboard, Settings, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 const NAV_ITEMS = [
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -12,9 +12,24 @@ const NAV_ITEMS = [
     { href: '/chat', label: 'Chat AI', icon: MessageSquare },
 ];
 
+// Shown to every signed-in user (lower group). Admin-only items appended at runtime.
+const SECONDARY_ITEMS = [
+    { href: '/settings', label: 'Tetapan', icon: Settings },
+];
+
+const ADMIN_ITEM = { href: '/admin', label: 'Pentadbiran', icon: ShieldCheck };
+
 const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const pathname = usePathname();
+    const { data: session } = useSession();
+
+    const role = session?.user?.role ?? 'officer';
+    const isAdmin = role === 'admin';
+    const displayName = session?.user?.name || session?.user?.email || 'Pengguna';
+    const roleLabel = isAdmin ? 'Pentadbir' : 'Pegawai';
+
+    const secondaryItems = isAdmin ? [...SECONDARY_ITEMS, ADMIN_ITEM] : SECONDARY_ITEMS;
 
     const isActiveRoute = (href: string) => {
         if (href === '/') {
@@ -44,6 +59,23 @@ const Sidebar = () => {
         await signOut({ redirectTo: '/auth/login' });
     };
 
+    const renderNavItem = (item: { href: string; label: string; icon: typeof FileText }) => {
+        const Icon = item.icon;
+        const isActive = isActiveRoute(item.href);
+
+        return (
+            <Link
+                key={item.href}
+                href={item.href}
+                className={getNavClassName(item.href)}
+                aria-current={isActive ? 'page' : undefined}
+            >
+                <Icon className={getIconClassName(item.href)} />
+                {!isCollapsed && <span className="ml-3 truncate">{item.label}</span>}
+            </Link>
+        );
+    };
+
     return (
         <div
             className={`${isCollapsed ? 'w-16' : 'w-60'} h-screen bg-white border-r border-gray-200 flex flex-col pt-2 transition-all duration-300 ease-in-out relative`}
@@ -63,26 +95,27 @@ const Sidebar = () => {
                 </button>
             </div>
 
-            <nav className="flex-1 px-2 py-4 space-y-1">
-                {NAV_ITEMS.map((item) => {
-                    const Icon = item.icon;
-                    const isActive = isActiveRoute(item.href);
+            <nav className="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
+                {NAV_ITEMS.map(renderNavItem)}
 
-                    return (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className={getNavClassName(item.href)}
-                            aria-current={isActive ? 'page' : undefined}
-                        >
-                            <Icon className={getIconClassName(item.href)} />
-                            {!isCollapsed && <span className="ml-3 truncate">{item.label}</span>}
-                        </Link>
-                    );
-                })}
+                <div className="pt-3 mt-3 border-t border-gray-100 space-y-1">
+                    {secondaryItems.map(renderNavItem)}
+                </div>
             </nav>
 
             <div className="px-2 py-3 border-t border-gray-100">
+                {!isCollapsed && (
+                    <div className="px-3 pb-3 mb-1">
+                        <p className="text-sm font-semibold text-gray-800 truncate">{displayName}</p>
+                        <span
+                            className={`mt-1 inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                                isAdmin ? 'bg-primary-100 text-primary-800' : 'bg-gray-100 text-gray-600'
+                            }`}
+                        >
+                            {roleLabel}
+                        </span>
+                    </div>
+                )}
                 <button
                     type="button"
                     onClick={handleSignOut}

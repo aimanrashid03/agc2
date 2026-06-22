@@ -4,7 +4,11 @@
  * Optionally seeds/updates a user.
  *
  *   npx tsx scripts/setup-auth.ts
- *   npx tsx scripts/setup-auth.ts --seed admin@agc.local agc12345 "Admin"
+ *   npx tsx scripts/setup-auth.ts --seed admin@agc.local agc12345 "Admin" admin
+ *   npx tsx scripts/setup-auth.ts --promote admin@agc.local   # make an existing user an admin
+ *
+ * --seed <email> <password> [name] [role]   role defaults to 'officer'
+ * --promote <email>                          set role='admin' on an existing user (bootstrap first admin)
  */
 import { Pool } from 'pg';
 import path from 'path';
@@ -35,14 +39,24 @@ async function main() {
     const si = args.indexOf('--seed');
     if (si >= 0) {
         const email = args[si + 1], password = args[si + 2], name = args[si + 3] || null;
-        if (!email || !password) { console.error('--seed needs <email> <password> [name]'); process.exit(1); }
+        const role = args[si + 4] && !args[si + 4].startsWith('--') ? args[si + 4] : 'officer';
+        if (!email || !password) { console.error('--seed needs <email> <password> [name] [role]'); process.exit(1); }
         const bcrypt = (await import('bcryptjs')).default;
         const hash = await bcrypt.hash(password, 10);
         await pool.query(
-            `INSERT INTO users (email, password_hash, name) VALUES (lower($1), $2, $3)
-             ON CONFLICT (lower(email)) DO UPDATE SET password_hash = EXCLUDED.password_hash, name = EXCLUDED.name, updated_at = NOW()`,
-            [email, hash, name]);
-        console.log(`seeded/updated user: ${email.toLowerCase()}`);
+            `INSERT INTO users (email, password_hash, name, role) VALUES (lower($1), $2, $3, $4)
+             ON CONFLICT (lower(email)) DO UPDATE SET password_hash = EXCLUDED.password_hash, name = EXCLUDED.name, role = EXCLUDED.role, updated_at = NOW()`,
+            [email, hash, name, role]);
+        console.log(`seeded/updated user: ${email.toLowerCase()} (role: ${role})`);
+    }
+
+    const pi = args.indexOf('--promote');
+    if (pi >= 0) {
+        const email = args[pi + 1];
+        if (!email) { console.error('--promote needs <email>'); process.exit(1); }
+        const { rowCount } = await pool.query(
+            `UPDATE users SET role = 'admin', updated_at = NOW() WHERE lower(email) = lower($1)`, [email]);
+        console.log(rowCount ? `promoted to admin: ${email.toLowerCase()}` : `no user found: ${email.toLowerCase()}`);
     }
 
     const { rows } = await pool.query('SELECT count(*)::int AS n FROM users');

@@ -10,6 +10,8 @@ src/app/
   dashboard/page.tsx               - Metrics dashboard (server component)
   cases/[id]/page.tsx              - Case detail (server component)
   chat/page.tsx                    - RAG chat page wrapper
+  admin/page.tsx                   - Admin area (server-guarded: role 'admin' only) -> <AdminPanel>
+  settings/page.tsx                - Account settings for every user -> <SettingsTabs>
   auth/login/page.tsx              - Login (client component)
   auth/sign-up/page.tsx            - Sign-up (min password length 8)
   auth/forgot-password/page.tsx    - Sends reset email
@@ -17,10 +19,25 @@ src/app/
   api/chat/route.ts                - POST: RAG chat (Node runtime) — see docs/rag-chat.md
   api/cases/[id]/export-pdf/route.ts        - GET: single-case Laporan PDF — see docs/pdf-export.md
   api/cases/export-trend-pdf/route.ts       - POST: multi-case Trend PDF — see docs/pdf-export.md
+  api/admin/users/route.ts                  - GET list / POST create user (admin only)
+  api/admin/users/[id]/route.ts             - PATCH name|role / DELETE user (admin only; self + last-admin guards)
+  api/admin/users/[id]/reset-password/route.ts - POST set new password for any user (admin only)
+  api/admin/stats/route.ts                  - GET system overview counts (admin only)
+  api/account/profile/route.ts              - PATCH own display name (any logged-in user)
 ```
 
 ## Authentication (Auth.js v5 — Supabase Auth removed 2026-06-22)
 Credentials provider + JWT sessions against the Postgres `users` table (bcrypt via `bcryptjs`).
+
+### RBAC (role-based access)
+- `users.role` effective values: `'officer'` (default) | `'admin'`. Carried into the JWT/session by the
+  `jwt`/`session` callbacks in `auth.config.ts` (edge-safe), so role is readable both at the edge
+  (`req.auth.user.role` in `proxy.ts`) and on the client (`useSession()` in `Sidebar`).
+- **Server boundary**: `getAdminSession()` (`src/lib/auth-guard.ts`) — every `/api/admin/*` route returns
+  403 on non-admin; `/admin/page.tsx` redirects. The `proxy.ts` `/admin` redirect is a *secondary* courtesy.
+- Sessions issued before RBAC landed have no role → treated as officer until re-login.
+- `<SessionProvider>` (`src/components/providers/Providers.tsx`) is mounted in the root layout with the
+  server-resolved `session`, so client components read role with no extra fetch.
 
 | File | Role |
 |---|---|
@@ -43,7 +60,7 @@ Credentials provider + JWT sessions against the Postgres `users` table (bcrypt v
 
 ## Layout shell
 - `src/components/layout/AppShell.tsx` (client): if `pathname.startsWith('/auth')` → bare `<main>` (no sidebar); otherwise `flex h-screen` with `<Sidebar />` + scrollable main.
-- `src/components/layout/Sidebar.tsx`: collapsible (`w-60` ↔ `w-16`), nav items hardcoded in `NAV_ITEMS` (`/dashboard`, `/` Senarai Kes, `/chat` Chat AI). Active-route logic: `/` also matches `/cases/*`. Sign-out calls `signOut({ redirectTo: '/auth/login' })` from `next-auth/react`.
+- `src/components/layout/Sidebar.tsx`: collapsible (`w-60` ↔ `w-16`), nav items hardcoded in `NAV_ITEMS` (`/dashboard`, `/` Senarai Kes, `/chat` Chat AI). A secondary group has **Tetapan** (`/settings`, all users) and **Pentadbiran** (`/admin`, appended only when `useSession()` role is `admin`). Footer shows the current user name + role badge. Active-route logic: `/` also matches `/cases/*`. Sign-out calls `signOut({ redirectTo: '/auth/login' })` from `next-auth/react`.
 
 ## Dashboard (`src/app/dashboard/page.tsx`)
 - Server component; one query on `cases` (id, status, state_desc, source_folder, updated_at, file_open_date, file_no, case_name), ordered by `updated_at` desc. No joins.
