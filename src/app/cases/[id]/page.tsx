@@ -5,6 +5,7 @@ import { ArrowLeft, User, Calendar, Scale, Folder, MapPin, Info } from 'lucide-r
 import { notFound } from 'next/navigation';
 import { Case, Person, Allegation } from '@/types';
 import CaseContentTabs from '@/components/CaseContentTabs';
+import ProseBlock from '@/components/ProseBlock';
 import ExportPDFButton from '@/components/ExportPDFButton';
 
 export const revalidate = 0;
@@ -215,9 +216,9 @@ export default async function CaseDetails(props: { params: Promise<{ id: string 
                                                         {alg.charge_created_date && <span className="inline-flex items-center"><span className="font-semibold mr-1">Tarikh:</span> {new Date(alg.charge_created_date).toLocaleDateString('ms-MY')}</span>}
                                                     </div>
                                                     {alg.charge_notes && (
-                                                        <div className="text-sm text-gray-700 bg-white border border-gray-100 p-3 rounded-md shadow-sm">
-                                                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Nota Pertuduhan:</span>
-                                                            <p className="whitespace-pre-wrap leading-relaxed">{alg.charge_notes}</p>
+                                                        <div className="text-sm text-gray-700 bg-white border border-gray-100 p-4 rounded-md shadow-sm">
+                                                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-2">Nota Pertuduhan:</span>
+                                                            <ProseBlock text={alg.charge_notes} />
                                                         </div>
                                                     )}
                                                 </div>

@@ -22,20 +22,32 @@ Props: `{ cases: CaseListItem[], categories, states, selectedCaseIds?, onSelecte
 Props: `{ facts, judgement, issues, suggestions }` — all `string | null`
 - Renders only tabs whose content is non-null; returns `null` if all four are null.
 - Tabs: Fakta Kes, Alasan Penghakiman, Isu & Hujahan, Cadangan. First available tab active by default.
-- Replaces literal `\n` escape sequences with real newlines; fixed 600px height with internal scroll.
+- Renders content through `ProseBlock` (see its entry) so the unstructured seed text becomes readable paragraphs instead of a wall; fixed 600px height with internal scroll.
+
+## ProseBlock (`src/components/ProseBlock.tsx`)
+Props: `{ text: string | null | undefined; className?: string }`. No client hooks → usable from **both** server components (case detail page `charge_notes`) and client components (`CaseContentTabs`).
+- Delegates to the pure `formatProse()` (`src/lib/formatProse.ts`), which turns a continuous wall of legal narrative (the seed data has **no** paragraph breaks) into ~300-char paragraphs by abbreviation/decimal-aware sentence grouping — it only inserts breaks, never edits words (dates like `16/4/2022`, money `RM1,000.00`, and `No. B-21-2A` are not mis-split). Returns `null` for empty text.
+- `className` styles the wrapper (type scale/colour, e.g. `max-w-3xl text-[15px] text-gray-700`); per-paragraph rhythm (`mb-4 leading-7`) is fixed inside the component.
 
 ## ChatInterface (`src/components/ChatInterface.tsx`)
-- Props: `Partial<ChatbotSettings>` — `botName`, `welcomeHeading`, `welcomeSubtitle`, `starterPrompts`, `maintenanceEnabled`, `maintenanceMessage`, `avatarSrc`. Admin-configurable, defaulted from `src/lib/chatbotDefaults.ts`. The server page `src/app/chat/page.tsx` (`export const dynamic = 'force-dynamic'`) reads them via `getChatbotSettings()` and spreads them in; falls back to defaults if the `chatbot_settings` table is absent.
+- Props: `Partial<ChatbotSettings> & { onClose?: () => void }` — `botName`, `welcomeHeading`, `welcomeSubtitle`, `starterPrompts`, `maintenanceEnabled`, `maintenanceMessage`, `avatarSrc`. Admin-configurable, defaulted from `src/lib/chatbotDefaults.ts`. The server page `src/app/chat/page.tsx` (`export const dynamic = 'force-dynamic'`) reads them via `getChatbotSettings()` and spreads them in; falls back to defaults if the `chatbot_settings` table is absent.
+- `onClose` (optional): when provided, a minimize/close (`ChevronDown`) button appears in the header next to the clear button. Used by `ChatWidget`; the `/chat` page omits it. The clear button label is **"Kosongkan Chat"**.
 - Message shape: `{ role: 'user' | 'assistant', content: string }`.
 - Citation regex parses `[[Name]](id)` (primary) and `[Name](id)` (fallback) → links to `/cases/:id`. **Coupled to the system prompt in `src/app/api/chat/route.ts`** — change both together.
 - Persists to `localStorage['chat_messages']`; clear button wipes state + storage.
 - Starter-question chips call `sendMessage(prompt)` directly. When `maintenanceEnabled`, the welcome/chips are replaced by a notice banner and the input is disabled (the chat route also returns the notice server-side, so it can't be bypassed). Avatar `<Image>`s use `unoptimized` (the src can be the dynamic `/api/chatbot/avatar`).
 
+## ChatWidget (`src/components/ChatWidget.tsx`)
+Props: `ChatbotSettings` (spread directly — `<ChatWidget {...chatbotSettings} />`). `'use client'`.
+- Floating bottom-right launcher (FAB showing the bot avatar + online dot) that toggles a panel embedding `<ChatInterface {...settings} onClose={…} />`. `Esc` closes and returns focus to the launcher; default state is closed.
+- Mounted **once, site-wide** by `AppShell`, which suppresses it on `/chat`, `/settings`, `/admin` (and subpaths via `HIDE_WIDGET_ON`) and on `/auth/*` (AppShell's early return). Only one `ChatInterface` is mounted at a time, so the shared `localStorage['chat_messages']` history persists across pages and widget open/close with no concurrent writer; only "Kosongkan Chat" clears it.
+- Settings originate in the root layout (`await getChatbotSettings()`) → `AppShell` → here, so the widget honors the same admin branding/maintenance config as the `/chat` page.
+
 ## ExportPDFButton / MultiCaseExportButton
 See [docs/pdf-export.md](pdf-export.md#frontend-buttons).
 
 ## AppShell / Sidebar (`src/components/layout/`)
-- `AppShell`: hides sidebar entirely when `pathname.startsWith('/auth')`.
+- `AppShell`: hides sidebar entirely when `pathname.startsWith('/auth')`. Takes `chatbotSettings: ChatbotSettings` and mounts the site-wide `ChatWidget` (see its entry) on non-auth pages outside `HIDE_WIDGET_ON`.
 - `Sidebar`: collapsible `w-60`↔`w-16`; `NAV_ITEMS` hardcoded (primary) + `SECONDARY_ITEMS` (Tetapan, all users) + `ADMIN_ITEM` (Pentadbiran) appended only when `useSession()` role is `admin`; footer shows name + role badge; active-route rule: `/` is active for `/cases/*` too; sign-out uses `signOut({ redirectTo: '/auth/login' })`. **Requires the `<SessionProvider>` from `Providers` (mounted in root layout) — without it `useSession()` returns null and the admin tab/role never show.**
 
 ## Providers (`src/components/providers/Providers.tsx`)

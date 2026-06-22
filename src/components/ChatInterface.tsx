@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useRef, useEffect, type ReactNode } from 'react';
-import { Send, FileText, User, Loader2 } from 'lucide-react';
+import { Send, FileText, User, Loader2, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import MultiCaseExportButton from '@/components/MultiCaseExportButton';
@@ -74,7 +74,8 @@ export default function ChatInterface({
     maintenanceEnabled = DEFAULT_CHATBOT_SETTINGS.maintenanceEnabled,
     maintenanceMessage = DEFAULT_CHATBOT_SETTINGS.maintenanceMessage,
     avatarSrc = DEFAULT_CHATBOT_SETTINGS.avatarSrc,
-}: Partial<ChatbotSettings> = {}) {
+    onClose,
+}: Partial<ChatbotSettings> & { onClose?: () => void } = {}) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -181,14 +182,26 @@ export default function ChatInterface({
                     <Image src={avatarSrc} alt={botName} width={36} height={36} unoptimized className="rounded-full object-cover" />
                     <h2 className="font-semibold text-gray-800">{botName}</h2>
                 </div>
-                {messages.length > 0 && (
-                    <button
-                        onClick={clearChat}
-                        className="text-xs font-medium text-gray-500 hover:text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
-                    >
-                        Kosongkan Sembang
-                    </button>
-                )}
+                <div className="flex items-center gap-1">
+                    {messages.length > 0 && (
+                        <button
+                            onClick={clearChat}
+                            className="text-xs font-medium text-gray-500 hover:text-red-600 px-3 py-1.5 rounded-lg hover:bg-red-50 transition-colors"
+                        >
+                            Kosongkan Chat
+                        </button>
+                    )}
+                    {onClose && (
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            aria-label="Tutup chat"
+                            className="p-1.5 rounded-lg text-gray-500 hover:text-gray-800 hover:bg-gray-100 transition-colors"
+                        >
+                            <ChevronDown size={18} />
+                        </button>
+                    )}
+                </div>
             </div>
 
             <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-6">

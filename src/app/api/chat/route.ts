@@ -106,14 +106,47 @@ export async function POST(req: NextRequest) {
 
         if (!CHAT.apiKey) throw new Error('Chat API key missing (set OPENROUTER_API_KEY or CHAT_API_KEY).');
 
-        // 6. Generate, then expand tags -> [[name]](id) before returning (expansion needs the full text)
+        // 6. Stream the generation so the answer appears word-by-word on the client.
+        //    Numbered tags ([1], [2]) are expanded to the citation contract [[name]](id)
+        //    on the fly — we hold back any trailing not-yet-closed "[…" so a tag is never
+        //    split across flushes (expansion stays deterministic, same as the old full pass).
         const completion = await chat.chat.completions.create({
             model: CHAT.model,
             messages: [{ role: 'system', content: buildSystemPrompt(settings.botName, settings.refusalMessage, contextText) }, ...messages],
             temperature: 0,
+            stream: true,
         });
-        const answer = completion.choices[0]?.message?.content || '';
-        return textStream(expandTags(answer, tagMap));
+
+        const encoder = new TextEncoder();
+        const readable = new ReadableStream({
+            async start(controller) {
+                let buffer = '';
+                const flush = (final: boolean) => {
+                    let upto = buffer.length;
+                    if (!final) {
+                        const open = buffer.lastIndexOf('[');
+                        if (open !== -1 && !buffer.includes(']', open)) upto = open;
+                    }
+                    const ready = buffer.slice(0, upto);
+                    buffer = buffer.slice(upto);
+                    if (ready) controller.enqueue(encoder.encode(expandTags(ready, tagMap)));
+                };
+                try {
+                    for await (const part of completion) {
+                        const delta = part.choices[0]?.delta?.content || '';
+                        if (delta) { buffer += delta; flush(false); }
+                    }
+                    flush(true);
+                } catch (err) {
+                    console.error('Error streaming chat completion:', err);
+                    if (buffer) controller.enqueue(encoder.encode(expandTags(buffer, tagMap)));
+                }
+                controller.close();
+            },
+        });
+        return new Response(readable, {
+            headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive' },
+        });
 
     } catch (error) {
         console.error('Error in chat API:', error);

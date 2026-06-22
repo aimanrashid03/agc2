@@ -10,7 +10,7 @@ End-to-end flow for the AI chat (`/chat` page → `POST /api/chat`).
    - **Refusal gate**: if top similarity `< REFUSE_GATE` (0.59), returns the refusal string **without calling the LLM** (out-of-DB questions score below in-DB ones). Deterministic — the LLM can't be trusted to refuse. **Corpus-dependent — recalibrate when the corpus grows** (see pinned table).
    - **Verdict-join**: looks up each distinct retrieved case's `cases.result` and adds a "Keputusan rasmi kes ini:" line at assembly (NOT embedded — embedding the verdict collapses retrieval diversity).
    - **Numbered-tag citations**: context labels cases `[1] [2]`; the model cites bare tags; a deterministic post-process expands `[1]` → `[[Real Case Name]](real_id)` from a code-controlled tag→case map (0 hallucinated ids).
-   - Returns the expanded answer (buffered then sent — expansion needs the full text, so it's not token-streamed).
+   - **Token-streamed** to the client (`stream: true`) so the answer appears word-by-word. Tags are expanded `[1]` → `[[name]](id)` on the fly, holding back any trailing not-yet-closed `[…` so a tag is never split across chunks (expansion stays deterministic). The refusal/maintenance paths still send a single `textStream` chunk.
 3. Frontend parses `[[name]](id)` citations into `/cases/:id` links.
 
 ## Pinned numbers (calibrated — do not change casually)

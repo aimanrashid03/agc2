@@ -2,6 +2,7 @@
 
 import { FileText, Gavel, Scale, AlignLeft } from 'lucide-react';
 import { useState } from 'react';
+import ProseBlock from '@/components/ProseBlock';
 
 const ALL_TABS = [
     { id: 'fakta', label: 'Fakta Kes', icon: AlignLeft },
@@ -39,12 +40,13 @@ export default function CaseContentTabs({ facts, judgement, issues, suggestions 
                 })}
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 bg-gray-50/30 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto px-6 py-6 bg-gray-50/30 custom-scrollbar">
                 {tabs.map((tab) => (
                     <div key={tab.id} className={activeTab === tab.id ? 'block' : 'hidden'}>
-                        <div className="prose max-w-none text-gray-700 text-sm whitespace-pre-wrap leading-relaxed">
-                            {contentMap[tab.id]?.replace(/\\n/g, '\n')}
-                        </div>
+                        <ProseBlock
+                            text={contentMap[tab.id]}
+                            className="max-w-3xl text-[15px] text-gray-700"
+                        />
                     </div>
                 ))}
             </div>
