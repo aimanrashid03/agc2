@@ -33,6 +33,21 @@ Ubuntu 24.04 · 16 vCPU (AVX support uncertain — benchmark, don't trust tok/s 
 **no usable GPU → all inference is CPU-only** · 48 GB RAM · ~10 concurrent users · VPN+SSH access.
 CPU throughput is the binding constraint — measure it early (Step 3).
 
+### Deployment mode — confirm which phase you're in BEFORE Step 1
+The native-install steps below are written for the **official/production** path. **If this is the
+POC phase** (internet-connected VM, not yet official, app iterating heavily front+back), the agreed
+choice is **Coolify + Docker for the Next.js app** (push-to-deploy for fast iteration), with two
+hard constraints:
+- **Ollama runs standalone** (own container or native, reachable at `127.0.0.1:11434`) — *not*
+  inside Coolify's app pipeline — to keep a clean GPU-passthrough path.
+- **Postgres data + Ollama models live on persistent named volumes**, so an app redeploy never
+  destroys the **~10h full embed** (Step 5) or forces a model re-pull. Verify the volume survives a
+  redeploy *before* running the long embed.
+
+Either way the **engine stays Ollama, not vLLM** (vLLM's wins are GPU-shaped; useless on CPU). Full
+rationale + the production-vs-POC tradeoff: [on-prem-migration.md](on-prem-migration.md)
+§"Serving & deployment stack". When in doubt which phase applies, **ask the user before installing.**
+
 ---
 
 ## 1. Install prerequisites on the VM
@@ -41,7 +56,8 @@ CPU throughput is the binding constraint — measure it early (Step 3).
 # Node 20+ (project tested on 20/24). Use NodeSource or nvm.
 node -v          # expect >= v20
 
-# Postgres 16 + pgvector. Native install preferred over Docker on a locked-down gov box.
+# Postgres 16 + pgvector. Native preferred for the PRODUCTION path; POC may use Coolify/Docker
+#   instead — see §0 "Deployment mode" before choosing.
 #   apt install postgresql-16 postgresql-16-pgvector   (package name varies by repo)
 # Confirm the extension is installable; setup-db.ts runs CREATE EXTENSION vector for you.
 psql -V
